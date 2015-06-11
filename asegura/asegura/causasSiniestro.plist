@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Auto</key>
+	<dict>
+		<key>Causa</key>
+		<array>
+			<string>Robo</string>
+			<string>Colisión - Choque</string>
+			<string>Rotura de Cristales</string>
+			<string>Asistencia en Viajes</string>
+			<string>Atropello</string>
+			<string>Incendio</string>
+			<string>Inundación</string>
+			<string>Volcadura</string>
+		</array>
+	</dict>
+	<key>Hogar</key>
+	<dict>
+		<key>Causa</key>
+		<array>
+			<string>Robo de Contenido</string>
+			<string>Asalto Fuera del Hogar</string>
+			<string>Rotura de Cristales</string>
+			<string>Accidente Trabajador Dosméstico</string>
+			<string>Accidente a un Tercero</string>
+			<string>Apoyo Plomería</string>
+			<string>Apoyo Eléctrico</string>
+			<string>Apoyo Cerrajería</string>
+			<string>Incendio</string>
+			<string>Filtración de Agua</string>
+		</array>
+	</dict>
+	<key>Vida</key>
+	<dict>
+		<key>Causa</key>
+		<array>
+			<string>Fallecimiento</string>
+			<string>Invalidez</string>
+		</array>
+	</dict>
+	<key>Gastos</key>
+	<dict>
+		<key>Causa</key>
+		<array>
+			<string>Accidente</string>
+			<string>Enfermedad</string>
+		</array>
+	</dict>
+	<key>Mascota</key>
+	<dict>
+		<key>Causa</key>
+		<array>
+			<string>Accidente</string>
+			<string>Enfermedad</string>
+			<string>Fallecimiento</string>
+		</array>
+	</dict>
+	<key>Otro</key>
+	<dict>
+		<key>Causa</key>
+		<array>
+			<string>Otro</string>
+		</array>
+	</dict>
+</dict>
+</plist>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6751" systemVersion="14B25" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Usuario" representedClassName="Usuario" syncable="YES">
+        <attribute name="apellidoMaterno" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="apellidoPaterno" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="correo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="idUsuario" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nombre" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pass" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="telefono" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Verificacion" syncable="YES">
+        <attribute name="alias" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="calcomania" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="periodoDos" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="periodoUno" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="placas" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Usuario" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="Verificacion" positionX="-63" positionY="36" width="128" height="120"/>
+    </elements>
+</model>

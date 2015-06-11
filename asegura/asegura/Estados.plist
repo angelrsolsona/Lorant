@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Estados</key>
+	<array>
+		<string>Aguascalientes</string>
+		<string>Baja Califoirnia Norte</string>
+		<string>Baja Califironia Sur</string>
+		<string>Campeche</string>
+		<string>Coahuila</string>
+		<string>Colima</string>
+		<string>Chiapas</string>
+		<string>Chihuahua</string>
+		<string>Distrito Federal</string>
+		<string>Durango</string>
+		<string>Estado de Mexico</string>
+		<string>Guanajuato</string>
+		<string>Guerrero</string>
+		<string>Hidalgo</string>
+		<string>Jalisco</string>
+		<string>Michoacan</string>
+		<string>Morelos</string>
+		<string>Nayarit</string>
+		<string>Nuevo Leon</string>
+		<string>Oaxaca</string>
+		<string>Puebla</string>
+		<string>Queretaro</string>
+		<string>Quintana Roo</string>
+		<string>San Luis Potosi</string>
+		<string>Sinaloa</string>
+		<string>Sonora</string>
+		<string>Tabasco</string>
+		<string>Tamaulipas</string>
+		<string>Tlaxcala</string>
+		<string>Veracruz</string>
+		<string>Yucatan</string>
+		<string>Zacatecas</string>
+	</array>
+</dict>
+</plist>
