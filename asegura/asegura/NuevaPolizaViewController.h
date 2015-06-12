@@ -8,11 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "AltaPolizaViewController.h"
-
-@interface NuevaPolizaViewController : UIViewController
+#import "NSConnection.h"
+#import "Poliza.h"
+@interface NuevaPolizaViewController : UIViewController <UIAlertViewDelegate>
 
 @property(weak,nonatomic) IBOutlet UIView *viewPreview;
 @property(assign,nonatomic) NSInteger ramoActual;
 
+@property (strong,nonatomic) NSConnection *conexion;
+@property (strong,nonatomic) MBProgressHUD *HUD;
+@property (strong,nonatomic) Poliza *polizaActual;
 
 @end

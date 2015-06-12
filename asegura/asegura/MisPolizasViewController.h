@@ -14,6 +14,7 @@
 #import "NSCoreDataManager.h"
 #import "MBProgressHUD.h"
 #import "Poliza.h"
+#import "DetallePolizaViewController.h"
 @interface MisPolizasViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,NSConnectionDelegate>
 
 @property(strong,nonatomic)IBOutlet UITableView *tabla;
@@ -21,6 +22,7 @@
 @property(strong,nonatomic)Usuario *usuarioActual;
 @property(strong,nonatomic) MBProgressHUD *HUD;
 @property(strong,nonatomic) NSMutableArray *arrayPolizas;
+@property(strong,nonatomic) Poliza *polizaActual;
 
 
 

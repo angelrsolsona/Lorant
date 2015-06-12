@@ -7,7 +7,28 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NSConnection.h"
+#import "Poliza.h"
+#import "MBProgressHUD.h"
+#import "CoberturasTableViewCell.h"
 
-@interface DetallePolizaViewController : UIViewController
+@interface DetallePolizaViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,NSConnectionDelegate>
+
+@property(weak,nonatomic) IBOutlet UIScrollView *vistaScroll;
+@property (weak, nonatomic) IBOutlet UITextField *noPoliza;
+@property (weak, nonatomic) IBOutlet UITextField *aseguradora;
+@property (weak, nonatomic) IBOutlet UITextField *telefonoTitular;
+@property (weak, nonatomic) IBOutlet UITextField *correoTitular;
+@property (weak, nonatomic) IBOutlet UILabel *fechaVigencia;
+@property (weak, nonatomic) IBOutlet UITextField *formaPago;
+@property (weak, nonatomic) IBOutlet UILabel *contratadoCon;
+@property (weak, nonatomic) IBOutlet UILabel *paquete;
+@property (weak, nonatomic) IBOutlet UITableView *tablaDetalle;
+@property (weak, nonatomic) IBOutlet UITableView *tablaCoberturas;
+
+@property (strong,nonatomic) Poliza *polizaActual;
+@property (strong,nonatomic) NSConnection *conexion;
+@property (strong,nonatomic) MBProgressHUD *HUD;
+
 
 @end

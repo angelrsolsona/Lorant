@@ -499,6 +499,7 @@
 		2A054B631A76F3C4001090C7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2A9E32411B2A17F4007A0175 /* DetallePoliza */,
 				2A7979351ACB513A00E673E1 /* Cotiza */,
 				2A79792E1ACB48E600E673E1 /* Tips */,
 				2AB9802B1AC0684F00952D36 /* NuevaPoliza */,
@@ -514,8 +515,6 @@
 				2AE75BB91A780E390045B7AD /* Login */,
 				2A054B711A76F58D001090C7 /* Inicio */,
 				2A054B641A76F3E2001090C7 /* Menu */,
-				2AC2DB241B2A08EE006D3A5E /* DetallePolizaViewController.h */,
-				2AC2DB251B2A08EE006D3A5E /* DetallePolizaViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -612,6 +611,15 @@
 				2A7979371ACB515A00E673E1 /* CotizaViewController.m */,
 			);
 			name = Cotiza;
+			sourceTree = "<group>";
+		};
+		2A9E32411B2A17F4007A0175 /* DetallePoliza */ = {
+			isa = PBXGroup;
+			children = (
+				2AC2DB241B2A08EE006D3A5E /* DetallePolizaViewController.h */,
+				2AC2DB251B2A08EE006D3A5E /* DetallePolizaViewController.m */,
+			);
+			name = DetallePoliza;
 			sourceTree = "<group>";
 		};
 		2AA262681AAF7ADD0054E148 /* Verificacion */ = {
@@ -1078,8 +1086,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Fernando Diaz (FGZ4J4USE7)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Fernando Diaz (FGZ4J4USE7)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/asegura",
@@ -1101,8 +1109,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Fernando Diaz (FGZ4J4USE7)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Fernando Diaz (FGZ4J4USE7)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/asegura",

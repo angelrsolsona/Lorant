@@ -41,15 +41,22 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if ([segue.identifier isEqualToString:@"detalle_segue"]) {
+        DetallePolizaViewController *DVC=[segue destinationViewController];
+        [DVC setPolizaActual:_polizaActual];
+        
+    
+    }
 }
-*/
+
 #pragma mark - Muestra Menu
 - (IBAction)showMenu
 {
@@ -115,6 +122,11 @@
     
     return cell;
     
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    _polizaActual=[_arrayPolizas objectAtIndex:indexPath.row];
+    [self performSegueWithIdentifier:@"detalle_segue" sender:self];
 }
 
 -(void)connectionDidFinish:(id)result numRequest:(NSInteger)numRequest{
