@@ -29,6 +29,7 @@
 @property (strong,nonatomic) Poliza *polizaActual;
 @property (strong,nonatomic) NSConnection *conexion;
 @property (strong,nonatomic) MBProgressHUD *HUD;
+@property (assign,nonatomic) BOOL esBusquedaNueva;
 
 
 @end

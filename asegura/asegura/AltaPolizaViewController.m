@@ -18,8 +18,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    _polizaActual=[[Poliza alloc] init];
-    _polizaActual.ramo=_idRamoActual;
+    [_numeroPoliza setText:_polizaActual.insurenceNumber];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -28,7 +28,7 @@
 }
 - (void)viewDidLayoutSubviews
 {
-    [_vistaScroll setContentSize:CGSizeMake(320,780)];
+    [_vistaScroll setContentSize:CGSizeMake(320,1230)];
     //[_containerView setFrame:CGRectMake(0, 100, 320, 228)];
 }
 
@@ -76,7 +76,7 @@
     [textField resignFirstResponder];
     [_vistaScroll setContentOffset:CGPointMake(0, 0) animated:YES];
     
-    NSInteger idTag;
+    /*NSInteger idTag;
     NSString *mensajeError;
     if (_idRamoActual==1) {
         idTag=2;
@@ -94,7 +94,7 @@
             UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:mensajeError delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
             [alert show];
         }
-    }
+    }*/
     
     return NO;
 }

@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,17 +31,17 @@
     _ramoActual=boton.tag;
     
     UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Contraseña" message:@"Introduce el numero de poliza" delegate:self cancelButtonTitle:@"Cancelar" otherButtonTitles:@"Enviar", nil];
-    [alert setAlertViewStyle:UIAlertViewStyleSecureTextInput];
+    [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
     [alert setTag:1];
     [alert show];
     
     
-    if (_ramoActual==1) {
+    /*if (_ramoActual==1) {
         [self performSegueWithIdentifier:@"altaPolizaAuto_segue" sender:self];
         
     }else{
         [self performSegueWithIdentifier:@"altaPolizaNormal_segue" sender:self];
-    }
+    }*/
     
 }
 
@@ -51,33 +52,21 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    
-    AltaPolizaViewController *APVC=[segue destinationViewController];
-    [APVC setIdRamoActual:_ramoActual];
+    if ([segue.identifier isEqualToString:@"detalle_segue"]) {
+        DetallePolizaViewController *DVC=[segue destinationViewController];
+        [DVC setPolizaActual:_polizaActual];
+        [DVC setEsBusquedaNueva:YES];
+    }
+    if ([segue.identifier isEqualToString:@"altaPolizaNormal_segue"]||[segue.identifier isEqualToString:@"altaPolizaAuto_segue"]) {
+        
+        AltaPolizaViewController *APVC=[segue destinationViewController];
+        [APVC setIdRamoActual:_ramoActual];
+        [APVC setPolizaActual:_polizaActual];
+
+    }
     
 }
 
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    
-    switch (alertView.tag) {
-        case 1:
-        {
-            if (buttonIndex) {
-                NSString *noPoliza=[[alertView textFieldAtIndex:0] text];
-                
-            }
-        }break;
-        case 2:
-        {
-            if (!buttonIndex) {
-                [self.navigationController popToRootViewControllerAnimated:YES];
-            }
-        }
-            
-        default:
-            break;
-    }
-}
 
 -(void)connectionDidFinish:(id)result numRequest:(NSInteger)numRequest{
     [_HUD hide:YES];
@@ -87,10 +76,10 @@
         case 1:
         {
             NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:result options:NSJSONReadingAllowFragments error:&error];
-            BOOL hayError=NO;
+
             
             if ([[dic objectForKey:@"ErrorCode"] isEqualToString:@"ER0007"]) {
-                
+                _polizaActual=[[Poliza alloc] init];
                 _polizaActual.insurenceNumber=[dic objectForKey:@"insuranceNumber"];
                 _polizaActual.ownerName=[dic objectForKey:@"ownerName"];
                 _polizaActual.startDate=[dic objectForKey:@"startDate"];
@@ -111,11 +100,13 @@
                 _polizaActual.telefonoCabina=[dic objectForKey:@"TelefonoCabina"];
                 _polizaActual.reportarSiniestro=[[dic objectForKey:@"ReportaSiniestro"] boolValue];
                 
+                [self performSegueWithIdentifier:@"detalle_segue" sender:self];
                 
                 
             }else if([[dic objectForKey:@"ErrorCode"] isEqualToString:@"ER0008"]){
                 
                 UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"La poliza no existe.\n ¿Deseas agregarla?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Si", nil];
+                [alert setTag:2];
                 [alert show];
             
             
@@ -134,6 +125,49 @@
     [alert show];
     
 }
+
+#pragma mark UIAlert Delegate 
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    switch (alertView.tag) {
+        case 1:
+        {
+            if (buttonIndex) {
+                NSString *noPoliza=[[alertView textFieldAtIndex:0] text];
+                _polizaActual=[[Poliza alloc] init];
+                _polizaActual.insurenceNumber=noPoliza;
+                _polizaActual.ramo=_ramoActual;
+                _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/searchInsurance" parameters:@{@"insuranceNumber":_polizaActual.insurenceNumber,@"_iIdRamo":[NSString stringWithFormat:@"%ld",(long)_polizaActual.ramo]} idRequest:1 delegate:self];
+                [_conexion connectionPOSTExecute];
+                
+                _HUD=[[MBProgressHUD alloc] initWithView:self.view];
+                [_HUD setMode:MBProgressHUDModeIndeterminate];
+                [_HUD setLabelText:@"Buscando Poliza ..."];
+                [self.view addSubview:_HUD];
+                [_HUD show:YES];
+                
+            }
+        }break;
+        case 2:
+        {
+            if (buttonIndex) {
+                
+                if (_ramoActual==1) {
+                 [self performSegueWithIdentifier:@"altaPolizaAuto_segue" sender:self];
+                 
+                 }else{
+                 [self performSegueWithIdentifier:@"altaPolizaNormal_segue" sender:self];
+                 }
+                
+            }
+        }
+            
+        default:
+            break;
+    }
+}
+
 
 
 

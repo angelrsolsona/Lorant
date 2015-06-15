@@ -17,6 +17,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    if (_esBusquedaNueva) {
+        [self MuestraDatosPoliza];
+    }else{
     _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/searchInsurance" parameters:@{@"insuranceNumber":_polizaActual.insurenceNumber,@"_iIdRamo":[NSString stringWithFormat:@"%ld",(long)_polizaActual.ramo]} idRequest:1 delegate:self];
     [_conexion connectionPOSTExecute];
     
@@ -25,6 +28,7 @@
     [_HUD setLabelText:@"Obteniendo Polizas"];
     [self.view addSubview:_HUD];
     [_HUD show:YES];
+    }
 
 }
 

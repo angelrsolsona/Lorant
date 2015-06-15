@@ -10,7 +10,7 @@
 #import "AltaPolizaViewController.h"
 #import "NSConnection.h"
 #import "Poliza.h"
-@interface NuevaPolizaViewController : UIViewController <UIAlertViewDelegate>
+@interface NuevaPolizaViewController : UIViewController <UIAlertViewDelegate,NSConnectionDelegate>
 
 @property(weak,nonatomic) IBOutlet UIView *viewPreview;
 @property(assign,nonatomic) NSInteger ramoActual;

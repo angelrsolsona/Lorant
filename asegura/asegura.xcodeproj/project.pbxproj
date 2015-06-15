@@ -57,6 +57,7 @@
 		2A27AF521B0A70AE00CF30B8 /* TipsEducacion.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A27AF511B0A70AE00CF30B8 /* TipsEducacion.rtf */; };
 		2A27AF541B0A70B800CF30B8 /* TipsOtro.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A27AF531B0A70B800CF30B8 /* TipsOtro.rtf */; };
 		2A5115D11A9663FE0048F15E /* RegistroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5115D01A9663FE0048F15E /* RegistroViewController.m */; };
+		2A5325EC1B2EA5D6003673B6 /* NotasReporteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5325EB1B2EA5D6003673B6 /* NotasReporteViewController.m */; };
 		2A60277A1A79774C006E2F8C /* rockwell.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2A6027791A7976E5006E2F8C /* rockwell.ttf */; };
 		2A60277B1A79774C006E2F8C /* Oswald-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2A6027781A7976DE006E2F8C /* Oswald-Regular.ttf */; };
 		2A6236531B220136006F8AB1 /* CoberturasTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A6236521B220136006F8AB1 /* CoberturasTableViewCell.m */; };
@@ -204,6 +205,8 @@
 		2A5115CF1A9663FE0048F15E /* RegistroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistroViewController.h; sourceTree = "<group>"; };
 		2A5115D01A9663FE0048F15E /* RegistroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistroViewController.m; sourceTree = "<group>"; };
 		2A5115D31A9666450048F15E /* Asegura 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Asegura 2.xcdatamodel"; sourceTree = "<group>"; };
+		2A5325EA1B2EA5D6003673B6 /* NotasReporteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotasReporteViewController.h; sourceTree = "<group>"; };
+		2A5325EB1B2EA5D6003673B6 /* NotasReporteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotasReporteViewController.m; sourceTree = "<group>"; };
 		2A6027781A7976DE006E2F8C /* Oswald-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Regular.ttf"; sourceTree = "<group>"; };
 		2A6027791A7976E5006E2F8C /* rockwell.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = rockwell.ttf; sourceTree = "<group>"; };
 		2A6236511B220136006F8AB1 /* CoberturasTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoberturasTableViewCell.h; sourceTree = "<group>"; };
@@ -740,6 +743,8 @@
 				2AE75BBE1A78170E0045B7AD /* ReporteViewController.h */,
 				2AE75BBF1A78170E0045B7AD /* ReporteViewController.m */,
 				2A8724471AEF1431008C1C24 /* causasSiniestro.plist */,
+				2A5325EA1B2EA5D6003673B6 /* NotasReporteViewController.h */,
+				2A5325EB1B2EA5D6003673B6 /* NotasReporteViewController.m */,
 			);
 			name = Reporte;
 			sourceTree = "<group>";
@@ -954,6 +959,7 @@
 				2AC4B6471AAE607100E727D8 /* MasInformacionPolizaViewController.m in Sources */,
 				2A054B251A76F31C001090C7 /* NSConnection.m in Sources */,
 				2A054B451A76F389001090C7 /* UIWebView+AFNetworking.m in Sources */,
+				2A5325EC1B2EA5D6003673B6 /* NotasReporteViewController.m in Sources */,
 				2A8C2FC31AB0D93F002900D9 /* MisPolizasTableViewCell.m in Sources */,
 				2AB9802E1AC0687B00952D36 /* NuevaPolizaViewController.m in Sources */,
 				2A054B5E1A76F3A7001090C7 /* AFSecurityPolicy.m in Sources */,

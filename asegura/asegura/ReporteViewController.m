@@ -25,6 +25,19 @@
     
     _pickerActivo=NO;
     
+    NSArray *array=[NSCoreDataManager getDataWithEntity:@"Usuario" andManagedObjContext:[NSCoreDataManager getManagedContext]];
+    _usuarioActual=[array objectAtIndex:0];
+    
+    _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/getInsuranceListWS/" parameters:@{@"nickName":_usuarioActual.correo} idRequest:1 delegate:self];
+    [_conexion connectionPOSTExecute];
+    
+    _HUD=[[MBProgressHUD alloc] initWithView:self.view];
+    [_HUD setMode:MBProgressHUDModeIndeterminate];
+    [_HUD setLabelText:@"Obteniendo Polizas"];
+    [self.view addSubview:_HUD];
+    [_HUD show:YES];
+    _polizaActual=[[Poliza alloc] init];
+    
     
     
 }
@@ -118,7 +131,8 @@
     switch (_providerPickerView.tag) {
         case 10:
         {
-            [button setTitle:@"Smart Rojo" forState:UIControlStateNormal];
+            _polizaActual=[_arrayPolizas objectAtIndex:[_providerPickerView selectedRowInComponent:0]];
+            [button setTitle:_polizaActual.insuranceName forState:UIControlStateNormal];
         }break;
         case 30:
         {
@@ -132,7 +146,7 @@
     switch (pickerView.tag) {
         case 10:
         {
-            return 1;
+            return [_arrayPolizas count];
         }break;
         case 30:
         {
@@ -153,7 +167,9 @@
     switch (pickerView.tag) {
         case 10:
         {
-            return @"Poliza 1";
+            Poliza *poliza=[_arrayPolizas objectAtIndex:row];
+            return poliza.insuranceName;
+            //return @"Poliza 1";
         }break;
         case 30:
         {
@@ -188,7 +204,7 @@
     //marker.snippet = @"Australia";
     marker.map = _vistaMapa;
     
-    [_location stopUpdatingLocation];
+    
     
     NSLog(@"Ubicacion:(%f %f)",ubicacionActual.coordinate.latitude,ubicacionActual.coordinate.longitude);
     
@@ -200,11 +216,15 @@
         CLPlacemark *place=[placemarks objectAtIndex:0];
         NSLog(@"Found placemarks: %@, error: %@", placemarks, [placemarks description]);
         [_ubicacionActual setText:[NSString stringWithFormat:@"%@ %@, %@",place.thoroughfare,place.subThoroughfare,place.locality]];
+            
         }else{
             [_ubicacionActual setPlaceholder:@"Escribe tu ubicacion"];
+            
         }
         
     }];
+    
+    [_location stopUpdatingLocation];
     
 
     
@@ -276,6 +296,58 @@
     [self presentViewController:activityVC animated:YES completion:nil];
     
 }
+#pragma mark NSConnection Delegate
+-(void)connectionDidFinish:(id)result numRequest:(NSInteger)numRequest{
+    [_HUD hide:YES];
+    NSError *error;
+    
+    switch (numRequest) {
+        case 1:
+        {
+            NSArray *array=[NSJSONSerialization JSONObjectWithData:result options:NSJSONReadingAllowFragments error:&error];
+            _arrayPolizas=[[NSMutableArray alloc] init];
+            BOOL hayError=NO;
+            for (NSDictionary *dic in array) {
+                if ([[dic objectForKey:@"ErrorCode"] isEqualToString:@"ER0005"]) {
+                    hayError=YES;
+                    break;
+                }else{
+                    Poliza *poliza=[[Poliza alloc] init];
+                    poliza.insuranceName=[dic objectForKey:@"insuranceName"];
+                    poliza.insurenceNumber=[dic objectForKey:@"insuranceNumber"];
+                    poliza.idAseguradora=[[dic objectForKey:@"idAseguradora"] integerValue];
+                    poliza.ramo=[[dic objectForKey:@"idRamo"] integerValue];
+                    NSArray *fecha=[[dic objectForKey:@"FechaHasta"] componentsSeparatedByString:@"T"];
+                    poliza.fechaHasta=[fecha objectAtIndex:0];
+                    [_arrayPolizas addObject:poliza];
+                }
+                
+            }
+            
+            if (hayError) {
+                
+                [_HUD setMode:MBProgressHUDModeText];
+                [_HUD setLabelText:@"El usuario no tiene polizas"];
+                [self.view addSubview:_HUD];
+                [_HUD show:YES];
+                [_HUD hide:YES afterDelay:2.0];
+            }else{
+                UIButton *button=(UIButton*)[self.view viewWithTag:1];
+                [button setTitle:@"Escoje una póliza" forState:UIControlStateNormal];
+            }
+        }break;
+        default:
+            break;
+    }
+    
+}
+-(void)connectionDidFail:(NSString *)error{
+    
+    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Error" message:@"Error de conexion intenta de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+    [alert show];
+    
+}
+
 
 
 @end
