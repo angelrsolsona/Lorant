@@ -14,7 +14,9 @@
 #import "NSCoreDataManager.h"
 #import "MBProgressHUD.h"
 #import "Poliza.h"
-@interface ReporteViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate,CLLocationManagerDelegate,UITextFieldDelegate,NSConnectionDelegate>
+#import "CausaSiniestro.h"
+#import "NotasReporteViewController.h"
+@interface ReporteViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate,CLLocationManagerDelegate,UITextFieldDelegate,NSConnectionDelegate,NotasReporteViewControllerDelegate>
 
 @property(strong,nonatomic)UIView *maskView;
 @property(strong,nonatomic)UIPickerView *providerPickerView;
@@ -28,10 +30,21 @@
 @property(weak,nonatomic) IBOutlet UIScrollView *vistaScroll;
 @property(weak,nonatomic) IBOutlet GMSMapView *vistaMapa;
 @property(weak,nonatomic) IBOutlet UITextField *ubicacionActual;
+@property (weak, nonatomic) IBOutlet UITextField *notas;
+@property (weak, nonatomic) IBOutlet UIButton *btnEnviarUbicacion;
+@property (weak, nonatomic) IBOutlet UIButton *btnLlamar;
 
 @property(strong,nonatomic)NSConnection *conexion;
 @property(strong,nonatomic)Usuario *usuarioActual;
 @property(strong,nonatomic) MBProgressHUD *HUD;
 @property(strong,nonatomic) Poliza *polizaActual;
+@property(strong,nonatomic)CausaSiniestro *causaActual;
+@property(assign,nonatomic) BOOL tienesNotas;
+@property(assign,nonatomic) BOOL didFindLocation;
+
+- (IBAction)Foto:(id)sender;
+- (IBAction)EnviarUbicacion:(id)sender;
+- (IBAction)Llamar:(id)sender;
+
 
 @end

@@ -24,12 +24,13 @@
     [tap setNumberOfTapsRequired:1];*/
     
     _pickerActivo=NO;
-    
+    _tienesNotas=NO;
     NSArray *array=[NSCoreDataManager getDataWithEntity:@"Usuario" andManagedObjContext:[NSCoreDataManager getManagedContext]];
     _usuarioActual=[array objectAtIndex:0];
     
     _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/getInsuranceListWS/" parameters:@{@"nickName":_usuarioActual.correo} idRequest:1 delegate:self];
     [_conexion connectionPOSTExecute];
+    
     
     _HUD=[[MBProgressHUD alloc] initWithView:self.view];
     [_HUD setMode:MBProgressHUDModeIndeterminate];
@@ -37,26 +38,15 @@
     [self.view addSubview:_HUD];
     [_HUD show:YES];
     _polizaActual=[[Poliza alloc] init];
+    _causaActual=[[CausaSiniestro alloc] init];
+    
+    [self BuscarLocalizacion];
     
     
     
 }
 -(void)viewWillAppear:(BOOL)animated{
     
-    _location=[[CLLocationManager alloc] init];
-    [_location setDelegate:self];
-    [_location setDesiredAccuracy:kCLLocationAccuracyBest];
-    NSString * osVersion = [[UIDevice currentDevice] systemVersion];
-    if ([osVersion floatValue]>= 8.0 ) {
-        [_location requestAlwaysAuthorization]; //Requests permission to use location services whenever the app is running.
-        // [_CLLocationManager requestWhenInUseAuthorization]; //Requests permission to use location services while the app is in the foreground.
-    }
-    [_location startUpdatingLocation];
-    
-    NSString *stringPath=[[NSBundle mainBundle] pathForResource:@"causasSiniestro" ofType:@"plist"];
-    NSDictionary *dic=[[NSDictionary alloc] initWithContentsOfFile:stringPath];
-    _arrayCausas=[[NSMutableArray alloc] init];
-    _arrayCausas=[[dic objectForKey:@"Auto"] objectForKey:@"Causa"];
     
 }
 
@@ -71,15 +61,25 @@
     //[_containerView setFrame:CGRectMake(0, 100, 320, 228)];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"notas_segue"]) {
+        NotasReporteViewController *NVC=[segue destinationViewController];
+        [NVC setDelegate:self];
+        if (_tienesNotas) {
+            [NVC setNota:_notas.text];
+            [NVC setTienesNotas:_tienesNotas];
+        }else{
+            [NVC setTienesNotas:_tienesNotas];
+        }
+    }
 }
-*/
+
 
 #pragma mark - Muestra Menu
 - (IBAction)showMenu
@@ -133,10 +133,12 @@
         {
             _polizaActual=[_arrayPolizas objectAtIndex:[_providerPickerView selectedRowInComponent:0]];
             [button setTitle:_polizaActual.insuranceName forState:UIControlStateNormal];
+            [self ObtenTipoSiniestro:[NSString stringWithFormat:@"%d",_polizaActual.idAseguradora]];
         }break;
         case 30:
         {
-            [button setTitle:[NSString stringWithFormat:@"%@",[_arrayCausas objectAtIndex:[_providerPickerView selectedRowInComponent:0]]] forState:UIControlStateNormal];
+            _causaActual=[_arrayCausas objectAtIndex:[_providerPickerView selectedRowInComponent:0]];
+            [button setTitle:[NSString stringWithFormat:@"%@",_causaActual.nombre] forState:UIControlStateNormal];
         }break;
         default:
             break;
@@ -173,7 +175,8 @@
         }break;
         case 30:
         {
-            return [_arrayCausas objectAtIndex:row];
+            CausaSiniestro *causa=[_arrayCausas objectAtIndex:row];
+            return causa.nombre;
         }
             
         default:
@@ -189,26 +192,46 @@
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
     
-    CLLocation *ubicacionActual=[locations lastObject];
+    if (!_didFindLocation) {
+        _didFindLocation=YES;
+        CLLocation *ubicacionActual=[locations lastObject];
+        
+        NSString *latitud=[NSString stringWithFormat:@"%f",ubicacionActual.coordinate.latitude];
+        NSString *longitud=[NSString stringWithFormat:@"%f",ubicacionActual.coordinate.longitude];
+        
+        GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:ubicacionActual.coordinate.latitude longitude:ubicacionActual.coordinate.longitude
+                                                                     zoom:14];
+        _vistaMapa.myLocationEnabled = YES;
+        [_vistaMapa setCamera:camera];
+        GMSMarker *marker = [[GMSMarker alloc] init];
+        marker.position = CLLocationCoordinate2DMake([latitud floatValue],[longitud floatValue]);
+        marker.title = [NSString stringWithFormat:@"Mi Ubicacion:(%.3f,%.3f)",[latitud floatValue],[longitud floatValue]];
+        //marker.snippet = @"Australia";
+        marker.map = _vistaMapa;
+        
+        
+        
+        NSLog(@"Ubicacion:(%f %f)",ubicacionActual.coordinate.latitude,ubicacionActual.coordinate.longitude);
+        
+        [[GMSGeocoder geocoder] reverseGeocodeCoordinate:CLLocationCoordinate2DMake(ubicacionActual.coordinate.latitude, ubicacionActual.coordinate.longitude) completionHandler:^(GMSReverseGeocodeResponse *response, NSError *error) {
+            
+            NSLog(@"reverse geocoding results:");
+            GMSAddress *addressObj=[response firstResult];
+            
+            NSLog(@"coordinate.latitude=%f", addressObj.coordinate.latitude);
+            NSLog(@"coordinate.longitude=%f", addressObj.coordinate.longitude);
+            NSLog(@"thoroughfare=%@", addressObj.thoroughfare);
+            NSLog(@"locality=%@", addressObj.locality);
+            NSLog(@"subLocality=%@", addressObj.subLocality);
+            NSLog(@"administrativeArea=%@", addressObj.administrativeArea);
+            NSLog(@"postalCode=%@", addressObj.postalCode);
+            NSLog(@"country=%@", addressObj.country);
+            NSLog(@"lines=%@", addressObj.lines);
+            [_ubicacionActual setText:[NSString stringWithFormat:@"%@ %@, %@",addressObj.thoroughfare,addressObj.subLocality,addressObj.administrativeArea]];
+            
+        }];
     
-    NSString *latitud=[NSString stringWithFormat:@"%f",ubicacionActual.coordinate.latitude];
-    NSString *longitud=[NSString stringWithFormat:@"%f",ubicacionActual.coordinate.longitude];
-    
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:ubicacionActual.coordinate.latitude longitude:ubicacionActual.coordinate.longitude
-                                                                 zoom:14];
-    _vistaMapa.myLocationEnabled = YES;
-    [_vistaMapa setCamera:camera];
-    GMSMarker *marker = [[GMSMarker alloc] init];
-    marker.position = CLLocationCoordinate2DMake([latitud floatValue],[longitud floatValue]);
-    marker.title = [NSString stringWithFormat:@"Mi Ubicacion:(%.3f,%.3f)",[latitud floatValue],[longitud floatValue]];
-    //marker.snippet = @"Australia";
-    marker.map = _vistaMapa;
-    
-    
-    
-    NSLog(@"Ubicacion:(%f %f)",ubicacionActual.coordinate.latitude,ubicacionActual.coordinate.longitude);
-    
-    CLGeocoder *geocoder=[[CLGeocoder alloc] init];
+    /*CLGeocoder *geocoder=[[CLGeocoder alloc] init];
     
     [geocoder reverseGeocodeLocation:ubicacionActual completionHandler:^(NSArray *placemarks, NSError *error) {
         
@@ -222,10 +245,11 @@
             
         }
         
-    }];
+    }];*/
+    }else{
     
-    [_location stopUpdatingLocation];
-    
+        [_location stopUpdatingLocation];
+    }
 
     
 }
@@ -336,6 +360,25 @@
                 [button setTitle:@"Escoje una póliza" forState:UIControlStateNormal];
             }
         }break;
+        case 2:{
+            
+            NSArray *array=[NSJSONSerialization JSONObjectWithData:result options:NSJSONReadingAllowFragments error:&error];
+            _arrayCausas=[[NSMutableArray alloc] init];
+            for (NSDictionary *dic in array) {
+                
+                CausaSiniestro *causa=[[CausaSiniestro alloc] init];
+                causa.idRamo=[NSString stringWithFormat:@"%d",_polizaActual.ramo];
+                causa.idTipo=[dic objectForKey:@"ID_TIPO_SINIESTRO"];
+                causa.nombre=[dic objectForKey:@"SINIESTRO"];
+                
+                [_arrayCausas addObject:causa];
+            }
+            [_HUD hide:YES];
+            UIButton *button=(UIButton*)[self.view viewWithTag:3];
+            [button setTitle:@"Escoje una causa" forState:UIControlStateNormal];
+            
+            
+        }break;
         default:
             break;
     }
@@ -348,6 +391,53 @@
     
 }
 
+#pragma mark Notas Delegate
+
+-(void)NotasAgregada:(NSString *)nota{
+    
+    _tienesNotas=YES;
+    [_notas setText:nota];
+}
+
+#pragma mark Metodos
+
+-(void)ObtenTipoSiniestro:(NSString *)idAseguradora{
+    
+    _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/geTtipoSiniestro/" parameters:@{@"idAseguradora":idAseguradora} idRequest:2 delegate:self];
+    [_conexion connectionPOSTExecute];
+    _HUD=[[MBProgressHUD alloc] initWithView:self.view];
+    [_HUD setMode:MBProgressHUDModeIndeterminate];
+    [_HUD setLabelText:@"Obteniendo Causas"];
+    [self.view addSubview:_HUD];
+    [_HUD show:YES];
+
+}
+
+-(void)BuscarLocalizacion{
+    _didFindLocation=NO;
+    _location=[[CLLocationManager alloc] init];
+    [_location setDelegate:self];
+    [_location setDesiredAccuracy:kCLLocationAccuracyBest];
+    NSString * osVersion = [[UIDevice currentDevice] systemVersion];
+    if ([osVersion floatValue]>= 8.0 ) {
+        [_location requestAlwaysAuthorization]; //Requests permission to use location services whenever the app is running.
+        // [_CLLocationManager requestWhenInUseAuthorization]; //Requests permission to use location services while the app is in the foreground.
+    }
+    [_location startUpdatingLocation];
+}
+
+-(void)DetallePoliza{
+    
+    
+}
 
 
+- (IBAction)Foto:(id)sender {
+}
+
+- (IBAction)EnviarUbicacion:(id)sender {
+}
+
+- (IBAction)Llamar:(id)sender {
+}
 @end

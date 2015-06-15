@@ -56,6 +56,10 @@
 		2A27AF501B0A70A100CF30B8 /* TipsMascota.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A27AF4F1B0A70A100CF30B8 /* TipsMascota.rtf */; };
 		2A27AF521B0A70AE00CF30B8 /* TipsEducacion.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A27AF511B0A70AE00CF30B8 /* TipsEducacion.rtf */; };
 		2A27AF541B0A70B800CF30B8 /* TipsOtro.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A27AF531B0A70B800CF30B8 /* TipsOtro.rtf */; };
+		2A40F2C41B2F539900474BDB /* CausaSiniestro.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A40F2C31B2F539900474BDB /* CausaSiniestro.m */; };
+		2A40F2C81B2F869200474BDB /* HistorialSinisetroTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A40F2C71B2F869200474BDB /* HistorialSinisetroTableViewController.m */; };
+		2A40F2CB1B2F86A700474BDB /* HistorialSiniestroTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A40F2CA1B2F86A700474BDB /* HistorialSiniestroTableViewCell.m */; };
+		2A40F2CE1B2F913C00474BDB /* HistorialSiniestro.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A40F2CD1B2F913C00474BDB /* HistorialSiniestro.m */; };
 		2A5115D11A9663FE0048F15E /* RegistroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5115D01A9663FE0048F15E /* RegistroViewController.m */; };
 		2A5325EC1B2EA5D6003673B6 /* NotasReporteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5325EB1B2EA5D6003673B6 /* NotasReporteViewController.m */; };
 		2A60277A1A79774C006E2F8C /* rockwell.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2A6027791A7976E5006E2F8C /* rockwell.ttf */; };
@@ -202,6 +206,14 @@
 		2A27AF4F1B0A70A100CF30B8 /* TipsMascota.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = TipsMascota.rtf; sourceTree = "<group>"; };
 		2A27AF511B0A70AE00CF30B8 /* TipsEducacion.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = TipsEducacion.rtf; sourceTree = "<group>"; };
 		2A27AF531B0A70B800CF30B8 /* TipsOtro.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = TipsOtro.rtf; sourceTree = "<group>"; };
+		2A40F2C21B2F539900474BDB /* CausaSiniestro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CausaSiniestro.h; sourceTree = "<group>"; };
+		2A40F2C31B2F539900474BDB /* CausaSiniestro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CausaSiniestro.m; sourceTree = "<group>"; };
+		2A40F2C61B2F869200474BDB /* HistorialSinisetroTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistorialSinisetroTableViewController.h; sourceTree = "<group>"; };
+		2A40F2C71B2F869200474BDB /* HistorialSinisetroTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistorialSinisetroTableViewController.m; sourceTree = "<group>"; };
+		2A40F2C91B2F86A700474BDB /* HistorialSiniestroTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistorialSiniestroTableViewCell.h; sourceTree = "<group>"; };
+		2A40F2CA1B2F86A700474BDB /* HistorialSiniestroTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistorialSiniestroTableViewCell.m; sourceTree = "<group>"; };
+		2A40F2CC1B2F913C00474BDB /* HistorialSiniestro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistorialSiniestro.h; sourceTree = "<group>"; };
+		2A40F2CD1B2F913C00474BDB /* HistorialSiniestro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistorialSiniestro.m; sourceTree = "<group>"; };
 		2A5115CF1A9663FE0048F15E /* RegistroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistroViewController.h; sourceTree = "<group>"; };
 		2A5115D01A9663FE0048F15E /* RegistroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistroViewController.m; sourceTree = "<group>"; };
 		2A5115D31A9666450048F15E /* Asegura 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Asegura 2.xcdatamodel"; sourceTree = "<group>"; };
@@ -502,6 +514,7 @@
 		2A054B631A76F3C4001090C7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2A40F2C51B2F7F2200474BDB /* Historial Sinisestro */,
 				2A9E32411B2A17F4007A0175 /* DetallePoliza */,
 				2A7979351ACB513A00E673E1 /* Cotiza */,
 				2A79792E1ACB48E600E673E1 /* Tips */,
@@ -556,6 +569,19 @@
 				2AC4B6211AAB707300E727D8 /* Usuario.m */,
 			);
 			name = CoreData;
+			sourceTree = "<group>";
+		};
+		2A40F2C51B2F7F2200474BDB /* Historial Sinisestro */ = {
+			isa = PBXGroup;
+			children = (
+				2A40F2C61B2F869200474BDB /* HistorialSinisetroTableViewController.h */,
+				2A40F2C71B2F869200474BDB /* HistorialSinisetroTableViewController.m */,
+				2A40F2C91B2F86A700474BDB /* HistorialSiniestroTableViewCell.h */,
+				2A40F2CA1B2F86A700474BDB /* HistorialSiniestroTableViewCell.m */,
+				2A40F2CC1B2F913C00474BDB /* HistorialSiniestro.h */,
+				2A40F2CD1B2F913C00474BDB /* HistorialSiniestro.m */,
+			);
+			name = "Historial Sinisestro";
 			sourceTree = "<group>";
 		};
 		2A5115CE1A9663E30048F15E /* Registro */ = {
@@ -745,6 +771,8 @@
 				2A8724471AEF1431008C1C24 /* causasSiniestro.plist */,
 				2A5325EA1B2EA5D6003673B6 /* NotasReporteViewController.h */,
 				2A5325EB1B2EA5D6003673B6 /* NotasReporteViewController.m */,
+				2A40F2C21B2F539900474BDB /* CausaSiniestro.h */,
+				2A40F2C31B2F539900474BDB /* CausaSiniestro.m */,
 			);
 			name = Reporte;
 			sourceTree = "<group>";
@@ -911,6 +939,7 @@
 				2AC2DB261B2A08EE006D3A5E /* DetallePolizaViewController.m in Sources */,
 				2AE75BBC1A780E4B0045B7AD /* LoginViewController.m in Sources */,
 				2A7979311ACB48FF00E673E1 /* DetalleTipViewController.m in Sources */,
+				2A40F2CE1B2F913C00474BDB /* HistorialSiniestro.m in Sources */,
 				2A7218ED1B1C48CA0036211A /* AgenciasMarkerAnotation.m in Sources */,
 				2A054B431A76F389001090C7 /* UIProgressView+AFNetworking.m in Sources */,
 				2AC4B6561AAEB36400E727D8 /* AcercaDeViewController.m in Sources */,
@@ -918,6 +947,7 @@
 				2A054B411A76F389001090C7 /* UIButton+AFNetworking.m in Sources */,
 				2A054B441A76F389001090C7 /* UIRefreshControl+AFNetworking.m in Sources */,
 				2A054B401A76F389001090C7 /* UIAlertView+AFNetworking.m in Sources */,
+				2A40F2CB1B2F86A700474BDB /* HistorialSiniestroTableViewCell.m in Sources */,
 				2A054B6E1A76F3FC001090C7 /* NavigationViewController.m in Sources */,
 				2A054B5F1A76F3A7001090C7 /* AFURLConnectionOperation.m in Sources */,
 				2A054B1C1A76F2DC001090C7 /* UIViewController+REFrostedViewController.m in Sources */,
@@ -931,6 +961,7 @@
 				2A054B421A76F389001090C7 /* UIImageView+AFNetworking.m in Sources */,
 				2A054B5A1A76F3A7001090C7 /* AFHTTPRequestOperation.m in Sources */,
 				2AC4B64E1AAEB0E800E727D8 /* MisPolizasViewController.m in Sources */,
+				2A40F2C81B2F869200474BDB /* HistorialSinisetroTableViewController.m in Sources */,
 				2AC4B63F1AAE4CED00E727D8 /* AgenciasViewController.m in Sources */,
 				2A054B261A76F31C001090C7 /* NSCoreDataManager.m in Sources */,
 				2A054B5D1A76F3A7001090C7 /* AFNetworkReachabilityManager.m in Sources */,
@@ -966,6 +997,7 @@
 				2A054B171A76F2DC001090C7 /* RECommonFunctions.m in Sources */,
 				2A054B3E1A76F389001090C7 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				2A054B6F1A76F3FC001090C7 /* MenuViewController.m in Sources */,
+				2A40F2C41B2F539900474BDB /* CausaSiniestro.m in Sources */,
 				2ADCCDA21B20D850001739D7 /* Poliza.m in Sources */,
 				2A054B741A76F5C3001090C7 /* InicioViewController.m in Sources */,
 				2A054B191A76F2DC001090C7 /* REFrostedViewController.m in Sources */,

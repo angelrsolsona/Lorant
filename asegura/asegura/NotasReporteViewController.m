@@ -17,8 +17,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(CerrarTeclado:)];
+    [self.view addGestureRecognizer:tap];
     
     if (_tienesNotas) {
+        [_notas setText:_nota];
         
     }
 }
@@ -37,5 +40,17 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+-(void)CerrarTeclado:(UITapGestureRecognizer *)recognizer{
+    
+    [self.view endEditing:YES];
+    
+}
+
+- (IBAction)Guardar:(id)sender {
+    [_delegate NotasAgregada:_notas.text];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 @end

@@ -16,12 +16,14 @@
 
 @end
 
-@interface NotasReporteViewController : UIViewController
+@interface NotasReporteViewController : UIViewController <UITextViewDelegate>
 
 @property(weak,nonatomic) IBOutlet UITextView  *notas;
 @property(weak,nonatomic) IBOutlet UITextView *detalleSiniestro;
 @property(weak,nonatomic) id <NotasReporteViewControllerDelegate> delegate;
 @property(assign,nonatomic) BOOL tienesNotas;
 @property(strong,nonatomic) NSString *nota;
+
+- (IBAction)Guardar:(id)sender;
 
 @end
