@@ -61,21 +61,22 @@
     
     // Configure the cell...
     
+    
     HistorialSiniestro *historial=[_arraySiniestros objectAtIndex:indexPath.row];
     [cell.fechaReporte setText:historial.fechaReporte];
     [cell.noPoliza setText:historial.noPoliza];
     [cell.causaSiniestro setText:historial.siniestro];
     [cell.informacion setText:historial.informacion];
+
     
-    
-    /*GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:[historial.latitud floatValue] longitude:[historial.longitud floatValue]                                                          zoom:14];
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:[historial.latitud floatValue] longitude:[historial.longitud floatValue]                                                          zoom:14];
     
     [cell.vistaMapa setCamera:camera];
     GMSMarker *marker = [[GMSMarker alloc] init];
     marker.position = CLLocationCoordinate2DMake([historial.latitud floatValue],[historial.longitud floatValue]);
     marker.title = [NSString stringWithFormat:@"Mi Ubicacion:(%.3f,%.3f)",[historial.latitud floatValue],[historial.longitud floatValue]];
     //marker.snippet = @"Australia";
-    marker.map = cell.vistaMapa;*/
+    marker.map = cell.vistaMapa;
     
     
     return cell;
@@ -144,7 +145,12 @@
                 historial.noTelefono=[dic objectForKey:@"NO_TEL"];
                 historial.latitud=[dic objectForKey:@"LATITUD"];
                 historial.longitud=[dic objectForKey:@"LONGITUD"];
-                historial.informacion=[dic objectForKey:@"INFORMACION"];
+                if ([[dic objectForKey:@"INFORMACION"] isEqual:[NSNull null]]) {
+                     historial.informacion=@"NA";
+                }else{
+                     historial.informacion=[dic objectForKey:@"INFORMACION"];
+                }
+               
                 historial.fechaUsuario=[dic objectForKey:@"FECHA_USUARIO_INICIOv"];
                 historial.fechaRegistro=[dic objectForKey:@"FECHA_REGISTRO"];
                 historial.fechaReporte=[dic objectForKey:@"FECHAREPORTE"];
