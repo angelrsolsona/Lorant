@@ -17,6 +17,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+}
+-(void)viewDidAppear:(BOOL)animated{
     NSError *error;
     AVCaptureDevice *captureDevice=[AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     AVCaptureDeviceInput *input=[AVCaptureDeviceInput deviceInputWithDevice:captureDevice error:&error];
@@ -43,9 +46,8 @@
         [alert show];
     }
     
-    
-}
 
+}
 -(void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection{
     
     if (metadataObjects !=nil && [metadataObjects count]>0) {
@@ -62,8 +64,15 @@
 -(void)TextoEncntrado:(NSString *)valor{
     
     NSLog(@"Valor %@",valor);
+    NSArray *valores=[valor componentsSeparatedByString:@"&"];
+    if ([valores count]>1) {
+        [_captureSession stopRunning];
+         [_delegate ResultadoLector:[valores objectAtIndex:0] idRamo:[valores objectAtIndex:1]];
+       [self.navigationController popViewControllerAnimated:YES];
+    }
+   
     
-    _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/getInsuranceDetailWS/?insuranceNumber=0002617282&serialNumberSuffix=WBAVL9101CVT74707" parameters:@{} idRequest:1 delegate:self];
+    
 }
 
 - (void)didReceiveMemoryWarning {

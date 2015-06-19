@@ -36,6 +36,19 @@
 @property(assign,nonatomic) NSInteger idPolizaSistema;
 @property(assign,nonatomic) BOOL reportarSiniestro;
 
+@property(strong,nonatomic)NSString *instrumentoPago;
+@property(strong,nonatomic)NSString *banco;
+@property(strong,nonatomic)NSString *diaPago;
+@property(strong,nonatomic)NSString *observacion;
+@property(strong,nonatomic)NSString *recordatorioPagoInicio;
+@property(strong,nonatomic)NSString *recordatorioPagoFin;
+@property(assign,nonatomic)BOOL recordatorioPago;
+@property(strong,nonatomic)NSData *foto;
+
+@property(assign,nonatomic)BOOL tieneMasInformacion;
+
+
+
 
 
 

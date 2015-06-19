@@ -11,8 +11,11 @@
 #import "Poliza.h"
 #import "MBProgressHUD.h"
 #import "CoberturasTableViewCell.h"
-
-@interface DetallePolizaViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,NSConnectionDelegate>
+#import "MasInformacionPolizaViewController.h"
+#import "Usuario.h"
+#import "NSCoreDataManager.h"
+#import "Polizas.h"
+@interface DetallePolizaViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,NSConnectionDelegate,MasInformacionPolizaViewControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property(weak,nonatomic) IBOutlet UIScrollView *vistaScroll;
 @property (weak, nonatomic) IBOutlet UITextField *noPoliza;
@@ -33,9 +36,13 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnGuardar;
 
 @property (strong,nonatomic) Poliza *polizaActual;
+@property (strong,nonatomic) Usuario *usuarioActual;
 @property (strong,nonatomic) NSConnection *conexion;
 @property (strong,nonatomic) MBProgressHUD *HUD;
 @property (assign,nonatomic) BOOL esBusquedaNueva;
+
+@property(strong,nonatomic) UIImagePickerController *picker;
+
 
 - (IBAction)GuardarPoliza:(id)sender;
 

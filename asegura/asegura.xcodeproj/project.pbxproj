@@ -82,6 +82,7 @@
 		2AB980311AC06B4200952D36 /* LectorQRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB980301AC06B4200952D36 /* LectorQRViewController.m */; };
 		2AB980331AC06D9B00952D36 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB980321AC06D9B00952D36 /* AVFoundation.framework */; };
 		2ABAB18D1B3389C200D92CAA /* Fotos.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABAB18C1B3389C200D92CAA /* Fotos.m */; };
+		2ABAB1951B34AEA400D92CAA /* Polizas.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABAB1941B34AEA400D92CAA /* Polizas.m */; };
 		2AC2DB261B2A08EE006D3A5E /* DetallePolizaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC2DB251B2A08EE006D3A5E /* DetallePolizaViewController.m */; };
 		2AC4B6221AAB707300E727D8 /* Usuario.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC4B6211AAB707300E727D8 /* Usuario.m */; };
 		2AC4B6291AAB901E00E727D8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AC4B6281AAB901E00E727D8 /* CoreLocation.framework */; };
@@ -256,6 +257,10 @@
 		2ABAB18A1B33896E00D92CAA /* Asegura 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Asegura 5.xcdatamodel"; sourceTree = "<group>"; };
 		2ABAB18B1B3389C200D92CAA /* Fotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Fotos.h; path = ../Fotos.h; sourceTree = "<group>"; };
 		2ABAB18C1B3389C200D92CAA /* Fotos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Fotos.m; path = ../Fotos.m; sourceTree = "<group>"; };
+		2ABAB18E1B34671E00D92CAA /* Asegura 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Asegura 6.xcdatamodel"; sourceTree = "<group>"; };
+		2ABAB1921B34AE8A00D92CAA /* Asegura 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Asegura 7.xcdatamodel"; sourceTree = "<group>"; };
+		2ABAB1931B34AEA400D92CAA /* Polizas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Polizas.h; path = ../Polizas.h; sourceTree = "<group>"; };
+		2ABAB1941B34AEA400D92CAA /* Polizas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Polizas.m; path = ../Polizas.m; sourceTree = "<group>"; };
 		2AC2DB241B2A08EE006D3A5E /* DetallePolizaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetallePolizaViewController.h; sourceTree = "<group>"; };
 		2AC2DB251B2A08EE006D3A5E /* DetallePolizaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetallePolizaViewController.m; sourceTree = "<group>"; };
 		2AC4B61F1AAB703600E727D8 /* Asegura 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Asegura 3.xcdatamodel"; sourceTree = "<group>"; };
@@ -567,6 +572,8 @@
 			isa = PBXGroup;
 			children = (
 				2A054B791A76F6D1001090C7 /* Asegura.xcdatamodeld */,
+				2ABAB1931B34AEA400D92CAA /* Polizas.h */,
+				2ABAB1941B34AEA400D92CAA /* Polizas.m */,
 				2A79793A1AD37C6A00E673E1 /* Verificacion.h */,
 				2A79793B1AD37C6A00E673E1 /* Verificacion.m */,
 				2ABAB18B1B3389C200D92CAA /* Fotos.h */,
@@ -959,6 +966,7 @@
 				2A054B1C1A76F2DC001090C7 /* UIViewController+REFrostedViewController.m in Sources */,
 				2A8C2FC01AB0BA0D002900D9 /* NotificacionesTableViewCell.m in Sources */,
 				2A054B1B1A76F2DC001090C7 /* UIView+REFrostedViewController.m in Sources */,
+				2ABAB1951B34AEA400D92CAA /* Polizas.m in Sources */,
 				2A054B181A76F2DC001090C7 /* REFrostedContainerViewController.m in Sources */,
 				2A054B6D1A76F3FC001090C7 /* RootViewController.m in Sources */,
 				2ABAB18D1B3389C200D92CAA /* Fotos.m in Sources */,
@@ -1241,6 +1249,8 @@
 		2A054B791A76F6D1001090C7 /* Asegura.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				2ABAB1921B34AE8A00D92CAA /* Asegura 7.xcdatamodel */,
+				2ABAB18E1B34671E00D92CAA /* Asegura 6.xcdatamodel */,
 				2ABAB18A1B33896E00D92CAA /* Asegura 5.xcdatamodel */,
 				2A7979391AD37C5B00E673E1 /* Asegura 4.xcdatamodel */,
 				2AC4B61F1AAB703600E727D8 /* Asegura 3.xcdatamodel */,

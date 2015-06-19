@@ -10,11 +10,18 @@
 #import <AVFoundation/AVFoundation.h>
 #import "NSConnection.h"
 
-@interface LectorQRViewController : UIViewController <AVCaptureMetadataOutputObjectsDelegate,NSConnectionDelegate>
+@protocol LectorQRViewControllerDelegate <NSObject>
+
+-(void)ResultadoLector:(NSString *)noPoliza idRamo:(NSString *)idRamo;
+
+@end
+@interface LectorQRViewController : UIViewController <AVCaptureMetadataOutputObjectsDelegate>
 
 @property(weak,nonatomic)IBOutlet UIView *viewLector;
 @property(strong,nonatomic)AVCaptureSession *captureSession;
 @property(strong,nonatomic)AVCaptureVideoPreviewLayer *videoPreviewLayer;
 @property(strong,nonatomic)NSConnection *conexion;
+
+@property(weak,nonatomic)id <LectorQRViewControllerDelegate> delegate;
 
 @end

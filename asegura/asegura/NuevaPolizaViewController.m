@@ -64,6 +64,11 @@
         [APVC setPolizaActual:_polizaActual];
 
     }
+    if ([segue.identifier isEqualToString:@"lector_segue"]) {
+        
+        LectorQRViewController *LVC=[segue destinationViewController];
+        [LVC setDelegate:self];
+    }
     
 }
 
@@ -100,6 +105,7 @@
                 _polizaActual.telefonoCabina=[dic objectForKey:@"TelefonoCabina"];
                 _polizaActual.reportarSiniestro=[[dic objectForKey:@"ReportaSiniestro"] boolValue];
                 _polizaActual.insurenceAlias=[dic objectForKey:@"insuranceAlias"];
+                _polizaActual.ramo=_ramoActual;
                 
                 [self performSegueWithIdentifier:@"detalle_segue" sender:self];
                 
@@ -125,6 +131,7 @@
     
 }
 -(void)connectionDidFail:(NSString *)error{
+    [_HUD hide:YES];
     NSLog(@"error %@",error);
     UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Error" message:@"Error de conexion intenta de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
     [alert show];
@@ -173,7 +180,29 @@
     }
 }
 
+#pragma mark -Lector Delegate
 
+-(void)ResultadoLector:(NSString *)noPoliza idRamo:(NSString *)idRamo{
+    
+    
+    _polizaActual=[[Poliza alloc] init];
+    _polizaActual.insurenceNumber=noPoliza;
+    _polizaActual.ramo=[idRamo integerValue];
+    [self performSelector:@selector(BuscaPoliza) withObject:nil afterDelay:0.5];
+    
+}
+
+-(void)BuscaPoliza{
+    
+    _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/searchInsurance" parameters:@{@"insuranceNumber":_polizaActual.insurenceNumber,@"_iIdRamo":[NSString stringWithFormat:@"%ld",(long)_polizaActual.ramo]} idRequest:1 delegate:self];
+    [_conexion connectionPOSTExecute];
+    
+    _HUD=[[MBProgressHUD alloc] initWithView:self.view];
+    [_HUD setMode:MBProgressHUDModeIndeterminate];
+    [_HUD setLabelText:@"Buscando Poliza ..."];
+    [self.view addSubview:_HUD];
+    [_HUD show:YES];
+}
 
 
 
