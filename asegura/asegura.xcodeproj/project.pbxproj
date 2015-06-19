@@ -81,6 +81,7 @@
 		2AB9802E1AC0687B00952D36 /* NuevaPolizaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB9802D1AC0687B00952D36 /* NuevaPolizaViewController.m */; };
 		2AB980311AC06B4200952D36 /* LectorQRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB980301AC06B4200952D36 /* LectorQRViewController.m */; };
 		2AB980331AC06D9B00952D36 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB980321AC06D9B00952D36 /* AVFoundation.framework */; };
+		2ABAB18D1B3389C200D92CAA /* Fotos.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABAB18C1B3389C200D92CAA /* Fotos.m */; };
 		2AC2DB261B2A08EE006D3A5E /* DetallePolizaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC2DB251B2A08EE006D3A5E /* DetallePolizaViewController.m */; };
 		2AC4B6221AAB707300E727D8 /* Usuario.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC4B6211AAB707300E727D8 /* Usuario.m */; };
 		2AC4B6291AAB901E00E727D8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AC4B6281AAB901E00E727D8 /* CoreLocation.framework */; };
@@ -252,6 +253,9 @@
 		2AB9802F1AC06B4200952D36 /* LectorQRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LectorQRViewController.h; sourceTree = "<group>"; };
 		2AB980301AC06B4200952D36 /* LectorQRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LectorQRViewController.m; sourceTree = "<group>"; };
 		2AB980321AC06D9B00952D36 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		2ABAB18A1B33896E00D92CAA /* Asegura 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Asegura 5.xcdatamodel"; sourceTree = "<group>"; };
+		2ABAB18B1B3389C200D92CAA /* Fotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Fotos.h; path = ../Fotos.h; sourceTree = "<group>"; };
+		2ABAB18C1B3389C200D92CAA /* Fotos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Fotos.m; path = ../Fotos.m; sourceTree = "<group>"; };
 		2AC2DB241B2A08EE006D3A5E /* DetallePolizaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetallePolizaViewController.h; sourceTree = "<group>"; };
 		2AC2DB251B2A08EE006D3A5E /* DetallePolizaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetallePolizaViewController.m; sourceTree = "<group>"; };
 		2AC4B61F1AAB703600E727D8 /* Asegura 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Asegura 3.xcdatamodel"; sourceTree = "<group>"; };
@@ -565,6 +569,8 @@
 				2A054B791A76F6D1001090C7 /* Asegura.xcdatamodeld */,
 				2A79793A1AD37C6A00E673E1 /* Verificacion.h */,
 				2A79793B1AD37C6A00E673E1 /* Verificacion.m */,
+				2ABAB18B1B3389C200D92CAA /* Fotos.h */,
+				2ABAB18C1B3389C200D92CAA /* Fotos.m */,
 				2AC4B6201AAB707300E727D8 /* Usuario.h */,
 				2AC4B6211AAB707300E727D8 /* Usuario.m */,
 			);
@@ -955,6 +961,7 @@
 				2A054B1B1A76F2DC001090C7 /* UIView+REFrostedViewController.m in Sources */,
 				2A054B181A76F2DC001090C7 /* REFrostedContainerViewController.m in Sources */,
 				2A054B6D1A76F3FC001090C7 /* RootViewController.m in Sources */,
+				2ABAB18D1B3389C200D92CAA /* Fotos.m in Sources */,
 				2A054AE91A76F224001090C7 /* ViewController.m in Sources */,
 				2AB980311AC06B4200952D36 /* LectorQRViewController.m in Sources */,
 				2A054B241A76F31C001090C7 /* Reachability.m in Sources */,
@@ -1234,6 +1241,7 @@
 		2A054B791A76F6D1001090C7 /* Asegura.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				2ABAB18A1B33896E00D92CAA /* Asegura 5.xcdatamodel */,
 				2A7979391AD37C5B00E673E1 /* Asegura 4.xcdatamodel */,
 				2AC4B61F1AAB703600E727D8 /* Asegura 3.xcdatamodel */,
 				2A5115D31A9666450048F15E /* Asegura 2.xcdatamodel */,

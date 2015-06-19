@@ -78,10 +78,10 @@
             NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:result options:NSJSONReadingAllowFragments error:&error];
 
             
-            if ([[dic objectForKey:@"ErrorCode"] isEqualToString:@"ER0007"]) {
+            if ([[dic objectForKey:@"ErrorCode"] isEqualToString:@"ER0001"]) {
                 _polizaActual=[[Poliza alloc] init];
                 _polizaActual.insurenceNumber=[dic objectForKey:@"insuranceNumber"];
-                _polizaActual.ownerName=[dic objectForKey:@"ownerName"];
+                _polizaActual.ownerName=[NSString stringWithFormat:@"%@",[dic objectForKey:@"ownerName"]];
                 _polizaActual.startDate=[dic objectForKey:@"startDate"];
                 _polizaActual.endDate=[dic objectForKey:@"endDate"];
                 _polizaActual.contactMail=[dic objectForKey:@"contactMail"];
@@ -99,6 +99,7 @@
                 _polizaActual.contratadoCon=[dic objectForKey:@"ContratadoCon"];
                 _polizaActual.telefonoCabina=[dic objectForKey:@"TelefonoCabina"];
                 _polizaActual.reportarSiniestro=[[dic objectForKey:@"ReportaSiniestro"] boolValue];
+                _polizaActual.insurenceAlias=[dic objectForKey:@"insuranceAlias"];
                 
                 [self performSegueWithIdentifier:@"detalle_segue" sender:self];
                 
@@ -110,6 +111,10 @@
                 [alert show];
             
             
+            }else if([[dic objectForKey:@"ErrorCode"] isEqualToString:@"ER0007"]){
+                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"La poliza ya esta registrada" delegate:nil cancelButtonTitle:@"No" otherButtonTitles: nil];
+                [alert show];
+                
             }
             
             

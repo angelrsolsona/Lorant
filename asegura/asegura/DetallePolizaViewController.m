@@ -18,6 +18,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     if (_esBusquedaNueva) {
+         //NSLog(@"dueño %@",_polizaActual.ownerName);
         [self MuestraDatosPoliza];
     }else{
     _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/searchInsurance" parameters:@{@"insuranceNumber":_polizaActual.insurenceNumber,@"_iIdRamo":[NSString stringWithFormat:@"%ld",(long)_polizaActual.ramo]} idRequest:1 delegate:self];
@@ -40,7 +41,7 @@
 - (void)viewDidLayoutSubviews
 {
     //NSLog(@"valor de vista %f",self.view.frame.size.height);
-    [_vistaScroll setContentSize:CGSizeMake(320,1230)];
+    [_vistaScroll setContentSize:CGSizeMake(320,1560)];
     //[_containerView setFrame:CGRectMake(0, 100, 320, 228)];
 }
 
@@ -109,10 +110,18 @@
 -(void)MuestraDatosPoliza{
     
     [_noPoliza setText:_polizaActual.insurenceNumber];
+    if ([_polizaActual.insurenceAlias isEqual:[NSNull null]]) {
+        [_aliasPoliza setBorderStyle:UITextBorderStyleRoundedRect];
+        [_aliasPoliza setPlaceholder:@"Introduce un alias"];
+    }else{
+        [_aliasPoliza setText:_polizaActual.insurenceAlias];
+    }
     [_aseguradora setText:_polizaActual.nombreAseguradora];
+    [_nombreAsegurado setText:_polizaActual.ownerName];
     [_telefonoTitular setText:_polizaActual.contactPhoneNumber];
     [_correoTitular setText:_polizaActual.contactMail];
-    [_fechaVigencia setText:_polizaActual.fechaHasta];
+    [_fechaInicio setText:_polizaActual.startDate];
+    [_fechaVigencia setText:_polizaActual.endDate];
     [_formaPago setText:_polizaActual.formaPago];
     [_contratadoCon setText:[NSString stringWithFormat:@"Contratado con: %@",_polizaActual.contratadoCon]];
     [_paquete setText:_polizaActual.paquete];
@@ -147,7 +156,26 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     CoberturasTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    
+    NSDictionary *dic;
+    switch (tableView.tag) {
+        case 1:
+        {
+             dic=[_polizaActual.productDetail objectAtIndex:indexPath.row];
+        }break;
+            
+        case 2:
+        {
+            dic=[_polizaActual.coberturas objectAtIndex:indexPath.row];
+        }break;
+            
+        default:
+            
+            return 0;
+            break;
+    }
+
+    [cell.descripcionCobertura setText:[dic objectForKey:@"label"]];
+    [cell.valorCobertura setText:[dic objectForKey:@"valor"]];
     
     return cell;
     
@@ -155,4 +183,6 @@
 }
 
 
+- (IBAction)GuardarPoliza:(id)sender {
+}
 @end

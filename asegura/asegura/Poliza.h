@@ -13,11 +13,12 @@
 @property(assign,nonatomic) NSInteger idPoliza;
 @property(strong,nonatomic) NSString *insuranceName;
 @property(strong,nonatomic) NSString *insurenceNumber;
+@property(strong,nonatomic) NSString *insurenceAlias;
 @property(strong,nonatomic) NSString *fechaHasta;
 @property(assign,nonatomic) NSInteger ramo;
 @property(assign,nonatomic) NSInteger idAseguradora;
-@property(assign,nonatomic) NSString *noPlacas;
-@property(assign,nonatomic) NSString *ownerName;
+@property(strong,nonatomic) NSString *noPlacas;
+@property(strong,nonatomic) NSString *ownerName;
 @property(strong,nonatomic) NSString *startDate;
 @property(strong,nonatomic) NSString *endDate;
 @property(strong,nonatomic) NSString *contactMail;
