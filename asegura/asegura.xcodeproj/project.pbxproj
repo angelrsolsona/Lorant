@@ -78,6 +78,8 @@
 		2A8C2FC01AB0BA0D002900D9 /* NotificacionesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A8C2FBF1AB0BA0D002900D9 /* NotificacionesTableViewCell.m */; };
 		2A8C2FC31AB0D93F002900D9 /* MisPolizasTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A8C2FC21AB0D93F002900D9 /* MisPolizasTableViewCell.m */; };
 		2AA2626B1AAF7AF20054E148 /* VerificacionesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AA2626A1AAF7AF20054E148 /* VerificacionesViewController.m */; };
+		2AA73F5A1B353323008F010C /* GaleriaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AA73F591B353323008F010C /* GaleriaViewController.m */; };
+		2AA73F5D1B3599D2008F010C /* Aseguradoras.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AA73F5C1B3599D2008F010C /* Aseguradoras.m */; };
 		2AB9802E1AC0687B00952D36 /* NuevaPolizaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB9802D1AC0687B00952D36 /* NuevaPolizaViewController.m */; };
 		2AB980311AC06B4200952D36 /* LectorQRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB980301AC06B4200952D36 /* LectorQRViewController.m */; };
 		2AB980331AC06D9B00952D36 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB980321AC06D9B00952D36 /* AVFoundation.framework */; };
@@ -249,6 +251,10 @@
 		2A8C2FC21AB0D93F002900D9 /* MisPolizasTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MisPolizasTableViewCell.m; sourceTree = "<group>"; };
 		2AA262691AAF7AF20054E148 /* VerificacionesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerificacionesViewController.h; sourceTree = "<group>"; };
 		2AA2626A1AAF7AF20054E148 /* VerificacionesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerificacionesViewController.m; sourceTree = "<group>"; };
+		2AA73F581B353323008F010C /* GaleriaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GaleriaViewController.h; sourceTree = "<group>"; };
+		2AA73F591B353323008F010C /* GaleriaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GaleriaViewController.m; sourceTree = "<group>"; };
+		2AA73F5B1B3599D2008F010C /* Aseguradoras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Aseguradoras.h; sourceTree = "<group>"; };
+		2AA73F5C1B3599D2008F010C /* Aseguradoras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Aseguradoras.m; sourceTree = "<group>"; };
 		2AB9802C1AC0687B00952D36 /* NuevaPolizaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NuevaPolizaViewController.h; sourceTree = "<group>"; };
 		2AB9802D1AC0687B00952D36 /* NuevaPolizaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NuevaPolizaViewController.m; sourceTree = "<group>"; };
 		2AB9802F1AC06B4200952D36 /* LectorQRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LectorQRViewController.h; sourceTree = "<group>"; };
@@ -660,6 +666,8 @@
 			children = (
 				2AC2DB241B2A08EE006D3A5E /* DetallePolizaViewController.h */,
 				2AC2DB251B2A08EE006D3A5E /* DetallePolizaViewController.m */,
+				2AA73F581B353323008F010C /* GaleriaViewController.h */,
+				2AA73F591B353323008F010C /* GaleriaViewController.m */,
 			);
 			name = DetallePoliza;
 			sourceTree = "<group>";
@@ -734,6 +742,8 @@
 				2AC4B6421AAE5F1200E727D8 /* AltaPolizaViewController.m */,
 				2A6236511B220136006F8AB1 /* CoberturasTableViewCell.h */,
 				2A6236521B220136006F8AB1 /* CoberturasTableViewCell.m */,
+				2AA73F5B1B3599D2008F010C /* Aseguradoras.h */,
+				2AA73F5C1B3599D2008F010C /* Aseguradoras.m */,
 			);
 			name = "Alta Poliza";
 			sourceTree = "<group>";
@@ -988,6 +998,7 @@
 				2A054B5B1A76F3A7001090C7 /* AFHTTPRequestOperationManager.m in Sources */,
 				2A054B7B1A76F6D1001090C7 /* Asegura.xcdatamodeld in Sources */,
 				2AC4B6431AAE5F1200E727D8 /* AltaPolizaViewController.m in Sources */,
+				2AA73F5D1B3599D2008F010C /* Aseguradoras.m in Sources */,
 				2AE75BC01A78170E0045B7AD /* ReporteViewController.m in Sources */,
 				2A7979341ACB4DD800E673E1 /* TipsTableViewController.m in Sources */,
 				2A054B5C1A76F3A7001090C7 /* AFHTTPSessionManager.m in Sources */,
@@ -1006,6 +1017,7 @@
 				2A054B251A76F31C001090C7 /* NSConnection.m in Sources */,
 				2A054B451A76F389001090C7 /* UIWebView+AFNetworking.m in Sources */,
 				2A5325EC1B2EA5D6003673B6 /* NotasReporteViewController.m in Sources */,
+				2AA73F5A1B353323008F010C /* GaleriaViewController.m in Sources */,
 				2A8C2FC31AB0D93F002900D9 /* MisPolizasTableViewCell.m in Sources */,
 				2AB9802E1AC0687B00952D36 /* NuevaPolizaViewController.m in Sources */,
 				2A054B5E1A76F3A7001090C7 /* AFSecurityPolicy.m in Sources */,

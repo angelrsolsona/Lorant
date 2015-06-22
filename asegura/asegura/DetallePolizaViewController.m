@@ -26,6 +26,7 @@
         [self MuestraDatosPoliza];
     }else{
         [_lblVerFoto setHidden:NO];
+        [_btnGuardar setHidden:YES];
     _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/getInsuranceDetailWS" parameters:@{@"insuranceNumber":_polizaActual.insurenceNumber} idRequest:1 delegate:self];
     [_conexion connectionPOSTExecute];
     
@@ -61,7 +62,12 @@
     if ([segue.identifier isEqualToString:@"masInformacion_segue"]) {
         MasInformacionPolizaViewController *MIVC=[segue destinationViewController];
         [MIVC setPolizaActual:_polizaActual];
+        [MIVC setEsVistaDetalle:_esVistaDetalle];
         [MIVC setDelegate:self];
+    }
+    if ([segue.identifier isEqualToString:@"foto_segue"]) {
+        GaleriaViewController *GVC=[segue destinationViewController];
+        [GVC setImagenData:_polizaActual.foto];
     }
 }
 
@@ -100,10 +106,19 @@
                     _polizaActual.reportarSiniestro=[[dic objectForKey:@"ReportaSiniestro"] boolValue];
                     _polizaActual.insurenceAlias=[dic objectForKey:@"insuranceAlias"];
                 
-                NSArray *array=[NSCoreDataManager getDataWithEntity:@"Polizas" predicate:[NSString stringWithFormat:@"noPoliza=%@",_polizaActual.insurenceNumber] andManagedObjContext:[NSCoreDataManager getManagedContext]];
-                if ([array count>0]) {
+                NSArray *array=[NSCoreDataManager getDataWithEntity:@"Polizas" predicate:[NSString stringWithFormat:@"noPoliza==\"%@\"",_polizaActual.insurenceNumber] andManagedObjContext:[NSCoreDataManager getManagedContext]];
+                if ([array count]>0) {
                     Polizas *polizas=[array objectAtIndex:0];
                     _polizaActual.instrumentoPago=polizas.intrumentoPago;
+                    _polizaActual.banco=polizas.banco;
+                    _polizaActual.diaPago=polizas.diaPago;
+                    _polizaActual.observacion=polizas.observaciones;
+                    _polizaActual.recordatorioPagoInicio=polizas.recordatorioInicio;
+                    _polizaActual.recordatorioPagoFin=polizas.recordatorioFin;
+                    _polizaActual.recordatorioPago=[polizas.recordadDiaPago boolValue];
+                    _polizaActual.foto=polizas.foto;
+                    _polizaActual.tieneMasInformacion=YES;
+                    
                 }
                 
                 [self MuestraDatosPoliza];
@@ -130,6 +145,7 @@
                         [_HUD hide:YES];
                         [self.navigationController popToRootViewControllerAnimated:YES];
                     }else{
+                        
                         UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Error al guardar póliza intente de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:nil];
                         [alert show];
                     }
@@ -307,6 +323,13 @@
         
     }else{
         [_lblVerFoto setHidden:NO];
+        if(_polizaActual.foto.length>0){
+            [self performSegueWithIdentifier:@"foto_segue" sender:self];
+        }else{
+            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Esta póliza no tiene foto" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:nil];
+            [alert show];
+
+        }
     }
     
 }

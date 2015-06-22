@@ -15,6 +15,7 @@
 #import "Usuario.h"
 #import "NSCoreDataManager.h"
 #import "Polizas.h"
+#import "GaleriaViewController.h"
 @interface DetallePolizaViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,NSConnectionDelegate,MasInformacionPolizaViewControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property(weak,nonatomic) IBOutlet UIScrollView *vistaScroll;
@@ -40,6 +41,7 @@
 @property (strong,nonatomic) NSConnection *conexion;
 @property (strong,nonatomic) MBProgressHUD *HUD;
 @property (assign,nonatomic) BOOL esBusquedaNueva;
+@property (assign,nonatomic) BOOL esVistaDetalle;
 
 @property(strong,nonatomic) UIImagePickerController *picker;
 

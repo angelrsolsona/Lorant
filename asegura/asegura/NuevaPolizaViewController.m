@@ -30,7 +30,7 @@
     UIButton *boton=(UIButton *)sender;
     _ramoActual=boton.tag;
     
-    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Contraseña" message:@"Introduce el numero de poliza" delegate:self cancelButtonTitle:@"Cancelar" otherButtonTitles:@"Enviar", nil];
+    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Numero de Poliza" message:@"Introduce el numero de poliza" delegate:self cancelButtonTitle:@"Cancelar" otherButtonTitles:@"Enviar", nil];
     [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
     [alert setTag:1];
     [alert show];

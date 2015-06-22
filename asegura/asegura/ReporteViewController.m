@@ -25,6 +25,8 @@
     
     _pickerActivo=NO;
     _tienesNotas=NO;
+    _tienePoliza=NO;
+    _tieneCausas=NO;
     NSArray *array=[NSCoreDataManager getDataWithEntity:@"Usuario" andManagedObjContext:[NSCoreDataManager getManagedContext]];
     _usuarioActual=[array objectAtIndex:0];
     
@@ -133,12 +135,14 @@
         {
             _polizaActual=[_arrayPolizas objectAtIndex:[_providerPickerView selectedRowInComponent:0]];
             [button setTitle:_polizaActual.insuranceName forState:UIControlStateNormal];
+            [self DetallePoliza];
             [self ObtenTipoSiniestro:[NSString stringWithFormat:@"%d",_polizaActual.idAseguradora]];
         }break;
         case 30:
         {
             _causaActual=[_arrayCausas objectAtIndex:[_providerPickerView selectedRowInComponent:0]];
             [button setTitle:[NSString stringWithFormat:@"%@",_causaActual.nombre] forState:UIControlStateNormal];
+            _tieneCausas=YES;
         }break;
         default:
             break;
@@ -212,7 +216,9 @@
         
         
         NSLog(@"Ubicacion:(%f %f)",ubicacionActual.coordinate.latitude,ubicacionActual.coordinate.longitude);
-        
+        _latitudActual=[NSString stringWithFormat:@"%f",ubicacionActual.coordinate.latitude];
+        _longitudActual=[NSString stringWithFormat:@"%f",ubicacionActual.coordinate.longitude];
+
         [[GMSGeocoder geocoder] reverseGeocodeCoordinate:CLLocationCoordinate2DMake(ubicacionActual.coordinate.latitude, ubicacionActual.coordinate.longitude) completionHandler:^(GMSReverseGeocodeResponse *response, NSError *error) {
             
             NSLog(@"reverse geocoding results:");
@@ -302,8 +308,15 @@
 -(IBAction)Compartir:(id)sender{
     NSString *textToShare = @"Acabo de tener un accidente";
     //NSURL *myWebsite = [NSURL URLWithString:@""];
+    UIImage *imagen;
+    NSArray *objectsToShare;
+    if (![_imagenSiniestro isEqual:nil]) {
+        imagen=_imagenSiniestro;
+        objectsToShare= @[textToShare,imagen];
+    }else{
+        objectsToShare= @[textToShare];
+    }
     
-    NSArray *objectsToShare = @[textToShare];
     
     UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:objectsToShare applicationActivities:nil];
     
@@ -373,10 +386,71 @@
                 
                 [_arrayCausas addObject:causa];
             }
-            [_HUD hide:YES];
+            //[_HUD hide:YES];
             UIButton *button=(UIButton*)[self.view viewWithTag:3];
             [button setTitle:@"Escoje una causa" forState:UIControlStateNormal];
             
+            
+        }break;
+        case 3:{
+            
+            NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:result options:NSJSONReadingAllowFragments error:&error];
+            BOOL hayError=NO;
+            
+            if ([[dic objectForKey:@"ErrorCode"] isEqualToString:@"ER0001"]) {
+                
+                _polizaActual.insurenceNumber=[dic objectForKey:@"insuranceNumber"];
+                _polizaActual.ownerName=[dic objectForKey:@"ownerName"];
+                _polizaActual.startDate=[dic objectForKey:@"startDate"];
+                _polizaActual.endDate=[dic objectForKey:@"endDate"];
+                _polizaActual.contactMail=[dic objectForKey:@"contactMail"];
+                _polizaActual.contactPhoneNumber=[dic objectForKey:@"contactPhoneNumber"];
+                _polizaActual.nombreAseguradora=[dic objectForKey:@"Aseguradora"];
+                _polizaActual.productDetail=[[NSMutableArray alloc] init];
+                _polizaActual.productDetail=[dic objectForKey:@"productDetail"];
+                _polizaActual.coberturas=[[NSMutableArray alloc] init];
+                _polizaActual.coberturas=[dic objectForKey:@"coberturasDetail"];
+                _polizaActual.idAseguradora=[[dic objectForKey:@"idAseguradora"] integerValue];
+                _polizaActual.formaPago=[dic objectForKey:@"FormaPago"];
+                _polizaActual.paquete=[dic objectForKey:@"Paquete"];
+                _polizaActual.idPolizaSistema=[[dic objectForKey:@"idPolizaSistema"] integerValue];
+                _polizaActual.idSistema=[[dic objectForKey:@"iSistema"] integerValue];
+                _polizaActual.contratadoCon=[dic objectForKey:@"ContratadoCon"];
+                _polizaActual.telefonoCabina=[dic objectForKey:@"TelefonoCabina"];
+                _polizaActual.reportarSiniestro=[[dic objectForKey:@"ReportaSiniestro"] boolValue];
+                _polizaActual.insurenceAlias=[dic objectForKey:@"insuranceAlias"];
+                
+                NSArray *array=[NSCoreDataManager getDataWithEntity:@"Polizas" predicate:[NSString stringWithFormat:@"noPoliza==\"%@\"",_polizaActual.insurenceNumber] andManagedObjContext:[NSCoreDataManager getManagedContext]];
+                if ([array count]>0) {
+                    Polizas *polizas=[array objectAtIndex:0];
+                    _polizaActual.instrumentoPago=polizas.intrumentoPago;
+                    _polizaActual.banco=polizas.banco;
+                    _polizaActual.diaPago=polizas.diaPago;
+                    _polizaActual.observacion=polizas.observaciones;
+                    _polizaActual.recordatorioPagoInicio=polizas.recordatorioInicio;
+                    _polizaActual.recordatorioPagoFin=polizas.recordatorioFin;
+                    _polizaActual.recordatorioPago=[polizas.recordadDiaPago boolValue];
+                    _polizaActual.foto=polizas.foto;
+                    _polizaActual.tieneMasInformacion=YES;
+                }
+                [_HUD setHidden:YES];
+                _tienePoliza=YES;
+            }
+
+        }break;
+        case 4:{
+            
+            NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:result options:NSJSONReadingAllowFragments error:&error];
+            if ([[dic objectForKey:@"ErrorCode"] isEqualToString:@"ER0001"]) {
+                [_HUD hide:YES];
+                NSString *telefono=[NSString stringWithFormat:@"tel://%@",_polizaActual.telefonoCabina];
+                NSURL *url=[NSURL URLWithString:telefono];
+                [[UIApplication sharedApplication] openURL:url];
+                
+            }else{
+                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"No se puede eliminar la poliza intentalo de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+                [alert show];
+            }
             
         }break;
         default:
@@ -385,7 +459,8 @@
     
 }
 -(void)connectionDidFail:(NSString *)error{
-    
+    [_HUD hide:YES];
+    NSLog(@"%@",error);
     UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Error" message:@"Error de conexion intenta de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
     [alert show];
     
@@ -405,11 +480,11 @@
     
     _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/geTtipoSiniestro/" parameters:@{@"idAseguradora":idAseguradora} idRequest:2 delegate:self];
     [_conexion connectionPOSTExecute];
-    _HUD=[[MBProgressHUD alloc] initWithView:self.view];
+    /*_HUD=[[MBProgressHUD alloc] initWithView:self.view];
     [_HUD setMode:MBProgressHUDModeIndeterminate];
     [_HUD setLabelText:@"Obteniendo Causas"];
     [self.view addSubview:_HUD];
-    [_HUD show:YES];
+    [_HUD show:YES];*/
 
 }
 
@@ -428,16 +503,98 @@
 
 -(void)DetallePoliza{
     
+    _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/getInsuranceDetailWS" parameters:@{@"insuranceNumber":_polizaActual.insurenceNumber} idRequest:3 delegate:self];
+    [_conexion connectionPOSTExecute];
+    
+    _HUD=[[MBProgressHUD alloc] initWithView:self.view];
+    [_HUD setMode:MBProgressHUDModeIndeterminate];
+    [_HUD setLabelText:@"Obteniendo información"];
+    [self.view addSubview:_HUD];
+    [_HUD show:YES];
+
     
 }
 
 
 - (IBAction)Foto:(id)sender {
+    
 }
 
 - (IBAction)EnviarUbicacion:(id)sender {
+    
+    if (_tieneCausas&&_tienePoliza) {
+        
+        NSDictionary *parametros=@{@"IdPolizaM":[NSString stringWithFormat:@"%d,",_polizaActual.idPolizaSistema],
+                                   @"idSiniestro":_causaActual.idTipo,
+                                   @"latitude":_latitudActual,
+                                   @"longitud":_longitudActual,
+                                   @"nickName":_usuarioActual.correo,
+                                   @"informacion":[NSString stringWithFormat:@"%@",_notas.text]};
+        
+        _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/ms_RegistroSiniestro" parameters:parametros idRequest:4 delegate:self];
+        [_conexion connectionPOSTExecute];
+        
+        _HUD=[[MBProgressHUD alloc] initWithView:self.view];
+        [_HUD setMode:MBProgressHUDModeIndeterminate];
+        [_HUD setLabelText:@"Enviando ubicación"];
+        [self.view addSubview:_HUD];
+        [_HUD show:YES];
+    }else{
+        
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Debes elegir una poliza y una causa" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+        [alert show];
+
+    }
 }
 
 - (IBAction)Llamar:(id)sender {
 }
+
+#pragma mark - Fotografia
+-(IBAction)SeleccinaFoto{
+
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Seleccionar Imagen" message:@"De donde quieres obtener la foto" delegate:self cancelButtonTitle:@"Cancelar" otherButtonTitles:@"Camara",@"Galeria de Fotos ", nil];
+        [alert setTag:500];
+        [alert show];
+        alert=nil;
+}
+-(void)MuestraGaleria{
+    
+    if (_picker==nil) {
+        _picker=[[UIImagePickerController alloc] init];
+    }
+    
+    [_picker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    [_picker setDelegate:self];
+    [self presentViewController:_picker animated:YES completion:nil];
+    
+}
+
+-(void)MuestraCamara{
+    
+    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Error" message:@"Este dispositivo no tiene camara" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+        [alert show];
+        alert=nil;
+    }else{
+        if (_picker==nil) {
+            _picker=[[UIImagePickerController alloc] init];
+        }
+        [_picker setSourceType:UIImagePickerControllerSourceTypeCamera];
+        [_picker setDelegate:self];
+        [self presentViewController:_picker animated:YES completion:nil];
+        _picker=nil;
+    }
+}
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    
+    UIImage *imagen=[info objectForKey:UIImagePickerControllerOriginalImage];
+    _imagenSiniestro=imagen;
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    
+}
+
 @end

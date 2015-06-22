@@ -37,9 +37,12 @@
 @property (weak, nonatomic) IBOutlet UITextField *diasPago;
 @property (weak, nonatomic) IBOutlet UISwitch *recordarPago;
 @property (weak, nonatomic) IBOutlet UITextField *observaciones;
+@property (weak, nonatomic) IBOutlet UIButton *btnGuardar;
 
 @property (assign,nonatomic) BOOL estaActivoPicker;
 @property (assign,nonatomic) BOOL estaActivoPickerDate;
+
+@property(assign,nonatomic) BOOL esVistaDetalle;
 
 @property(weak,nonatomic)id <MasInformacionPolizaViewControllerDelegate> delegate;
 

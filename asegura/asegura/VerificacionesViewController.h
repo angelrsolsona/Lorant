@@ -11,11 +11,15 @@
 #import "VerificacionTableViewCell.h"
 #import "NSConnection.h"
 #import "MBProgressHUD.h"
+#import "Poliza.h"
+#import "Usuario.h"
+#import "NSCoreDataManager.h"
 
 @interface VerificacionesViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,NSConnectionDelegate>
 
 @property(strong,nonatomic) IBOutlet UITableView *tabla;
 @property(strong,nonatomic) NSConnection *conexion;
 @property(strong,nonatomic) MBProgressHUD *HUD;
-
+@property(strong,nonatomic) NSMutableArray *arrayVerificacion;
+@property(strong,nonatomic)Usuario *usuarioActual;
 @end

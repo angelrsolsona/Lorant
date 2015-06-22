@@ -11,6 +11,7 @@
 #import "NSConnection.h"
 #import "Poliza.h"
 #import "LectorQRViewController.h"
+#import "DetallePolizaViewController.h"
 @interface NuevaPolizaViewController : UIViewController <UIAlertViewDelegate,NSConnectionDelegate,LectorQRViewControllerDelegate>
 
 @property(weak,nonatomic) IBOutlet UIView *viewPreview;

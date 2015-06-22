@@ -14,9 +14,10 @@
 #import "NSCoreDataManager.h"
 #import "MBProgressHUD.h"
 #import "Poliza.h"
+#import "Polizas.h"
 #import "CausaSiniestro.h"
 #import "NotasReporteViewController.h"
-@interface ReporteViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate,CLLocationManagerDelegate,UITextFieldDelegate,NSConnectionDelegate,NotasReporteViewControllerDelegate>
+@interface ReporteViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate,CLLocationManagerDelegate,UITextFieldDelegate,NSConnectionDelegate,NotasReporteViewControllerDelegate,UIImagePickerControllerDelegate>
 
 @property(strong,nonatomic)UIView *maskView;
 @property(strong,nonatomic)UIPickerView *providerPickerView;
@@ -41,6 +42,15 @@
 @property(strong,nonatomic)CausaSiniestro *causaActual;
 @property(assign,nonatomic) BOOL tienesNotas;
 @property(assign,nonatomic) BOOL didFindLocation;
+
+@property(strong,nonatomic) UIImage *imagenSiniestro;
+@property(assign,nonatomic) BOOL tienePoliza;
+@property(assign,nonatomic) BOOL tieneCausas;
+@property(strong,nonatomic) NSString *latitudActual;
+@property(strong,nonatomic) NSString *longitudActual;
+
+@property(strong,nonatomic) UIImagePickerController *picker;
+
 
 - (IBAction)Foto:(id)sender;
 - (IBAction)EnviarUbicacion:(id)sender;

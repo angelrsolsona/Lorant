@@ -77,6 +77,10 @@
         [_recordarPago setOn:_polizaActual.recordatorioPago animated:YES];
     }
     
+    if (_esVistaDetalle) {
+        [_btnGuardar setHidden:YES];
+    }
+    
     
 }
 

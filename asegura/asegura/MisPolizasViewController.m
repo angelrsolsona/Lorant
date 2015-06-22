@@ -21,10 +21,12 @@
     NSArray *array=[NSCoreDataManager getDataWithEntity:@"Usuario" andManagedObjContext:[NSCoreDataManager getManagedContext]];
     
     _usuarioActual=[array objectAtIndex:0];
+    //[self.frostedViewController setPanGestureEnabled:NO];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-
+    _esVistaDetalle=NO;
     _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/getInsuranceListWS/" parameters:@{@"nickName":_usuarioActual.correo} idRequest:1 delegate:self];
     [_conexion connectionPOSTExecute];
     
@@ -52,6 +54,7 @@
     if ([segue.identifier isEqualToString:@"detalle_segue"]) {
         DetallePolizaViewController *DVC=[segue destinationViewController];
         [DVC setPolizaActual:_polizaActual];
+        [DVC setEsVistaDetalle:_esVistaDetalle];
         
     
     }
@@ -124,9 +127,34 @@
     
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    _esVistaDetalle=YES;
     _polizaActual=[_arrayPolizas objectAtIndex:indexPath.row];
     [self performSegueWithIdentifier:@"detalle_segue" sender:self];
+}
+
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (editingStyle==UITableViewCellEditingStyleDelete) {
+        _indiceBorrarActual=indexPath.row;
+        Poliza *poliza=[_arrayPolizas objectAtIndex:indexPath.row];
+        _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/deleteInsuranceWS/" parameters:@{@"nickName":_usuarioActual.correo,@"insuranceNumber":poliza.insurenceNumber} idRequest:2 delegate:self];
+        [_conexion connectionPOSTExecute];
+        
+        _HUD=[[MBProgressHUD alloc] initWithView:self.view];
+        [_HUD setMode:MBProgressHUDModeIndeterminate];
+        [_HUD setLabelText:@"Eliminando Polizas"];
+        [self.view addSubview:_HUD];
+        [_HUD show:YES];
+        
+    }
+}
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete;
 }
 
 -(void)connectionDidFinish:(id)result numRequest:(NSInteger)numRequest{
@@ -167,6 +195,26 @@
                 [_tabla reloadData];
             }
         }break;
+        
+        case 2:{
+            
+            NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:result options:NSJSONReadingAllowFragments error:&error];
+            if ([[dic objectForKey:@"ErrorCode"] isEqualToString:@"ER0001"]) {
+                Poliza *poliza=[_arrayPolizas objectAtIndex:_indiceBorrarActual];
+                NSArray *array=[NSCoreDataManager getDataWithEntity:@"Polizas" predicate:[NSString stringWithFormat:@"noPoliza==\"%@\"",poliza.insurenceNumber] andManagedObjContext:[NSCoreDataManager getManagedContext]];
+                for (Polizas *polizas in array) {
+                    [[NSCoreDataManager getManagedContext] deleteObject:polizas];
+                    [NSCoreDataManager SaveData];
+                }
+                [_arrayPolizas removeObjectAtIndex:_indiceBorrarActual];
+                [_tabla reloadData];
+                [_HUD hide:YES];
+                
+            }else{
+                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"No se puede eliminar la poliza intentalo de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+                [alert show];
+            }
+        }break;
         default:
             break;
     }
@@ -178,6 +226,8 @@
     [alert show];
     
 }
+
+
 
 
 @end

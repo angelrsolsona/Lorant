@@ -19,6 +19,7 @@
     // Do any additional setup after loading the view.
     [self.navigationController setNavigationBarHidden:NO];
 
+    _didLoctionFind=NO;
     UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(SeleccionaMarca)];
     [tap setNumberOfTapsRequired:1];
     [tap setNumberOfTouchesRequired:1];
@@ -43,6 +44,7 @@
     _tagPicker=1;
     [self ObtenMarcas];
     [self ObtenEstados];
+    [_btnLlamar setEnabled:NO];
     
 
 }
@@ -211,10 +213,12 @@
     _cordenadaActual=CLLocationCoordinate2DMake(ubicacionActual.coordinate.latitude, ubicacionActual.coordinate.longitude);
     NSString *latitud=[NSString stringWithFormat:@"%f",ubicacionActual.coordinate.latitude];
     NSString *longitud=[NSString stringWithFormat:@"%f",ubicacionActual.coordinate.longitude];
-    
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:ubicacionActual.coordinate.latitude longitude:ubicacionActual.coordinate.longitude zoom:14];
+    if (!_didLoctionFind) {
+        GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:ubicacionActual.coordinate.latitude longitude:ubicacionActual.coordinate.longitude zoom:10];
+        [_vistaMapa setCamera:camera];
+        _didLoctionFind=YES;
+    }
     _vistaMapa.myLocationEnabled = YES;
-    [_vistaMapa setCamera:camera];
     [_vistaMapa setDelegate:self];
 }
 
@@ -347,11 +351,11 @@
 -(void)BuscaAgencias{
     if (_segmentalControl.selectedSegmentIndex==0) {
         NSString *cordenadas=[NSString stringWithFormat:@"%f,%f",_cordenadaActual.latitude,_cordenadaActual.longitude];
-        _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/getAgencias" parameters:@{@"Coordenada":cordenadas,@"IDMarca":[NSString stringWithFormat:@"%d",_idMarcaActual],@"IdTipoBusqueda":@"0"} idRequest:2 delegate:self];
+        _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/getAgencias" parameters:@{@"Coordenada":cordenadas,@"IDMarca":[NSString stringWithFormat:@"%ld",(long)_idMarcaActual],@"IdTipoBusqueda":@"0"} idRequest:2 delegate:self];
         [_conexion connectionGETExecute];
     }else if (_segmentalControl.selectedSegmentIndex==1){
         
-        _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/getAgencias" parameters:@{@"Estado":[NSString stringWithFormat:@"%d",_idEstado],@"IDMarca":[NSString stringWithFormat:@"%d",_idMarcaActual],@"IdTipoBusqueda":@"1"} idRequest:2 delegate:self];
+        _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/getAgencias" parameters:@{@"Estado":[NSString stringWithFormat:@"%ld",(long)_idEstado],@"IDMarca":[NSString stringWithFormat:@"%d",_idMarcaActual],@"IdTipoBusqueda":@"1"} idRequest:2 delegate:self];
         [_conexion connectionGETExecute];
         
     }else{
@@ -367,8 +371,16 @@
     [_nombreAgencia setText:marker.nombreAgencia];
     [_direccionAgencia setText:marker.domicilio];
     [_telefonos setText:[NSString stringWithFormat:@"Telefono:%@\nCorreo:%@",marker.telefono,marker.correo]];
-    
+    _markerActual=marker;
+    [_btnLlamar setEnabled:YES];
     return NO;
+}
+
+-(IBAction)Llamar:(id)sender{
+    
+    NSString *telefono=[NSString stringWithFormat:@"tel://%@",_markerActual.telefono];
+    NSURL *url=[NSURL URLWithString:telefono];
+    [[UIApplication sharedApplication] openURL:url];
 }
 
 

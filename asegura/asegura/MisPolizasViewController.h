@@ -23,6 +23,9 @@
 @property(strong,nonatomic) MBProgressHUD *HUD;
 @property(strong,nonatomic) NSMutableArray *arrayPolizas;
 @property(strong,nonatomic) Poliza *polizaActual;
+@property(assign,nonatomic) NSInteger indiceBorrarActual;
+
+@property(assign,nonatomic) BOOL esVistaDetalle;
 
 
 

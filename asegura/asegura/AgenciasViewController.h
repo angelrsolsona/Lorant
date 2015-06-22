@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *nombreAgencia;
 @property (weak, nonatomic) IBOutlet UILabel *direccionAgencia;
 @property (weak, nonatomic) IBOutlet UILabel *telefonos;
+@property(weak,nonatomic) IBOutlet UIButton *btnLlamar;
 
 @property(strong,nonatomic)UIView *maskView;
 @property(strong,nonatomic)UIPickerView *providerPickerView;
@@ -39,6 +40,9 @@
 @property(assign,nonatomic) NSInteger idMarcaActual;
 @property(assign,nonatomic) NSInteger idEstado;
 @property(assign,nonatomic) CLLocationCoordinate2D cordenadaActual;
+
+@property(assign,nonatomic) BOOL didLoctionFind;
+@property(strong,nonatomic) AgenciasMarkerAnotation *markerActual;
 
 
 

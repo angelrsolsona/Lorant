@@ -47,6 +47,11 @@
 
 @property(assign,nonatomic)BOOL tieneMasInformacion;
 
+@property(assign,nonatomic)BOOL tieneVerificacion;
+@property(strong,nonatomic)NSString *perido1;
+@property(strong,nonatomic)NSString *perido2;
+@property(strong,nonatomic)NSString *calcomania;
+
 
 
 
