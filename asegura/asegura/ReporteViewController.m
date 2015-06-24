@@ -22,7 +22,9 @@
     /*UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(createPickerView:)];
     [tap setNumberOfTouchesRequired:1];
     [tap setNumberOfTapsRequired:1];*/
-    
+    [self RedondeaBoton:_alias conBorde:YES];
+    [self RedondeaBoton:_btnCausas conBorde:YES];
+    [self RedondeaBoton:_btnEnviarUbicacion conBorde:NO];
     _pickerActivo=NO;
     _tienesNotas=NO;
     _tienePoliza=NO;
@@ -41,7 +43,7 @@
     [_HUD show:YES];
     _polizaActual=[[Poliza alloc] init];
     _causaActual=[[CausaSiniestro alloc] init];
-    
+    [_telefono setText:_usuarioActual.telefono];
     [self BuscarLocalizacion];
     
     
@@ -100,7 +102,7 @@
     return UIStatusBarStyleLightContent;
 }
 
--(IBAction)CreatePicker:(id)sender{
+-(void)CreatePicker:(id)sender{
     _pickerActivo=YES;
     UIButton *button=(UIButton *)sender;
     
@@ -233,7 +235,12 @@
             NSLog(@"postalCode=%@", addressObj.postalCode);
             NSLog(@"country=%@", addressObj.country);
             NSLog(@"lines=%@", addressObj.lines);
-            [_ubicacionActual setText:[NSString stringWithFormat:@"%@ %@, %@",addressObj.thoroughfare,addressObj.subLocality,addressObj.administrativeArea]];
+            NSString *direccion=@"";
+            for (NSString *cadena in addressObj.lines) {
+                direccion=[direccion stringByAppendingString:[NSString stringWithFormat:@"%@, ",cadena]];
+            }
+            //[_ubicacionActual setText:[NSString stringWithFormat:@"%@ %@,%@",addressObj.thoroughfare,addressObj.subLocality,addressObj.administrativeArea]];
+            [_ubicacionActual setText:direccion];
             
         }];
     
@@ -515,6 +522,20 @@
     
 }
 
+-(void)RedondeaBoton:(UIButton *)boton conBorde:(BOOL)conBorde{
+    
+    //[boton setBackgroundColor:[UIColor whiteColor]];
+    [boton.layer setCornerRadius:6.0f];
+    [boton.layer setMasksToBounds:YES];
+    if (conBorde) {
+        UIColor *borderColor = [UIColor colorWithRed:204.0/255.0 green:204.0/255.0 blue:204.0/255.0 alpha:1.0];
+        boton.layer.borderColor=borderColor.CGColor;
+        boton.layer.borderWidth=1.0;
+    }
+    
+}
+
+#pragma mark - Acciones Botones
 
 - (IBAction)Foto:(id)sender {
     
@@ -548,6 +569,41 @@
 }
 
 - (IBAction)Llamar:(id)sender {
+}
+
+- (IBAction)ActivaPicker:(id)sender {
+    
+    UIButton *boton=(UIButton *)sender;
+    if (!_pickerActivo) {
+
+        switch (boton.tag) {
+            case 1:{
+                if ([_arrayPolizas count]>0) {
+                    [self CreatePicker:sender];
+                }else{
+                    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"No tienes pólizas dadas de alta" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+                    [alert show];
+                }
+            }break;
+                
+            case 3:{
+                if ([_arrayCausas count]>0) {
+                    [self CreatePicker:sender];
+                }else{
+                    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Debes seleccionar primero una póliza" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+                    [alert show];
+                }
+            }break;
+                
+            default:
+                break;
+        }
+        
+    }else{
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Debes elegir una opción" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+        [alert show];
+    }
+    
 }
 
 #pragma mark - Fotografia
@@ -596,5 +652,34 @@
     
     
 }
+
+
+
+#pragma mark - Delegate UIAlert
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (alertView.tag==500) {
+        
+        switch (buttonIndex) {
+            case 0:
+            {
+                NSLog(@"Cancelar");
+            }break;
+            case 1:
+            {
+                [self MuestraCamara];
+            }break;
+            case 2:
+            {
+                [self MuestraGaleria];
+            }break;
+                
+            default:
+                break;
+        }
+        
+    }
+}
+
 
 @end

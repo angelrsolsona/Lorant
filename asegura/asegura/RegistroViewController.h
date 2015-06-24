@@ -12,12 +12,13 @@
 #import "NSConnection.h"
 #import <QuartzCore/QuartzCore.h>
 #import "MBProgressHUD.h"
+#import "TextFieldValidator.h"
 @interface RegistroViewController : UIViewController <UITextFieldDelegate,NSConnectionDelegate>
 
 @property(weak,nonatomic)IBOutlet UITextField *nombre;
 @property(weak,nonatomic)IBOutlet UITextField *apellidoPaterno;
 @property(weak,nonatomic)IBOutlet UITextField *apellidoMaterno;
-@property(weak,nonatomic)IBOutlet UITextField *correo;
+@property(weak,nonatomic)IBOutlet TextFieldValidator *correo;
 @property(weak,nonatomic)IBOutlet UITextField *telefono;
 @property(weak,nonatomic)IBOutlet UITextField *pass;
 @property(weak,nonatomic)IBOutlet UITextField *verificarPass;

@@ -17,7 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
+    [NSThread sleepForTimeInterval:3.0];
     [GMSServices provideAPIKey:@"AIzaSyCCAwiREcPyckx3JX8jMSMWEZfaa_R9CMs"];
     CGSize iOSScreenSize=[[UIScreen mainScreen] bounds].size;
     [FBLoginView class];

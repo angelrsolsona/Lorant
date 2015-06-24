@@ -107,6 +107,7 @@
 		2ADCCDA21B20D850001739D7 /* Poliza.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ADCCDA11B20D850001739D7 /* Poliza.m */; };
 		2AE75BBC1A780E4B0045B7AD /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE75BBB1A780E4B0045B7AD /* LoginViewController.m */; };
 		2AE75BC01A78170E0045B7AD /* ReporteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE75BBF1A78170E0045B7AD /* ReporteViewController.m */; };
+		2AFA8E371B39F52A0084E231 /* TextFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AFA8E361B39F52A0084E231 /* TextFieldValidator.m */; };
 		7A05432A79033C7535E3C821 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5034269FB6E613B49DA3118 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -301,6 +302,8 @@
 		2AE75BBB1A780E4B0045B7AD /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		2AE75BBE1A78170E0045B7AD /* ReporteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReporteViewController.h; sourceTree = "<group>"; };
 		2AE75BBF1A78170E0045B7AD /* ReporteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReporteViewController.m; sourceTree = "<group>"; };
+		2AFA8E351B39F52A0084E231 /* TextFieldValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldValidator.h; sourceTree = "<group>"; };
+		2AFA8E361B39F52A0084E231 /* TextFieldValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldValidator.m; sourceTree = "<group>"; };
 		3A93DE5C2DAC115A70DCAF75 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A5034269FB6E613B49DA3118 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6E719DCBF866ADBAB5A2714 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -417,6 +420,7 @@
 		2A054B091A76F2A7001090C7 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				2AFA8E2E1B39E6390084E231 /* Categorias */,
 				2A6027771A79769D006E2F8C /* Tipografia */,
 				2A054B271A76F340001090C7 /* Externas */,
 				2A054B1D1A76F310001090C7 /* ARSN */,
@@ -447,6 +451,8 @@
 		2A054B1D1A76F310001090C7 /* ARSN */ = {
 			isa = PBXGroup;
 			children = (
+				2AFA8E351B39F52A0084E231 /* TextFieldValidator.h */,
+				2AFA8E361B39F52A0084E231 /* TextFieldValidator.m */,
 				2A054B1E1A76F31C001090C7 /* Reachability.h */,
 				2A054B1F1A76F31C001090C7 /* Reachability.m */,
 				2A054B201A76F31C001090C7 /* NSConnection.h */,
@@ -800,6 +806,13 @@
 			name = Reporte;
 			sourceTree = "<group>";
 		};
+		2AFA8E2E1B39E6390084E231 /* Categorias */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Categorias;
+			sourceTree = "<group>";
+		};
 		3E84A1705B63900E49EA7618 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -981,6 +994,7 @@
 				2A054B6D1A76F3FC001090C7 /* RootViewController.m in Sources */,
 				2ABAB18D1B3389C200D92CAA /* Fotos.m in Sources */,
 				2A054AE91A76F224001090C7 /* ViewController.m in Sources */,
+				2AFA8E371B39F52A0084E231 /* TextFieldValidator.m in Sources */,
 				2AB980311AC06B4200952D36 /* LectorQRViewController.m in Sources */,
 				2A054B241A76F31C001090C7 /* Reachability.m in Sources */,
 				2A054B421A76F389001090C7 /* UIImageView+AFNetworking.m in Sources */,

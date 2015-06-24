@@ -7,7 +7,7 @@
 //
 
 #import "RegistroViewController.h"
-
+#define REGEX_EMAIL @"[A-Z0-9a-z._%+-]{3,}+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
 @interface RegistroViewController ()
 
 @end
@@ -17,6 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [_correo addRegx:REGEX_EMAIL withMsg:@"Enter valid email."];
+
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -58,9 +60,19 @@
     // Pass the selected object to the new view controller.
 }
 */
-
+#pragma mark - UItextfield Delegate
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
     //[textField setBorderStyle:UITextBorderStyleRoundedRect];
+    
+    if (textField.tag==5) {
+        
+        UIToolbar* keyboardDoneButtonView = [[UIToolbar alloc] init];
+        [keyboardDoneButtonView sizeToFit];
+        UIBarButtonItem* doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Aceptar"                                                                     style:UIBarButtonItemStyleBordered target:self                                                                     action:@selector(cierraTeclado)];
+        [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:doneButton, nil]];
+        textField.inputAccessoryView = keyboardDoneButtonView;
+    }
+    
     [textField setBackgroundColor:[UIColor whiteColor]];
     [textField.layer setCornerRadius:6.0f];
     [textField.layer setMasksToBounds:YES];
@@ -89,6 +101,20 @@
     return NO;
 }
 
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    BOOL retorno=YES;
+    
+    if (textField.tag==5) {
+        int limit=9;
+        retorno=!([textField.text length]>limit && [string length]>range.length);
+    }
+    
+    return retorno;
+    
+}
+#pragma mark - Acciones Botones
+
 -(IBAction)Cancelar:(id)sender{
     
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -96,31 +122,37 @@
 
 -(IBAction)Guardar:(id)sender{
     [self.view endEditing:YES];
-    if (![_pass.text isEqualToString:_verificarPass.text]) {
-        
-        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Error" message:@"Las contraseñas no coinciden por favor rectificalas" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+    BOOL                                                                 exito=[_correo validate];
+    if ([_nombre.text isEqualToString:@""]||[_apellidoPaterno.text isEqualToString:@""]||[_apellidoMaterno.text isEqualToString:@""]||[_correo.text isEqualToString:@""]||[_telefono.text isEqualToString:@""]||[_pass.text isEqualToString:@""]||[_verificarPass.text isEqualToString:@""]) {
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Debes llenar todos los campos" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
         [alert show];
-        
     }else{
-        NSDictionary *dic=@{@"name":_nombre.text,
-                            @"apaterno":_apellidoPaterno.text,
-                            @"amaterno":_apellidoMaterno.text,
-                            @"email":_correo.text,
-                            @"tel":_telefono.text,
-                            @"password":_pass.text,
-                            };
-        
-        //NSString *url=[NSString stringWithFormat:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/addUsuario/?name=%@&apaterno=%@&amaterno=%@&email=%@&tel=%@&password=%@",_nombre.text,_apellidoPaterno.text,_apellidoMaterno.text,_correo.text,_telefono.text,_pass.text];
-        
-        NSConnection *conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/addUsuario/" parameters:dic idRequest:1 delegate:self];
-        [conexion connectionGETExecute];
-        
-        _HUD=[[MBProgressHUD alloc] initWithView:self.view];
-        [_HUD setMode:MBProgressHUDModeIndeterminate];
-        [_HUD setLabelText:@"Enviando Datos"];
-        [self.view addSubview:_HUD];
-        [_HUD show:YES];
-        
+        if (![_pass.text isEqualToString:_verificarPass.text]) {
+            
+            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Error" message:@"Las contraseñas no coinciden por favor rectificalas" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+            [alert show];
+            
+        }else{
+            NSDictionary *dic=@{@"name":_nombre.text,
+                                @"apaterno":_apellidoPaterno.text,
+                                @"amaterno":_apellidoMaterno.text,
+                                @"email":_correo.text,
+                                @"tel":_telefono.text,
+                                @"password":_pass.text,
+                                };
+            
+            //NSString *url=[NSString stringWithFormat:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/addUsuario/?name=%@&apaterno=%@&amaterno=%@&email=%@&tel=%@&password=%@",_nombre.text,_apellidoPaterno.text,_apellidoMaterno.text,_correo.text,_telefono.text,_pass.text];
+            
+            NSConnection *conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/addUsuario/" parameters:dic idRequest:1 delegate:self];
+            [conexion connectionGETExecute];
+            
+            _HUD=[[MBProgressHUD alloc] initWithView:self.view];
+            [_HUD setMode:MBProgressHUDModeIndeterminate];
+            [_HUD setLabelText:@"Enviando Datos"];
+            [self.view addSubview:_HUD];
+            [_HUD show:YES];
+            
+        }
     }
 }
 
@@ -167,6 +199,14 @@
     UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Error" message:@"Error de conexion intenta de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
     [alert show];
     
+}
+
+#pragma mark - Metodos
+
+-(void)cierraTeclado{
+    
+    [self.view endEditing:YES];
+    [_vistaScroll setContentOffset:CGPointMake(0, 0) animated:YES];
 }
 
 

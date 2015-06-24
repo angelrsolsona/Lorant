@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Zif-aE-gnw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Zif-aE-gnw">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Oswald-Regular.ttf">
@@ -262,7 +262,7 @@
                                             <outlet property="delegate" destination="W8s-wD-SYJ" id="n6j-wx-cb4"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Correo Electronico" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uNc-2R-s1Z">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Correo Electronico" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uNc-2R-s1Z" customClass="TextFieldValidator">
                                         <rect key="frame" x="36" y="180" width="288" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -270,10 +270,10 @@
                                             <outlet property="delegate" destination="W8s-wD-SYJ" id="IMQ-tW-6Br"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Telefono del titular" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eDM-bS-CxL">
+                                    <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Telefono del titular" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eDM-bS-CxL">
                                         <rect key="frame" x="36" y="229" width="288" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                         <connections>
                                             <outlet property="delegate" destination="W8s-wD-SYJ" id="0b7-cd-oaf"/>
                                         </connections>
@@ -616,7 +616,8 @@
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Shb-vK-Wox">
                                         <rect key="frame" x="23" y="481" width="278" height="36"/>
-                                        <state key="normal" backgroundImage="BotonUbicacion">
+                                        <color key="backgroundColor" red="0.68235294120000001" green="0.047058823530000002" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -667,13 +668,14 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P6E-ze-qXV">
-                                        <rect key="frame" x="130" y="6" width="187" height="36"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
-                                        <state key="normal" backgroundImage="Cuadrado">
+                                        <rect key="frame" x="130" y="9" width="187" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                        <state key="normal" title="Escoje una póliza">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="CreatePicker:" destination="Xbp-Gy-TIn" eventType="touchUpInside" id="JWs-Oh-tec"/>
+                                            <action selector="ActivaPicker:" destination="Xbp-Gy-TIn" eventType="touchUpInside" id="a9h-Q0-MyB"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="FlechaPicker" translatesAutoresizingMaskIntoConstraints="NO" id="HEL-ud-o17">
@@ -732,20 +734,21 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4R-rC-tPp">
-                                        <rect key="frame" x="75" y="144" width="240" height="36"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
-                                        <state key="normal" backgroundImage="Cuadrado">
+                                        <rect key="frame" x="75" y="147" width="240" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                        <state key="normal">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="CreatePicker:" destination="Xbp-Gy-TIn" eventType="touchUpInside" id="EQ3-pk-KME"/>
+                                            <action selector="ActivaPicker:" destination="Xbp-Gy-TIn" eventType="touchUpInside" id="o0k-En-Ngx"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="FlechaPicker" translatesAutoresizingMaskIntoConstraints="NO" id="6Hz-Yh-LdC">
                                         <rect key="frame" x="291" y="157" width="10" height="10"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enviar ubicacion y Llamar" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwU-Mt-wlH">
-                                        <rect key="frame" x="49" y="487" width="209" height="24"/>
+                                        <rect key="frame" x="66" y="487" width="209" height="24"/>
                                         <color key="backgroundColor" red="0.68235294120000001" green="0.047058823530000002" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -778,9 +781,12 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="668"/>
                     <connections>
-                        <outlet property="btnEnviarUbicacion" destination="Shb-vK-Wox" id="0ij-1B-aLj"/>
+                        <outlet property="alias" destination="P6E-ze-qXV" id="hZV-me-mz0"/>
+                        <outlet property="btnCausas" destination="B4R-rC-tPp" id="jed-mV-4Jo"/>
+                        <outlet property="btnEnviarUbicacion" destination="Shb-vK-Wox" id="X9r-ZH-7WJ"/>
                         <outlet property="btnLlamar" destination="mr6-Mm-y6e" id="cOe-bM-uTW"/>
                         <outlet property="notas" destination="vib-6l-cLS" id="DUm-h8-RlR"/>
+                        <outlet property="telefono" destination="v3j-ks-aHT" id="ozY-Hb-Y3Y"/>
                         <outlet property="ubicacionActual" destination="6Ke-lJ-A6a" id="Euk-52-QUf"/>
                         <outlet property="vistaMapa" destination="dcy-mk-0vx" id="aYn-x1-Dys"/>
                         <outlet property="vistaScroll" destination="80Z-Av-YwT" id="G5n-Fe-pui"/>
@@ -3518,9 +3524,7 @@
         <image name="BotonMasInformacion" width="201" height="44"/>
         <image name="BotonMenu" width="32" height="22"/>
         <image name="BotonQR" width="201" height="44"/>
-        <image name="BotonUbicacion" width="130" height="36"/>
         <image name="CalaendarioVerificacion" width="52" height="52"/>
-        <image name="Cuadrado" width="260" height="112"/>
         <image name="Cuadro Login" width="618" height="247"/>
         <image name="CuadroLinea" width="321" height="40"/>
         <image name="FlechaPicker" width="15" height="11"/>
