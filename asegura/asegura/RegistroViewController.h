@@ -15,13 +15,13 @@
 #import "TextFieldValidator.h"
 @interface RegistroViewController : UIViewController <UITextFieldDelegate,NSConnectionDelegate>
 
-@property(weak,nonatomic)IBOutlet UITextField *nombre;
-@property(weak,nonatomic)IBOutlet UITextField *apellidoPaterno;
-@property(weak,nonatomic)IBOutlet UITextField *apellidoMaterno;
+@property(weak,nonatomic)IBOutlet TextFieldValidator *nombre;
+@property(weak,nonatomic)IBOutlet TextFieldValidator *apellidoPaterno;
+@property(weak,nonatomic)IBOutlet TextFieldValidator *apellidoMaterno;
 @property(weak,nonatomic)IBOutlet TextFieldValidator *correo;
-@property(weak,nonatomic)IBOutlet UITextField *telefono;
-@property(weak,nonatomic)IBOutlet UITextField *pass;
-@property(weak,nonatomic)IBOutlet UITextField *verificarPass;
+@property(weak,nonatomic)IBOutlet TextFieldValidator *telefono;
+@property(weak,nonatomic)IBOutlet TextFieldValidator *pass;
+@property(weak,nonatomic)IBOutlet TextFieldValidator *verificarPass;
 @property(weak,nonatomic)IBOutlet UIScrollView *vistaScroll;
 
 @property(strong,nonatomic)NSUserDefaults *datosAlm;

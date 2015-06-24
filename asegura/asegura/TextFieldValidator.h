@@ -41,7 +41,8 @@
 /**
     Default message for validating length, you can also assign message separately using method 'updateLengthValidationMsg:' for textfields.
  */
-#define MsgValidateLength @"This field cannot be blank"
+//#define MsgValidateLength @"This field cannot be blank"
+#define MsgValidateLength @"Este campo no puede estar vacio"
 
 
 /**

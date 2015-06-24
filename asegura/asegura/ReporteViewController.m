@@ -360,6 +360,7 @@
                     poliza.insuranceName=[dic objectForKey:@"insuranceName"];
                     poliza.insurenceNumber=[dic objectForKey:@"insuranceNumber"];
                     poliza.idAseguradora=[[dic objectForKey:@"idAseguradora"] integerValue];
+                    poliza.idPolizaM=[[dic objectForKey:@"IdPolizaM"] integerValue];
                     poliza.ramo=[[dic objectForKey:@"idRamo"] integerValue];
                     NSArray *fecha=[[dic objectForKey:@"FechaHasta"] componentsSeparatedByString:@"T"];
                     poliza.fechaHasta=[fecha objectAtIndex:0];
@@ -545,11 +546,12 @@
     
     if (_tieneCausas&&_tienePoliza) {
         
-        NSDictionary *parametros=@{@"IdPolizaM":[NSString stringWithFormat:@"%d,",_polizaActual.idPolizaSistema],
+        NSDictionary *parametros=@{@"IdPolizaM":[NSString stringWithFormat:@"%d",_polizaActual.idPolizaM],
                                    @"idSiniestro":_causaActual.idTipo,
                                    @"latitude":_latitudActual,
                                    @"longitud":_longitudActual,
                                    @"nickName":_usuarioActual.correo,
+                                   @"numeroTel":_usuarioActual.telefono,
                                    @"informacion":[NSString stringWithFormat:@"%@",_notas.text]};
         
         _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/ms_RegistroSiniestro" parameters:parametros idRequest:4 delegate:self];

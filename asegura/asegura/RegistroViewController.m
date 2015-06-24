@@ -7,7 +7,13 @@
 //
 
 #import "RegistroViewController.h"
+#define REGEX_BASICO @"^.{1,20}$"
+#define REGEX_USER_NAME_LIMIT @"^.{3,10}$"
+#define REGEX_USER_NAME @"[A-Za-z0-9]{3,10}"
 #define REGEX_EMAIL @"[A-Z0-9a-z._%+-]{3,}+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+#define REGEX_PASSWORD_LIMIT @"^.{6,20}$"
+#define REGEX_PASSWORD @"[A-Za-z0-9]{6,20}"
+#define REGEX_PHONE_DEFAULT @"[0-9]{3}\\-[0-9]{3}\\-[0-9]{4}"
 @interface RegistroViewController ()
 
 @end
@@ -17,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [_correo addRegx:REGEX_EMAIL withMsg:@"Enter valid email."];
+    [self InicializaTextField];
 
 }
 
@@ -122,8 +128,10 @@
 
 -(IBAction)Guardar:(id)sender{
     [self.view endEditing:YES];
-    BOOL                                                                 exito=[_correo validate];
-    if ([_nombre.text isEqualToString:@""]||[_apellidoPaterno.text isEqualToString:@""]||[_apellidoMaterno.text isEqualToString:@""]||[_correo.text isEqualToString:@""]||[_telefono.text isEqualToString:@""]||[_pass.text isEqualToString:@""]||[_verificarPass.text isEqualToString:@""]) {
+    
+    //if ([_nombre.text isEqualToString:@""]||[_apellidoPaterno.text isEqualToString:@""]||[_apellidoMaterno.text isEqualToString:@""]||[_correo.text isEqualToString:@""]||[_telefono.text isEqualToString:@""]||[_pass.text isEqualToString:@""]||[_verificarPass.text isEqualToString:@""]) {
+    if (![_nombre validate]||![_apellidoPaterno validate]||![_apellidoMaterno validate]||![_correo validate]||![_telefono validate]||![_pass validate]||![_verificarPass validate]) {
+        
         UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Debes llenar todos los campos" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
         [alert show];
     }else{
@@ -207,6 +215,24 @@
     
     [self.view endEditing:YES];
     [_vistaScroll setContentOffset:CGPointMake(0, 0) animated:YES];
+}
+-(void)InicializaTextField{
+    //[_nombre addRegx:REGEX_BASICO withMsg:@"Este campo debe terner"];
+    [_nombre setPresentInView:self.view];
+    //[_apellidoPaterno addRegx:REGEX_EMAIL withMsg:@"Enter valid email."];
+    [_apellidoPaterno setPresentInView:self.view];
+    //[_apellidoMaterno addRegx:REGEX_EMAIL withMsg:@"Enter valid email."];
+    [_apellidoMaterno setPresentInView:self.view];
+    [_correo addRegx:REGEX_EMAIL withMsg:@"Enter valid email."];
+    [_correo setPresentInView:self.view];
+    //[_telefono addRegx:REGEX_EMAIL withMsg:@"Enter valid email."];
+    [_telefono setPresentInView:self.view];
+    ///[_pass addRegx:REGEX_EMAIL withMsg:@"Enter valid email."];
+    [_pass setPresentInView:self.view];
+    //[_verificarPass addRegx:REGEX_PASSWORD withMsg:@"Enter valid email."];
+    [_verificarPass setPresentInView:self.view];
+
+    
 }
 
 

@@ -16,6 +16,7 @@
 #import "Polizas.h"
 #import "NSCoreDataManager.h"
 #import "MasInformacionPolizaViewController.h"
+#import "TextFieldValidator.h"
 @interface AltaPolizaViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate,NSConnectionDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,MasInformacionPolizaViewControllerDelegate>
 
 @property(weak,nonatomic)IBOutlet UIScrollView *vistaScroll;
@@ -38,22 +39,22 @@
 @property(strong,nonatomic) UIImagePickerController *picker;
 
 
-@property (weak, nonatomic) IBOutlet UITextField *numeroPoliza;
-@property (weak, nonatomic) IBOutlet UITextField *numeroSerie;
-@property (weak, nonatomic) IBOutlet UITextField *descripcion;
-@property (weak, nonatomic) IBOutlet UITextField *placas;
-@property (weak, nonatomic) IBOutlet UITextField *nombreAsegurado;
-@property (weak, nonatomic) IBOutlet UITextField *telefono;
-@property (weak, nonatomic) IBOutlet UITextField *correo;
+@property (weak, nonatomic) IBOutlet TextFieldValidator *numeroPoliza;
+@property (weak, nonatomic) IBOutlet TextFieldValidator *numeroSerie;
+@property (weak, nonatomic) IBOutlet TextFieldValidator *descripcion;
+@property (weak, nonatomic) IBOutlet TextFieldValidator *placas;
+@property (weak, nonatomic) IBOutlet TextFieldValidator *nombreAsegurado;
+@property (weak, nonatomic) IBOutlet TextFieldValidator *telefono;
+@property (weak, nonatomic) IBOutlet TextFieldValidator *correo;
 @property (weak, nonatomic) IBOutlet UILabel *fechaVigencia;
-@property (weak, nonatomic) IBOutlet UITextField *formaPago;
+@property (weak, nonatomic) IBOutlet TextFieldValidator *formaPago;
 @property (weak, nonatomic) IBOutlet UISwitch *recordadVigencia;
 @property (weak, nonatomic) IBOutlet UILabel *contratadoCon;
-@property (weak, nonatomic) IBOutlet UITextField *txtContratadoCon;
-@property (weak, nonatomic) IBOutlet UITextField *paquete;
+@property (weak, nonatomic) IBOutlet TextFieldValidator *txtContratadoCon;
+@property (weak, nonatomic) IBOutlet TextFieldValidator *paquete;
 @property (weak, nonatomic) IBOutlet UITextField *fechaInicio;
 @property (weak, nonatomic) IBOutlet UITextField *fechaFin;
-@property (weak, nonatomic) IBOutlet UITextField *aliasPoliza;
+@property (weak, nonatomic) IBOutlet TextFieldValidator *aliasPoliza;
 
 
 @end

@@ -11,6 +11,7 @@
 @interface Poliza : NSObject
 
 @property(assign,nonatomic) NSInteger idPoliza;
+@property(assign,nonatomic) NSInteger idPolizaM;
 @property(strong,nonatomic) NSString *insuranceName;
 @property(strong,nonatomic) NSString *insurenceNumber;
 @property(strong,nonatomic) NSString *insurenceAlias;

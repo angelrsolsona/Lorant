@@ -8,6 +8,15 @@
 
 #import "AltaPolizaViewController.h"
 
+
+#define REGEX_BASICO @"^.{1,20}$"
+#define REGEX_USER_NAME_LIMIT @"^.{3,10}$"
+#define REGEX_USER_NAME @"[A-Za-z0-9]{3,10}"
+#define REGEX_EMAIL @"[A-Z0-9a-z._%+-]{3,}+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+#define REGEX_PASSWORD_LIMIT @"^.{6,20}$"
+#define REGEX_PASSWORD @"[A-Za-z0-9]{6,20}"
+#define REGEX_PHONE_DEFAULT @"[0-9]{3}\\-[0-9]{3}\\-[0-9]{4}"
+
 @interface AltaPolizaViewController ()
 
 @end
@@ -57,7 +66,59 @@
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
     
-    if(textField.tag==3){
+    switch (textField.tag) {
+        case 3:
+        {
+            // Aseguradora //
+            [textField resignFirstResponder];
+            [self.view endEditing:YES];
+            if (!_estaActivoPicker&&!_estaActivoPickerDate) {
+                
+                [self CreatePicker:textField];
+                
+            }else{
+                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Debes elegir una opción" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+                [alert show];
+            }
+        }break;
+        case 4:
+        {
+            // numero de serie
+            
+        }break;
+        case 6:
+        {
+            // placas
+            
+        }break;
+        case 8:{
+            UIToolbar* keyboardDoneButtonView = [[UIToolbar alloc] init];
+            [keyboardDoneButtonView sizeToFit];
+            UIBarButtonItem* doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Aceptar"                                                                     style:UIBarButtonItemStyleBordered target:self                                                                     action:@selector(cierraTeclado)];
+            [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:doneButton, nil]];
+            textField.inputAccessoryView = keyboardDoneButtonView;
+        }
+        case 10:
+        case 11:
+        {
+            //Fecha Vigencia
+            
+            [textField resignFirstResponder];
+            [self.view endEditing:YES];
+            
+            if (!_estaActivoPickerDate&&!_estaActivoPicker) {
+                [self CreateDatePicker:textField];
+            }else{
+                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Debes elegir una opción" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+                [alert show];
+            }
+        }break;
+            
+        default:
+            break;
+    }
+    
+    /*if(textField.tag==3){
         
         [textField resignFirstResponder];
         [self.view endEditing:YES];
@@ -69,7 +130,7 @@
             UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Debes elegir una opción" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
             [alert show];
         }
-    }else if (textField.tag==4||textField.tag==5){
+    }else if (textField.tag==10||textField.tag==11){
         [textField resignFirstResponder];
         [self.view endEditing:YES];
         
@@ -80,7 +141,7 @@
             [alert show];
         }
         
-    }
+    }*/
     //[textField setBorderStyle:UITextBorderStyleRoundedRect];
     [textField setBackgroundColor:[UIColor whiteColor]];
     [textField.layer setCornerRadius:6.0f];
@@ -424,6 +485,13 @@
 
 }
 
+-(void)cierraTeclado{
+    
+    [self.view endEditing:YES];
+    [_vistaScroll setContentOffset:CGPointMake(0, 0) animated:YES];
+}
+
+
 #pragma mark - Date Picker
 -(void)CreateDatePicker:(id)sender{
     
@@ -457,10 +525,10 @@
     [_providerToolbar removeFromSuperview];
     NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"dd/MM/yyyy"];
-    if (_pickerDate.tag/10==4) {
+    if (_pickerDate.tag/10==10) {
         NSDate *selectedDate=[_pickerDate date];
         _fechaInicio.text=[formatter stringFromDate:selectedDate];
-    }else if (_pickerDate.tag/10==5){
+    }else if (_pickerDate.tag/10==11){
         NSDate *selectedDate=[_pickerDate date];
         _fechaFin.text=[formatter stringFromDate:selectedDate];
     }
@@ -468,6 +536,18 @@
     _estaActivoPickerDate=NO;
     
     
+}
+
+-(void)InicializaTextField{
+    [_numeroPoliza setPresentInView:self.view];
+    [_aliasPoliza setPresentInView:self.view];
+    [_numeroSerie setPresentInView:self.view];
+    [_descripcion setPresentInView:self.view];
+    [_placas setPresentInView:self.view];
+    [_nombreAsegurado setPresentInView:self.view];
+    [_telefono setPresentInView:self.view];
+    [_correo setPresentInView:self.view];
+    [_correo addRegx:REGEX_EMAIL withMsg:@"Introduce un correo valido"];
 }
 
 #pragma mark - Fotografia
