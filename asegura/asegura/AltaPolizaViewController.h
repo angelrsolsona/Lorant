@@ -17,7 +17,7 @@
 #import "NSCoreDataManager.h"
 #import "MasInformacionPolizaViewController.h"
 #import "TextFieldValidator.h"
-@interface AltaPolizaViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate,NSConnectionDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,MasInformacionPolizaViewControllerDelegate>
+@interface AltaPolizaViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate,NSConnectionDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,MasInformacionPolizaViewControllerDelegate,UITextFieldDelegate>
 
 @property(weak,nonatomic)IBOutlet UIScrollView *vistaScroll;
 

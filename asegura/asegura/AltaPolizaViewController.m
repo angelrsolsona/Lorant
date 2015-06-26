@@ -30,7 +30,11 @@
     _usuarioActual=[array objectAtIndex:0];
 
     [_numeroPoliza setText:_polizaActual.insurenceNumber];
+    if (_polizaActual.ramo==1) {
+        [_numeroSerie setText:_polizaActual.numeroSerie];
+    }
     [self ObtenAseguradoras];
+    [self InicializaTextField];
     
     
 }
@@ -97,7 +101,7 @@
             UIBarButtonItem* doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Aceptar"                                                                     style:UIBarButtonItemStyleBordered target:self                                                                     action:@selector(cierraTeclado)];
             [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:doneButton, nil]];
             textField.inputAccessoryView = keyboardDoneButtonView;
-        }
+        }break;
         case 10:
         case 11:
         {
@@ -169,6 +173,9 @@
  }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    
+    
     //[textField setBorderStyle:UITextBorderStyleNone];
     [textField setBackgroundColor:[UIColor clearColor]];
     [textField.layer setCornerRadius:0.0f];
@@ -201,8 +208,50 @@
     return NO;
 }
 
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    
+    BOOL retorno=YES;
+    switch (textField.tag) {
+           
+        case 4:
+        {
+            // numero de serie
+            int limit=16;
+            retorno=!([textField.text length]>limit && [string length]>range.length);
+        }break;
+        case 6:
+        {
+            // placas
+            int limit=7;
+            retorno=!([textField.text length]>limit && [string length]>range.length);
+            
+        }break;
+        case 8:{
+            int limit=9;
+            retorno=!([textField.text length]>limit && [string length]>range.length);
+        }break;
+    }
+
+    return retorno;
+}
+
 -(IBAction)GuardarContinuar:(id)sender{
     
+    BOOL camposIncorrectos;
+    
+    if (_polizaActual.ramo==1) {
+        camposIncorrectos=(![_numeroPoliza validate]||![_aliasPoliza validate]||![_numeroSerie validate]||![_descripcion validate]||![_placas validate]||![_nombreAsegurado validate]||![_telefono validate]||![_correo validate]||![_formaPago validate]||![_txtContratadoCon validate]||![_paquete validate]);
+    }else{
+        camposIncorrectos=(![_numeroPoliza validate]||![_aliasPoliza validate]||![_descripcion validate]||![_placas validate]||![_nombreAsegurado validate]||![_telefono validate]||![_correo validate]||![_formaPago validate]||![_txtContratadoCon validate]||![_paquete validate]);
+    }
+    
+    if (camposIncorrectos) {
+        
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Debes llenar todos los campos" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+        [alert show];
+        
+    }else{
         if ([_aliasPoliza.text isEqualToString:@""]) {
             UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Debes introducir un alias a la póliza" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
             [alert show];
@@ -253,6 +302,8 @@
             _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/addInsurance" parameters:parametros idRequest:3 delegate:self];
             [_conexion connectionPOSTExecute];
         }
+        
+    }
 }
 
 #pragma mark Picker Aseguradora
@@ -542,12 +593,16 @@
     [_numeroPoliza setPresentInView:self.view];
     [_aliasPoliza setPresentInView:self.view];
     [_numeroSerie setPresentInView:self.view];
+    [_numeroSerie addRegx:@"^.{17,17}$" withMsg:@"El número de serie es de 17 caracteres"];
     [_descripcion setPresentInView:self.view];
     [_placas setPresentInView:self.view];
     [_nombreAsegurado setPresentInView:self.view];
     [_telefono setPresentInView:self.view];
     [_correo setPresentInView:self.view];
     [_correo addRegx:REGEX_EMAIL withMsg:@"Introduce un correo valido"];
+    [_formaPago setPresentInView:self.view];
+    [_txtContratadoCon setPresentInView:self.view];
+    [_paquete setPresentInView:self.view];
 }
 
 #pragma mark - Fotografia

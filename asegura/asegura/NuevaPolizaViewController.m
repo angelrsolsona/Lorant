@@ -29,11 +29,20 @@
     
     UIButton *boton=(UIButton *)sender;
     _ramoActual=boton.tag;
-    
-    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Numero de Poliza" message:@"Introduce el numero de poliza" delegate:self cancelButtonTitle:@"Cancelar" otherButtonTitles:@"Enviar", nil];
-    [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
-    [alert setTag:1];
-    [alert show];
+    if (_ramoActual==1) {
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Busqueda de Póliza" message:@"Introduce el número de poliza y el número de serie" delegate:self cancelButtonTitle:@"Cancelar" otherButtonTitles:@"Enviar", nil];
+        [alert setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
+        [[alert textFieldAtIndex:0] setPlaceholder:@"Número de póliza"];
+        [[alert textFieldAtIndex:1] setPlaceholder:@"Número de serie"];
+        [[alert textFieldAtIndex:1] setSecureTextEntry:NO];
+        [alert setTag:1];
+        [alert show];
+    }else{
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Busqueda de Póliza" message:@"Introduce el número de póliza" delegate:self cancelButtonTitle:@"Cancelar" otherButtonTitles:@"Enviar", nil];
+        [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
+        [alert setTag:1];
+        [alert show];
+    }
     
     
     /*if (_ramoActual==1) {
@@ -82,6 +91,7 @@
         {
             NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:result options:NSJSONReadingAllowFragments error:&error];
 
+            NSLog(@"Dic %@",[dic description]);
             
             if ([[dic objectForKey:@"ErrorCode"] isEqualToString:@"ER0001"]) {
                 _polizaActual=[[Poliza alloc] init];
@@ -146,11 +156,21 @@
         case 1:
         {
             if (buttonIndex) {
-                NSString *noPoliza=[[alertView textFieldAtIndex:0] text];
+                NSString *noPoliza;
+                NSString *noSerie;
+                if (_ramoActual==1) {
+                    
+                    noPoliza=[[alertView textFieldAtIndex:0] text];
+                    noSerie=[[alertView textFieldAtIndex:1] text];
+                }else{
+                    noPoliza=[[alertView textFieldAtIndex:0] text];
+                    noSerie=@"";
+                }
                 _polizaActual=[[Poliza alloc] init];
                 _polizaActual.insurenceNumber=noPoliza;
                 _polizaActual.ramo=_ramoActual;
-                _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/searchInsurance" parameters:@{@"insuranceNumber":_polizaActual.insurenceNumber,@"_iIdRamo":[NSString stringWithFormat:@"%ld",(long)_polizaActual.ramo]} idRequest:1 delegate:self];
+                _polizaActual.numeroSerie=noSerie;
+                _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/searchInsurance" parameters:@{@"insuranceNumber":_polizaActual.insurenceNumber,@"_iIdRamo":[NSString stringWithFormat:@"%ld",(long)_polizaActual.ramo],@"serialNumberSuffix":_polizaActual.numeroSerie} idRequest:1 delegate:self];
                 [_conexion connectionPOSTExecute];
                 
                 _HUD=[[MBProgressHUD alloc] initWithView:self.view];

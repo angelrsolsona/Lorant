@@ -1343,6 +1343,14 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CuadroLinea" translatesAutoresizingMaskIntoConstraints="NO" id="oit-Sl-ZSg">
                                         <rect key="frame" x="0.0" y="199" width="320" height="40"/>
                                     </imageView>
+                                    <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JNS-Pj-gt0" customClass="TextFieldValidator">
+                                        <rect key="frame" x="107" y="82" width="205" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="go"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="qaj-4V-by6" id="iSk-ZX-W6h"/>
+                                        </connections>
+                                    </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CuadroLinea" translatesAutoresizingMaskIntoConstraints="NO" id="FIN-Ky-9Dv">
                                         <rect key="frame" x="0.0" y="239" width="320" height="40"/>
                                     </imageView>
@@ -1529,14 +1537,6 @@
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
                                             <outlet property="delegate" destination="qaj-4V-by6" id="rkx-pU-206"/>
-                                        </connections>
-                                    </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JNS-Pj-gt0" customClass="TextFieldValidator">
-                                        <rect key="frame" x="107" y="82" width="205" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="go"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="qaj-4V-by6" id="iSk-ZX-W6h"/>
                                         </connections>
                                     </textField>
                                 </subviews>
@@ -2574,14 +2574,6 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TYY-zH-jgl">
-                                        <rect key="frame" x="221" y="163" width="91" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="z4I-cK-iuY" id="AYN-6X-fSC"/>
-                                        </connections>
-                                    </textField>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gii-m4-ESd">
                                         <rect key="frame" x="263" y="203" width="51" height="31"/>
                                     </switch>
@@ -2595,6 +2587,14 @@
                                             <action selector="GuardarContinuar:" destination="z4I-cK-iuY" eventType="touchUpInside" id="FGl-1L-Xap"/>
                                         </connections>
                                     </button>
+                                    <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TYY-zH-jgl">
+                                        <rect key="frame" x="221" y="163" width="91" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="z4I-cK-iuY" id="AYN-6X-fSC"/>
+                                        </connections>
+                                    </textField>
                                 </subviews>
                             </scrollView>
                         </subviews>
