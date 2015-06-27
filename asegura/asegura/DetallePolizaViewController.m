@@ -27,7 +27,16 @@
     }else{
         [_lblVerFoto setHidden:NO];
         [_btnGuardar setHidden:YES];
-    _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/getInsuranceDetailWS" parameters:@{@"insuranceNumber":_polizaActual.insurenceNumber} idRequest:1 delegate:self];
+        NSString *noPoliza=@"";
+        NSString *noSerie=@"";
+        if (_polizaActual.ramo==1) {
+            noPoliza=_polizaActual.insurenceNumber;
+            noSerie=_polizaActual.numeroSerie;
+        }else{
+            noPoliza=_polizaActual.insurenceNumber;
+            noSerie=@"";
+        }
+    _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/getInsuranceDetailWS" parameters:@{@"insuranceNumber":noPoliza,@"serialNumberSuffix":noSerie} idRequest:1 delegate:self];
     [_conexion connectionPOSTExecute];
     
     _HUD=[[MBProgressHUD alloc] initWithView:self.view];
@@ -159,7 +168,19 @@
                         UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Error al guardar póliza intente de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:nil];
                         [alert show];
                     }
+                }else{
+                    Polizas *polizaInformacion=[NSEntityDescription insertNewObjectForEntityForName:@"Polizas" inManagedObjectContext:[NSCoreDataManager getManagedContext]];
+                    polizaInformacion.recordarVigencia=[NSNumber numberWithBool:_recordadVigencia.on];
+                    if([NSCoreDataManager SaveData]){
+                        [_HUD hide:YES];
+                        [self.navigationController popToRootViewControllerAnimated:YES];
+                    }else{
+                        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Error al guardar póliza intente de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:nil];
+                        [alert show];
+                    }
+                    
                 }
+
                 
             }else{
                 UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Error al guardar póliza intente de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:nil];
@@ -196,7 +217,7 @@
     [_fechaInicio setText:_polizaActual.startDate];
     [_fechaVigencia setText:_polizaActual.endDate];
     [_formaPago setText:_polizaActual.formaPago];
-    [_contratadoCon setText:[NSString stringWithFormat:@"Contratado con: %@",_polizaActual.contratadoCon]];
+    [_contratadoCon setText:[NSString stringWithFormat:@"Agente: %@",_polizaActual.contratadoCon]];
     [_paquete setText:_polizaActual.paquete];
     [_tablaCoberturas reloadData];
     [_tablaDetalle reloadData];

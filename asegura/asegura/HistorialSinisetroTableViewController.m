@@ -63,7 +63,11 @@
     
     
     HistorialSiniestro *historial=[_arraySiniestros objectAtIndex:indexPath.row];
-    [cell.fechaReporte setText:historial.fechaReporte];
+    
+    NSArray *fecha=[historial.fechaUsuario componentsSeparatedByString:@"T"];
+    
+    [cell.fechaReporte setText:[fecha objectAtIndex:0]];
+    [cell.horaReporte setText:[fecha objectAtIndex:1]];
     [cell.noPoliza setText:historial.noPoliza];
     [cell.causaSiniestro setText:historial.siniestro];
     [cell.informacion setText:historial.informacion];
@@ -151,7 +155,7 @@
                      historial.informacion=[dic objectForKey:@"INFORMACION"];
                 }
                
-                historial.fechaUsuario=[dic objectForKey:@"FECHA_USUARIO_INICIOv"];
+                historial.fechaUsuario=[dic objectForKey:@"FECHA_USUARIO_INICIO"];
                 historial.fechaRegistro=[dic objectForKey:@"FECHA_REGISTRO"];
                 historial.fechaReporte=[dic objectForKey:@"FECHAREPORTE"];
                 [_arraySiniestros addObject:historial];

@@ -14,7 +14,7 @@
 
 @end
 
-@interface MasInformacionPolizaViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
+@interface MasInformacionPolizaViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate,UITextFieldDelegate>
 
 @property(weak,nonatomic)IBOutlet UIScrollView *vistaScroll;
 

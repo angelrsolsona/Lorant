@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A00D97A1B3E1E3C003A8370 /* VerificacionFechas.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A00D9791B3E1E3C003A8370 /* VerificacionFechas.m */; };
+		2A00D97E1B3E38F9003A8370 /* Polizas.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A00D97D1B3E38F9003A8370 /* Polizas.m */; };
 		2A054AE31A76F224001090C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A054AE21A76F224001090C7 /* main.m */; };
 		2A054AE61A76F224001090C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A054AE51A76F224001090C7 /* AppDelegate.m */; };
 		2A054AE91A76F224001090C7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A054AE81A76F224001090C7 /* ViewController.m */; };
@@ -84,7 +86,6 @@
 		2AB980311AC06B4200952D36 /* LectorQRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB980301AC06B4200952D36 /* LectorQRViewController.m */; };
 		2AB980331AC06D9B00952D36 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB980321AC06D9B00952D36 /* AVFoundation.framework */; };
 		2ABAB18D1B3389C200D92CAA /* Fotos.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABAB18C1B3389C200D92CAA /* Fotos.m */; };
-		2ABAB1951B34AEA400D92CAA /* Polizas.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABAB1941B34AEA400D92CAA /* Polizas.m */; };
 		2AC2DB261B2A08EE006D3A5E /* DetallePolizaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC2DB251B2A08EE006D3A5E /* DetallePolizaViewController.m */; };
 		2AC4B6221AAB707300E727D8 /* Usuario.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC4B6211AAB707300E727D8 /* Usuario.m */; };
 		2AC4B6291AAB901E00E727D8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AC4B6281AAB901E00E727D8 /* CoreLocation.framework */; };
@@ -122,6 +123,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2A00D96C1B3E1B08003A8370 /* Asegura 8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Asegura 8.xcdatamodel"; sourceTree = "<group>"; };
+		2A00D9731B3E1C40003A8370 /* Asegura 9.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Asegura 9.xcdatamodel"; sourceTree = "<group>"; };
+		2A00D9781B3E1E3C003A8370 /* VerificacionFechas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerificacionFechas.h; sourceTree = "<group>"; };
+		2A00D9791B3E1E3C003A8370 /* VerificacionFechas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerificacionFechas.m; sourceTree = "<group>"; };
+		2A00D97B1B3E38C3003A8370 /* Asegura 10.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Asegura 10.xcdatamodel"; sourceTree = "<group>"; };
+		2A00D97C1B3E38F9003A8370 /* Polizas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Polizas.h; sourceTree = "<group>"; };
+		2A00D97D1B3E38F9003A8370 /* Polizas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Polizas.m; sourceTree = "<group>"; };
+		2A00D97F1B3E4529003A8370 /* Oswald-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Bold.ttf"; sourceTree = "<group>"; };
 		2A054ADD1A76F224001090C7 /* asegura.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = asegura.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A054AE11A76F224001090C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A054AE21A76F224001090C7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -266,8 +275,6 @@
 		2ABAB18C1B3389C200D92CAA /* Fotos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Fotos.m; path = ../Fotos.m; sourceTree = "<group>"; };
 		2ABAB18E1B34671E00D92CAA /* Asegura 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Asegura 6.xcdatamodel"; sourceTree = "<group>"; };
 		2ABAB1921B34AE8A00D92CAA /* Asegura 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Asegura 7.xcdatamodel"; sourceTree = "<group>"; };
-		2ABAB1931B34AEA400D92CAA /* Polizas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Polizas.h; path = ../Polizas.h; sourceTree = "<group>"; };
-		2ABAB1941B34AEA400D92CAA /* Polizas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Polizas.m; path = ../Polizas.m; sourceTree = "<group>"; };
 		2AC2DB241B2A08EE006D3A5E /* DetallePolizaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetallePolizaViewController.h; sourceTree = "<group>"; };
 		2AC2DB251B2A08EE006D3A5E /* DetallePolizaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetallePolizaViewController.m; sourceTree = "<group>"; };
 		2AC4B61F1AAB703600E727D8 /* Asegura 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Asegura 3.xcdatamodel"; sourceTree = "<group>"; };
@@ -341,6 +348,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A00D9771B3E1E21003A8370 /* Clases */ = {
+			isa = PBXGroup;
+			children = (
+				2A00D9781B3E1E3C003A8370 /* VerificacionFechas.h */,
+				2A00D9791B3E1E3C003A8370 /* VerificacionFechas.m */,
+			);
+			name = Clases;
+			sourceTree = "<group>";
+		};
 		2A054AD41A76F224001090C7 = {
 			isa = PBXGroup;
 			children = (
@@ -535,6 +551,7 @@
 		2A054B631A76F3C4001090C7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2A00D9771B3E1E21003A8370 /* Clases */,
 				2A40F2C51B2F7F2200474BDB /* Historial Sinisestro */,
 				2A9E32411B2A17F4007A0175 /* DetallePoliza */,
 				2A7979351ACB513A00E673E1 /* Cotiza */,
@@ -583,9 +600,9 @@
 		2A054B771A76F6B3001090C7 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				2A00D97C1B3E38F9003A8370 /* Polizas.h */,
+				2A00D97D1B3E38F9003A8370 /* Polizas.m */,
 				2A054B791A76F6D1001090C7 /* Asegura.xcdatamodeld */,
-				2ABAB1931B34AEA400D92CAA /* Polizas.h */,
-				2ABAB1941B34AEA400D92CAA /* Polizas.m */,
 				2A79793A1AD37C6A00E673E1 /* Verificacion.h */,
 				2A79793B1AD37C6A00E673E1 /* Verificacion.m */,
 				2ABAB18B1B3389C200D92CAA /* Fotos.h */,
@@ -621,6 +638,7 @@
 		2A6027771A79769D006E2F8C /* Tipografia */ = {
 			isa = PBXGroup;
 			children = (
+				2A00D97F1B3E4529003A8370 /* Oswald-Bold.ttf */,
 				2A6027791A7976E5006E2F8C /* rockwell.ttf */,
 				2A6027781A7976DE006E2F8C /* Oswald-Regular.ttf */,
 			);
@@ -989,7 +1007,6 @@
 				2A054B1C1A76F2DC001090C7 /* UIViewController+REFrostedViewController.m in Sources */,
 				2A8C2FC01AB0BA0D002900D9 /* NotificacionesTableViewCell.m in Sources */,
 				2A054B1B1A76F2DC001090C7 /* UIView+REFrostedViewController.m in Sources */,
-				2ABAB1951B34AEA400D92CAA /* Polizas.m in Sources */,
 				2A054B181A76F2DC001090C7 /* REFrostedContainerViewController.m in Sources */,
 				2A054B6D1A76F3FC001090C7 /* RootViewController.m in Sources */,
 				2ABAB18D1B3389C200D92CAA /* Fotos.m in Sources */,
@@ -1002,6 +1019,7 @@
 				2AC4B64E1AAEB0E800E727D8 /* MisPolizasViewController.m in Sources */,
 				2A40F2C81B2F869200474BDB /* HistorialSinisetroTableViewController.m in Sources */,
 				2AC4B63F1AAE4CED00E727D8 /* AgenciasViewController.m in Sources */,
+				2A00D97E1B3E38F9003A8370 /* Polizas.m in Sources */,
 				2A054B261A76F31C001090C7 /* NSCoreDataManager.m in Sources */,
 				2A054B5D1A76F3A7001090C7 /* AFNetworkReachabilityManager.m in Sources */,
 				2A054B3F1A76F389001090C7 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
@@ -1038,6 +1056,7 @@
 				2A054B171A76F2DC001090C7 /* RECommonFunctions.m in Sources */,
 				2A054B3E1A76F389001090C7 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				2A054B6F1A76F3FC001090C7 /* MenuViewController.m in Sources */,
+				2A00D97A1B3E1E3C003A8370 /* VerificacionFechas.m in Sources */,
 				2A40F2C41B2F539900474BDB /* CausaSiniestro.m in Sources */,
 				2ADCCDA21B20D850001739D7 /* Poliza.m in Sources */,
 				2A054B741A76F5C3001090C7 /* InicioViewController.m in Sources */,
@@ -1275,6 +1294,9 @@
 		2A054B791A76F6D1001090C7 /* Asegura.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				2A00D97B1B3E38C3003A8370 /* Asegura 10.xcdatamodel */,
+				2A00D9731B3E1C40003A8370 /* Asegura 9.xcdatamodel */,
+				2A00D96C1B3E1B08003A8370 /* Asegura 8.xcdatamodel */,
 				2ABAB1921B34AE8A00D92CAA /* Asegura 7.xcdatamodel */,
 				2ABAB18E1B34671E00D92CAA /* Asegura 6.xcdatamodel */,
 				2ABAB18A1B33896E00D92CAA /* Asegura 5.xcdatamodel */,

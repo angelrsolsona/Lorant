@@ -50,7 +50,7 @@
 
 -(IBAction)Llamar:(id)sender{
     
-    NSString *telefono=@"tel://90000000";
+    NSString *telefono=@"tel://30936840";
     NSURL *url=[NSURL URLWithString:telefono];
     [[UIApplication sharedApplication] openURL:url];
 }

@@ -67,6 +67,34 @@
 
 }
 
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    BOOL retorno=YES;
+    if (!_estaActivoPicker&&!_estaActivoPickerDate) {
+        
+        switch (textField.tag) {
+            case 3:
+            case 10:
+            case 11:
+            {
+                [self.view endEditing:YES];
+                retorno=YES;
+            }break;
+            default:
+                break;
+        }
+        
+        
+    }else{
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Debes elegir una opción" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+        [alert show];
+        retorno=NO;
+    }
+    
+    
+    return retorno;
+}
+
+
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
     
@@ -77,7 +105,6 @@
             [textField resignFirstResponder];
             [self.view endEditing:YES];
             if (!_estaActivoPicker&&!_estaActivoPickerDate) {
-                
                 [self CreatePicker:textField];
                 
             }else{
@@ -213,19 +240,35 @@
     
     BOOL retorno=YES;
     switch (textField.tag) {
-           
+        case 2:
+        {
+            // Alias
+            int limit=19;
+            retorno=!([textField.text length]>limit && [string length]>range.length);
+        }break;
         case 4:
         {
             // numero de serie
             int limit=16;
             retorno=!([textField.text length]>limit && [string length]>range.length);
         }break;
+        case 5:
+        {
+            //Descripcion
+            int limit=89;
+            retorno=!([textField.text length]>limit && [string length]>range.length);
+        }break;
         case 6:
         {
             // placas
-            int limit=7;
+            int limit=9;
             retorno=!([textField.text length]>limit && [string length]>range.length);
             
+        }break;
+        case 7:{
+            //Nombre asegurado
+            int limit=89;
+            retorno=!([textField.text length]>limit && [string length]>range.length);
         }break;
         case 8:{
             int limit=9;
@@ -239,12 +282,21 @@
 -(IBAction)GuardarContinuar:(id)sender{
     
     BOOL camposIncorrectos;
-    
-    if (_polizaActual.ramo==1) {
-        camposIncorrectos=(![_numeroPoliza validate]||![_aliasPoliza validate]||![_numeroSerie validate]||![_descripcion validate]||![_placas validate]||![_nombreAsegurado validate]||![_telefono validate]||![_correo validate]||![_formaPago validate]||![_txtContratadoCon validate]||![_paquete validate]);
+    BOOL fechasCorrectas=[VerificacionFechas VerificaFechaesMenor:_fechaInicio.text fechaMayor:_fechaFin.text formatoFecha:@"dd/MM/yyyy"];
+    if (fechasCorrectas) {
+        
+        if (_polizaActual.ramo==1) {
+            camposIncorrectos=(![_numeroPoliza validate]||![_aliasPoliza validate]||![_numeroSerie validate]||![_descripcion validate]||![_placas validate]||![_nombreAsegurado validate]||![_telefono validate]||![_correo validate]||![_formaPago validate]||![_txtContratadoCon validate]||![_paquete validate]);
+        }else{
+            camposIncorrectos=(![_numeroPoliza validate]||![_aliasPoliza validate]||![_descripcion validate]||![_placas validate]||![_nombreAsegurado validate]||![_telefono validate]||![_correo validate]||![_formaPago validate]||![_txtContratadoCon validate]||![_paquete validate]);
+        }
     }else{
-        camposIncorrectos=(![_numeroPoliza validate]||![_aliasPoliza validate]||![_descripcion validate]||![_placas validate]||![_nombreAsegurado validate]||![_telefono validate]||![_correo validate]||![_formaPago validate]||![_txtContratadoCon validate]||![_paquete validate]);
+        
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"El fin de vigencia no puede ser menor a la fecha de inicio" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+        [alert show];
+        camposIncorrectos=YES;
     }
+    
     
     if (camposIncorrectos) {
         
@@ -327,6 +379,7 @@
     _providerPickerView.dataSource = self;
     _providerPickerView.delegate = self;
     [self.view addSubview:_providerPickerView];
+    _estaActivoPicker=YES;
 }
 
 - (void)dismissActionSheet:(id)sender{
@@ -336,6 +389,7 @@
     _aseguradoraActual=[_arrayAseguradoras objectAtIndex:[_providerPickerView selectedRowInComponent:0]];
     UITextField *textfield=(UITextField *)[self.view viewWithTag:3];
     [textfield setText:_aseguradoraActual.nombre];
+    _estaActivoPicker=NO;
     
 }
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
@@ -474,6 +528,19 @@
                         UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Error al guardar póliza intente de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:nil];
                         [alert show];
                     }
+                }else{
+                    Polizas *polizaInformacion=[NSEntityDescription insertNewObjectForEntityForName:@"Polizas" inManagedObjectContext:[NSCoreDataManager getManagedContext]];
+                    polizaInformacion.recordarVigencia=[NSNumber numberWithBool:_recordadVigencia.on];
+                    //polizaInformacion.fechaInicioVigencia=_fechaInicio.text;
+                    //polizaInformacion.fechaFinVigencia=_fechaFin.text;
+                    if([NSCoreDataManager SaveData]){
+                        [_HUD hide:YES];
+                        [self.navigationController popToRootViewControllerAnimated:YES];
+                    }else{
+                        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Error al guardar póliza intente de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:nil];
+                        [alert show];
+                    }
+
                 }
                 
             }else{
@@ -593,7 +660,7 @@
     [_numeroPoliza setPresentInView:self.view];
     [_aliasPoliza setPresentInView:self.view];
     [_numeroSerie setPresentInView:self.view];
-    [_numeroSerie addRegx:@"^.{17,17}$" withMsg:@"El número de serie es de 17 caracteres"];
+    //[_numeroSerie addRegx:@"^.{17,17}$" withMsg:@"El número de serie es de 17 caracteres"];
     [_descripcion setPresentInView:self.view];
     [_placas setPresentInView:self.view];
     [_nombreAsegurado setPresentInView:self.view];

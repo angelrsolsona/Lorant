@@ -10,8 +10,19 @@
 #import "REFrostedViewController.h"
 #import "NotificacionesTableViewCell.h"
 
-@interface NotificacionesViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+#import "NSConnection.h"
+#import "Usuario.h"
+#import "NSCoreDataManager.h"
+#import "MBProgressHUD.h"
+#import "Poliza.h"
+#import "VerificacionFechas.h"
+
+
+@interface NotificacionesViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,NSConnectionDelegate>
 
 @property(strong,nonatomic)IBOutlet UITableView *tabla;
-
+@property(strong,nonatomic)NSConnection *conexion;
+@property(strong,nonatomic)Usuario *usuarioActual;
+@property(strong,nonatomic) MBProgressHUD *HUD;
+@property(strong,nonatomic) NSMutableArray *arrayPolizas;
 @end

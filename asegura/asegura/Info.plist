@@ -45,6 +45,7 @@
 	<array>
 		<string>rockwell.ttf</string>
 		<string>Oswald-Regular.ttf</string>
+		<string>Oswald-Bold.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

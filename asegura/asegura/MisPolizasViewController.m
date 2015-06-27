@@ -87,6 +87,7 @@
     Poliza *poliza=[_arrayPolizas objectAtIndex:indexPath.row];
     [cell.alias setText:poliza.insuranceName];
     [cell.fecha setText:poliza.fechaHasta];
+    [cell.nombreAseguradora setText:poliza.nombreAseguradora];
     
     switch (poliza.ramo) {
         case 1:
@@ -157,6 +158,7 @@
     return UITableViewCellEditingStyleDelete;
 }
 
+
 -(void)connectionDidFinish:(id)result numRequest:(NSInteger)numRequest{
     [_HUD hide:YES];
     NSError *error;
@@ -179,6 +181,8 @@
                     poliza.ramo=[[dic objectForKey:@"idRamo"] integerValue];
                     NSArray *fecha=[[dic objectForKey:@"FechaHasta"] componentsSeparatedByString:@"T"];
                     poliza.fechaHasta=[fecha objectAtIndex:0];
+                    poliza.numeroSerie=[dic objectForKey:@"NoSerie"];
+                    poliza.nombreAseguradora=[dic objectForKey:@"Aseguradora"];
                     [_arrayPolizas addObject:poliza];
                 }
                 

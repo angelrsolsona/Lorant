@@ -122,7 +122,7 @@
                 
             }else if([[dic objectForKey:@"ErrorCode"] isEqualToString:@"ER0008"]){
                 
-                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"La poliza no existe.\n ¿Deseas agregarla?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Si", nil];
+                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"La póliza que deseas registrar no es administrada en lorantmms.\n ¿Deseas agregarla?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Si", nil];
                 [alert setTag:2];
                 [alert show];
             

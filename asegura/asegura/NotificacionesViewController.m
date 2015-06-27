@@ -18,14 +18,24 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.navigationController setNavigationBarHidden:NO];
-
+    NSArray *array=[NSCoreDataManager getDataWithEntity:@"Usuario" andManagedObjContext:[NSCoreDataManager getManagedContext]];
+    
+    _usuarioActual=[array objectAtIndex:0];
+    //[self.frostedViewController setPanGestureEnabled:NO];
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)viewWillAppear:(BOOL)animated{
+    _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/getInsuranceListWS/" parameters:@{@"nickName":_usuarioActual.correo} idRequest:1 delegate:self];
+    [_conexion connectionPOSTExecute];
+    
+    _HUD=[[MBProgressHUD alloc] initWithView:self.view];
+    [_HUD setMode:MBProgressHUDModeIndeterminate];
+    [_HUD setLabelText:@"Obteniendo Polizas"];
+    [self.view addSubview:_HUD];
+    [_HUD show:YES];
+    
 }
-
 /*
 #pragma mark - Navigation
 
@@ -66,6 +76,66 @@
     
 }
 
+#pragma mark - NSConnection Delegate
+
+-(void)connectionDidFinish:(id)result numRequest:(NSInteger)numRequest{
+    [_HUD hide:YES];
+    NSError *error;
+    
+    switch (numRequest) {
+        case 1:
+        {
+            NSArray *array=[NSJSONSerialization JSONObjectWithData:result options:NSJSONReadingAllowFragments error:&error];
+            _arrayPolizas=[[NSMutableArray alloc] init];
+            BOOL hayError=NO;
+            for (NSDictionary *dic in array) {
+                if ([[dic objectForKey:@"ErrorCode"] isEqualToString:@"ER0005"]) {
+                    hayError=YES;
+                    break;
+                }else{
+                    Poliza *poliza=[[Poliza alloc] init];
+                    poliza.insuranceName=[dic objectForKey:@"insuranceName"];
+                    poliza.insurenceNumber=[dic objectForKey:@"insuranceNumber"];
+                    poliza.idAseguradora=[[dic objectForKey:@"idAseguradora"] integerValue];
+                    poliza.ramo=[[dic objectForKey:@"idRamo"] integerValue];
+                    NSArray *fecha=[[dic objectForKey:@"FechaHasta"] componentsSeparatedByString:@"T"];
+                    poliza.fechaHasta=[fecha objectAtIndex:0];
+                    poliza.numeroSerie=[dic objectForKey:@"NoSerie"];
+                    poliza.nombreAseguradora=[dic objectForKey:@"Aseguradora"];
+                    //[_arrayPolizas addObject:poliza];
+                    NSInteger diasFaltantes=[VerificacionFechas daysBetweenDate:[NSDate date] andDate:[VerificacionFechas convierteNSStringToNSDate:poliza.fechaHasta Formato:@"yyyy-MM-dd"]];
+                    if (diasFaltantes<5) {
+                        NSLog(@"Agregar notificacion vigencia");
+                    
+                    }
+                    
+                }
+                
+            }
+            
+            if (hayError) {
+                
+                [_HUD setMode:MBProgressHUDModeText];
+                [_HUD setLabelText:@"El usuario no tiene polizas"];
+                [self.view addSubview:_HUD];
+                [_HUD show:YES];
+                [_HUD hide:YES afterDelay:2.0];
+            }else{
+                [_tabla reloadData];
+            }
+        }break;
+            
+        default:
+        break;
+    }
+    
+}
+-(void)connectionDidFail:(NSString *)error{
+    
+    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Error" message:@"Error de conexion intenta de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+    [alert show];
+    
+}
 
 
 @end

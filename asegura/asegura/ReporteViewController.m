@@ -312,16 +312,45 @@
     return NO;
 }
 
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    BOOL retorno=YES;
+    if (!_pickerActivo) {
+        
+        switch (textField.tag) {
+            case 1:
+            case 2:
+            case 3:
+            {
+                [self.view endEditing:YES];
+                retorno=YES;
+            }break;
+            default:
+                break;
+        }
+        
+        
+    }else{
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Debes elegir una opción" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+        [alert show];
+        retorno=NO;
+    }
+    
+    
+    return retorno;
+}
+
+
 -(IBAction)Compartir:(id)sender{
     NSString *textToShare = @"Acabo de tener un accidente";
     //NSURL *myWebsite = [NSURL URLWithString:@""];
     UIImage *imagen;
     NSArray *objectsToShare;
-    if (![_imagenSiniestro isEqual:nil]) {
+    if (_imagenSiniestro==nil) {
+        objectsToShare= @[textToShare];
+    }else{
         imagen=_imagenSiniestro;
         objectsToShare= @[textToShare,imagen];
-    }else{
-        objectsToShare= @[textToShare];
+       
     }
     
     
@@ -364,6 +393,7 @@
                     poliza.ramo=[[dic objectForKey:@"idRamo"] integerValue];
                     NSArray *fecha=[[dic objectForKey:@"FechaHasta"] componentsSeparatedByString:@"T"];
                     poliza.fechaHasta=[fecha objectAtIndex:0];
+                    poliza.numeroSerie=[dic objectForKey:@"NoSerie"];
                     [_arrayPolizas addObject:poliza];
                 }
                 
@@ -404,7 +434,7 @@
             
             NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:result options:NSJSONReadingAllowFragments error:&error];
             BOOL hayError=NO;
-            
+            NSLog(@"respuesta %@",[dic description]);
             if ([[dic objectForKey:@"ErrorCode"] isEqualToString:@"ER0001"]) {
                 
                 _polizaActual.insurenceNumber=[dic objectForKey:@"insuranceNumber"];
@@ -511,8 +541,21 @@
 
 -(void)DetallePoliza{
     
-    _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/getInsuranceDetailWS" parameters:@{@"insuranceNumber":_polizaActual.insurenceNumber} idRequest:3 delegate:self];
+    NSString *noPoliza=@"";
+    NSString *noSerie=@"";
+    if (_polizaActual.ramo==1) {
+        noPoliza=_polizaActual.insurenceNumber;
+        noSerie=_polizaActual.numeroSerie;
+    }else{
+        noPoliza=_polizaActual.insurenceNumber;
+        noSerie=@"";
+    }
+    _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/getInsuranceDetailWS" parameters:@{@"insuranceNumber":noPoliza,@"serialNumberSuffix":noSerie} idRequest:3 delegate:self];
     [_conexion connectionPOSTExecute];
+
+    
+   /* _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/getInsuranceDetailWS" parameters:@{@"insuranceNumber":_polizaActual.insurenceNumber} idRequest:3 delegate:self];
+    [_conexion connectionPOSTExecute]; */
     
     _HUD=[[MBProgressHUD alloc] initWithView:self.view];
     [_HUD setMode:MBProgressHUDModeIndeterminate];
@@ -592,7 +635,7 @@
                 if ([_arrayCausas count]>0) {
                     [self CreatePicker:sender];
                 }else{
-                    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Debes seleccionar primero una póliza" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+                    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Esta póliza no tiene causas asignadas" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
                     [alert show];
                 }
             }break;

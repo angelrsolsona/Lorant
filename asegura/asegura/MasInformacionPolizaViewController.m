@@ -266,6 +266,12 @@
             [alert show];
         }
   
+    }else if (textField.tag==2){
+        UIToolbar* keyboardDoneButtonView = [[UIToolbar alloc] init];
+        [keyboardDoneButtonView sizeToFit];
+        UIBarButtonItem* doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Aceptar"                                                                     style:UIBarButtonItemStyleBordered target:self                                                                     action:@selector(cierraTeclado)];
+        [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:doneButton, nil]];
+        textField.inputAccessoryView = keyboardDoneButtonView;
     }
 
     
@@ -289,6 +295,66 @@
     return NO;
 }
 
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    BOOL retorno=YES;
+    if (!_estaActivoPicker&&!_estaActivoPickerDate) {
+        
+        switch (textField.tag) {
+            case 1:
+            case 3:
+            case 4:
+            case 5:
+            {
+                [self.view endEditing:YES];
+                retorno=YES;
+            }break;
+            default:
+                break;
+        }
+        
+        
+    }else{
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Debes elegir una opción" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+        [alert show];
+        retorno=NO;
+    }
+    
+    
+    return retorno;
+}
+
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    BOOL retorno=YES;
+    switch (textField.tag) {
+        case 2:
+        {
+            // Dias de pago
+            int limit=1;
+            retorno=!([textField.text length]>limit && [string length]>range.length);
+        }break;
+    }
+    
+    return retorno;
+}
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    
+    switch (textField.tag) {
+        case 2:
+        {
+            // Dias de pago
+            if (!([textField.text integerValue]>=1 && [textField.text integerValue]<=31)) {
+                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Debes elegir una fecha valida" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+                [alert show];
+                [textField setText:@""];
+            }
+        }break;
+    }
+
+}
+
+#pragma mark - Acciones de Boton
+
 
 
 - (IBAction)Guardar:(id)sender {
@@ -305,5 +371,11 @@
     [_delegate GuardarInfoPoliza:_polizaActual];
     
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)cierraTeclado{
+    
+    [self.view endEditing:YES];
+    [_vistaScroll setContentOffset:CGPointMake(0, 0) animated:YES];
 }
 @end

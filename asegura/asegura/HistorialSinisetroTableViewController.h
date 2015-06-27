@@ -13,7 +13,7 @@
 #import "NSCoreDataManager.h"
 #import "MBProgressHUD.h"
 #import "HistorialSiniestro.h"
-@interface HistorialSinisetroTableViewController : UITableViewController
+@interface HistorialSinisetroTableViewController : UITableViewController <NSConnectionDelegate>
 
 
 @property(strong,nonatomic)NSMutableArray *arraySiniestros;

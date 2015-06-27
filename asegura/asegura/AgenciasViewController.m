@@ -45,6 +45,7 @@
     [self ObtenMarcas];
     [self ObtenEstados];
     [_btnLlamar setEnabled:NO];
+    [self RedondeaBoton:_btnLlamar conBorde:NO];
     
 
 }
@@ -383,6 +384,19 @@
     [[UIApplication sharedApplication] openURL:url];
 }
 
+
+-(void)RedondeaBoton:(UIButton *)boton conBorde:(BOOL)conBorde{
+    
+    //[boton setBackgroundColor:[UIColor whiteColor]];
+    [boton.layer setCornerRadius:6.0f];
+    [boton.layer setMasksToBounds:YES];
+    if (conBorde) {
+        UIColor *borderColor = [UIColor colorWithRed:204.0/255.0 green:204.0/255.0 blue:204.0/255.0 alpha:1.0];
+        boton.layer.borderColor=borderColor.CGColor;
+        boton.layer.borderWidth=1.0;
+    }
+    
+}
 
 
 @end

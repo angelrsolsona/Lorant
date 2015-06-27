@@ -7,8 +7,6 @@
     <entity name="Polizas" representedClassName="Polizas" syncable="YES">
         <attribute name="banco" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="diaPago" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="fechaFinVigencia" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="fechaInicioVigencia" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="foto" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="intrumentoPago" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="noPoliza" optional="YES" attributeType="String" syncable="YES"/>
@@ -36,7 +34,7 @@
     </entity>
     <elements>
         <element name="Fotos" positionX="-63" positionY="45" width="128" height="75"/>
-        <element name="Polizas" positionX="-54" positionY="54" width="128" height="225"/>
+        <element name="Polizas" positionX="-54" positionY="54" width="128" height="195"/>
         <element name="Usuario" positionX="-63" positionY="-18" width="128" height="150"/>
         <element name="Verificacion" positionX="-63" positionY="36" width="128" height="120"/>
     </elements>
