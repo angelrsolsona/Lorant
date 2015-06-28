@@ -238,7 +238,11 @@
             
         case 2:
         {
-            return [_polizaActual.coberturas count];
+            if ([_polizaActual.coberturas count]>0) {
+                return [_polizaActual.coberturas count];
+            }else{
+                return 1;
+            }
         }break;
             
         default:
@@ -259,7 +263,13 @@
             
         case 2:
         {
-            dic=[_polizaActual.coberturas objectAtIndex:indexPath.row];
+            if ([_polizaActual.coberturas count]>0) {
+                dic=[_polizaActual.coberturas objectAtIndex:indexPath.row];
+            }else{
+                dic=[[NSDictionary alloc] initWithObjectsAndKeys:@"Sin información",@"label",@"",@"valor", nil];
+                
+            }
+            
         }break;
             
         default:

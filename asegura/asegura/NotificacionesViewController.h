@@ -16,6 +16,7 @@
 #import "MBProgressHUD.h"
 #import "Poliza.h"
 #import "VerificacionFechas.h"
+#import "ObjNotificacion.h"
 
 
 @interface NotificacionesViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,NSConnectionDelegate>
@@ -25,4 +26,6 @@
 @property(strong,nonatomic)Usuario *usuarioActual;
 @property(strong,nonatomic) MBProgressHUD *HUD;
 @property(strong,nonatomic) NSMutableArray *arrayPolizas;
+@property(strong,nonatomic)NSMutableArray *arrayNotificaciones;
+@property(assign,nonatomic) BOOL recordadVerificacion;
 @end

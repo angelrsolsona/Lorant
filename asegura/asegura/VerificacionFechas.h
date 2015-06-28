@@ -15,4 +15,5 @@
 +(BOOL)VerificaFechaesMenor:(NSString *)fechaMenor fechaMayor:(NSString *)fechaMayor  formatoFecha:(NSString *)formato;
 + (NSInteger)daysBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime;
 +(NSDate *)convierteNSStringToNSDate:(NSString*)cadena Formato:(NSString *)formato;
++(NSString *)transformaNSDatetoString:(NSDate *)date formato:(NSString *)formato;
 @end

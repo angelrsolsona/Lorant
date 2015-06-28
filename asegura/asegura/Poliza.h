@@ -52,6 +52,12 @@
 @property(strong,nonatomic)NSString *perido1;
 @property(strong,nonatomic)NSString *perido2;
 @property(strong,nonatomic)NSString *calcomania;
+@property(strong,nonatomic)NSString *fechaInicioPeriodo1;
+@property(strong,nonatomic)NSString *fechaFinPeriodo1;
+@property(strong,nonatomic)NSString *fechaInicioPeriodo2;
+@property(strong,nonatomic)NSString *fechaFinPeriodo2;
+
+
 
 
 

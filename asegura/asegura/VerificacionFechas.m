@@ -21,8 +21,9 @@
     dateFechaInicio=[dateFormat dateFromString:fechaInicial];
     dateFechaFinal=[dateFormat dateFromString:fechaFinal];
     
-    const NSTimeInterval interval=[dateFechaActual timeIntervalSinceReferenceDate];
-    BOOL pertenece=([dateFechaInicio timeIntervalSinceReferenceDate]<=interval && [dateFechaFinal timeIntervalSinceReferenceDate]>=interval);
+    BOOL pertenece= (([dateFechaActual compare:dateFechaInicio] != NSOrderedAscending) && ([dateFechaActual compare:dateFechaFinal] != NSOrderedDescending));
+
+    
     
     return pertenece;
     
@@ -84,6 +85,12 @@
     NSDateFormatter *dateFormat=[[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:formato];
     return [dateFormat dateFromString:cadena];
+}
+
++(NSString *)transformaNSDatetoString:(NSDate *)date formato:(NSString *)formato{
+    NSDateFormatter *dateFormat=[[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:formato];
+    return [dateFormat stringFromDate:date];
 }
 
 

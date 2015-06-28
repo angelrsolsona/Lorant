@@ -139,58 +139,61 @@
         }
     }
     NSLog(@"array %@",[array description]);
-    NSString *ultimoNumero=[array objectAtIndex:[array count]-1];
-    NSString *periodo1;
-    NSString *periodo2;
-    NSString *calcomania;
-    switch ([ultimoNumero integerValue]) {
-        case 5:
-        case 6:
-        {
-            NSLog(@"Amarillo");
-            calcomania=@"VerificacionAmarillo";
-            periodo1=@"Enero - Febrero";
-            periodo2=@"Julio - Agosto";
-        }break;
-        case 7:
-        case 8:
-        {
-            NSLog(@"rosa");
-            calcomania=@"VerificacionRosa";
-            periodo1=@"Febrero - Marzo";
-            periodo2=@"Agosto - Septiembre";
-        }break;
-        case 3:
-        case 4:
-        {
-            NSLog(@"Rojo");
-            calcomania=@"VerificacionRojo";
-            periodo1=@"Marzo - Abril";
-            periodo2=@"Septiembre - Octubre";
-        }break;
-        case 1:
-        case 2:
-        {
-            NSLog(@"Verde");
-            calcomania=@"VerificacionVerde";
-            periodo1=@"Abril - Mayo";
-            periodo2=@"Octubre - Noviembre";
-        }break;
-        case 9:
-        case 0:
-        {
-            NSLog(@"Azul");
-            calcomania=@"VerificacionAzul";
-            periodo1=@"Mayo - Junio";
-            periodo2=@"Noviembre - Diciembre";
-        }break;
-            
-        default:
-            break;
+    if ([array count]>0) {
+        
+        NSString *ultimoNumero=[array objectAtIndex:[array count]-1];
+        NSString *periodo1;
+        NSString *periodo2;
+        NSString *calcomania;
+        switch ([ultimoNumero integerValue]) {
+            case 5:
+            case 6:
+            {
+                NSLog(@"Amarillo");
+                calcomania=@"VerificacionAmarillo";
+                periodo1=@"Enero - Febrero";
+                periodo2=@"Julio - Agosto";
+            }break;
+            case 7:
+            case 8:
+            {
+                NSLog(@"rosa");
+                calcomania=@"VerificacionRosa";
+                periodo1=@"Febrero - Marzo";
+                periodo2=@"Agosto - Septiembre";
+            }break;
+            case 3:
+            case 4:
+            {
+                NSLog(@"Rojo");
+                calcomania=@"VerificacionRojo";
+                periodo1=@"Marzo - Abril";
+                periodo2=@"Septiembre - Octubre";
+            }break;
+            case 1:
+            case 2:
+            {
+                NSLog(@"Verde");
+                calcomania=@"VerificacionVerde";
+                periodo1=@"Abril - Mayo";
+                periodo2=@"Octubre - Noviembre";
+            }break;
+            case 9:
+            case 0:
+            {
+                NSLog(@"Azul");
+                calcomania=@"VerificacionAzul";
+                periodo1=@"Mayo - Junio";
+                periodo2=@"Noviembre - Diciembre";
+            }break;
+                
+            default:
+                break;
+        }
+        poliza.perido1=periodo1;
+        poliza.perido2=periodo2;
+        poliza.calcomania=calcomania;
     }
-    poliza.perido1=periodo1;
-    poliza.perido2=periodo2;
-    poliza.calcomania=calcomania;
     
     return poliza;
     //[_calcomania setImage:[UIImage imageNamed:calcomania]];
@@ -201,5 +204,15 @@
     
 }
 
+-(IBAction)CambiaSwitch:(id)sender{
+    
+    NSUserDefaults *datosAlm=[NSUserDefaults standardUserDefaults];
+    if (_recordarVerificacion.on) {
+        [datosAlm setBool:YES forKey:@"recordarVerificacion"];
+    }else{
+        [datosAlm setBool:NO forKey:@"recordarVerificacion"];
+    }
+    [datosAlm synchronize];
+}
 
 @end

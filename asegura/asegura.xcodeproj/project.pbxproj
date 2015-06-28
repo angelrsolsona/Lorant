@@ -85,6 +85,7 @@
 		2AB9802E1AC0687B00952D36 /* NuevaPolizaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB9802D1AC0687B00952D36 /* NuevaPolizaViewController.m */; };
 		2AB980311AC06B4200952D36 /* LectorQRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB980301AC06B4200952D36 /* LectorQRViewController.m */; };
 		2AB980331AC06D9B00952D36 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB980321AC06D9B00952D36 /* AVFoundation.framework */; };
+		2AB9C7EB1B3FC00400AE96FB /* ObjNotificacion.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB9C7EA1B3FC00400AE96FB /* ObjNotificacion.m */; };
 		2ABAB18D1B3389C200D92CAA /* Fotos.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABAB18C1B3389C200D92CAA /* Fotos.m */; };
 		2AC2DB261B2A08EE006D3A5E /* DetallePolizaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC2DB251B2A08EE006D3A5E /* DetallePolizaViewController.m */; };
 		2AC4B6221AAB707300E727D8 /* Usuario.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC4B6211AAB707300E727D8 /* Usuario.m */; };
@@ -270,6 +271,8 @@
 		2AB9802F1AC06B4200952D36 /* LectorQRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LectorQRViewController.h; sourceTree = "<group>"; };
 		2AB980301AC06B4200952D36 /* LectorQRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LectorQRViewController.m; sourceTree = "<group>"; };
 		2AB980321AC06D9B00952D36 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		2AB9C7E91B3FC00400AE96FB /* ObjNotificacion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjNotificacion.h; sourceTree = "<group>"; };
+		2AB9C7EA1B3FC00400AE96FB /* ObjNotificacion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjNotificacion.m; sourceTree = "<group>"; };
 		2ABAB18A1B33896E00D92CAA /* Asegura 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Asegura 5.xcdatamodel"; sourceTree = "<group>"; };
 		2ABAB18B1B3389C200D92CAA /* Fotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Fotos.h; path = ../Fotos.h; sourceTree = "<group>"; };
 		2ABAB18C1B3389C200D92CAA /* Fotos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Fotos.m; path = ../Fotos.m; sourceTree = "<group>"; };
@@ -788,6 +791,8 @@
 				2AC4B6511AAEB12900E727D8 /* NotificacionesViewController.m */,
 				2A8C2FBE1AB0BA0D002900D9 /* NotificacionesTableViewCell.h */,
 				2A8C2FBF1AB0BA0D002900D9 /* NotificacionesTableViewCell.m */,
+				2AB9C7E91B3FC00400AE96FB /* ObjNotificacion.h */,
+				2AB9C7EA1B3FC00400AE96FB /* ObjNotificacion.m */,
 			);
 			name = Notificaciones;
 			sourceTree = "<group>";
@@ -997,6 +1002,7 @@
 				2A7218ED1B1C48CA0036211A /* AgenciasMarkerAnotation.m in Sources */,
 				2A054B431A76F389001090C7 /* UIProgressView+AFNetworking.m in Sources */,
 				2AC4B6561AAEB36400E727D8 /* AcercaDeViewController.m in Sources */,
+				2AB9C7EB1B3FC00400AE96FB /* ObjNotificacion.m in Sources */,
 				2A79792D1ACA102300E673E1 /* VerificacionTableViewCell.m in Sources */,
 				2A054B411A76F389001090C7 /* UIButton+AFNetworking.m in Sources */,
 				2A054B441A76F389001090C7 /* UIRefreshControl+AFNetworking.m in Sources */,

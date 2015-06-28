@@ -17,7 +17,8 @@
 
 @interface VerificacionesViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,NSConnectionDelegate>
 
-@property(strong,nonatomic) IBOutlet UITableView *tabla;
+@property(weak,nonatomic) IBOutlet UITableView *tabla;
+@property(weak,nonatomic) IBOutlet UISwitch *recordarVerificacion;
 @property(strong,nonatomic) NSConnection *conexion;
 @property(strong,nonatomic) MBProgressHUD *HUD;
 @property(strong,nonatomic) NSMutableArray *arrayVerificacion;
