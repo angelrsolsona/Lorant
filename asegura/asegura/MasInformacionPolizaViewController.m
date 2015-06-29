@@ -359,18 +359,48 @@
 
 - (IBAction)Guardar:(id)sender {
     
-    _polizaActual.instrumentoPago=_instrumentoPago.text;
-    _polizaActual.banco=_banco.text;
-    _polizaActual.diaPago=_diasPago.text;
-    _polizaActual.observacion=_observaciones.text;
-    _polizaActual.recordatorioPagoInicio=_recordatorioInicio.text;
-    _polizaActual.recordatorioPagoFin=_recordatorioFin.text;
-    NSLog(@"selected %d",_recordarPago.on);
-    _polizaActual.recordatorioPago=_recordarPago.on;
-    _polizaActual.tieneMasInformacion=YES;
-    [_delegate GuardarInfoPoliza:_polizaActual];
+    if (_recordarPago.on) {
+        if ([_recordatorioInicio.text isEqualToString:@""]||[_recordatorioFin.text isEqualToString:@""]) {
+            
+            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Los campos de fecha no pueden estar vacios" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+            [alert show];
+
+        }else{
+            if ([VerificacionFechas VerificaFechaesMenor:_recordatorioInicio.text fechaMayor:_recordatorioFin.text formatoFecha:@"dd/MM/yyyy"]) {
+                
+                _polizaActual.instrumentoPago=_instrumentoPago.text;
+                _polizaActual.banco=_banco.text;
+                _polizaActual.diaPago=_diasPago.text;
+                _polizaActual.observacion=_observaciones.text;
+                _polizaActual.recordatorioPagoInicio=_recordatorioInicio.text;
+                _polizaActual.recordatorioPagoFin=_recordatorioFin.text;
+                NSLog(@"selected %d",_recordarPago.on);
+                _polizaActual.recordatorioPago=_recordarPago.on;
+                _polizaActual.tieneMasInformacion=YES;
+                [_delegate GuardarInfoPoliza:_polizaActual];
+                [self.navigationController popViewControllerAnimated:YES];
+            }else{
+                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"La fecha de inicio no puede ser mayor que la fecha de fin" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+                [alert show];
+            }
+            
+        }
+        
+    }else{
+        
+        _polizaActual.instrumentoPago=_instrumentoPago.text;
+        _polizaActual.banco=_banco.text;
+        _polizaActual.diaPago=_diasPago.text;
+        _polizaActual.observacion=_observaciones.text;
+        _polizaActual.recordatorioPagoInicio=_recordatorioInicio.text;
+        _polizaActual.recordatorioPagoFin=_recordatorioFin.text;
+        NSLog(@"selected %d",_recordarPago.on);
+        _polizaActual.recordatorioPago=_recordarPago.on;
+        _polizaActual.tieneMasInformacion=YES;
+        [_delegate GuardarInfoPoliza:_polizaActual];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
     
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)cierraTeclado{

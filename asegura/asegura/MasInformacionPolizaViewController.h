@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Poliza.h"
+#import "VerificacionFechas.h"
 @protocol MasInformacionPolizaViewControllerDelegate <NSObject>
 
 -(void)GuardarInfoPoliza:(Poliza *)polizaActual;

@@ -37,11 +37,7 @@
                 NSLog (@"%@: %@", fontFamily, fontNames);
             }
 
-            NSMutableAttributedString *res =[NSMutableAttributedString.alloc initWithFileURL:[ NSBundle.mainBundle URLForResource:@"TipsAutos" withExtension:@"rtf"]
-                                                                                     options:nil
-                                                                          documentAttributes:nil
-                                                                                       error:nil
-                                             ];
+            NSMutableAttributedString *res =[NSMutableAttributedString.alloc initWithFileURL:[ NSBundle.mainBundle URLForResource:@"TipsAutos" withExtension:@"rtf"] options:nil documentAttributes:nil error:nil];
             [res beginEditing];
            
             __block BOOL found = NO;    [res enumerateAttribute:NSFontAttributeName inRange:NSMakeRange(0, res.length) options:0 usingBlock:^(id value, NSRange range, BOOL *stop) {
