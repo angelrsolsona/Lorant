@@ -2005,8 +2005,8 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="VerificacionAzul" translatesAutoresizingMaskIntoConstraints="NO" id="9e4-c2-O4b">
                                                     <rect key="frame" x="272" y="14" width="25" height="25"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Septiembre - Octubre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="biZ-U5-S7t">
-                                                    <rect key="frame" x="155" y="58" width="134" height="24"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Noviembre - Diciembre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="biZ-U5-S7t">
+                                                    <rect key="frame" x="155" y="58" width="142" height="24"/>
                                                     <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>

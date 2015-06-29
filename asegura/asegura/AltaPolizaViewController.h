@@ -18,6 +18,8 @@
 #import "MasInformacionPolizaViewController.h"
 #import "TextFieldValidator.h"
 #import "VerificacionFechas.h"
+#import "ARSNManagerCalendar.h"
+#import "Eventos.h"
 @interface AltaPolizaViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate,NSConnectionDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,MasInformacionPolizaViewControllerDelegate,UITextFieldDelegate>
 
 @property(weak,nonatomic)IBOutlet UIScrollView *vistaScroll;

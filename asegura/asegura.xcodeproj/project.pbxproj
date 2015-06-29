@@ -64,6 +64,9 @@
 		2A40F2CE1B2F913C00474BDB /* HistorialSiniestro.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A40F2CD1B2F913C00474BDB /* HistorialSiniestro.m */; };
 		2A5115D11A9663FE0048F15E /* RegistroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5115D01A9663FE0048F15E /* RegistroViewController.m */; };
 		2A5325EC1B2EA5D6003673B6 /* NotasReporteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5325EB1B2EA5D6003673B6 /* NotasReporteViewController.m */; };
+		2A59603F1B406EFE0020C6B1 /* ARSNManagerCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A59603E1B406EFE0020C6B1 /* ARSNManagerCalendar.m */; };
+		2A5960411B4070640020C6B1 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A5960401B4070640020C6B1 /* EventKit.framework */; };
+		2A5960451B40808A0020C6B1 /* Eventos.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5960441B40808A0020C6B1 /* Eventos.m */; };
 		2A60277A1A79774C006E2F8C /* rockwell.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2A6027791A7976E5006E2F8C /* rockwell.ttf */; };
 		2A60277B1A79774C006E2F8C /* Oswald-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2A6027781A7976DE006E2F8C /* Oswald-Regular.ttf */; };
 		2A6236531B220136006F8AB1 /* CoberturasTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A6236521B220136006F8AB1 /* CoberturasTableViewCell.m */; };
@@ -234,6 +237,12 @@
 		2A5115D31A9666450048F15E /* Asegura 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Asegura 2.xcdatamodel"; sourceTree = "<group>"; };
 		2A5325EA1B2EA5D6003673B6 /* NotasReporteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotasReporteViewController.h; sourceTree = "<group>"; };
 		2A5325EB1B2EA5D6003673B6 /* NotasReporteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotasReporteViewController.m; sourceTree = "<group>"; };
+		2A59603D1B406EFE0020C6B1 /* ARSNManagerCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARSNManagerCalendar.h; sourceTree = "<group>"; };
+		2A59603E1B406EFE0020C6B1 /* ARSNManagerCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARSNManagerCalendar.m; sourceTree = "<group>"; };
+		2A5960401B4070640020C6B1 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		2A5960421B4080750020C6B1 /* Asegura 11.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Asegura 11.xcdatamodel"; sourceTree = "<group>"; };
+		2A5960431B40808A0020C6B1 /* Eventos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Eventos.h; sourceTree = "<group>"; };
+		2A5960441B40808A0020C6B1 /* Eventos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Eventos.m; sourceTree = "<group>"; };
 		2A6027781A7976DE006E2F8C /* Oswald-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Regular.ttf"; sourceTree = "<group>"; };
 		2A6027791A7976E5006E2F8C /* rockwell.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = rockwell.ttf; sourceTree = "<group>"; };
 		2A6236511B220136006F8AB1 /* CoberturasTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoberturasTableViewCell.h; sourceTree = "<group>"; };
@@ -324,6 +333,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A5960411B4070640020C6B1 /* EventKit.framework in Frameworks */,
 				2AB980331AC06D9B00952D36 /* AVFoundation.framework in Frameworks */,
 				2AC4B63B1AAB908B00E727D8 /* SystemConfiguration.framework in Frameworks */,
 				2AC4B6391AAB907F00E727D8 /* QuartzCore.framework in Frameworks */,
@@ -356,6 +366,8 @@
 			children = (
 				2A00D9781B3E1E3C003A8370 /* VerificacionFechas.h */,
 				2A00D9791B3E1E3C003A8370 /* VerificacionFechas.m */,
+				2A59603D1B406EFE0020C6B1 /* ARSNManagerCalendar.h */,
+				2A59603E1B406EFE0020C6B1 /* ARSNManagerCalendar.m */,
 			);
 			name = Clases;
 			sourceTree = "<group>";
@@ -603,6 +615,8 @@
 		2A054B771A76F6B3001090C7 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				2A5960431B40808A0020C6B1 /* Eventos.h */,
+				2A5960441B40808A0020C6B1 /* Eventos.m */,
 				2A00D97C1B3E38F9003A8370 /* Polizas.h */,
 				2A00D97D1B3E38F9003A8370 /* Polizas.m */,
 				2A054B791A76F6D1001090C7 /* Asegura.xcdatamodeld */,
@@ -715,6 +729,7 @@
 		2AAD9571826BBB0C7C8DE75E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2A5960401B4070640020C6B1 /* EventKit.framework */,
 				A5034269FB6E613B49DA3118 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -1019,6 +1034,7 @@
 				2A054AE91A76F224001090C7 /* ViewController.m in Sources */,
 				2AFA8E371B39F52A0084E231 /* TextFieldValidator.m in Sources */,
 				2AB980311AC06B4200952D36 /* LectorQRViewController.m in Sources */,
+				2A59603F1B406EFE0020C6B1 /* ARSNManagerCalendar.m in Sources */,
 				2A054B241A76F31C001090C7 /* Reachability.m in Sources */,
 				2A054B421A76F389001090C7 /* UIImageView+AFNetworking.m in Sources */,
 				2A054B5A1A76F3A7001090C7 /* AFHTTPRequestOperation.m in Sources */,
@@ -1062,6 +1078,7 @@
 				2A054B171A76F2DC001090C7 /* RECommonFunctions.m in Sources */,
 				2A054B3E1A76F389001090C7 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				2A054B6F1A76F3FC001090C7 /* MenuViewController.m in Sources */,
+				2A5960451B40808A0020C6B1 /* Eventos.m in Sources */,
 				2A00D97A1B3E1E3C003A8370 /* VerificacionFechas.m in Sources */,
 				2A40F2C41B2F539900474BDB /* CausaSiniestro.m in Sources */,
 				2ADCCDA21B20D850001739D7 /* Poliza.m in Sources */,
@@ -1300,6 +1317,7 @@
 		2A054B791A76F6D1001090C7 /* Asegura.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				2A5960421B4080750020C6B1 /* Asegura 11.xcdatamodel */,
 				2A00D97B1B3E38C3003A8370 /* Asegura 10.xcdatamodel */,
 				2A00D9731B3E1C40003A8370 /* Asegura 9.xcdatamodel */,
 				2A00D96C1B3E1B08003A8370 /* Asegura 8.xcdatamodel */,

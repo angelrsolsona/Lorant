@@ -543,6 +543,11 @@
 
                 }
                 
+                if (_recordadVigencia.on) {
+                    
+                    [self recordadVigencia];
+                }
+                
             }else{
                 UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Error al guardar póliza intente de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:nil];
                 [alert show];
@@ -609,6 +614,35 @@
     [_vistaScroll setContentOffset:CGPointMake(0, 0) animated:YES];
 }
 
+-(void)RecuerdaVigenciaPoliza:(Poliza *)poliza{
+    
+    ARSNManagerCalendar *calendar=[[ARSNManagerCalendar alloc] init];
+    [calendar requestAccess:^(BOOL granted, NSError *error) {
+        
+        [calendar getCalendar];
+        
+        NSMutableDictionary *informacionEvento1=[[NSMutableDictionary alloc] initWithObjectsAndKeys:poliza.insurenceNumber,@"noPoliza",@"vigencia",@"tipo", nil];
+        
+        BOOL eventoGuardado=[calendar addEventAt:[VerificacionFechas convierteNSStringToNSDate:poliza.endDate Formato:@"dd/MM/yyyy"] endDate:[VerificacionFechas convierteNSStringToNSDate:poliza.endDate Formato:@"dd/MM/yyyy"] withTitle:[NSString stringWithFormat:@"Fin de vigencia póliza %@",poliza.insuranceName] allDay:YES recordatorio:nil informacionEvento:informacionEvento1 withIntervalAlarm:(60*60*24*-5)];
+        if (eventoGuardado) {
+            
+            for (NSMutableDictionary *dic in calendar.arrayEventos) {
+                
+                Eventos *evento=[NSEntityDescription insertNewObjectForEntityForName:@"Eventos" inManagedObjectContext:[NSCoreDataManager getManagedContext]];
+                
+                evento.noPoliza=[dic objectForKey:@"noPoliza"];
+                evento.tipo=[dic objectForKey:@"tipo"];
+                evento.idEvento=[dic objectForKey:@"idEvento"];
+                
+                if([NSCoreDataManager SaveData]){
+                }else{
+                }
+            }
+
+        }
+        
+    }];
+}
 
 #pragma mark - Date Picker
 -(void)CreateDatePicker:(id)sender{

@@ -14,6 +14,9 @@
 #import "Poliza.h"
 #import "Usuario.h"
 #import "NSCoreDataManager.h"
+#import "VerificacionFechas.h"
+#import "ARSNManagerCalendar.h"
+#import "Eventos.h"
 
 @interface VerificacionesViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,NSConnectionDelegate>
 

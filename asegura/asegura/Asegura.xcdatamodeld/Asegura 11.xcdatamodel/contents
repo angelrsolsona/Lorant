@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14B25" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Eventos" syncable="YES">
+    <entity name="Eventos" representedClassName="Eventos" syncable="YES">
         <attribute name="idEvento" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="noPoliza" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tipo" optional="YES" attributeType="String" syncable="YES"/>
@@ -40,10 +40,10 @@
         <attribute name="placas" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Eventos" positionX="-54" positionY="108" width="128" height="90"/>
         <element name="Fotos" positionX="-63" positionY="45" width="128" height="75"/>
         <element name="Polizas" positionX="-54" positionY="54" width="128" height="225"/>
         <element name="Usuario" positionX="-63" positionY="-18" width="128" height="150"/>
         <element name="Verificacion" positionX="-63" positionY="36" width="128" height="120"/>
-        <element name="Eventos" positionX="-54" positionY="108" width="128" height="90"/>
     </elements>
 </model>

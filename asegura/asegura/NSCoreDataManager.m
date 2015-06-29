@@ -69,6 +69,7 @@
     NSPredicate *predicate =[NSPredicate predicateWithFormat:predicatestr];
     [request setPredicate:predicate];
     [request setEntity:entity];
+    [request setReturnsDistinctResults:YES];
     NSError *error=nil;
     NSArray *array=[context executeFetchRequest:request error:&error];
     /*NSSortDescriptor *sortdescriptor=[[NSSortDescriptor alloc] initWithKey:@"id_ruta" ascending:YES];

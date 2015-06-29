@@ -410,11 +410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/VerificacionesViewController.m"
-            timestampString = "456689839.533703"
+            timestampString = "457223629.896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "-connectionDidFinish:numRequest:"
             landmarkType = "5">
          </BreakpointContent>
