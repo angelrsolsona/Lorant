@@ -39,6 +39,8 @@
 @property (weak, nonatomic) IBOutlet UISwitch *recordadVigencia;
 @property (weak, nonatomic) IBOutlet UIButton *btnGuardar;
 
+@property (weak,nonatomic) IBOutlet UIBarButtonItem *btnEditar;
+
 @property (strong,nonatomic) Poliza *polizaActual;
 @property (strong,nonatomic) Usuario *usuarioActual;
 @property (strong,nonatomic) NSConnection *conexion;

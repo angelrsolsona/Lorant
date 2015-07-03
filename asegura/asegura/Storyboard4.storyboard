@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Zif-aE-gnw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Zif-aE-gnw">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Oswald-Regular.ttf">
+            <string>Oswald-Regular</string>
             <string>Oswald-Regular</string>
             <string>Oswald-Regular</string>
             <string>Oswald-Regular</string>
@@ -1444,7 +1445,7 @@
                                         <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="13"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RlJ-HK-Hol">
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="RlJ-HK-Hol">
                                         <rect key="frame" x="104" y="400" width="51" height="31"/>
                                     </switch>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="FlechaPicker" translatesAutoresizingMaskIntoConstraints="NO" id="4LK-9N-iBj">
@@ -1510,7 +1511,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="z4I-cK-iuY" kind="push" identifier="masInformacion_segue" id="tUq-Hh-7b7"/>
+                                            <action selector="MasInformacion:" destination="qaj-4V-by6" eventType="touchUpInside" id="eLA-Ph-Ntx"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7tR-TV-H6o">
@@ -1586,6 +1587,7 @@
                         <outlet property="telefono" destination="Xnc-bs-s9J" id="f3h-pR-uj3"/>
                         <outlet property="txtContratadoCon" destination="YYq-kF-Glo" id="n7B-ca-i4E"/>
                         <outlet property="vistaScroll" destination="kzK-ig-bz2" id="aNM-mr-xE4"/>
+                        <segue destination="z4I-cK-iuY" kind="push" identifier="masInformacion_segue" id="fGT-A1-CQr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WHl-LU-dfC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1860,6 +1862,19 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="IconoMenuCotiza" translatesAutoresizingMaskIntoConstraints="NO" id="4Pv-0b-0rh">
                                 <rect key="frame" x="15" y="314" width="20" height="20"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gVa-kW-yVw">
+                                <rect key="frame" x="13" y="420" width="207" height="33"/>
+                                <color key="backgroundColor" red="0.68235294120000001" green="0.047058823530000002" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="15"/>
+                                <state key="normal" title="Cerrar Sesión">
+                                    <color key="titleColor" red="0.96534012430000005" green="0.95141694939999999" blue="0.95141694939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="AcercaDe:" destination="e0V-Lh-zZD" eventType="touchUpInside" id="i3W-Cf-FS5"/>
+                                    <action selector="CerrarSesion:" destination="e0V-Lh-zZD" eventType="touchUpInside" id="R7a-sT-Rdh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -3109,7 +3124,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="tzq-GT-ggh" kind="push" identifier="masInformacion_segue" id="auw-st-cP9"/>
+                                            <action selector="MasInformacion:" destination="U1c-N8-0dU" eventType="touchUpInside" id="nWS-BR-rTt"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O9i-5W-Npd">
@@ -3339,7 +3354,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Información Poliza" id="AEH-lJ-CmT">
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="ptM-3v-f4n">
+                        <barButtonItem key="rightBarButtonItem" title="Editar" id="ptM-3v-f4n">
                             <connections>
                                 <action selector="EditaPoliza:" destination="U1c-N8-0dU" id="0wP-45-25h"/>
                             </connections>
@@ -3350,6 +3365,7 @@
                     <connections>
                         <outlet property="aliasPoliza" destination="y9x-zn-BIc" id="kMt-Vm-eZw"/>
                         <outlet property="aseguradora" destination="nOM-0N-PcN" id="DUn-6t-cfg"/>
+                        <outlet property="btnEditar" destination="ptM-3v-f4n" id="vus-mf-bRb"/>
                         <outlet property="btnGuardar" destination="O9i-5W-Npd" id="61B-X3-L1c"/>
                         <outlet property="contratadoCon" destination="Lw2-cc-v2U" id="VFm-RV-3ZQ"/>
                         <outlet property="correoTitular" destination="0ka-3n-n3U" id="mdi-CB-cbu"/>
@@ -3369,13 +3385,14 @@
                         <segue destination="90N-mM-b5K" kind="push" identifier="foto_segue" id="csy-iM-FKG"/>
                         <segue destination="2sm-Jz-e8i" kind="push" identifier="edicionNormal_segue" id="oP5-eq-xgk"/>
                         <segue destination="qaj-4V-by6" kind="push" identifier="edicionAuto_segue" id="dpf-BB-oOH"/>
+                        <segue destination="tzq-GT-ggh" kind="push" identifier="masInformacion_segue" id="DvV-Hu-QlU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5D4-2t-JUy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2562" y="1414"/>
         </scene>
-        <!--Mas información-->
+        <!--Más información-->
         <scene sceneID="Ugj-sM-VRa">
             <objects>
                 <viewController id="tzq-GT-ggh" customClass="MasInformacionPolizaViewController" sceneMemberID="viewController">
@@ -3519,7 +3536,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Mas información" id="cds-u3-Z06"/>
+                    <navigationItem key="navigationItem" title="Más información" id="cds-u3-Z06"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="banco" destination="HQ8-l7-t2i" id="LYk-7s-YUe"/>
@@ -3535,7 +3552,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ib6-ol-gCJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3188" y="1583"/>
+            <point key="canvasLocation" x="3104" y="1437"/>
         </scene>
         <!--Foto Póliza-->
         <scene sceneID="Ohu-B3-FEb">
@@ -3722,7 +3739,7 @@
                                         <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="13"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6zj-L1-6Us">
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6zj-L1-6Us">
                                         <rect key="frame" x="104" y="321" width="51" height="31"/>
                                     </switch>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="FlechaPicker" translatesAutoresizingMaskIntoConstraints="NO" id="hnu-Ly-SA5">
@@ -3773,6 +3790,9 @@
                                         <state key="normal" backgroundImage="BotonMasInformacion">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="MasInformacion:" destination="2sm-Jz-e8i" eventType="touchUpInside" id="D3E-D8-3HM"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vVs-Ra-ZIT">
                                         <rect key="frame" x="61" y="569" width="194" height="40"/>
@@ -3904,8 +3924,8 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="hW9-Ed-bdY"/>
-        <segue reference="oP5-eq-xgk"/>
         <segue reference="dpf-BB-oOH"/>
+        <segue reference="oP5-eq-xgk"/>
         <segue reference="qeH-qL-Ekw"/>
     </inferredMetricsTieBreakers>
 </document>

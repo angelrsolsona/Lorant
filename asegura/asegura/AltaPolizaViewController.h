@@ -39,6 +39,7 @@
 @property(strong,nonatomic)NSConnection *conexion;
 @property(strong,nonatomic)MBProgressHUD *HUD;
 @property(strong,nonatomic)Poliza *polizaActual;
+@property(strong,nonatomic)Polizas *polizaActualInterna;
 @property(strong,nonatomic)NSMutableArray *arrayAseguradoras;
 @property(strong,nonatomic)Aseguradoras *aseguradoraActual;
 @property (strong,nonatomic) Usuario *usuarioActual;

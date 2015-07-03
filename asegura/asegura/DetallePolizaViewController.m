@@ -24,13 +24,25 @@
     if (_esBusquedaNueva) {
          //NSLog(@"dueño %@",_polizaActual.ownerName);
         [_lblVerFoto setHidden:YES];
+        
+        [_btnEditar setStyle:UIBarButtonItemStylePlain];
+        [_btnEditar setEnabled:NO];
+        [_btnEditar setTitle:nil];
+        
         [self MuestraDatosPoliza];
+        [self BloquearCampos:1];
         
     }else{
         // Detalles de Poliza
+        
+        [_btnEditar setStyle:UIBarButtonItemStyleBordered];
+        [_btnEditar setEnabled:YES];
+        [_btnEditar setTitle:@"Editar"];
+        
         NSArray *arrayPolizas=[NSCoreDataManager getDataWithEntity:@"Polizas" predicate:[NSString stringWithFormat:@"noPoliza=\"%@\"",_polizaActual.insurenceNumber] andManagedObjContext:[NSCoreDataManager getManagedContext]];
-        if ([array count]>0) {
+        if ([arrayPolizas count]>0) {
             Polizas *polizasActual=[arrayPolizas objectAtIndex:0];
+            NSLog(@"Valor de vigencia %@",polizasActual.recordarVigencia);
             if ([polizasActual.recordarVigencia boolValue]) {
                 [_recordadVigencia setOn:YES];
             }else{
@@ -43,18 +55,18 @@
         [_lblVerFoto setHidden:NO];
         [_btnGuardar setHidden:YES];
         
-        [_noPoliza setEnabled:YES];
-        [_aliasPoliza setEnabled:YES];
-        [_aseguradora setEnabled:YES];
-        [_nombreAsegurado setEnabled:YES];
+        [_noPoliza setEnabled:NO];
+        [_aliasPoliza setEnabled:NO];
+        [_aseguradora setEnabled:NO];
+        [_nombreAsegurado setEnabled:NO];
         [_telefonoTitular setEnabled:YES];
         [_correoTitular setEnabled:YES];
-        [_fechaInicio setEnabled:YES];
-        [_fechaVigencia setEnabled:YES];
-        [_recordadVigencia setEnabled:YES];
-        [_formaPago setEnabled:YES];
-        [_txtContratadoCon setEnabled:YES];
-        [_paquete setEnabled:YES];
+        [_fechaInicio setEnabled:NO];
+        [_fechaVigencia setEnabled:NO];
+        [_recordadVigencia setEnabled:NO];
+        [_formaPago setEnabled:NO];
+        [_txtContratadoCon setEnabled:NO];
+        [_paquete setEnabled:NO];
         
         NSString *noPoliza=@"";
         NSString *noSerie=@"";
@@ -174,7 +186,7 @@
             NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:result options:NSJSONReadingAllowFragments error:&error];
             if ([[dic objectForKey:@"ErrorCode"] isEqualToString:@"ER0001"]) {
                 
-                if (_polizaActual.tieneMasInformacion) {
+                /*if (_polizaActual.tieneMasInformacion) {
                     Polizas *polizaInformacion=[NSEntityDescription insertNewObjectForEntityForName:@"Polizas" inManagedObjectContext:[NSCoreDataManager getManagedContext]];
                     polizaInformacion.intrumentoPago=_polizaActual.instrumentoPago;
                     polizaInformacion.banco=_polizaActual.banco;
@@ -215,7 +227,66 @@
                         [alert show];
                     }
                     
+                }*/
+                
+                if (_polizaActual.tieneMasInformacion) {
+                    Polizas *polizaInformacion=[NSEntityDescription insertNewObjectForEntityForName:@"Polizas" inManagedObjectContext:[NSCoreDataManager getManagedContext]];
+                    polizaInformacion.intrumentoPago=_polizaActual.instrumentoPago;
+                    polizaInformacion.banco=_polizaActual.banco;
+                    polizaInformacion.diaPago=_polizaActual.diaPago;
+                    polizaInformacion.observaciones=_polizaActual.observacion;
+                    polizaInformacion.recordatorioInicio=_polizaActual.recordatorioPagoInicio;
+                    polizaInformacion.recordatorioFin=_polizaActual.recordatorioPagoFin;
+                    polizaInformacion.recordadDiaPago=[NSString stringWithFormat:@"%hhd",_polizaActual.recordatorioPago];
+                    polizaInformacion.noPoliza=_polizaActual.insurenceNumber;
+                    
+                    if (_polizaActual.recordatorioPago) {
+                        [self RecuerdaDiaPago:_polizaActual];
+                    }
+                    if (_polizaActual.recordarVigencia) {
+                        [self RecuerdaVigenciaPoliza:_polizaActual];
+                        polizaInformacion.recordarVigencia=[NSNumber numberWithBool:_polizaActual.recordarVigencia];
+                    }
+                    
+                    if (![_polizaActual.foto isEqual:nil]) {
+                        polizaInformacion.foto=_polizaActual.foto;
+                    }
+                    if ([NSCoreDataManager SaveData]) {
+                        [_HUD hide:YES];
+                        [self.navigationController popToRootViewControllerAnimated:YES];
+                    }else{
+                        
+                        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Error al guardar póliza intente de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:nil];
+                        [alert show];
+                    }
+                }else if (![_polizaActual.foto isEqual:nil]){
+                    Polizas *polizaInformacion=[NSEntityDescription insertNewObjectForEntityForName:@"Polizas" inManagedObjectContext:[NSCoreDataManager getManagedContext]];
+                    polizaInformacion.foto=_polizaActual.foto;
+                    if([NSCoreDataManager SaveData]){
+                        [_HUD hide:YES];
+                        [self.navigationController popToRootViewControllerAnimated:YES];
+                    }else{
+                        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Error al guardar póliza intente de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:nil];
+                        [alert show];
+                    }
+                }else{
+                    if (_polizaActual.recordarVigencia) {
+                        [self RecuerdaVigenciaPoliza:_polizaActual];
+                    }
+                    Polizas *polizaInformacion=[NSEntityDescription insertNewObjectForEntityForName:@"Polizas" inManagedObjectContext:[NSCoreDataManager getManagedContext]];
+                    polizaInformacion.recordarVigencia=[NSNumber numberWithBool:_recordadVigencia.on];
+                    //polizaInformacion.fechaInicioVigencia=_fechaInicio.text;
+                    //polizaInformacion.fechaFinVigencia=_fechaFin.text;
+                    if([NSCoreDataManager SaveData]){
+                        [_HUD hide:YES];
+                        [self.navigationController popToRootViewControllerAnimated:YES];
+                    }else{
+                        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Error al guardar póliza intente de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:nil];
+                        [alert show];
+                    }
+                    
                 }
+
 
                 
             }else{
@@ -269,17 +340,17 @@
             //Detalle y Es de lorant
             
             [_noPoliza setEnabled:NO];
-            [_aliasPoliza setEnabled:NO];
+            [_aliasPoliza setEnabled:YES];
             [_aseguradora setEnabled:NO];
             [_nombreAsegurado setEnabled:NO];
-            [_telefonoTitular setEnabled:NO];
-            [_correoTitular setEnabled:NO];
-            [_recordadVigencia setEnabled:NO];
+            [_telefonoTitular setEnabled:YES];
+            [_correoTitular setEnabled:YES];
+            [_recordadVigencia setEnabled:YES];
             [_formaPago setEnabled:NO];
             [_txtContratadoCon setEnabled:NO];
-            [_paquete setEnabled:YES];
-            [_fechaInicio setEnabled:YES];
-            [_fechaVigencia setEnabled:YES];
+            [_paquete setEnabled:NO];
+            [_fechaInicio setEnabled:NO];
+            [_fechaVigencia setEnabled:NO];
             
             
             
@@ -516,6 +587,11 @@
     }
 }
 
+-(IBAction)MasInformacion:(id)sender{
+    
+    [self performSegueWithIdentifier:@"masInformacion_segue" sender:self];
+}
+
 #pragma mark - AltaPolizaDelegate 
 
 -(void)PolizaEditada:(Poliza *)poliza{
@@ -541,6 +617,74 @@
     [_HUD show:YES];
 
 }
+
+#pragma mark - Metodos
+
+-(void)RecuerdaVigenciaPoliza:(Poliza *)poliza{
+    
+    ARSNManagerCalendar *calendar=[[ARSNManagerCalendar alloc] init];
+    [calendar requestAccess:^(BOOL granted, NSError *error) {
+        
+        [calendar getCalendar];
+        
+        NSMutableDictionary *informacionEvento1=[[NSMutableDictionary alloc] initWithObjectsAndKeys:poliza.insurenceNumber,@"noPoliza",@"vigencia",@"tipo", nil];
+        
+        BOOL eventoGuardado=[calendar addEventAt:[VerificacionFechas convierteNSStringToNSDate:poliza.endDate Formato:@"dd/MM/yyyy"] endDate:[VerificacionFechas convierteNSStringToNSDate:poliza.endDate Formato:@"dd/MM/yyyy"] withTitle:[NSString stringWithFormat:@"Fin de vigencia póliza %@",poliza.insuranceName] allDay:YES recordatorio:nil informacionEvento:informacionEvento1 withIntervalAlarm:(60*60*24*-5)];
+        if (eventoGuardado) {
+            
+            for (NSMutableDictionary *dic in calendar.arrayEventos) {
+                
+                Eventos *evento=[NSEntityDescription insertNewObjectForEntityForName:@"Eventos" inManagedObjectContext:[NSCoreDataManager getManagedContext]];
+                
+                evento.noPoliza=[dic objectForKey:@"noPoliza"];
+                evento.tipo=[dic objectForKey:@"tipo"];
+                evento.idEvento=[dic objectForKey:@"idEvento"];
+                
+                if([NSCoreDataManager SaveData]){
+                }else{
+                }
+            }
+            
+        }
+        
+    }];
+}
+
+-(void)RecuerdaDiaPago:(Poliza *)poliza{
+    
+    ARSNManagerCalendar *calendar=[[ARSNManagerCalendar alloc] init];
+    [calendar requestAccess:^(BOOL granted, NSError *error) {
+        [calendar getCalendar];
+        
+        NSMutableDictionary *informacionEvento1=[[NSMutableDictionary alloc] initWithObjectsAndKeys:poliza.insurenceNumber,@"noPoliza",@"pago",@"tipo", nil];
+        
+        EKRecurrenceEnd *end=[EKRecurrenceEnd recurrenceEndWithEndDate:[VerificacionFechas convierteNSStringToNSDate:poliza.recordatorioPagoFin Formato:@"dd/MM/yyyy"]];
+        
+        EKRecurrenceRule *rule1=[[EKRecurrenceRule alloc] initRecurrenceWithFrequency:EKRecurrenceFrequencyMonthly interval:1 daysOfTheWeek:nil daysOfTheMonth:@[poliza.diaPago] monthsOfTheYear:nil weeksOfTheYear:nil daysOfTheYear:nil setPositions:nil end:end];
+        
+        
+        BOOL eventoGuardado=[calendar addEventAt:[VerificacionFechas convierteNSStringToNSDate:poliza.recordatorioPagoInicio Formato:@"dd/MM/yyyy"] endDate:[VerificacionFechas convierteNSStringToNSDate:poliza.recordatorioPagoFin Formato:@"dd/MM/yyyy"] withTitle:[NSString stringWithFormat:@"Día de pago de la póliza %@",poliza.insurenceAlias] allDay:YES recordatorio:rule1 informacionEvento:informacionEvento1 withIntervalAlarm:(60*60*24*-5)];
+        if (eventoGuardado) {
+            
+            for (NSMutableDictionary *dic in calendar.arrayEventos) {
+                
+                Eventos *evento=[NSEntityDescription insertNewObjectForEntityForName:@"Eventos" inManagedObjectContext:[NSCoreDataManager getManagedContext]];
+                
+                evento.noPoliza=[dic objectForKey:@"noPoliza"];
+                evento.tipo=[dic objectForKey:@"tipo"];
+                evento.idEvento=[dic objectForKey:@"idEvento"];
+                
+                if([NSCoreDataManager SaveData]){
+                }else{
+                }
+            }
+            
+        }
+        
+        
+    }];
+}
+
 
 
 

@@ -371,7 +371,7 @@
     
     [_nombreAgencia setText:marker.nombreAgencia];
     [_direccionAgencia setText:marker.domicilio];
-    [_telefonos setText:[NSString stringWithFormat:@"Telefono:%@\nCorreo:%@",marker.telefono,marker.correo]];
+    [_telefonos setText:[NSString stringWithFormat:@"Teléfono:%@\nCorreo:%@",marker.telefono,marker.correo]];
     _markerActual=marker;
     [_btnLlamar setEnabled:YES];
     return NO;

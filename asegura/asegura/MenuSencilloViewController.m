@@ -133,6 +133,56 @@
     }];*/
 }
 
+-(IBAction)CerrarSesion:(id)sender{
+    
+    NSArray *eventos=[NSCoreDataManager getDataWithEntity:@"Eventos" andManagedObjContext:[NSCoreDataManager getManagedContext]];
+    
+    for (Eventos *evento in eventos) {
+        
+        [[NSCoreDataManager getManagedContext] deleteObject:evento];
+        [NSCoreDataManager SaveData];
+    }
+    
+    NSArray *polizas=[NSCoreDataManager getDataWithEntity:@"Polizas" andManagedObjContext:[NSCoreDataManager getManagedContext]];
+    
+    for (Polizas *poliza in polizas) {
+        
+        [[NSCoreDataManager getManagedContext] deleteObject:poliza];
+        [NSCoreDataManager SaveData];
+    }
+    
+    NSArray *fotos=[NSCoreDataManager getDataWithEntity:@"Fotos" andManagedObjContext:[NSCoreDataManager getManagedContext]];
+    
+    for (Eventos *foto in fotos) {
+        
+        [[NSCoreDataManager getManagedContext] deleteObject:foto];
+        [NSCoreDataManager SaveData];
+    }
+    
+    NSArray *usuarios=[NSCoreDataManager getDataWithEntity:@"Usuarios" andManagedObjContext:[NSCoreDataManager getManagedContext]];
+    
+    for (Eventos *usuario in usuarios) {
+        
+        [[NSCoreDataManager getManagedContext] deleteObject:usuario];
+        [NSCoreDataManager SaveData];
+    }
+    
+    NSUserDefaults *datosAlm=[NSUserDefaults standardUserDefaults];
+    [datosAlm setBool:NO forKey:@"login"];
+    [datosAlm synchronize];
+    
+    NavigationViewController *navigationController = [self.storyboard instantiateViewControllerWithIdentifier:@"contentController"];
+    InicioViewController *IVC = [self.storyboard instantiateViewControllerWithIdentifier:@"InicioController"];
+    navigationController.viewControllers = @[IVC];
+    self.frostedViewController.contentViewController = navigationController;
+    [self.frostedViewController hideMenuViewController];
+    IVC=nil;
+    navigationController=nil;
+    
+    
+    
+}
+
 /*
 #pragma mark - Navigation
 

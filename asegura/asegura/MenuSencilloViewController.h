@@ -10,6 +10,11 @@
 #import "NavigationViewController.h"
 #import "InicioViewController.h"
 #import <MessageUI/MessageUI.h>
+#import "Eventos.h"
+#import "Polizas.h"
+#import "Fotos.h"
+#import "Usuario.h"
+#import "NSCoreDataManager.h"
 
 
 @interface MenuSencilloViewController : ViewController

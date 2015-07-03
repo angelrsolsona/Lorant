@@ -219,7 +219,8 @@
     
 }
 -(void)connectionDidFail:(NSString *)error{
-    
+    [_HUD hide:YES];
+    NSLog(@"error%@",[error description]);
     UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Error" message:@"Error de conexion intenta de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
     [alert show];
     
