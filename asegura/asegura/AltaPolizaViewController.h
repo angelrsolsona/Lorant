@@ -20,6 +20,12 @@
 #import "VerificacionFechas.h"
 #import "ARSNManagerCalendar.h"
 #import "Eventos.h"
+
+@protocol AltaPolizaViewControllerDelegate <NSObject>
+
+-(void)PolizaEditada:(Poliza *)poliza;
+
+@end
 @interface AltaPolizaViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate,NSConnectionDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,MasInformacionPolizaViewControllerDelegate,UITextFieldDelegate>
 
 @property(weak,nonatomic)IBOutlet UIScrollView *vistaScroll;
@@ -40,7 +46,7 @@
 @property (assign,nonatomic) BOOL estaActivoPicker;
 @property (assign,nonatomic) BOOL estaActivoPickerDate;
 @property(strong,nonatomic) UIImagePickerController *picker;
-
+@property(assign,nonatomic)BOOL esEdicion;
 
 @property (weak, nonatomic) IBOutlet TextFieldValidator *numeroPoliza;
 @property (weak, nonatomic) IBOutlet TextFieldValidator *numeroSerie;
@@ -58,6 +64,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *fechaInicio;
 @property (weak, nonatomic) IBOutlet UITextField *fechaFin;
 @property (weak, nonatomic) IBOutlet TextFieldValidator *aliasPoliza;
+
+@property(weak,nonatomic) id <AltaPolizaViewControllerDelegate> delegate;
 
 
 @end

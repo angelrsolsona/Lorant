@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _estaEditando=NO;
     NSArray *array=[NSCoreDataManager getDataWithEntity:@"Usuario" andManagedObjContext:[NSCoreDataManager getManagedContext]];
     
     _usuarioActual=[array objectAtIndex:0];
@@ -24,9 +25,37 @@
          //NSLog(@"dueño %@",_polizaActual.ownerName);
         [_lblVerFoto setHidden:YES];
         [self MuestraDatosPoliza];
+        
     }else{
+        // Detalles de Poliza
+        NSArray *arrayPolizas=[NSCoreDataManager getDataWithEntity:@"Polizas" predicate:[NSString stringWithFormat:@"noPoliza=\"%@\"",_polizaActual.insurenceNumber] andManagedObjContext:[NSCoreDataManager getManagedContext]];
+        if ([array count]>0) {
+            Polizas *polizasActual=[arrayPolizas objectAtIndex:0];
+            if ([polizasActual.recordarVigencia boolValue]) {
+                [_recordadVigencia setOn:YES];
+            }else{
+                [_recordadVigencia setOn:NO];
+            }
+        }else{
+            [_recordadVigencia setOn:NO];
+        }
+        
         [_lblVerFoto setHidden:NO];
         [_btnGuardar setHidden:YES];
+        
+        [_noPoliza setEnabled:YES];
+        [_aliasPoliza setEnabled:YES];
+        [_aseguradora setEnabled:YES];
+        [_nombreAsegurado setEnabled:YES];
+        [_telefonoTitular setEnabled:YES];
+        [_correoTitular setEnabled:YES];
+        [_fechaInicio setEnabled:YES];
+        [_fechaVigencia setEnabled:YES];
+        [_recordadVigencia setEnabled:YES];
+        [_formaPago setEnabled:YES];
+        [_txtContratadoCon setEnabled:YES];
+        [_paquete setEnabled:YES];
+        
         NSString *noPoliza=@"";
         NSString *noSerie=@"";
         if (_polizaActual.ramo==1) {
@@ -41,7 +70,7 @@
     
     _HUD=[[MBProgressHUD alloc] initWithView:self.view];
     [_HUD setMode:MBProgressHUDModeIndeterminate];
-    [_HUD setLabelText:@"Obteniendo Polizas"];
+    [_HUD setLabelText:@"Obteniendo Póliza"];
     [self.view addSubview:_HUD];
     [_HUD show:YES];
     }
@@ -77,6 +106,13 @@
     if ([segue.identifier isEqualToString:@"foto_segue"]) {
         GaleriaViewController *GVC=[segue destinationViewController];
         [GVC setImagenData:_polizaActual.foto];
+    }
+    
+    if ([segue.identifier isEqualToString:@"edicionAuto_segue"]||[segue.identifier isEqualToString:@"edicionNormal_segue"]) {
+        AltaPolizaViewController *APVC=[segue destinationViewController];
+        [APVC setEsEdicion:YES];
+        [APVC setPolizaActual:_polizaActual];
+        [APVC setDelegate:self];
     }
 }
 
@@ -217,13 +253,43 @@
     [_fechaInicio setText:_polizaActual.startDate];
     [_fechaVigencia setText:_polizaActual.endDate];
     [_formaPago setText:_polizaActual.formaPago];
-    [_contratadoCon setText:[NSString stringWithFormat:@"Agente: %@",_polizaActual.contratadoCon]];
+    //[_contratadoCon setText:[NSString stringWithFormat:@"Agente: %@",_polizaActual.contratadoCon]];
+    [_txtContratadoCon setText:_polizaActual.contratadoCon];
     [_paquete setText:_polizaActual.paquete];
     [_tablaCoberturas reloadData];
     [_tablaDetalle reloadData];
     
-    
 }
+
+-(void)BloquearCampos:(NSInteger)tipoBloqueo{
+    
+    switch (tipoBloqueo) {
+        case 1:
+        {
+            //Detalle y Es de lorant
+            
+            [_noPoliza setEnabled:NO];
+            [_aliasPoliza setEnabled:NO];
+            [_aseguradora setEnabled:NO];
+            [_nombreAsegurado setEnabled:NO];
+            [_telefonoTitular setEnabled:NO];
+            [_correoTitular setEnabled:NO];
+            [_recordadVigencia setEnabled:NO];
+            [_formaPago setEnabled:NO];
+            [_txtContratadoCon setEnabled:NO];
+            [_paquete setEnabled:YES];
+            [_fechaInicio setEnabled:YES];
+            [_fechaVigencia setEnabled:YES];
+            
+            
+            
+        }break;
+            
+        default:
+            break;
+    }
+}
+
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
@@ -436,6 +502,46 @@
     
     return NO;
 }
+
+#pragma mark - Acciones de Boton
+
+-(IBAction)EditaPoliza:(id)sender{
+    
+    if (_polizaActual.ramo==1) {
+        
+        [self performSegueWithIdentifier:@"edicionAuto_segue" sender:self];
+        
+    }else{
+        [self performSegueWithIdentifier:@"edicionNormal_segue" sender:self];
+    }
+}
+
+#pragma mark - AltaPolizaDelegate 
+
+-(void)PolizaEditada:(Poliza *)poliza{
+    
+    [_lblVerFoto setHidden:NO];
+    [_btnGuardar setHidden:YES];
+    NSString *noPoliza=@"";
+    NSString *noSerie=@"";
+    if (_polizaActual.ramo==1) {
+        noPoliza=_polizaActual.insurenceNumber;
+        noSerie=_polizaActual.numeroSerie;
+    }else{
+        noPoliza=_polizaActual.insurenceNumber;
+        noSerie=@"";
+    }
+    _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/getInsuranceDetailWS" parameters:@{@"insuranceNumber":noPoliza,@"serialNumberSuffix":noSerie} idRequest:1 delegate:self];
+    [_conexion connectionPOSTExecute];
+    
+    _HUD=[[MBProgressHUD alloc] initWithView:self.view];
+    [_HUD setMode:MBProgressHUDModeIndeterminate];
+    [_HUD setLabelText:@"Obteniendo Póliza"];
+    [self.view addSubview:_HUD];
+    [_HUD show:YES];
+
+}
+
 
 
 @end

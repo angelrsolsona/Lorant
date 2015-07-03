@@ -45,6 +45,7 @@
 @property(strong,nonatomic)NSString *recordatorioPagoFin;
 @property(assign,nonatomic)BOOL recordatorioPago;
 @property(strong,nonatomic)NSData *foto;
+@property(assign,nonatomic)BOOL recordarVigencia;
 
 @property(assign,nonatomic)BOOL tieneMasInformacion;
 

@@ -26,15 +26,36 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
     NSArray *array=[NSCoreDataManager getDataWithEntity:@"Usuario" andManagedObjContext:[NSCoreDataManager getManagedContext]];
     _usuarioActual=[array objectAtIndex:0];
-
-    [_numeroPoliza setText:_polizaActual.insurenceNumber];
-    if (_polizaActual.ramo==1) {
-        [_numeroSerie setText:_polizaActual.numeroSerie];
-    }
     [self ObtenAseguradoras];
     [self InicializaTextField];
+    
+    if (_esEdicion) {
+        
+        if (_polizaActual.ramo==1) {
+            [self MuestraDatos:1];
+        }else{
+            [self MuestraDatos:2];
+        }
+        if ([_polizaActual.contratadoCon isEqualToString:@"LORANTMMS"]) {
+            
+            [self BloqueaCampos:1];
+            
+        }else{
+            
+            [self BloqueaCampos:2];
+        }
+        
+    }else{
+
+        [_numeroPoliza setText:_polizaActual.insurenceNumber];
+        if (_polizaActual.ramo==1) {
+            [_numeroSerie setText:_polizaActual.numeroSerie];
+        }
+        
+    }
     
     
 }
@@ -332,27 +353,54 @@
             _polizaActual.formaPago=_formaPago.text;
             _polizaActual.contratadoCon=_txtContratadoCon.text;
             _polizaActual.paquete=_paquete.text;
+            _polizaActual.recordarVigencia=_recordadVigencia.on;
             
-            NSDictionary *parametros=@{@"alias":_polizaActual.insurenceAlias,
-                                       @"insuranceNumber":_polizaActual.insurenceNumber,
-                                       @"serialNumberSuffix":_polizaActual.numeroSerie,
-                                       @"nickName":_usuarioActual.correo,
-                                       @"name":_polizaActual.ownerName,
-                                       @"startDate":_polizaActual.startDate,
-                                       @"endDate":_polizaActual.endDate,
-                                       @"contactMail":_polizaActual.contactMail,
-                                       @"contactPhoneNumber":_polizaActual.contactPhoneNumber,
-                                       @"productFDetail":@"",
-                                       @"_iIdRamo":[NSString stringWithFormat:@"%d",_polizaActual.ramo],
-                                       @"idAseguradora":[NSString stringWithFormat:@"%d",_polizaActual.idAseguradora],
-                                       @"idSistema":@"1",
-                                       @"idPolizaSistema":@"0",
-                                       @"Placas":_polizaActual.noPlacas,
-                                       @"FormaPago":_polizaActual.formaPago,
-                                       @"Paquete":_polizaActual.paquete};
+            if (_esEdicion) {
+                
+                NSDictionary *parametros=@{@"alias":_polizaActual.insurenceAlias,
+                                           @"insuranceNumber":_polizaActual.insurenceNumber,
+                                           @"serialNumberSuffix":_polizaActual.numeroSerie,
+                                           @"nickName":_usuarioActual.correo,
+                                           @"name":_polizaActual.ownerName,
+                                           @"startDate":_polizaActual.startDate,
+                                           @"endDate":_polizaActual.endDate,
+                                           @"contactMail":_polizaActual.contactMail,
+                                           @"contactPhoneNumber":_polizaActual.contactPhoneNumber,
+                                           @"productFDetail":@"",
+                                           @"_iIdRamo":[NSString stringWithFormat:@"%d",_polizaActual.ramo],
+                                           @"idAseguradora":[NSString stringWithFormat:@"%d",_polizaActual.idAseguradora],
+                                           @"idSistema":@"1",
+                                           @"idPolizaSistema":@"0",
+                                           @"Placas":_polizaActual.noPlacas,
+                                           @"FormaPago":_polizaActual.formaPago,
+                                           @"Paquete":_polizaActual.paquete};
+                
+                _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/updateInsurance" parameters:parametros idRequest:3 delegate:self];
+                [_conexion connectionPOSTExecute];
+                
+            }else{
             
-            _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/addInsurance" parameters:parametros idRequest:3 delegate:self];
-            [_conexion connectionPOSTExecute];
+                NSDictionary *parametros=@{@"alias":_polizaActual.insurenceAlias,
+                                           @"insuranceNumber":_polizaActual.insurenceNumber,
+                                           @"serialNumberSuffix":_polizaActual.numeroSerie,
+                                           @"nickName":_usuarioActual.correo,
+                                           @"name":_polizaActual.ownerName,
+                                           @"startDate":_polizaActual.startDate,
+                                           @"endDate":_polizaActual.endDate,
+                                           @"contactMail":_polizaActual.contactMail,
+                                           @"contactPhoneNumber":_polizaActual.contactPhoneNumber,
+                                           @"productFDetail":@"",
+                                           @"_iIdRamo":[NSString stringWithFormat:@"%d",_polizaActual.ramo],
+                                           @"idAseguradora":[NSString stringWithFormat:@"%d",_polizaActual.idAseguradora],
+                                           @"idSistema":@"1",
+                                           @"idPolizaSistema":@"0",
+                                           @"Placas":_polizaActual.noPlacas,
+                                           @"FormaPago":_polizaActual.formaPago,
+                                           @"Paquete":_polizaActual.paquete};
+                
+                _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/addInsurance" parameters:parametros idRequest:3 delegate:self];
+                [_conexion connectionPOSTExecute];
+            }
         }
         
     }
@@ -497,60 +545,100 @@
             
             NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:result options:NSJSONReadingAllowFragments error:&error];
             if ([[dic objectForKey:@"ErrorCode"] isEqualToString:@"ER0001"]) {
-                
-                if (_polizaActual.tieneMasInformacion) {
-                    Polizas *polizaInformacion=[NSEntityDescription insertNewObjectForEntityForName:@"Polizas" inManagedObjectContext:[NSCoreDataManager getManagedContext]];
-                    polizaInformacion.intrumentoPago=_polizaActual.instrumentoPago;
-                    polizaInformacion.banco=_polizaActual.banco;
-                    polizaInformacion.diaPago=_polizaActual.diaPago;
-                    polizaInformacion.observaciones=_polizaActual.observacion;
-                    polizaInformacion.recordatorioInicio=_polizaActual.recordatorioPagoInicio;
-                    polizaInformacion.recordatorioFin=_polizaActual.recordatorioPagoFin;
-                    polizaInformacion.recordadDiaPago=[NSString stringWithFormat:@"%hhd",_polizaActual.recordatorioPago];
-                    polizaInformacion.noPoliza=_polizaActual.insurenceNumber;
+                if (_esEdicion) {
+                    NSArray *arrayDiaPago=[NSCoreDataManager getDataWithEntity:@"Eventos" predicate:[NSString stringWithFormat:@"noPoliza=%@ AND tipo=\"pago\"",_polizaActual.insurenceNumber] andManagedObjContext:[NSCoreDataManager getManagedContext]];
                     
-                    if (_polizaActual.recordatorioPago) {
-                        [self RecuerdaDiaPago:_polizaActual];
-                    }
+                    NSArray *arrayVigencia=[NSCoreDataManager getDataWithEntity:@"Eventos" predicate:[NSString stringWithFormat:@"noPoliza=%@ AND tipo=\"vigencia\"",_polizaActual.insurenceNumber] andManagedObjContext:[NSCoreDataManager getManagedContext]];
                     
-                    if (![_polizaActual.foto isEqual:nil]) {
-                        polizaInformacion.foto=_polizaActual.foto;
-                    }
-                    if ([NSCoreDataManager SaveData]) {
-                        [_HUD hide:YES];
-                        [self.navigationController popToRootViewControllerAnimated:YES];
-                    }else{
+                    if ([arrayDiaPago count]>0) {
+                        Eventos *eventoDiaPago=[arrayDiaPago objectAtIndex:0];
                         
-                        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Error al guardar póliza intente de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:nil];
-                        [alert show];
+                        ARSNManagerCalendar *calendar=[[ARSNManagerCalendar alloc] init];
+                        [calendar requestAccess:^(BOOL granted, NSError *error) {
+                           
+                            [calendar getCalendar];
+                            [calendar removeEventWithIdentifier:eventoDiaPago.idEvento removeFutureEvents:YES];
+ 
+                        }];
                     }
-                }else if (![_polizaActual.foto isEqual:nil]){
-                    Polizas *polizaInformacion=[NSEntityDescription insertNewObjectForEntityForName:@"Polizas" inManagedObjectContext:[NSCoreDataManager getManagedContext]];
-                    polizaInformacion.foto=_polizaActual.foto;
-                    if([NSCoreDataManager SaveData]){
-                        [_HUD hide:YES];
-                        [self.navigationController popToRootViewControllerAnimated:YES];
-                    }else{
-                        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Error al guardar póliza intente de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:nil];
-                        [alert show];
+                    
+                    if ([arrayVigencia count]>0) {
+                        Eventos *eventoVigencia=[arrayDiaPago objectAtIndex:0];
+                        
+                        ARSNManagerCalendar *calendar=[[ARSNManagerCalendar alloc] init];
+                        [calendar requestAccess:^(BOOL granted, NSError *error) {
+                            
+                            [calendar getCalendar];
+                            [calendar removeEventWithIdentifier:eventoVigencia.idEvento removeFutureEvents:YES];
+                            
+                        }];
                     }
-                }else{
-                    Polizas *polizaInformacion=[NSEntityDescription insertNewObjectForEntityForName:@"Polizas" inManagedObjectContext:[NSCoreDataManager getManagedContext]];
-                    polizaInformacion.recordarVigencia=[NSNumber numberWithBool:_recordadVigencia.on];
-                    //polizaInformacion.fechaInicioVigencia=_fechaInicio.text;
-                    //polizaInformacion.fechaFinVigencia=_fechaFin.text;
-                    if([NSCoreDataManager SaveData]){
-                        [_HUD hide:YES];
-                        [self.navigationController popToRootViewControllerAnimated:YES];
-                    }else{
-                        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Error al guardar póliza intente de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:nil];
-                        [alert show];
-                    }
+                    
+                    [_delegate PolizaEditada:_polizaActual];
+                    
 
-                }
+                    
                 
-                if (_recordadVigencia.on) {
-                    [self recordadVigencia];
+                    
+                }else{
+                    
+                    if (_polizaActual.tieneMasInformacion) {
+                        Polizas *polizaInformacion=[NSEntityDescription insertNewObjectForEntityForName:@"Polizas" inManagedObjectContext:[NSCoreDataManager getManagedContext]];
+                        polizaInformacion.intrumentoPago=_polizaActual.instrumentoPago;
+                        polizaInformacion.banco=_polizaActual.banco;
+                        polizaInformacion.diaPago=_polizaActual.diaPago;
+                        polizaInformacion.observaciones=_polizaActual.observacion;
+                        polizaInformacion.recordatorioInicio=_polizaActual.recordatorioPagoInicio;
+                        polizaInformacion.recordatorioFin=_polizaActual.recordatorioPagoFin;
+                        polizaInformacion.recordadDiaPago=[NSString stringWithFormat:@"%hhd",_polizaActual.recordatorioPago];
+                        polizaInformacion.noPoliza=_polizaActual.insurenceNumber;
+                        
+                        if (_polizaActual.recordatorioPago) {
+                            [self RecuerdaDiaPago:_polizaActual];
+                        }
+                        if (_polizaActual.recordarVigencia) {
+                            [self RecuerdaVigenciaPoliza:_polizaActual];
+                        }
+                        
+                        if (![_polizaActual.foto isEqual:nil]) {
+                            polizaInformacion.foto=_polizaActual.foto;
+                        }
+                        if ([NSCoreDataManager SaveData]) {
+                            [_HUD hide:YES];
+                            [self.navigationController popToRootViewControllerAnimated:YES];
+                        }else{
+                            
+                            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Error al guardar póliza intente de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:nil];
+                            [alert show];
+                        }
+                    }else if (![_polizaActual.foto isEqual:nil]){
+                        Polizas *polizaInformacion=[NSEntityDescription insertNewObjectForEntityForName:@"Polizas" inManagedObjectContext:[NSCoreDataManager getManagedContext]];
+                        polizaInformacion.foto=_polizaActual.foto;
+                        if([NSCoreDataManager SaveData]){
+                            [_HUD hide:YES];
+                            [self.navigationController popToRootViewControllerAnimated:YES];
+                        }else{
+                            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Error al guardar póliza intente de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:nil];
+                            [alert show];
+                        }
+                    }else{
+                        Polizas *polizaInformacion=[NSEntityDescription insertNewObjectForEntityForName:@"Polizas" inManagedObjectContext:[NSCoreDataManager getManagedContext]];
+                        polizaInformacion.recordarVigencia=[NSNumber numberWithBool:_recordadVigencia.on];
+                        //polizaInformacion.fechaInicioVigencia=_fechaInicio.text;
+                        //polizaInformacion.fechaFinVigencia=_fechaFin.text;
+                        if([NSCoreDataManager SaveData]){
+                            [_HUD hide:YES];
+                            [self.navigationController popToRootViewControllerAnimated:YES];
+                        }else{
+                            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Error al guardar póliza intente de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:nil];
+                            [alert show];
+                        }
+                        
+                    }
+                    
+                    if (_recordadVigencia.on) {
+                        [self recordadVigencia];
+                    }
                 }
                 
             }else{
@@ -683,6 +771,131 @@
         
     }];
 }
+
+-(void)MuestraDatos:(NSInteger)tipoEdicion{
+    
+    switch (tipoEdicion) {
+        case 1:
+        {
+            // Edicion de lorant
+            
+            [_numeroPoliza setText:_polizaActual.insurenceNumber];
+            if ([_polizaActual.insurenceAlias isEqual:[NSNull null]]) {
+                [_aliasPoliza setBorderStyle:UITextBorderStyleRoundedRect];
+                [_aliasPoliza setPlaceholder:@"Introduce un alias"];
+            }else{
+                [_aliasPoliza setText:_polizaActual.insurenceAlias];
+            }
+            TextFieldValidator *txtAseguradora=(TextFieldValidator *)[self.view viewWithTag:3];
+            [txtAseguradora setText:_polizaActual.nombreAseguradora];
+            [_nombreAsegurado setText:_polizaActual.ownerName];
+            [_telefono setText:_polizaActual.contactPhoneNumber];
+            [_correo setText:_polizaActual.contactMail];
+            [_fechaInicio setText:_polizaActual.startDate];
+            [_fechaVigencia setText:_polizaActual.endDate];
+            [_formaPago setText:_polizaActual.formaPago];
+            //[_contratadoCon setText:[NSString stringWithFormat:@"Agente: %@",_polizaActual.contratadoCon]];
+            [_txtContratadoCon setText:_polizaActual.contratadoCon];
+            [_paquete setText:_polizaActual.paquete];
+            [_numeroSerie setText:[self BuscarElemento:@"Serie" array:_polizaActual.productDetail]];
+            [_placas setText:[self BuscarElemento:@"Placas" array:_polizaActual.productDetail]];
+            [_descripcion setText:[self BuscarElemento:@"Descripcion" array:_polizaActual.productDetail]];
+            
+        
+            
+        }break;
+        case 2:
+        {
+            // Edicion de poliza general
+            
+            [_numeroPoliza setText:_polizaActual.insurenceNumber];
+            if ([_polizaActual.insurenceAlias isEqual:[NSNull null]]) {
+                [_aliasPoliza setBorderStyle:UITextBorderStyleRoundedRect];
+                [_aliasPoliza setPlaceholder:@"Introduce un alias"];
+            }else{
+                [_aliasPoliza setText:_polizaActual.insurenceAlias];
+            }
+            TextFieldValidator *txtAseguradora=(TextFieldValidator *)[self.view viewWithTag:3];
+            [txtAseguradora setText:_polizaActual.nombreAseguradora];
+            [_nombreAsegurado setText:_polizaActual.ownerName];
+            [_telefono setText:_polizaActual.contactPhoneNumber];
+            [_correo setText:_polizaActual.contactMail];
+            [_fechaInicio setText:_polizaActual.startDate];
+            [_fechaVigencia setText:_polizaActual.endDate];
+            [_formaPago setText:_polizaActual.formaPago];
+            //[_contratadoCon setText:[NSString stringWithFormat:@"Agente: %@",_polizaActual.contratadoCon]];
+            [_txtContratadoCon setText:_polizaActual.contratadoCon];
+            [_paquete setText:_polizaActual.paquete];
+            [_descripcion setText:[self BuscarElemento:@"Descripcion" array:_polizaActual.productDetail]];
+            
+        }break;
+            
+        default:
+            break;
+    }
+}
+
+-(NSString *)BuscarElemento:(NSString *)string array:(NSMutableArray *)array{
+    NSString *stringFind=@"";
+    for (NSDictionary *dic in array) {
+        if ([[dic objectForKey:@"label"] isEqualToString:string]) {
+            stringFind=[dic objectForKey:@"valor"];
+            break;
+        }
+    }
+    
+    return stringFind;
+}
+
+-(void)BloqueaCampos:(NSInteger)tipoBloqueo{
+    TextFieldValidator *txtAseguradora=(TextFieldValidator *)[self.view viewWithTag:3];
+    switch (tipoBloqueo) {
+        case 1:
+        {
+            // Bloqueo Lorant
+            [_numeroPoliza setEnabled:NO];
+            [_aliasPoliza setEnabled:NO];
+            [txtAseguradora setEnabled:NO];
+            [_numeroSerie setEnabled:NO];
+            [_descripcion setEnabled:NO];
+            [_placas setEnabled:NO];
+            [_nombreAsegurado setEnabled:NO];
+            [_telefono setEnabled:YES];
+            [_correo setEnabled:YES];
+            [_fechaInicio setEnabled:NO];
+            [_fechaFin setEnabled:NO];
+            [_recordadVigencia setEnabled:NO];
+            [_formaPago setEnabled:NO];
+            [_txtContratadoCon setEnabled:NO];
+            [_paquete setEnabled:NO];
+            
+        }break;
+        case 2:
+        {
+            [_numeroPoliza setEnabled:YES];
+            [_aliasPoliza setEnabled:YES];
+            [txtAseguradora setEnabled:YES];
+            [_numeroSerie setEnabled:YES];
+            [_descripcion setEnabled:YES];
+            [_placas setEnabled:YES];
+            [_nombreAsegurado setEnabled:YES];
+            [_telefono setEnabled:YES];
+            [_correo setEnabled:YES];
+            [_fechaInicio setEnabled:YES];
+            [_fechaFin setEnabled:YES];
+            [_recordadVigencia setEnabled:YES];
+            [_formaPago setEnabled:YES];
+            [_txtContratadoCon setEnabled:YES];
+            [_paquete setEnabled:YES];
+            
+        }break;
+        default:
+            break;
+    }
+    
+    
+}
+
 
 #pragma mark - Date Picker
 -(void)CreateDatePicker:(id)sender{
@@ -827,7 +1040,6 @@
     
     _polizaActual=polizaActual;
 }
-
 
 
 

@@ -71,6 +71,7 @@
         AltaPolizaViewController *APVC=[segue destinationViewController];
         [APVC setIdRamoActual:_ramoActual];
         [APVC setPolizaActual:_polizaActual];
+        [APVC setEsEdicion:NO];
 
     }
     if ([segue.identifier isEqualToString:@"lector_segue"]) {
