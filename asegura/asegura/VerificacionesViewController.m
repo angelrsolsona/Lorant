@@ -35,7 +35,7 @@
     
     _HUD=[[MBProgressHUD alloc] initWithView:self.view];
     [_HUD setMode:MBProgressHUDModeIndeterminate];
-    [_HUD setLabelText:@"Obteniendo Polizas"];
+    [_HUD setLabelText:@"Obteniendo Pólizas"];
     [self.view addSubview:_HUD];
     [_HUD show:YES];
     NSUserDefaults *datosAlm=[NSUserDefaults standardUserDefaults];
@@ -141,7 +141,7 @@
 }
 -(void)connectionDidFail:(NSString *)error{
     
-    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Error" message:@"Error de conexion intenta de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Error" message:@"Error de conexión intenta de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
     [alert show];
     
 }

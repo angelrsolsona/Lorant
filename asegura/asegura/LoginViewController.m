@@ -69,7 +69,7 @@
 
 - (IBAction)RecuperarPassword:(id)sender {
     
-    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Recuperar Contraseña" message:@"Introduce tu correo electronico" delegate:self cancelButtonTitle:@"Cancelar" otherButtonTitles:@"Aceptar", nil];
+    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Recuperar Contraseña" message:@"Introduce tu correo electrónico" delegate:self cancelButtonTitle:@"Cancelar" otherButtonTitles:@"Aceptar", nil];
     [alert setTag:100];
     [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
     [alert show];
@@ -221,7 +221,7 @@
 -(void)connectionDidFail:(NSString *)error{
     [_HUD hide:YES];
     NSLog(@"error%@",[error description]);
-    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Error" message:@"Error de conexion intenta de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Error" message:@"Error de conexión intenta de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
     [alert show];
     
 }

@@ -64,7 +64,7 @@
     
     HistorialSiniestro *historial=[_arraySiniestros objectAtIndex:indexPath.row];
     
-    NSArray *fecha=[historial.fechaUsuario componentsSeparatedByString:@"T"];
+    NSArray *fecha=[historial.fechaRegistro componentsSeparatedByString:@"T"];
     
     [cell.fechaReporte setText:[fecha objectAtIndex:0]];
     [cell.horaReporte setText:[fecha objectAtIndex:1]];
@@ -78,9 +78,10 @@
     [cell.vistaMapa setCamera:camera];
     GMSMarker *marker = [[GMSMarker alloc] init];
     marker.position = CLLocationCoordinate2DMake([historial.latitud floatValue],[historial.longitud floatValue]);
-    marker.title = [NSString stringWithFormat:@"Mi Ubicacion:(%.3f,%.3f)",[historial.latitud floatValue],[historial.longitud floatValue]];
+    marker.title = [NSString stringWithFormat:@"Mi Ubicación:(%.3f,%.3f)",[historial.latitud floatValue],[historial.longitud floatValue]];
     //marker.snippet = @"Australia";
     marker.map = cell.vistaMapa;
+    
     
     
     return cell;
@@ -172,7 +173,7 @@
 }
 -(void)connectionDidFail:(NSString *)error{
     
-    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Error" message:@"Error de conexion intenta de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Error" message:@"Error de conexión intenta de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
     [alert show];
     
 }

@@ -166,6 +166,8 @@
             <string>Oswald-Regular</string>
             <string>Oswald-Regular</string>
             <string>Oswald-Regular</string>
+            <string>Oswald-Regular</string>
+            <string>Oswald-Regular</string>
         </mutableArray>
         <mutableArray key="rockwell.ttf">
             <string>Rockwell</string>
@@ -633,7 +635,7 @@
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Shb-vK-Wox">
                                         <rect key="frame" x="23" y="481" width="278" height="36"/>
-                                        <color key="backgroundColor" red="0.68235294120000001" green="0.047058823530000002" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.16862745098039217" green="0.61568627450980395" blue="0.16862745098039217" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -764,14 +766,14 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="FlechaPicker" translatesAutoresizingMaskIntoConstraints="NO" id="6Hz-Yh-LdC">
                                         <rect key="frame" x="291" y="157" width="10" height="10"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enviar ubicacion y Llamar" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwU-Mt-wlH">
-                                        <rect key="frame" x="66" y="487" width="209" height="24"/>
-                                        <color key="backgroundColor" red="0.68235294120000001" green="0.047058823530000002" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LLAMAR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwU-Mt-wlH">
+                                        <rect key="frame" x="58" y="487" width="209" height="24"/>
+                                        <color key="backgroundColor" red="0.16862745100000001" green="0.61568627450000002" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Ubicacion" translatesAutoresizingMaskIntoConstraints="NO" id="gO8-Cc-JyY">
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Ubicacion" translatesAutoresizingMaskIntoConstraints="NO" id="gO8-Cc-JyY">
                                         <rect key="frame" x="265" y="488" width="22" height="22"/>
                                     </imageView>
                                 </subviews>
@@ -817,7 +819,7 @@
             </objects>
             <point key="canvasLocation" x="1504" y="-450"/>
         </scene>
-        <!--Historial de Siniestros-->
+        <!--Historial-->
         <scene sceneID="DBq-qV-jrc">
             <objects>
                 <tableViewController id="JWX-S5-H2M" customClass="HistorialSinisetroTableViewController" sceneMemberID="viewController">
@@ -853,7 +855,7 @@
                                             <rect key="frame" x="8" y="79" width="304" height="148"/>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Informacion:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5eM-y0-GV6">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Información:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5eM-y0-GV6">
                                             <rect key="frame" x="0.0" y="245" width="88" height="21"/>
                                             <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="15"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -889,13 +891,13 @@
                             <outlet property="delegate" destination="JWX-S5-H2M" id="eCa-SP-kK9"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Historial de Siniestros" id="oaF-zB-yT9"/>
+                    <navigationItem key="navigationItem" title="Historial" id="oaF-zB-yT9"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W4v-pr-qRM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1978" y="-349"/>
         </scene>
-        <!--Mis Polizas-->
+        <!--Mis Pólizas-->
         <scene sceneID="Y9a-v0-EnI">
             <objects>
                 <viewController restorationIdentifier="MisPolizasController" storyboardIdentifier="MisPolizasController" id="Cqb-Pv-1ia" customClass="MisPolizasViewController" sceneMemberID="viewController">
@@ -983,7 +985,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Mis Polizas" id="6F0-1u-K4L">
+                    <navigationItem key="navigationItem" title="Mis Pólizas" id="6F0-1u-K4L">
                         <barButtonItem key="leftBarButtonItem" image="BotonMenu" id="lu7-8s-wOl">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7hU-l3-UFr">
                                 <rect key="frame" x="16" y="12" width="22" height="17"/>
@@ -1036,7 +1038,7 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CuadroLinea" translatesAutoresizingMaskIntoConstraints="NO" id="nMs-se-37j">
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CuadroLinea" translatesAutoresizingMaskIntoConstraints="NO" id="nMs-se-37j">
                                         <rect key="frame" x="0.0" y="270" width="320" height="40"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Datos de Sinisetro" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nWA-G9-IaI">
@@ -1045,7 +1047,7 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dKG-As-W0z">
+                                    <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dKG-As-W0z">
                                         <rect key="frame" x="8" y="318" width="304" height="166"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -1251,7 +1253,7 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="IconoPolizaBlancoAutos" translatesAutoresizingMaskIntoConstraints="NO" id="bmE-sw-PWg">
                                         <rect key="frame" x="44" y="48" width="30" height="30"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gastos Medicos" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzD-Z5-OBB">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gastos Médicos" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzD-Z5-OBB">
                                         <rect key="frame" x="29" y="172" width="61" height="33"/>
                                         <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1274,7 +1276,7 @@
             </objects>
             <point key="canvasLocation" x="2555" y="174"/>
         </scene>
-        <!--Información Poliza-->
+        <!--Información Póliza-->
         <scene sceneID="aWN-D4-cdp">
             <objects>
                 <viewController id="qaj-4V-by6" customClass="AltaPolizaViewController" sceneMemberID="viewController">
@@ -1567,7 +1569,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Información Poliza" id="orR-gu-zAO"/>
+                    <navigationItem key="navigationItem" title="Información Póliza" id="orR-gu-zAO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="968"/>
                     <connections>
@@ -1620,7 +1622,7 @@
                                         </state>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CuadroLinea" translatesAutoresizingMaskIntoConstraints="NO" id="Szl-mp-pcd">
-                                        <rect key="frame" x="-1" y="362" width="320" height="98"/>
+                                        <rect key="frame" x="-1" y="362" width="320" height="105"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CuadroLinea" translatesAutoresizingMaskIntoConstraints="NO" id="b43-tw-pOq">
                                         <rect key="frame" x="0.0" y="46" width="320" height="44"/>
@@ -1636,7 +1638,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zNm-vT-HXi">
-                                        <rect key="frame" x="54" y="461" width="212" height="35"/>
+                                        <rect key="frame" x="54" y="468" width="212" height="35"/>
                                         <color key="backgroundColor" red="0.19215686274509805" green="0.66666666666666663" blue="0.22352941176470589" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="21"/>
                                         <state key="normal" title="LLAMAR">
@@ -1677,6 +1679,13 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wdg-Un-9Qt">
+                                        <rect key="frame" x="11" y="420" width="300" height="47"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="11"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <dataDetectorType key="dataDetectorTypes" link="YES" address="YES"/>
+                                    </textView>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -1705,6 +1714,7 @@
                         <outlet property="segmentalControl" destination="VN1-CZ-b0y" id="uDQ-8K-daB"/>
                         <outlet property="selectorAgencia" destination="WNR-MN-SkG" id="rYP-Y6-4JQ"/>
                         <outlet property="telefonos" destination="Xzw-NK-syq" id="12j-Eb-XeU"/>
+                        <outlet property="telefonosLink" destination="wdg-Un-9Qt" id="FhA-oq-JpZ"/>
                         <outlet property="vistaMapa" destination="9QA-vv-e4F" id="Uuo-tH-hUC"/>
                         <outlet property="vistaScroll" destination="aTE-oY-sI0" id="eDv-3v-mqm"/>
                     </connections>
@@ -3059,10 +3069,10 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CuadroLinea" translatesAutoresizingMaskIntoConstraints="NO" id="Wqo-cW-VIv">
                                         <rect key="frame" x="0.0" y="160" width="320" height="40"/>
                                     </imageView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WhN-JQ-CGh" customClass="TextFieldValidator">
+                                    <textField opaque="NO" clipsSubviews="YES" tag="8" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WhN-JQ-CGh" customClass="TextFieldValidator">
                                         <rect key="frame" x="107" y="164" width="205" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                         <connections>
                                             <outlet property="delegate" destination="U1c-N8-0dU" id="5aO-kt-3QV"/>
                                         </connections>
@@ -3119,7 +3129,7 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zNq-65-Vgf">
-                                        <rect key="frame" x="63" y="880" width="194" height="40"/>
+                                        <rect key="frame" x="63" y="933" width="194" height="40"/>
                                         <state key="normal" backgroundImage="BotonMasInformacion">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -3128,7 +3138,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O9i-5W-Npd">
-                                        <rect key="frame" x="63" y="928" width="194" height="40"/>
+                                        <rect key="frame" x="63" y="981" width="194" height="40"/>
                                         <state key="normal" backgroundImage="BotonGuardaryContinuar">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -3163,7 +3173,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="56" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="9iU-Cy-1aa">
-                                        <rect key="frame" x="0.0" y="665" width="320" height="164"/>
+                                        <rect key="frame" x="0.0" y="705" width="320" height="164"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="56" id="7Qy-0G-TiI" customClass="CoberturasTableViewCell">
@@ -3180,7 +3190,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$6330023.33 - 5%" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ztX-Ns-24L">
                                                             <rect key="frame" x="174" y="8" width="138" height="40"/>
                                                             <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="14"/>
-                                                            <color key="textColor" red="0.73751183710000001" green="0.0031529118330000001" blue="0.16775475340000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -3213,8 +3223,25 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CuadroLinea" translatesAutoresizingMaskIntoConstraints="NO" id="8VB-bQ-UHM">
+                                        <rect key="frame" x="1" y="434" width="320" height="40"/>
+                                    </imageView>
+                                    <textField opaque="NO" clipsSubviews="YES" tag="13" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nZ9-7s-dYg" customClass="TextFieldValidator">
+                                        <rect key="frame" x="69" y="442" width="236" height="26"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="U1c-N8-0dU" id="Zhq-hh-Dfl"/>
+                                        </connections>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Placas:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kg5-ZE-9qD">
+                                        <rect key="frame" x="9" y="446" width="41" height="18"/>
+                                        <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="13"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C5D-y6-20G">
-                                        <rect key="frame" x="0.0" y="617" width="320" height="40"/>
+                                        <rect key="frame" x="0.0" y="657" width="320" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="COBERTURAS AMPARADAS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cNh-kO-FgH">
                                                 <rect key="frame" x="48" y="9" width="224" height="21"/>
@@ -3226,7 +3253,7 @@
                                         <color key="backgroundColor" red="0.73751183710000001" green="0.0031529118330000001" blue="0.16775475340000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="deK-YU-ETA">
-                                        <rect key="frame" x="0.0" y="432" width="320" height="40"/>
+                                        <rect key="frame" x="0.0" y="472" width="320" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DETALLE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PI8-5p-JvJ">
                                                 <rect key="frame" x="48" y="8" width="224" height="24"/>
@@ -3238,7 +3265,7 @@
                                         <color key="backgroundColor" red="0.73751183710000001" green="0.0031529118330000001" blue="0.16775475340000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WgH-ok-Zrs">
-                                        <rect key="frame" x="63" y="837" width="194" height="40"/>
+                                        <rect key="frame" x="63" y="890" width="194" height="40"/>
                                         <state key="normal" backgroundImage="BotonFotoPoliza">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -3255,7 +3282,7 @@
                                         </connections>
                                     </textField>
                                     <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="56" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="e8m-cI-CPA">
-                                        <rect key="frame" x="0.0" y="473" width="320" height="144"/>
+                                        <rect key="frame" x="0.0" y="513" width="320" height="144"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="56" id="SYf-NT-yn2" customClass="CoberturasTableViewCell">
@@ -3272,7 +3299,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$6330023.33 - 5%" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EUQ-It-SOl">
                                                             <rect key="frame" x="174" y="8" width="138" height="40"/>
                                                             <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="14"/>
-                                                            <color key="textColor" red="0.73751183710000001" green="0.0031529118330000001" blue="0.16775475340000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -3289,7 +3316,7 @@
                                         </connections>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ver Foto Poliza" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axK-a0-3ou">
-                                        <rect key="frame" x="123" y="848" width="76" height="21"/>
+                                        <rect key="frame" x="123" y="899" width="76" height="21"/>
                                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="14"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -3372,6 +3399,7 @@
                         <outlet property="fechaInicio" destination="1Md-AJ-wFI" id="X0t-qQ-qWs"/>
                         <outlet property="fechaVigencia" destination="05p-ig-AXh" id="58j-1Q-CoL"/>
                         <outlet property="formaPago" destination="mml-hh-coN" id="HhO-Gn-vog"/>
+                        <outlet property="lblPlacas" destination="Kg5-ZE-9qD" id="q1z-hy-Dai"/>
                         <outlet property="lblVerFoto" destination="axK-a0-3ou" id="25O-Gv-Fmd"/>
                         <outlet property="noPoliza" destination="yGw-9P-h3b" id="F56-a4-mW7"/>
                         <outlet property="nombreAsegurado" destination="lP9-gT-94r" id="TXN-sV-CS6"/>
@@ -3381,6 +3409,7 @@
                         <outlet property="tablaDetalle" destination="e8m-cI-CPA" id="QFs-iB-iB9"/>
                         <outlet property="telefonoTitular" destination="WhN-JQ-CGh" id="n6C-Qy-tC0"/>
                         <outlet property="txtContratadoCon" destination="Xd2-0l-Xf7" id="U8n-nb-gNq"/>
+                        <outlet property="txtPlacas" destination="nZ9-7s-dYg" id="hxx-Ha-h3u"/>
                         <outlet property="vistaScroll" destination="tvP-Yr-ng9" id="Iyd-Ef-GU8"/>
                         <segue destination="90N-mM-b5K" kind="push" identifier="foto_segue" id="csy-iM-FKG"/>
                         <segue destination="2sm-Jz-e8i" kind="push" identifier="edicionNormal_segue" id="oP5-eq-xgk"/>
@@ -3582,7 +3611,7 @@
             </objects>
             <point key="canvasLocation" x="3188" y="2306"/>
         </scene>
-        <!--Información Poliza-->
+        <!--Información Póliza-->
         <scene sceneID="giK-eY-DGD">
             <objects>
                 <viewController id="2sm-Jz-e8i" customClass="AltaPolizaViewController" sceneMemberID="viewController">
@@ -3841,7 +3870,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Información Poliza" id="s6Q-at-TQp"/>
+                    <navigationItem key="navigationItem" title="Información Póliza" id="s6Q-at-TQp"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="968"/>
                     <connections>
@@ -3926,6 +3955,6 @@
         <segue reference="hW9-Ed-bdY"/>
         <segue reference="dpf-BB-oOH"/>
         <segue reference="oP5-eq-xgk"/>
-        <segue reference="qeH-qL-Ekw"/>
+        <segue reference="fGT-A1-CQr"/>
     </inferredMetricsTieBreakers>
 </document>

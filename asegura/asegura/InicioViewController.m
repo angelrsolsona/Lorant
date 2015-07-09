@@ -39,7 +39,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewDidLayoutSubviews
+- (void)viewDisdLayoutSubviews
 {
     [_vistaScroll setContentSize:CGSizeMake(320,680)];
     //[_containerView setFrame:CGRectMake(0, 100, 320, 228)];

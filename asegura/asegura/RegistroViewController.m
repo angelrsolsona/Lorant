@@ -204,7 +204,7 @@
 }
 -(void)connectionDidFail:(NSString *)error{
     
-    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Error" message:@"Error de conexion intenta de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Error" message:@"Error de conexión intenta de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
     [alert show];
     
 }
@@ -223,7 +223,7 @@
     [_apellidoPaterno setPresentInView:self.view];
     //[_apellidoMaterno addRegx:REGEX_EMAIL withMsg:@"Enter valid email."];
     [_apellidoMaterno setPresentInView:self.view];
-    [_correo addRegx:REGEX_EMAIL withMsg:@"Enter valid email."];
+    [_correo addRegx:REGEX_EMAIL withMsg:@"Introduce un correo valido."];
     [_correo setPresentInView:self.view];
     //[_telefono addRegx:REGEX_EMAIL withMsg:@"Enter valid email."];
     [_telefono setPresentInView:self.view];

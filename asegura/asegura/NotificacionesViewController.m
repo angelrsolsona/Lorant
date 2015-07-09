@@ -33,7 +33,7 @@
     
     _HUD=[[MBProgressHUD alloc] initWithView:self.view];
     [_HUD setMode:MBProgressHUDModeIndeterminate];
-    [_HUD setLabelText:@"Obteniendo Polizas"];
+    [_HUD setLabelText:@"Obteniendo Pólizas"];
     [self.view addSubview:_HUD];
     [_HUD show:YES];
     
@@ -112,11 +112,11 @@
                     if (diasFaltantes<5 && diasFaltantes>0) {
                         NSLog(@"Agregar notificacion vigencia");
                         ObjNotificacion *notificacion=[[ObjNotificacion alloc] init];
-                        [notificacion setTituloNotificacion:[NSString stringWithFormat:@"La poliza \"%@\" esta por vencer",poliza.insuranceName]];
+                        [notificacion setTituloNotificacion:[NSString stringWithFormat:@"La póliza \"%@\" está por vencer",poliza.insuranceName]];
                         [_arrayNotificaciones addObject:notificacion];
                     }else if(diasFaltantes<0){
                         ObjNotificacion *notificacion=[[ObjNotificacion alloc] init];
-                        [notificacion setTituloNotificacion:[NSString stringWithFormat:@"La poliza \"%@\" esta vencida",poliza.insuranceName]];
+                        [notificacion setTituloNotificacion:[NSString stringWithFormat:@"La póliza \"%@\" está vencida",poliza.insuranceName]];
                         [_arrayNotificaciones addObject:notificacion];
 
                     }
@@ -131,7 +131,7 @@
                                 BOOL fechaValida=([VerificacionFechas VerificaPerteneciaRangoFecha:fechaActual fechaInicial:poliza.fechaInicioPeriodo1 fechaFinal:poliza.fechaFinPeriodo1 formatoFecha:@"dd/MM/yyyy"]||[VerificacionFechas VerificaPerteneciaRangoFecha:fechaActual fechaInicial:poliza.fechaInicioPeriodo2 fechaFinal:poliza.fechaFinPeriodo2 formatoFecha:@"dd/MM/yyyy"]);
                                 if (fechaValida) {
                                     ObjNotificacion *notificacion=[[ObjNotificacion alloc] init];
-                                    [notificacion setTituloNotificacion:[NSString stringWithFormat:@"El auto con la poliza \"%@\" esta en periodo de verificación",poliza.insuranceName]];
+                                    [notificacion setTituloNotificacion:[NSString stringWithFormat:@"El auto con la póliza \"%@\" está en periodo de verificación",poliza.insuranceName]];
                                     [_arrayNotificaciones addObject:notificacion];
                                 }
                            
@@ -149,7 +149,7 @@
             if (hayError) {
                 
                 [_HUD setMode:MBProgressHUDModeText];
-                [_HUD setLabelText:@"El usuario no tiene polizas"];
+                [_HUD setLabelText:@"El usuario no tiene pólizas"];
                 [self.view addSubview:_HUD];
                 [_HUD show:YES];
                 [_HUD hide:YES afterDelay:2.0];
@@ -165,7 +165,7 @@
 }
 -(void)connectionDidFail:(NSString *)error{
     
-    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Error" message:@"Error de conexion intenta de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Error" message:@"Error de conexión intenta de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
     [alert show];
     
 }

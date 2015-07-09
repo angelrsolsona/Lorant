@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _arrayIntrumentos=[[NSMutableArray alloc] initWithObjects:@"Tarjeta de Crédito",@"Tarjeta de Débito",@"Déposito en Ventanilla",@"Transferencia Eléctronica", nil];
+    _arrayIntrumentos=[[NSMutableArray alloc] initWithObjects:@"Tarjeta de Crédito",@"Tarjeta de Débito",@"Depósito en Ventanilla",@"Transferencia Electrónica", nil];
     
     _arrayBancos=[[NSMutableArray alloc]init];
     [_arrayBancos addObject:@"BANCO NACIONAL DE MEXICO, S.A."];

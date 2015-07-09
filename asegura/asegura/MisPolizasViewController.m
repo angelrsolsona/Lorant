@@ -32,7 +32,7 @@
     
     _HUD=[[MBProgressHUD alloc] initWithView:self.view];
     [_HUD setMode:MBProgressHUDModeIndeterminate];
-    [_HUD setLabelText:@"Obteniendo Polizas"];
+    [_HUD setLabelText:@"Obteniendo Pólizas"];
     [self.view addSubview:_HUD];
     [_HUD show:YES];
 
@@ -147,7 +147,7 @@
         
         _HUD=[[MBProgressHUD alloc] initWithView:self.view];
         [_HUD setMode:MBProgressHUDModeIndeterminate];
-        [_HUD setLabelText:@"Eliminando Polizas"];
+        [_HUD setLabelText:@"Eliminando Pólizas"];
         [self.view addSubview:_HUD];
         [_HUD show:YES];
         
@@ -191,7 +191,7 @@
             if (hayError) {
                 
                 [_HUD setMode:MBProgressHUDModeText];
-                [_HUD setLabelText:@"El usuario no tiene polizas"];
+                [_HUD setLabelText:@"El usuario no tiene pólizas"];
                 [self.view addSubview:_HUD];
                 [_HUD show:YES];
                 [_HUD hide:YES afterDelay:2.0];
@@ -215,7 +215,7 @@
                 [_HUD hide:YES];
                 
             }else{
-                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"No se puede eliminar la poliza intentalo de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"No se puede eliminar la póliza intentalo de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
                 [alert show];
             }
         }break;
@@ -226,7 +226,7 @@
 }
 -(void)connectionDidFail:(NSString *)error{
     
-    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Error" message:@"Error de conexion intenta de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Error" message:@"Error de conexión intenta de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
     [alert show];
     
 }

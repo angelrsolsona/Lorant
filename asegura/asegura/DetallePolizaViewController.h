@@ -18,7 +18,7 @@
 #import "GaleriaViewController.h"
 #import "TextFieldValidator.h"
 #import "AltaPolizaViewController.h"
-@interface DetallePolizaViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,NSConnectionDelegate,MasInformacionPolizaViewControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,AltaPolizaViewControllerDelegate>
+@interface DetallePolizaViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,NSConnectionDelegate,MasInformacionPolizaViewControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,AltaPolizaViewControllerDelegate,UITextFieldDelegate>
 
 @property(weak,nonatomic) IBOutlet UIScrollView *vistaScroll;
 @property (weak, nonatomic) IBOutlet TextFieldValidator *noPoliza;
@@ -30,6 +30,10 @@
 @property (weak, nonatomic) IBOutlet TextFieldValidator *fechaVigencia;
 @property (weak, nonatomic) IBOutlet TextFieldValidator *fechaInicio;
 @property (weak, nonatomic) IBOutlet TextFieldValidator *formaPago;
+/// placas solo para autos
+@property (weak, nonatomic) IBOutlet TextFieldValidator *txtPlacas;
+@property (weak, nonatomic) IBOutlet UILabel *lblPlacas;
+
 @property (weak, nonatomic) IBOutlet UILabel *contratadoCon;
 @property (weak, nonatomic) IBOutlet TextFieldValidator *txtContratadoCon;
 @property (weak, nonatomic) IBOutlet TextFieldValidator *paquete;

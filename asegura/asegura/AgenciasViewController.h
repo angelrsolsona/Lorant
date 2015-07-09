@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *nombreAgencia;
 @property (weak, nonatomic) IBOutlet UILabel *direccionAgencia;
 @property (weak, nonatomic) IBOutlet UILabel *telefonos;
+@property (weak, nonatomic) IBOutlet UITextView *telefonosLink;
 @property(weak,nonatomic) IBOutlet UIButton *btnLlamar;
 
 @property(strong,nonatomic)UIView *maskView;

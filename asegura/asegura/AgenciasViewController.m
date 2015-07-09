@@ -239,6 +239,7 @@
         }break;
         case 2:{
             NSArray *array=[NSJSONSerialization JSONObjectWithData:result options:NSJSONReadingAllowFragments error:&error];
+            NSLog(@"Valor de array agencias %@",[array description]);
             if ([array count]>0) {
                 _arrayAgencias=[[NSMutableSet alloc] init];
                 for (NSDictionary *dic in array) {
@@ -371,7 +372,9 @@
     
     [_nombreAgencia setText:marker.nombreAgencia];
     [_direccionAgencia setText:marker.domicilio];
-    [_telefonos setText:[NSString stringWithFormat:@"Teléfono:%@\nCorreo:%@",marker.telefono,marker.correo]];
+    //[_telefonos setText:[NSString stringWithFormat:@"Teléfono:%@\nCorreo:%@",marker.telefono,marker.correo]];
+    [_telefonosLink setText:[NSString stringWithFormat:@"Teléfono: %@\nCorreo: %@",marker.telefono,marker.correo]];
+    
     _markerActual=marker;
     [_btnLlamar setEnabled:YES];
     return NO;

@@ -153,15 +153,15 @@
     
     NSArray *fotos=[NSCoreDataManager getDataWithEntity:@"Fotos" andManagedObjContext:[NSCoreDataManager getManagedContext]];
     
-    for (Eventos *foto in fotos) {
+    for (Fotos *foto in fotos) {
         
         [[NSCoreDataManager getManagedContext] deleteObject:foto];
         [NSCoreDataManager SaveData];
     }
     
-    NSArray *usuarios=[NSCoreDataManager getDataWithEntity:@"Usuarios" andManagedObjContext:[NSCoreDataManager getManagedContext]];
+    NSArray *usuarios=[NSCoreDataManager getDataWithEntity:@"Usuario" andManagedObjContext:[NSCoreDataManager getManagedContext]];
     
-    for (Eventos *usuario in usuarios) {
+    for (Usuario *usuario in usuarios) {
         
         [[NSCoreDataManager getManagedContext] deleteObject:usuario];
         [NSCoreDataManager SaveData];

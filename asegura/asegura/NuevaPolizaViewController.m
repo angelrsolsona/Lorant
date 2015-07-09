@@ -30,16 +30,19 @@
     UIButton *boton=(UIButton *)sender;
     _ramoActual=boton.tag;
     if (_ramoActual==1) {
-        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Busqueda de Póliza" message:@"Introduce el número de poliza y el número de serie" delegate:self cancelButtonTitle:@"Cancelar" otherButtonTitles:@"Enviar", nil];
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Búsqueda de Póliza" message:@"Introduce el número de póliza y el número de serie" delegate:self cancelButtonTitle:@"Cancelar" otherButtonTitles:@"Enviar", nil];
         [alert setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
         [[alert textFieldAtIndex:0] setPlaceholder:@"Número de póliza"];
         [[alert textFieldAtIndex:1] setPlaceholder:@"Número de serie"];
         [[alert textFieldAtIndex:1] setSecureTextEntry:NO];
+        [[alert textFieldAtIndex:1] setAutocapitalizationType:UITextAutocapitalizationTypeAllCharacters];
         [alert setTag:1];
         [alert show];
     }else{
-        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Busqueda de Póliza" message:@"Introduce el número de póliza" delegate:self cancelButtonTitle:@"Cancelar" otherButtonTitles:@"Enviar", nil];
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Búsqueda de Póliza" message:@"Introduce el número de póliza" delegate:self cancelButtonTitle:@"Cancelar" otherButtonTitles:@"Enviar", nil];
         [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
+        [[alert textFieldAtIndex:0] setPlaceholder:@"Número de póliza"];
+        [[alert textFieldAtIndex:0] setAutocapitalizationType:UITextAutocapitalizationTypeAllCharacters];
         [alert setTag:1];
         [alert show];
     }
@@ -110,7 +113,7 @@
                 _polizaActual.idAseguradora=[[dic objectForKey:@"idAseguradora"] integerValue];
                 _polizaActual.formaPago=[dic objectForKey:@"FormaPago"];
                 _polizaActual.paquete=[dic objectForKey:@"Paquete"];
-                _polizaActual.idPolizaSistema=[[dic objectForKey:@"idPolizaSistema"] integerValue];
+                _polizaActual.idPolizaSistema=[[dic objectForKey:@"IdPolizaM"] integerValue];
                 _polizaActual.idSistema=[[dic objectForKey:@"iSistema"] integerValue];
                 _polizaActual.contratadoCon=[dic objectForKey:@"ContratadoCon"];
                 _polizaActual.telefonoCabina=[dic objectForKey:@"TelefonoCabina"];
@@ -129,10 +132,15 @@
             
             
             }else if([[dic objectForKey:@"ErrorCode"] isEqualToString:@"ER0007"]){
-                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"La poliza ya esta registrada" delegate:nil cancelButtonTitle:@"No" otherButtonTitles: nil];
+                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"La póliza ya esta registrada" delegate:nil cancelButtonTitle:@"No" otherButtonTitles: nil];
+                [alert show];
+                
+            }else if([[dic objectForKey:@"ErrorCode"] isEqualToString:@"ER0010"]){
+                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Favor de Validar el No. de Serie" delegate:nil cancelButtonTitle:@"No" otherButtonTitles: nil];
                 [alert show];
                 
             }
+
             
             
         }break;
@@ -144,7 +152,7 @@
 -(void)connectionDidFail:(NSString *)error{
     [_HUD hide:YES];
     NSLog(@"error %@",error);
-    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Error" message:@"Error de conexion intenta de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Error" message:@"Error de conexión intenta de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
     [alert show];
     
 }
@@ -176,7 +184,7 @@
                 
                 _HUD=[[MBProgressHUD alloc] initWithView:self.view];
                 [_HUD setMode:MBProgressHUDModeIndeterminate];
-                [_HUD setLabelText:@"Buscando Poliza ..."];
+                [_HUD setLabelText:@"Buscando Póliza ..."];
                 [self.view addSubview:_HUD];
                 [_HUD show:YES];
                 
@@ -220,7 +228,7 @@
     
     _HUD=[[MBProgressHUD alloc] initWithView:self.view];
     [_HUD setMode:MBProgressHUDModeIndeterminate];
-    [_HUD setLabelText:@"Buscando Poliza ..."];
+    [_HUD setLabelText:@"Buscando Póliza ..."];
     [self.view addSubview:_HUD];
     [_HUD show:YES];
 }
