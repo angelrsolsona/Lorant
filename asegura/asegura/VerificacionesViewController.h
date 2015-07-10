@@ -17,6 +17,7 @@
 #import "VerificacionFechas.h"
 #import "ARSNManagerCalendar.h"
 #import "Eventos.h"
+#import "Notificaciones.h"
 
 @interface VerificacionesViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,NSConnectionDelegate>
 
@@ -25,5 +26,6 @@
 @property(strong,nonatomic) NSConnection *conexion;
 @property(strong,nonatomic) MBProgressHUD *HUD;
 @property(strong,nonatomic) NSMutableArray *arrayVerificacion;
+@property(strong,nonatomic) NSMutableArray *arrayNotificaciones;
 @property(strong,nonatomic)Usuario *usuarioActual;
 @end

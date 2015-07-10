@@ -37,6 +37,8 @@
     [self.view addSubview:_HUD];
     [_HUD show:YES];
     
+    
+    
 }
 /*
 #pragma mark - Navigation
@@ -134,6 +136,24 @@
                                     [notificacion setTituloNotificacion:[NSString stringWithFormat:@"El auto con la póliza \"%@\" está en periodo de verificación",poliza.insuranceName]];
                                     [_arrayNotificaciones addObject:notificacion];
                                 }
+                                
+                                
+                                NSArray *arrayNotificaciones=[NSCoreDataManager getDataWithEntity:@"Notificaciones" predicate:[NSString stringWithFormat:@"noPoliza=\"%@\" AND tipo=\"verificacion\"",poliza.insurenceNumber] andManagedObjContext:[NSCoreDataManager getManagedContext]];
+                                
+                                for (Notificaciones *notif in arrayNotificaciones) {
+                                    
+                                    BOOL fechaValida=([VerificacionFechas VerificaPerteneciaRangoFecha:fechaActual fechaInicial:notif.fechaInicio fechaFinal:notif.fechaFin formatoFecha:@"dd/MM/yyyy"]);
+                                    if (fechaValida) {
+                                        ObjNotificacion *notificacion=[[ObjNotificacion alloc] init];
+                                        [notificacion setTituloNotificacion:[NSString stringWithFormat:@"Notificacion: El auto con la póliza \"%@\" está en periodo de verificación",poliza.insuranceName]];
+                                        [_arrayNotificaciones addObject:notificacion];
+                                    }else{
+                                        ObjNotificacion *notificacion=[[ObjNotificacion alloc] init];
+                                        [notificacion setTituloNotificacion:[NSString stringWithFormat:@"Notificacion: El auto con la póliza \"%@\" vencio en periodo de verificación",poliza.insuranceName]];
+                                        [_arrayNotificaciones addObject:notificacion];
+                                    }
+                                }
+                                
                            
                             }
 

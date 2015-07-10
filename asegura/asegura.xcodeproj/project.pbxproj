@@ -62,6 +62,7 @@
 		2A40F2C81B2F869200474BDB /* HistorialSinisetroTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A40F2C71B2F869200474BDB /* HistorialSinisetroTableViewController.m */; };
 		2A40F2CB1B2F86A700474BDB /* HistorialSiniestroTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A40F2CA1B2F86A700474BDB /* HistorialSiniestroTableViewCell.m */; };
 		2A40F2CE1B2F913C00474BDB /* HistorialSiniestro.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A40F2CD1B2F913C00474BDB /* HistorialSiniestro.m */; };
+		2A4FB1571B50465A00132F75 /* Notificaciones.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4FB1561B50465A00132F75 /* Notificaciones.m */; };
 		2A5115D11A9663FE0048F15E /* RegistroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5115D01A9663FE0048F15E /* RegistroViewController.m */; };
 		2A5325EC1B2EA5D6003673B6 /* NotasReporteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5325EB1B2EA5D6003673B6 /* NotasReporteViewController.m */; };
 		2A59603F1B406EFE0020C6B1 /* ARSNManagerCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A59603E1B406EFE0020C6B1 /* ARSNManagerCalendar.m */; };
@@ -232,6 +233,9 @@
 		2A40F2CA1B2F86A700474BDB /* HistorialSiniestroTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistorialSiniestroTableViewCell.m; sourceTree = "<group>"; };
 		2A40F2CC1B2F913C00474BDB /* HistorialSiniestro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistorialSiniestro.h; sourceTree = "<group>"; };
 		2A40F2CD1B2F913C00474BDB /* HistorialSiniestro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistorialSiniestro.m; sourceTree = "<group>"; };
+		2A4FB1541B50464000132F75 /* Asegura 12.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Asegura 12.xcdatamodel"; sourceTree = "<group>"; };
+		2A4FB1551B50465A00132F75 /* Notificaciones.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notificaciones.h; sourceTree = "<group>"; };
+		2A4FB1561B50465A00132F75 /* Notificaciones.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Notificaciones.m; sourceTree = "<group>"; };
 		2A5115CF1A9663FE0048F15E /* RegistroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistroViewController.h; sourceTree = "<group>"; };
 		2A5115D01A9663FE0048F15E /* RegistroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistroViewController.m; sourceTree = "<group>"; };
 		2A5115D31A9666450048F15E /* Asegura 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Asegura 2.xcdatamodel"; sourceTree = "<group>"; };
@@ -615,6 +619,8 @@
 		2A054B771A76F6B3001090C7 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				2A4FB1551B50465A00132F75 /* Notificaciones.h */,
+				2A4FB1561B50465A00132F75 /* Notificaciones.m */,
 				2A5960431B40808A0020C6B1 /* Eventos.h */,
 				2A5960441B40808A0020C6B1 /* Eventos.m */,
 				2A00D97C1B3E38F9003A8370 /* Polizas.h */,
@@ -1038,6 +1044,7 @@
 				2A054B241A76F31C001090C7 /* Reachability.m in Sources */,
 				2A054B421A76F389001090C7 /* UIImageView+AFNetworking.m in Sources */,
 				2A054B5A1A76F3A7001090C7 /* AFHTTPRequestOperation.m in Sources */,
+				2A4FB1571B50465A00132F75 /* Notificaciones.m in Sources */,
 				2AC4B64E1AAEB0E800E727D8 /* MisPolizasViewController.m in Sources */,
 				2A40F2C81B2F869200474BDB /* HistorialSinisetroTableViewController.m in Sources */,
 				2AC4B63F1AAE4CED00E727D8 /* AgenciasViewController.m in Sources */,
@@ -1317,6 +1324,7 @@
 		2A054B791A76F6D1001090C7 /* Asegura.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				2A4FB1541B50464000132F75 /* Asegura 12.xcdatamodel */,
 				2A5960421B4080750020C6B1 /* Asegura 11.xcdatamodel */,
 				2A00D97B1B3E38C3003A8370 /* Asegura 10.xcdatamodel */,
 				2A00D9731B3E1C40003A8370 /* Asegura 9.xcdatamodel */,

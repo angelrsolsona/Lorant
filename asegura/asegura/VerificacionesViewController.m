@@ -259,12 +259,14 @@
     if (_recordarVerificacion.on) {
         if ([self AgregarACalendario]) {
             [datosAlm setBool:YES forKey:@"recordarVerificacion"];
+            [datosAlm synchronize];
         }
     
     }else{
         if ([self EliminarDeCalendario]) {
             
             [datosAlm setBool:NO forKey:@"recordarVerificacion"];
+            [datosAlm synchronize];
         }
         
     }
@@ -321,12 +323,30 @@
                         evento.tipo=[dic objectForKey:@"tipo"];
                         evento.idEvento=[dic objectForKey:@"idEvento"];
                         
+                        Notificaciones *notificacion1=[NSEntityDescription insertNewObjectForEntityForName:@"Notificaciones" inManagedObjectContext:[NSCoreDataManager getManagedContext]];
+                        notificacion1.noPoliza=[dic objectForKey:@"noPoliza"];
+                        notificacion1.tipo=[dic objectForKey:@"tipo"];
+                        notificacion1.fechaInicio=poliza.fechaInicioPeriodo1;
+                        notificacion1.fechaFin=poliza.fechaInicioPeriodo1;
+                        notificacion1.mensaje=@"Periodo 1 de verificacion";
+                        
+                        Notificaciones *notificacion2=[NSEntityDescription insertNewObjectForEntityForName:@"Notificaciones" inManagedObjectContext:[NSCoreDataManager getManagedContext]];
+                        notificacion2.noPoliza=[dic objectForKey:@"noPoliza"];
+                        notificacion2.tipo=[dic objectForKey:@"tipo"];
+                        notificacion2.fechaInicio=poliza.fechaInicioPeriodo2;
+                        notificacion2.fechaFin=poliza.fechaInicioPeriodo2;
+                        notificacion2.mensaje=@"Periodo 2 de verificacion";
+                        
                         if([NSCoreDataManager SaveData]){
                             exito=YES;
                         }else{
                             exito=NO;
                         }
                     }
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                       
+                        [_HUD hide:YES];
+                    });
                    
     
                 }else{
@@ -341,7 +361,7 @@
             exito=NO;
         }
     }];
-     [_HUD hide:YES];
+     //[_HUD hide:YES];
     return exito;
     
 }
@@ -355,6 +375,7 @@
         if (granted) {
             
             NSArray *array=[NSCoreDataManager getDataWithEntity:@"Eventos" predicate:@"tipo CONTAINS\"verificacion\"" andManagedObjContext:[NSCoreDataManager getManagedContext]];
+            NSArray *arrayNotificacion=[NSCoreDataManager getDataWithEntity:@"Notificaciones" predicate:@"tipo CONTAINS\"verificacion\"" andManagedObjContext:[NSCoreDataManager getManagedContext]];
             
             for (Eventos *evento in array) {
                 
@@ -369,8 +390,18 @@
                 }
             }
             
-            exito=YES;
-            [_HUD hide:YES];
+            for (Notificaciones *notif in arrayNotificacion) {
+                
+                [[NSCoreDataManager getManagedContext] deleteObject:notif];
+                [NSCoreDataManager SaveData];
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                exito=YES;
+                [_HUD hide:YES];
+            });
+            
         }else{
             UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"No has dado permiso a la aplicación para usar el calendario" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
             [alert show];

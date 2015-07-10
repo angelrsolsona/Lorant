@@ -9,7 +9,7 @@
         <attribute name="foto" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="noPoliza" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="Notificaciones" representedClassName="Notificaciones" syncable="YES">
+    <entity name="Notificaciones" syncable="YES">
         <attribute name="fechaFin" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fechaInicio" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mensaje" optional="YES" attributeType="String" syncable="YES"/>

@@ -17,6 +17,7 @@
 #import "Poliza.h"
 #import "VerificacionFechas.h"
 #import "ObjNotificacion.h"
+#import "Notificaciones.h"
 
 
 @interface NotificacionesViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,NSConnectionDelegate>
