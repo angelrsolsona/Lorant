@@ -14,7 +14,10 @@
 @property(strong,nonatomic) NSManagedObjectContext *managerObject;
 
 -(id)init;
--(void)SaveEntity:(NSString *)nameEntity arrayEntities:(NSMutableArray *)array;
+-(void)SaveEntity;
+-(NSArray *)getDataWithEntity:(NSString *)nameEntity predicate:(NSString *)predicatestr;
+/////////////////////////////////////////
+
 +(NSManagedObjectContext *)getManagedContext;
 +(BOOL)SaveData;
 +(NSArray *)getDataWithEntity:(NSString *)nameEntity andManagedObjContext:(NSManagedObjectContext*)context;

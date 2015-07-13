@@ -19,10 +19,32 @@
     }
     return self;
 }
--(void)SaveEntity:(NSString *)nameEntity arrayEntities:(NSMutableArray *)array{
-
+-(void)SaveEntity{
+    
     
 }
+
+-(NSArray *)getDataWithEntity:(NSString *)nameEntity predicate:(NSString *)predicatestr{
+    
+    NSFetchRequest *request=[[NSFetchRequest alloc] init];
+    NSEntityDescription *entity=[NSEntityDescription entityForName:nameEntity inManagedObjectContext:_managerObject];
+    NSPredicate *predicate =[NSPredicate predicateWithFormat:predicatestr];
+    [request setPredicate:predicate];
+    [request setEntity:entity];
+    [request setReturnsDistinctResults:YES];
+    NSError *error=nil;
+    NSArray *array=[_managerObject executeFetchRequest:request error:&error];
+    /*NSSortDescriptor *sortdescriptor=[[NSSortDescriptor alloc] initWithKey:@"id_ruta" ascending:YES];
+     NSArray *descriptor=[NSArray arrayWithObject:sortdescriptor];
+     array=[array sortedArrayUsingDescriptors:descriptor];*/
+    return array;
+    
+    
+}
+
+
+
+////////////////////////////////////////////////////////////
 
 +(NSManagedObjectContext *)getManagedContext{
     AppDelegate *appdelegate=(AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -70,7 +92,6 @@
     [request setPredicate:predicate];
     [request setEntity:entity];
     [request setReturnsDistinctResults:YES];
-    request.resultType = NSDictionaryResultType;
     NSError *error=nil;
     NSArray *array=[context executeFetchRequest:request error:&error];
     /*NSSortDescriptor *sortdescriptor=[[NSSortDescriptor alloc] initWithKey:@"id_ruta" ascending:YES];

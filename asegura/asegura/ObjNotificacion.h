@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "Notificaciones.h"
 @interface ObjNotificacion : NSObject
 
 @property(strong,nonatomic)NSString *tituloNotificacion;
+@property(strong,nonatomic)Notificaciones *notificacion;
+@property(strong,nonatomic)NSDate *fechaNotificacion;
 
 @end

@@ -84,13 +84,46 @@
 +(NSDate *)convierteNSStringToNSDate:(NSString*)cadena Formato:(NSString *)formato{
     NSDateFormatter *dateFormat=[[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:formato];
-    return [dateFormat dateFromString:cadena];
+    NSDate *nsdate=[[NSDate alloc] init];
+     nsdate=[dateFormat dateFromString:cadena];
+    return nsdate;
 }
 
 +(NSString *)transformaNSDatetoString:(NSDate *)date formato:(NSString *)formato{
     NSDateFormatter *dateFormat=[[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:formato];
     return [dateFormat stringFromDate:date];
+}
+
++(NSString *)obtenerFechaTipo:(TipoFecha)tipoFecha cadena:(NSString *)fecha separador:(NSString *)separador{
+    NSArray *split=[fecha componentsSeparatedByString:separador];
+    NSString *cadena=@"";
+    if ([split count]>0) {
+        switch (tipoFecha) {
+            case DIA_MES:
+            {
+                cadena=[NSString stringWithFormat:@"%@%@%@",[split objectAtIndex:0],separador,[split objectAtIndex:1]];
+            }break;
+            case DIA_ANIO:
+            {
+                cadena=[NSString stringWithFormat:@"%@%@%@",[split objectAtIndex:0],separador,[split objectAtIndex:2]];
+            }break;
+            case MES_ANIO:
+            {
+                cadena=[NSString stringWithFormat:@"%@%@%@",[split objectAtIndex:1],separador,[split objectAtIndex:2]];
+            }break;
+            case DIA_MES_ANIO:
+            {
+                cadena=[NSString stringWithFormat:@"%@%@%@%@%@",[split objectAtIndex:0],separador,[split objectAtIndex:1],separador,[VerificacionFechas transformaNSDatetoString:[NSDate date] formato:@"yyyy"]];
+            }
+            default:
+                break;
+        }
+
+    }
+    
+    return cadena;
+    
 }
 
 

@@ -370,10 +370,14 @@
 
 -(BOOL)mapView:(GMSMapView *)mapView didTapMarker:(AgenciasMarkerAnotation *)marker{
     
+    
     [_nombreAgencia setText:marker.nombreAgencia];
     [_direccionAgencia setText:marker.domicilio];
     //[_telefonos setText:[NSString stringWithFormat:@"Teléfono:%@\nCorreo:%@",marker.telefono,marker.correo]];
+    //_telefonosLink.dataDetectorTypes=UIDataDetectorTypeNone;
     [_telefonosLink setText:[NSString stringWithFormat:@"Teléfono: %@\nCorreo: %@",marker.telefono,marker.correo]];
+    [NSThread sleepForTimeInterval:0.1];
+    //_telefonosLink.dataDetectorTypes=UIDataDetectorTypeAddress;
     
     _markerActual=marker;
     [_btnLlamar setEnabled:YES];

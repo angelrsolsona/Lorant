@@ -28,4 +28,5 @@
 @property(strong,nonatomic) NSMutableArray *arrayVerificacion;
 @property(strong,nonatomic) NSMutableArray *arrayNotificaciones;
 @property(strong,nonatomic)Usuario *usuarioActual;
+@property(strong,nonatomic)NSCoreDataManager *coreDataManager;
 @end

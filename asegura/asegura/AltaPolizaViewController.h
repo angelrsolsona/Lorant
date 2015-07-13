@@ -20,6 +20,7 @@
 #import "VerificacionFechas.h"
 #import "ARSNManagerCalendar.h"
 #import "Eventos.h"
+#import "Notificaciones.h"
 
 @protocol AltaPolizaViewControllerDelegate <NSObject>
 

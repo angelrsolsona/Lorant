@@ -42,6 +42,8 @@
     
     _recordarVerificacion.on=[datosAlm boolForKey:@"recordarVerificacion"];
     
+    _coreDataManager=[[NSCoreDataManager alloc] init];
+    
     
     
 }
@@ -291,6 +293,7 @@
             BOOL periodoI2;
             BOOL periodoF2;
             [calendar getCalendar];
+            int valor=0;
             for (Poliza *poliza in _arrayVerificacion) {
                 
                 EKRecurrenceRule *rule1=[[EKRecurrenceRule alloc] initRecurrenceWithFrequency:EKRecurrenceFrequencyYearly interval:1 daysOfTheWeek:nil daysOfTheMonth:nil monthsOfTheYear:nil weeksOfTheYear:nil daysOfTheYear:nil setPositions:nil end:nil];
@@ -317,32 +320,42 @@
                     
                     for (NSMutableDictionary *dic in calendar.arrayEventos) {
                         
-                        Eventos *evento=[NSEntityDescription insertNewObjectForEntityForName:@"Eventos" inManagedObjectContext:[NSCoreDataManager getManagedContext]];
+                        Eventos *evento=[NSEntityDescription insertNewObjectForEntityForName:@"Eventos" inManagedObjectContext:_coreDataManager.managerObject];
                         
                         evento.noPoliza=[dic objectForKey:@"noPoliza"];
                         evento.tipo=[dic objectForKey:@"tipo"];
                         evento.idEvento=[dic objectForKey:@"idEvento"];
+                    
+                        NSError *error=nil;
                         
-                        Notificaciones *notificacion1=[NSEntityDescription insertNewObjectForEntityForName:@"Notificaciones" inManagedObjectContext:[NSCoreDataManager getManagedContext]];
-                        notificacion1.noPoliza=[dic objectForKey:@"noPoliza"];
-                        notificacion1.tipo=[dic objectForKey:@"tipo"];
-                        notificacion1.fechaInicio=poliza.fechaInicioPeriodo1;
-                        notificacion1.fechaFin=poliza.fechaInicioPeriodo1;
-                        notificacion1.mensaje=@"Periodo 1 de verificacion";
-                        
-                        Notificaciones *notificacion2=[NSEntityDescription insertNewObjectForEntityForName:@"Notificaciones" inManagedObjectContext:[NSCoreDataManager getManagedContext]];
-                        notificacion2.noPoliza=[dic objectForKey:@"noPoliza"];
-                        notificacion2.tipo=[dic objectForKey:@"tipo"];
-                        notificacion2.fechaInicio=poliza.fechaInicioPeriodo2;
-                        notificacion2.fechaFin=poliza.fechaInicioPeriodo2;
-                        notificacion2.mensaje=@"Periodo 2 de verificacion";
-                        
-                        if([NSCoreDataManager SaveData]){
-                            exito=YES;
+                        if([_coreDataManager.managerObject save:&error]){
+                            NSLog(@"elemento guardado");
+                            
                         }else{
-                            exito=NO;
+                            NSLog(@"error elemento %@",[error localizedDescription]);
                         }
                     }
+                    calendar.arrayEventos=[[NSMutableArray alloc] init];
+                    
+                    Notificaciones *notificacion1=[NSEntityDescription insertNewObjectForEntityForName:@"Notificaciones" inManagedObjectContext:_coreDataManager.managerObject];
+                    notificacion1.noPoliza=poliza.insurenceNumber;
+                    notificacion1.tipo=@"verificacion";
+                    //notificacion1.fechaInicio=poliza.fechaInicioPeriodo1;
+                    //notificacion1.fechaFin=poliza.fechaFinPeriodo1;
+                    notificacion1.fechaInicio=[VerificacionFechas transformaNSDatetoString:[VerificacionFechas convierteNSStringToNSDate:[VerificacionFechas obtenerFechaTipo:DIA_MES cadena:poliza.fechaInicioPeriodo1 separador:@"/"] Formato:@"dd/MM"] formato:@"dd/MM"];
+                    notificacion1.fechaFin=[VerificacionFechas transformaNSDatetoString:[VerificacionFechas convierteNSStringToNSDate:[VerificacionFechas obtenerFechaTipo:DIA_MES cadena:poliza.fechaFinPeriodo1 separador:@"/"] Formato:@"dd/MM"] formato:@"dd/MM"];
+                    notificacion1.mensaje=@"Periodo 1 de verificación";
+                    
+                    Notificaciones *notificacion2=[NSEntityDescription insertNewObjectForEntityForName:@"Notificaciones" inManagedObjectContext:[NSCoreDataManager getManagedContext]];
+                    notificacion2.noPoliza=poliza.insurenceNumber;
+                    notificacion2.tipo=@"verificacion";
+                    //notificacion2.fechaInicio=poliza.fechaInicioPeriodo2;
+                    //notificacion2.fechaFin=poliza.fechaFinPeriodo2;
+                    notificacion2.fechaInicio=[VerificacionFechas transformaNSDatetoString:[VerificacionFechas convierteNSStringToNSDate:[VerificacionFechas obtenerFechaTipo:DIA_MES cadena:poliza.fechaInicioPeriodo2 separador:@"/"] Formato:@"dd/MM"] formato:@"dd/MM"];
+                    notificacion2.fechaFin=[VerificacionFechas transformaNSDatetoString:[VerificacionFechas convierteNSStringToNSDate:[VerificacionFechas obtenerFechaTipo:DIA_MES cadena:poliza.fechaFinPeriodo2 separador:@"/"] Formato:@"dd/MM"] formato:@"dd/MM"];
+                    notificacion2.mensaje=@"Periodo 2 de verificación";
+
+                    //calendar.arrayEventos=[[NSMutableArray alloc] init];
                     dispatch_async(dispatch_get_main_queue(), ^{
                        
                         [_HUD hide:YES];
@@ -374,11 +387,12 @@
        
         if (granted) {
             
-            NSArray *array=[NSCoreDataManager getDataWithEntity:@"Eventos" predicate:@"tipo CONTAINS\"verificacion\"" andManagedObjContext:[NSCoreDataManager getManagedContext]];
-            NSArray *arrayNotificacion=[NSCoreDataManager getDataWithEntity:@"Notificaciones" predicate:@"tipo CONTAINS\"verificacion\"" andManagedObjContext:[NSCoreDataManager getManagedContext]];
+            //NSArray *array=[NSCoreDataManager getDataWithEntity:@"Eventos" predicate:@"tipo CONTAINS\"verificacion\"" andManagedObjContext:[NSCoreDataManager getManagedContext]];
+            NSArray *array=[_coreDataManager getDataWithEntity:@"Eventos" predicate:@"tipo ==[c] \"verificacion\""];
+            NSArray *arrayNotificacion=[NSCoreDataManager getDataWithEntity:@"Notificaciones" predicate:@"tipo == \"verificacion\"" andManagedObjContext:[NSCoreDataManager getManagedContext]];
             
             for (Eventos *evento in array) {
-                
+                NSLog(@"id del evento %@",evento.idEvento);
                 if([calendar removeEventWithIdentifier:evento.idEvento removeFutureEvents:YES]){
                     NSLog(@"Eliminado evento de poliza %@ idEvento %@",evento.noPoliza,evento.idEvento );
                     [[NSCoreDataManager getManagedContext] deleteObject:evento];
@@ -394,6 +408,7 @@
                 
                 [[NSCoreDataManager getManagedContext] deleteObject:notif];
                 [NSCoreDataManager SaveData];
+                NSLog(@"Eliminando notificaciones");
             }
             
             dispatch_async(dispatch_get_main_queue(), ^{

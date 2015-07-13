@@ -11,5 +11,6 @@
 @interface NotificacionesTableViewCell : UITableViewCell
 
 @property(weak,nonatomic)IBOutlet UILabel *lblNotificacion;
+@property(weak,nonatomic)IBOutlet UIButton *btnEliminar;
 
 @end

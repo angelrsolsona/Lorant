@@ -76,6 +76,7 @@
     NotificacionesTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"Celda" forIndexPath:indexPath];
     ObjNotificacion *notificacion=[_arrayNotificaciones objectAtIndex:indexPath.row];
     [cell.lblNotificacion setText:notificacion.tituloNotificacion];
+    [cell.btnEliminar addTarget:self action:@selector(EliminaNotificacion:) forControlEvents:UIControlEventTouchUpInside];
     
     return cell;
     
@@ -110,7 +111,7 @@
                     poliza.noPlacas=[dic objectForKey:@"NoPlacas"];
                     poliza.nombreAseguradora=[dic objectForKey:@"Aseguradora"];
                     //[_arrayPolizas addObject:poliza];
-                    NSInteger diasFaltantes=[VerificacionFechas daysBetweenDate:[NSDate date] andDate:[VerificacionFechas convierteNSStringToNSDate:poliza.fechaHasta Formato:@"yyyy-MM-dd"]];
+                    /*NSInteger diasFaltantes=[VerificacionFechas daysBetweenDate:[NSDate date] andDate:[VerificacionFechas convierteNSStringToNSDate:poliza.fechaHasta Formato:@"yyyy-MM-dd"]];
                     if (diasFaltantes<5 && diasFaltantes>0) {
                         NSLog(@"Agregar notificacion vigencia");
                         ObjNotificacion *notificacion=[[ObjNotificacion alloc] init];
@@ -121,36 +122,100 @@
                         [notificacion setTituloNotificacion:[NSString stringWithFormat:@"La póliza \"%@\" está vencida",poliza.insuranceName]];
                         [_arrayNotificaciones addObject:notificacion];
 
+                    }*/
+#pragma mark - Notificaciones de Vigencia
+
+                    NSArray *arrayNotifVigencia=[NSCoreDataManager getDataWithEntity:@"Notificaciones" predicate:[NSString stringWithFormat:@"noPoliza=\"%@\" AND tipo=\"vigencia\" ",poliza.insurenceNumber] andManagedObjContext:[NSCoreDataManager getManagedContext]];
+                    if ([arrayNotifVigencia count]>0) {
+                        
+                        Notificaciones *notifVigencia=[arrayNotifVigencia objectAtIndex:0];
+                        NSInteger diasFaltantes=[VerificacionFechas daysBetweenDate:[NSDate date] andDate:[VerificacionFechas convierteNSStringToNSDate:notifVigencia.fechaFin Formato:@"dd/MM/yyyy"]];
+                        
+                        if (diasFaltantes<5 && diasFaltantes>0) {
+                            NSLog(@"Agregar notificacion vigencia");
+                            ObjNotificacion *notificacion=[[ObjNotificacion alloc] init];
+                            [notificacion setTituloNotificacion:[NSString stringWithFormat:@"La póliza \"%@\" está por vencer",poliza.insuranceName]];
+                            [notificacion setNotificacion:notifVigencia];
+                            [notificacion setFechaNotificacion:[VerificacionFechas convierteNSStringToNSDate:notifVigencia.fechaFin Formato:@"dd/MM/yyyy"]];
+                            [_arrayNotificaciones addObject:notificacion];
+                        }else if(diasFaltantes<0){
+                            ObjNotificacion *notificacion=[[ObjNotificacion alloc] init];
+                            [notificacion setTituloNotificacion:[NSString stringWithFormat:@"La póliza \"%@\" está vencida",poliza.insuranceName]];
+                            [notificacion setFechaNotificacion:[VerificacionFechas convierteNSStringToNSDate:notifVigencia.fechaFin Formato:@"dd/MM/yyyy"]];
+                            [notificacion setNotificacion:notifVigencia];
+                            [_arrayNotificaciones addObject:notificacion];
+                            
+                        }
                     }
                     
+
+                    
+                    
+#pragma mark - Notificaciones de Pago
+                    
+                    /*NSArray *arrayNotifPago=[NSCoreDataManager getDataWithEntity:@"Notificaciones" predicate:[NSString stringWithFormat:@"noPoliza=\"%@\" AND tipo=\"pago\" ",poliza.insurenceNumber] andManagedObjContext:[NSCoreDataManager getManagedContext]];
+                    if ([arrayNotifPago count]>0) {
+                        
+                        Notificaciones *notifPago=[arrayNotifPago objectAtIndex:0];
+                        NSInteger diasFaltantes=[VerificacionFechas daysBetweenDate:[NSDate date] andDate:[VerificacionFechas convierteNSStringToNSDate:notifPago.fechaFin Formato:@"dd/MM/yyyy"]];
+                        
+                        if (diasFaltantes<5 && diasFaltantes>0) {
+                            NSLog(@"Agregar notificacion vigencia");
+                            ObjNotificacion *notificacion=[[ObjNotificacion alloc] init];
+                            [notificacion setTituloNotificacion:[NSString stringWithFormat:@"La póliza \"%@\" está por vencer",poliza.insuranceName]];
+                            [_arrayNotificaciones addObject:notificacion];
+                        }else if(diasFaltantes<0){
+                            ObjNotificacion *notificacion=[[ObjNotificacion alloc] init];
+                            [notificacion setTituloNotificacion:[NSString stringWithFormat:@"La póliza \"%@\" está vencida",poliza.insuranceName]];
+                            [_arrayNotificaciones addObject:notificacion];
+                            
+                        }
+                    }*/
+
+                    
+#pragma mark - Notificaciones de Verificacion
                     if (_recordadVerificacion) {
                         if (poliza.ramo==1){
                             if ([poliza.noPlacas isEqual:@"S/P"]||[poliza.noPlacas isEqualToString:@"PERMISO"]||[poliza.noPlacas isEqualToString:@"N/A"]||[poliza.noPlacas isEqual:nil]){
                                 NSLog(@"No entra");
                             }else{
                                 poliza=[self CalculaPeriodo:poliza];
-                                NSString *fechaActual=[VerificacionFechas transformaNSDatetoString:[NSDate date] formato:@"dd/MM/yyyy"];
-                                BOOL fechaValida=([VerificacionFechas VerificaPerteneciaRangoFecha:fechaActual fechaInicial:poliza.fechaInicioPeriodo1 fechaFinal:poliza.fechaFinPeriodo1 formatoFecha:@"dd/MM/yyyy"]||[VerificacionFechas VerificaPerteneciaRangoFecha:fechaActual fechaInicial:poliza.fechaInicioPeriodo2 fechaFinal:poliza.fechaFinPeriodo2 formatoFecha:@"dd/MM/yyyy"]);
+                                //NSString *fechaActual=[VerificacionFechas transformaNSDatetoString:[NSDate date] formato:@"dd/MM/yyyy"];
+                                NSString *fechaActual=[VerificacionFechas transformaNSDatetoString:[NSDate date] formato:@"dd/MM"];
+                                /*BOOL fechaValida=([VerificacionFechas VerificaPerteneciaRangoFecha:fechaActual fechaInicial:poliza.fechaInicioPeriodo1 fechaFinal:poliza.fechaFinPeriodo1 formatoFecha:@"dd/MM/yyyy"]||[VerificacionFechas VerificaPerteneciaRangoFecha:fechaActual fechaInicial:poliza.fechaInicioPeriodo2 fechaFinal:poliza.fechaFinPeriodo2 formatoFecha:@"dd/MM/yyyy"]);
                                 if (fechaValida) {
                                     ObjNotificacion *notificacion=[[ObjNotificacion alloc] init];
                                     [notificacion setTituloNotificacion:[NSString stringWithFormat:@"El auto con la póliza \"%@\" está en periodo de verificación",poliza.insuranceName]];
                                     [_arrayNotificaciones addObject:notificacion];
-                                }
+                                }*/
                                 
                                 
-                                NSArray *arrayNotificaciones=[NSCoreDataManager getDataWithEntity:@"Notificaciones" predicate:[NSString stringWithFormat:@"noPoliza=\"%@\" AND tipo=\"verificacion\"",poliza.insurenceNumber] andManagedObjContext:[NSCoreDataManager getManagedContext]];
                                 
-                                for (Notificaciones *notif in arrayNotificaciones) {
-                                    
-                                    BOOL fechaValida=([VerificacionFechas VerificaPerteneciaRangoFecha:fechaActual fechaInicial:notif.fechaInicio fechaFinal:notif.fechaFin formatoFecha:@"dd/MM/yyyy"]);
+                                NSArray *arrayNotificacionesDif=[NSCoreDataManager getDataWithEntity:@"Notificaciones" predicate:[NSString stringWithFormat:@"noPoliza==\"%@\" AND tipo==\"verificacion\"",poliza.insurenceNumber] andManagedObjContext:[NSCoreDataManager getManagedContext]];
+                                
+                                for (Notificaciones *notif in arrayNotificacionesDif) {
+                                    NSLog(@"Poliza %@ fecha Inicio (%@ - %@) fecha Actual fechaActual %@",poliza.insuranceName,notif.fechaInicio,notif.fechaFin,fechaActual);
+                                    BOOL fechaValida=([VerificacionFechas VerificaPerteneciaRangoFecha:fechaActual fechaInicial:notif.fechaInicio fechaFinal:notif.fechaFin formatoFecha:@"dd/MM"]);
                                     if (fechaValida) {
+                                        /// Esta en periodo de verificacion /////
                                         ObjNotificacion *notificacion=[[ObjNotificacion alloc] init];
-                                        [notificacion setTituloNotificacion:[NSString stringWithFormat:@"Notificacion: El auto con la póliza \"%@\" está en periodo de verificación",poliza.insuranceName]];
+                                        [notificacion setTituloNotificacion:[NSString stringWithFormat:@"El auto con la póliza \"%@\" está en su %@",poliza.insuranceName,notif.mensaje]];
+                                        notificacion.notificacion=notif;
+                                        notificacion.fechaNotificacion=[VerificacionFechas convierteNSStringToNSDate:[VerificacionFechas obtenerFechaTipo:DIA_MES_ANIO cadena:fechaActual separador:@"/"] Formato:@"dd/MM/yyyy"];
                                         [_arrayNotificaciones addObject:notificacion];
                                     }else{
-                                        ObjNotificacion *notificacion=[[ObjNotificacion alloc] init];
-                                        [notificacion setTituloNotificacion:[NSString stringWithFormat:@"Notificacion: El auto con la póliza \"%@\" vencio en periodo de verificación",poliza.insuranceName]];
-                                        [_arrayNotificaciones addObject:notificacion];
+                                        BOOL fechaYaPaso=[VerificacionFechas VerificaFechaesMenor:notif.fechaFin fechaMayor:fechaActual formatoFecha:@"dd/MM"];
+                                        if(fechaYaPaso){
+                                            ///// YA paso el periodo de verificacion ///
+                                            ObjNotificacion *notificacion=[[ObjNotificacion alloc] init];
+                                            [notificacion setTituloNotificacion:[NSString stringWithFormat:@"El auto con la póliza \"%@\" vencio su %@",poliza.insuranceName,notif.mensaje]];
+                                            notificacion.notificacion=notif;
+                                             notificacion.fechaNotificacion=[VerificacionFechas convierteNSStringToNSDate:[VerificacionFechas obtenerFechaTipo:DIA_MES_ANIO cadena:notif.fechaFin separador:@"/"] Formato:@"dd/MM/yyyy"];
+                                            [_arrayNotificaciones addObject:notificacion];
+                                        }else{
+                                            NSLog(@"Un no es su segundo periodo");
+                                        }
+                                        
                                     }
                                 }
                                 
@@ -163,6 +228,9 @@
                 }
                 
             }
+            
+            NSSortDescriptor *descriptor=[[NSSortDescriptor alloc] initWithKey:@"fechaNotificacion" ascending:NO];
+            [_arrayNotificaciones sortUsingDescriptors:[NSArray arrayWithObject:descriptor]];
             
             [_tabla reloadData];
             
@@ -293,5 +361,28 @@
     
 }
 
+-(void)EliminaNotificacion:(id)sender{
+    
+    UIButton *btn=(UIButton *)sender;
+    CGPoint center= btn.center;
+    CGPoint rootViewPoint = [btn.superview convertPoint:center toView:_tabla];
+    NSIndexPath *indexPath = [_tabla indexPathForRowAtPoint:rootViewPoint];
+    NSLog(@"%ld",(long)indexPath.row);
+    
+    ObjNotificacion *notif=[_arrayNotificaciones objectAtIndex:indexPath.row];
+    if (notif.notificacion!=nil) {
+     /*NSArray *arrayNotif=[NSCoreDataManager getDataWithEntity:@"Notificaciones" predicate:[NSString stringWithFormat:@"noPoliza==\"%@\" AND fechaInicio == \"%@\" AND fechaFin == \"%@\" tipo=\"%@\"",notif.notificacion.noPoliza,notif.notificacion.fechaInicio,notif.notificacion.fechaFin,notif.notificacion.tipo] andManagedObjContext:[NSCoreDataManager getManagedContext]];
+        
+        Notificaciones *notificacion*/
+        
+        [[NSCoreDataManager getManagedContext] deleteObject:notif.notificacion];
+        if([NSCoreDataManager SaveData]){
+            [_arrayNotificaciones removeObjectAtIndex:indexPath.row];
+            [_tabla reloadData];
+        }
+        
+    }
+    
+}
 
 @end

@@ -596,6 +596,22 @@
                     
                     NSArray *arrayVigencia=[NSCoreDataManager getDataWithEntity:@"Eventos" predicate:[NSString stringWithFormat:@"noPoliza=\"%@\" AND tipo=\"vigencia\"",_polizaActual.insurenceNumber] andManagedObjContext:[NSCoreDataManager getManagedContext]];
                     
+                    NSArray *arrayNotifPago=[NSCoreDataManager getDataWithEntity:@"Notificaciones" predicate:[NSString stringWithFormat:@"noPoliza=\"%@\" AND tipo=\"pago\" ",_polizaActual.insurenceNumber] andManagedObjContext:[NSCoreDataManager getManagedContext]];
+                    
+                    NSArray *arrayNotifVigencia=[NSCoreDataManager getDataWithEntity:@"Notificaciones" predicate:[NSString stringWithFormat:@"noPoliza=\"%@\" AND tipo=\"vigencia\" ",_polizaActual.insurenceNumber] andManagedObjContext:[NSCoreDataManager getManagedContext]];
+                    
+                    for (Notificaciones *notifPago in arrayNotifPago) {
+                        
+                        [[NSCoreDataManager getManagedContext] deleteObject:notifPago];
+                        [NSCoreDataManager SaveData];
+                    }
+                    
+                    for (Notificaciones *notifVig in arrayNotifVigencia) {
+                        
+                        [[NSCoreDataManager getManagedContext] deleteObject:notifVig];
+                        [NSCoreDataManager SaveData];
+                    }
+                    
                     if ([arrayDiaPago count]>0) {
                         Eventos *eventoDiaPago=[arrayDiaPago objectAtIndex:0];
                         
@@ -609,6 +625,8 @@
                             
  
                         }];
+                    }else{
+                        [self RecuerdaDiaPago:_polizaActual];
                     }
                     
                     if ([arrayVigencia count]>0) {
@@ -624,6 +642,9 @@
                             });
                             
                         }];
+                    }else{
+                        [self RecuerdaVigenciaPoliza:_polizaActual];
+
                     }
 
                     [self performSelector:@selector(TerminaEdicion) withObject:nil afterDelay:5.0];
@@ -787,6 +808,15 @@
                 }else{
                 }
             }
+            
+            Notificaciones *notificacion1=[NSEntityDescription insertNewObjectForEntityForName:@"Notificaciones" inManagedObjectContext:[NSCoreDataManager getManagedContext]];
+            notificacion1.noPoliza=poliza.insurenceNumber;
+            notificacion1.tipo=@"vigencia";
+            notificacion1.fechaInicio=poliza.startDate;
+            notificacion1.fechaFin=poliza.endDate;
+            notificacion1.mensaje=@"día de vigencia";
+            
+            [NSCoreDataManager SaveData];
 
         }
         
@@ -821,6 +851,14 @@
                 }else{
                 }
             }
+            Notificaciones *notificacion1=[NSEntityDescription insertNewObjectForEntityForName:@"Notificaciones" inManagedObjectContext:[NSCoreDataManager getManagedContext]];
+            notificacion1.noPoliza=poliza.insurenceNumber;
+            notificacion1.tipo=@"pago";
+            notificacion1.fechaInicio=poliza.recordatorioPagoInicio;
+            notificacion1.fechaFin=poliza.recordatorioPagoFin;
+            notificacion1.mensaje=@"día de pago";
+            
+            [NSCoreDataManager SaveData];
             
         }
 
