@@ -36,6 +36,7 @@
         [self MuestraDatosPoliza];
         [self BloquearCampos:1];
         
+        
     }else{
         // Detalles de Poliza
         
@@ -46,6 +47,7 @@
         NSArray *arrayPolizas=[NSCoreDataManager getDataWithEntity:@"Polizas" predicate:[NSString stringWithFormat:@"noPoliza=\"%@\"",_polizaActual.insurenceNumber] andManagedObjContext:[NSCoreDataManager getManagedContext]];
         if ([arrayPolizas count]>0) {
             Polizas *polizasActual=[arrayPolizas objectAtIndex:0];
+            _polizaActual.foto=polizasActual.foto;
             NSLog(@"Valor de vigencia %@",polizasActual.recordarVigencia);
             if ([polizasActual.recordarVigencia boolValue]) {
                 [_recordadVigencia setOn:YES];

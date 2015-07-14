@@ -19,6 +19,7 @@
     // Do any additional setup after loading the view.
     
     [_imagen setImage:[UIImage imageWithData:_imagenData]];
+    _imagen.transform=CGAffineTransformMakeRotation(M_PI_2);
 }
 
 - (void)didReceiveMemoryWarning {

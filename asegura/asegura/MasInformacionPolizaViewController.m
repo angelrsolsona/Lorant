@@ -344,7 +344,7 @@
         {
             // Dias de pago
             if (!([textField.text integerValue]>=1 && [textField.text integerValue]<=31)) {
-                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Debes elegir una fecha valida" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Debes elegir una fecha válida" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
                 [alert show];
                 [textField setText:@""];
             }
@@ -362,7 +362,7 @@
     if (_recordarPago.on) {
         if ([_recordatorioInicio.text isEqualToString:@""]||[_recordatorioFin.text isEqualToString:@""]) {
             
-            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Los campos de fecha no pueden estar vacios" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Los campos de fecha no pueden estar vacíos" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
             [alert show];
 
         }else{

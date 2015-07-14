@@ -25,6 +25,8 @@
     [self RedondeaBoton:_alias conBorde:YES];
     [self RedondeaBoton:_btnCausas conBorde:YES];
     [self RedondeaBoton:_btnEnviarUbicacion conBorde:NO];
+    [self RedondeaBoton:_btnFoto conBorde:YES];
+    [self RedondeaBoton:_btnCompartir conBorde:YES];
     _pickerActivo=NO;
     _tienesNotas=NO;
     _tienePoliza=NO;
@@ -38,7 +40,7 @@
     
     _HUD=[[MBProgressHUD alloc] initWithView:self.view];
     [_HUD setMode:MBProgressHUDModeIndeterminate];
-    [_HUD setLabelText:@"Obteniendo Polizas"];
+    [_HUD setLabelText:@"Obteniendo Pólizas"];
     [self.view addSubview:_HUD];
     [_HUD show:YES];
     _polizaActual=[[Poliza alloc] init];
@@ -211,7 +213,7 @@
         [_vistaMapa setCamera:camera];
         GMSMarker *marker = [[GMSMarker alloc] init];
         marker.position = CLLocationCoordinate2DMake([latitud floatValue],[longitud floatValue]);
-        marker.title = [NSString stringWithFormat:@"Mi Ubicacion:(%.3f,%.3f)",[latitud floatValue],[longitud floatValue]];
+        marker.title = [NSString stringWithFormat:@"Mi Ubicación:(%.3f,%.3f)",[latitud floatValue],[longitud floatValue]];
         //marker.snippet = @"Australia";
         marker.map = _vistaMapa;
         
@@ -402,7 +404,7 @@
             if (hayError) {
                 
                 [_HUD setMode:MBProgressHUDModeText];
-                [_HUD setLabelText:@"El usuario no tiene polizas"];
+                [_HUD setLabelText:@"El usuario no tiene pólizas"];
                 [self.view addSubview:_HUD];
                 [_HUD show:YES];
                 [_HUD hide:YES afterDelay:2.0];
@@ -486,7 +488,7 @@
                 [[UIApplication sharedApplication] openURL:url];
                 
             }else{
-                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"No se puede eliminar la poliza intentalo de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"No se puede eliminar la póliza inténtalo de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
                 [alert show];
             }
             
@@ -499,7 +501,7 @@
 -(void)connectionDidFail:(NSString *)error{
     [_HUD hide:YES];
     NSLog(@"%@",error);
-    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Error" message:@"Error de conexion intenta de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Error" message:@"Error de conexión intenta de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
     [alert show];
     
 }
@@ -607,7 +609,7 @@
         [_HUD show:YES];
     }else{
         
-        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Debes elegir una poliza y una causa" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Debes elegir una póliza y una causa" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
         [alert show];
 
     }
@@ -654,7 +656,7 @@
 #pragma mark - Fotografia
 -(IBAction)SeleccinaFoto{
 
-        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Seleccionar Imagen" message:@"De donde quieres obtener la foto" delegate:self cancelButtonTitle:@"Cancelar" otherButtonTitles:@"Camara",@"Galeria de Fotos ", nil];
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Seleccionar Imagen" message:@"¿De dónde quieres obtener la foto?" delegate:self cancelButtonTitle:@"Cancelar" otherButtonTitles:@"Cámara",@"Galería de Fotos ", nil];
         [alert setTag:500];
         [alert show];
         alert=nil;
@@ -675,7 +677,7 @@
     
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         
-        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Error" message:@"Este dispositivo no tiene camara" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Error" message:@"Este dispositivo no tiene cámara" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
         [alert show];
         alert=nil;
     }else{

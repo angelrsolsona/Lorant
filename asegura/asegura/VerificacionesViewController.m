@@ -308,13 +308,13 @@
                 NSMutableDictionary *informacionEvento3=[[NSMutableDictionary alloc] initWithObjectsAndKeys:poliza.insurenceNumber,@"noPoliza",@"verificacion",@"tipo", nil];
                 NSMutableDictionary *informacionEvento4=[[NSMutableDictionary alloc] initWithObjectsAndKeys:poliza.insurenceNumber,@"noPoliza",@"verificacion",@"tipo", nil];
                 
-                periodoI1=[calendar addEventAt:[VerificacionFechas convierteNSStringToNSDate:poliza.fechaInicioPeriodo1 Formato:@"dd/MM/yyyy"] endDate:nil withTitle:[NSString stringWithFormat:@"Inicia tu periodo 1 de verificación de la póliza %@",poliza.insuranceName] allDay:YES recordatorio:rule1 informacionEvento:informacionEvento1];
+                periodoI1=[calendar addEventAt:[VerificacionFechas convierteNSStringToNSDate:poliza.fechaInicioPeriodo1 Formato:@"dd/MM/yyyy"] endDate:nil withTitle:[NSString stringWithFormat:@"Inicia tu período 1 de verificación de la póliza %@",poliza.insuranceName] allDay:YES recordatorio:rule1 informacionEvento:informacionEvento1];
                 
-                periodoF1=[calendar addEventAt:[VerificacionFechas convierteNSStringToNSDate:poliza.fechaFinPeriodo1 Formato:@"dd/MM/yyyy"] endDate:nil withTitle:[NSString stringWithFormat:@"Termina tu periodo 1 de verificación de la póliza %@",poliza.insuranceName] allDay:YES recordatorio:rule2 informacionEvento:informacionEvento2];
+                periodoF1=[calendar addEventAt:[VerificacionFechas convierteNSStringToNSDate:poliza.fechaFinPeriodo1 Formato:@"dd/MM/yyyy"] endDate:nil withTitle:[NSString stringWithFormat:@"Termina tu período 1 de verificación de la póliza %@",poliza.insuranceName] allDay:YES recordatorio:rule2 informacionEvento:informacionEvento2];
                 
-                periodoI2=[calendar addEventAt:[VerificacionFechas convierteNSStringToNSDate:poliza.fechaInicioPeriodo2 Formato:@"dd/MM/yyyy"] endDate:nil withTitle:[NSString stringWithFormat:@"Inicia tu periodo 2 de verificación de la póliza %@",poliza.insuranceName] allDay:YES recordatorio:rule3 informacionEvento:informacionEvento3];
+                periodoI2=[calendar addEventAt:[VerificacionFechas convierteNSStringToNSDate:poliza.fechaInicioPeriodo2 Formato:@"dd/MM/yyyy"] endDate:nil withTitle:[NSString stringWithFormat:@"Inicia tu período 2 de verificación de la póliza %@",poliza.insuranceName] allDay:YES recordatorio:rule3 informacionEvento:informacionEvento3];
                 
-                periodoF2=[calendar addEventAt:[VerificacionFechas convierteNSStringToNSDate:poliza.fechaFinPeriodo2 Formato:@"dd/MM/yyyy"] endDate:nil withTitle:[NSString stringWithFormat:@"Termina tu periodo 2 de verificación de la póliza %@",poliza.insuranceName] allDay:YES recordatorio:rule4 informacionEvento:informacionEvento4];
+                periodoF2=[calendar addEventAt:[VerificacionFechas convierteNSStringToNSDate:poliza.fechaFinPeriodo2 Formato:@"dd/MM/yyyy"] endDate:nil withTitle:[NSString stringWithFormat:@"Termina tu período 2 de verificación de la póliza %@",poliza.insuranceName] allDay:YES recordatorio:rule4 informacionEvento:informacionEvento4];
                 
                 if (periodoI1 && periodoF1 && periodoI2 && periodoF2) {
                     
@@ -344,7 +344,7 @@
                     //notificacion1.fechaFin=poliza.fechaFinPeriodo1;
                     notificacion1.fechaInicio=[VerificacionFechas transformaNSDatetoString:[VerificacionFechas convierteNSStringToNSDate:[VerificacionFechas obtenerFechaTipo:DIA_MES cadena:poliza.fechaInicioPeriodo1 separador:@"/"] Formato:@"dd/MM"] formato:@"dd/MM"];
                     notificacion1.fechaFin=[VerificacionFechas transformaNSDatetoString:[VerificacionFechas convierteNSStringToNSDate:[VerificacionFechas obtenerFechaTipo:DIA_MES cadena:poliza.fechaFinPeriodo1 separador:@"/"] Formato:@"dd/MM"] formato:@"dd/MM"];
-                    notificacion1.mensaje=@"Periodo 1 de verificación";
+                    notificacion1.mensaje=@"Período 1 de verificación";
                     
                     Notificaciones *notificacion2=[NSEntityDescription insertNewObjectForEntityForName:@"Notificaciones" inManagedObjectContext:[NSCoreDataManager getManagedContext]];
                     notificacion2.noPoliza=poliza.insurenceNumber;
@@ -353,7 +353,7 @@
                     //notificacion2.fechaFin=poliza.fechaFinPeriodo2;
                     notificacion2.fechaInicio=[VerificacionFechas transformaNSDatetoString:[VerificacionFechas convierteNSStringToNSDate:[VerificacionFechas obtenerFechaTipo:DIA_MES cadena:poliza.fechaInicioPeriodo2 separador:@"/"] Formato:@"dd/MM"] formato:@"dd/MM"];
                     notificacion2.fechaFin=[VerificacionFechas transformaNSDatetoString:[VerificacionFechas convierteNSStringToNSDate:[VerificacionFechas obtenerFechaTipo:DIA_MES cadena:poliza.fechaFinPeriodo2 separador:@"/"] Formato:@"dd/MM"] formato:@"dd/MM"];
-                    notificacion2.mensaje=@"Periodo 2 de verificación";
+                    notificacion2.mensaje=@"Período 2 de verificación";
 
                     //calendar.arrayEventos=[[NSMutableArray alloc] init];
                     dispatch_async(dispatch_get_main_queue(), ^{

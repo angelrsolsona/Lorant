@@ -15,6 +15,7 @@
 @property(weak,nonatomic)IBOutlet UILabel *fecha;
 @property(weak,nonatomic)IBOutlet UIImageView *logoAseguradora;
 @property (weak, nonatomic) IBOutlet UILabel *nombreAseguradora;
+@property(weak,nonatomic)IBOutlet UIButton *btnEliminar;
 
 
 

@@ -37,6 +37,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnEnviarUbicacion;
 @property (weak, nonatomic) IBOutlet UIButton *btnLlamar;
 @property (weak, nonatomic) IBOutlet UITextField *telefono;
+@property (weak, nonatomic) IBOutlet UIButton *btnFoto;
+@property (weak, nonatomic) IBOutlet UIButton *btnCompartir;
 
 @property(strong,nonatomic)NSConnection *conexion;
 @property(strong,nonatomic)Usuario *usuarioActual;

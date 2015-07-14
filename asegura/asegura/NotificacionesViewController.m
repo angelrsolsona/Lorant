@@ -208,7 +208,7 @@
                                         if(fechaYaPaso){
                                             ///// YA paso el periodo de verificacion ///
                                             ObjNotificacion *notificacion=[[ObjNotificacion alloc] init];
-                                            [notificacion setTituloNotificacion:[NSString stringWithFormat:@"El auto con la póliza \"%@\" vencio su %@",poliza.insuranceName,notif.mensaje]];
+                                            [notificacion setTituloNotificacion:[NSString stringWithFormat:@"El auto con la póliza \"%@\" venció su %@",poliza.insuranceName,notif.mensaje]];
                                             notificacion.notificacion=notif;
                                              notificacion.fechaNotificacion=[VerificacionFechas convierteNSStringToNSDate:[VerificacionFechas obtenerFechaTipo:DIA_MES_ANIO cadena:notif.fechaFin separador:@"/"] Formato:@"dd/MM/yyyy"];
                                             [_arrayNotificaciones addObject:notificacion];

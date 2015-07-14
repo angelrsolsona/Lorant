@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "REFrostedViewController.h"
 @interface CotizaViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIButton *btnLlamar;
 
 @end

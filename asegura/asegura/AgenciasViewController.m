@@ -292,7 +292,7 @@
 }
 -(void)connectionDidFail:(NSString *)error{
     
-    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Error" message:@"Error de conexion intenta de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Error" message:@"Error de conexión intenta de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
     [alert show];
     
 }
@@ -361,7 +361,7 @@
         [_conexion connectionGETExecute];
         
     }else{
-        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Debes elegir tu modo de busqueda" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Debes elegir tu modo de búsqueda" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
         [alert show];
     }
 }
@@ -376,7 +376,7 @@
     //[_telefonos setText:[NSString stringWithFormat:@"Teléfono:%@\nCorreo:%@",marker.telefono,marker.correo]];
     //_telefonosLink.dataDetectorTypes=UIDataDetectorTypeNone;
     [_telefonosLink setText:[NSString stringWithFormat:@"Teléfono: %@\nCorreo: %@",marker.telefono,marker.correo]];
-    [NSThread sleepForTimeInterval:0.1];
+    //[NSThread sleepForTimeInterval:0.1];
     //_telefonosLink.dataDetectorTypes=UIDataDetectorTypeAddress;
     
     _markerActual=marker;

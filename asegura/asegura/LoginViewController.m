@@ -196,7 +196,7 @@
             
             if ([[dic objectForKey:@"ErrorCode"] isEqualToString:@"ER0001"]) {
                 
-                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Envio Exitoso" message:@"El correo fue enviado existosamente por favor revisalo para poder recuperar tu contraseña" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Envío Exitoso" message:@"El correo fue enviado existosamente por favor revísalo para poder recuperar tu contraseña" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
                 [alert show];
                 
             }else{

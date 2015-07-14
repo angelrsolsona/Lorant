@@ -32,6 +32,15 @@
     [self ObtenAseguradoras];
     [self InicializaTextField];
     
+    NSArray *arrayPolizaInterna=[NSCoreDataManager getDataWithEntity:@"Polizas" predicate:[NSString stringWithFormat:@"noPoliza=\"%@\"",_polizaActual.insurenceNumber] andManagedObjContext:[NSCoreDataManager getManagedContext]];
+    
+    if ([arrayPolizaInterna count]>0) {
+        _polizaActualInterna=[arrayPolizaInterna objectAtIndex:0];
+    }else{
+        _polizaActualInterna=[NSEntityDescription insertNewObjectForEntityForName:@"Polizas" inManagedObjectContext:[NSCoreDataManager getManagedContext]];
+    }
+
+    
     if (_esEdicion) {
         
         if (_polizaActual.ramo==1) {
@@ -48,13 +57,6 @@
             [self BloqueaCampos:2];
         }
         
-        NSArray *arrayPolizaInterna=[NSCoreDataManager getDataWithEntity:@"Polizas" predicate:[NSString stringWithFormat:@"noPoliza=\"%@\"",_polizaActual.insurenceNumber] andManagedObjContext:[NSCoreDataManager getManagedContext]];
-        
-        if ([arrayPolizaInterna count]>0) {
-            _polizaActualInterna=[arrayPolizaInterna objectAtIndex:0];
-        }else{
-            _polizaActualInterna=[NSEntityDescription insertNewObjectForEntityForName:@"Polizas" inManagedObjectContext:[NSCoreDataManager getManagedContext]];
-        }
         
         
     }else{
@@ -67,6 +69,10 @@
     }
     
     
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    NSLog(@"Apareciendo");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -538,7 +544,7 @@
                 
                 
             }else{
-                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Error" message:@"Ocurrio un error" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Error" message:@"Ocurrió un error" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
                 [alert show];
                 
                 /*_datosAlm=[NSUserDefaults standardUserDefaults];
@@ -626,7 +632,10 @@
  
                         }];
                     }else{
-                        [self RecuerdaDiaPago:_polizaActual];
+                        if (_polizaActualInterna.recordadDiaPago && _polizaActual.tieneMasInformacion) {
+                            [self RecuerdaDiaPago:_polizaActual];
+                        }
+                        
                     }
                     
                     if ([arrayVigencia count]>0) {
@@ -643,7 +652,10 @@
                             
                         }];
                     }else{
-                        [self RecuerdaVigenciaPoliza:_polizaActual];
+                        if (_polizaActual.recordarVigencia) {
+                            [self RecuerdaVigenciaPoliza:_polizaActual];
+                        }
+                        
 
                     }
 

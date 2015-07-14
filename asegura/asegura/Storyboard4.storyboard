@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Zif-aE-gnw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Zif-aE-gnw">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Oswald-Regular.ttf">
+            <string>Oswald-Regular</string>
+            <string>Oswald-Regular</string>
+            <string>Oswald-Regular</string>
             <string>Oswald-Regular</string>
             <string>Oswald-Regular</string>
             <string>Oswald-Regular</string>
@@ -667,8 +670,10 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c2n-Jk-Sbr">
                                         <rect key="frame" x="167" y="437" width="134" height="36"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                        <state key="normal" backgroundImage="BotonCompartir">
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="13"/>
+                                        <state key="normal" title="Compartir">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -677,8 +682,10 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e0X-MA-WFZ">
                                         <rect key="frame" x="21" y="437" width="134" height="36"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                        <state key="normal" backgroundImage="BotonFotoSiniestro">
+                                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="13"/>
+                                        <state key="normal" title="Foto de Siniestro">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -776,6 +783,9 @@
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Ubicacion" translatesAutoresizingMaskIntoConstraints="NO" id="gO8-Cc-JyY">
                                         <rect key="frame" x="265" y="488" width="22" height="22"/>
                                     </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="iconoCamaraNegra" translatesAutoresizingMaskIntoConstraints="NO" id="HVY-aq-J9f">
+                                        <rect key="frame" x="130" y="445" width="20" height="20"/>
+                                    </imageView>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -805,7 +815,9 @@
                     <connections>
                         <outlet property="alias" destination="P6E-ze-qXV" id="hZV-me-mz0"/>
                         <outlet property="btnCausas" destination="B4R-rC-tPp" id="jed-mV-4Jo"/>
+                        <outlet property="btnCompartir" destination="c2n-Jk-Sbr" id="9Dc-2o-1Qs"/>
                         <outlet property="btnEnviarUbicacion" destination="Shb-vK-Wox" id="X9r-ZH-7WJ"/>
+                        <outlet property="btnFoto" destination="e0X-MA-WFZ" id="uiQ-Um-8HJ"/>
                         <outlet property="btnLlamar" destination="mr6-Mm-y6e" id="cOe-bM-uTW"/>
                         <outlet property="notas" destination="vib-6l-cLS" id="DUm-h8-RlR"/>
                         <outlet property="telefono" destination="v3j-ks-aHT" id="ozY-Hb-Y3Y"/>
@@ -941,13 +953,13 @@
                                     <color key="backgroundColor" red="0.58431372549019611" green="0.058823529411764705" blue="0.16470588235294117" alpha="1" colorSpace="calibratedRGB"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Celda" rowHeight="64" id="iTz-bs-QPZ" customClass="MisPolizasTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Celda" rowHeight="64" id="iTz-bs-QPZ" customClass="MisPolizasTableViewCell">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iTz-bs-QPZ" id="Og8-pA-5Tg">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Coche Rojo" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIY-le-Hnc">
-                                                    <rect key="frame" x="31" y="15" width="74" height="41"/>
+                                                    <rect key="frame" x="31" y="13" width="74" height="41"/>
                                                     <fontDescription key="fontDescription" name="Rockwell" family="Rockwell" pointSize="13"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -959,18 +971,25 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="IconoPolizaRojoAutos" translatesAutoresizingMaskIntoConstraints="NO" id="DBL-mK-MHI">
-                                                    <rect key="frame" x="4" y="26" width="20" height="20"/>
+                                                    <rect key="frame" x="4" y="24" width="20" height="20"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="QUALITAS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4G8-WR-mih">
-                                                    <rect key="frame" x="220" y="11" width="67" height="45"/>
+                                                    <rect key="frame" x="214" y="11" width="67" height="45"/>
                                                     <fontDescription key="fontDescription" name="Rockwell" family="Rockwell" pointSize="12"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Epx-0J-GXh">
+                                                    <rect key="frame" x="288" y="22" width="24" height="23"/>
+                                                    <state key="normal" backgroundImage="iconoBasura">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="alias" destination="zIY-le-Hnc" id="Bmz-0e-kej"/>
+                                            <outlet property="btnEliminar" destination="Epx-0J-GXh" id="J6O-o5-p9K"/>
                                             <outlet property="fecha" destination="HQI-37-RMX" id="6rG-lR-WH0"/>
                                             <outlet property="iconoRojo" destination="DBL-mK-MHI" id="CRX-QU-6UQ"/>
                                             <outlet property="nombreAseguradora" destination="4G8-WR-mih" id="AT6-tm-lBs"/>
@@ -1041,7 +1060,7 @@
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CuadroLinea" translatesAutoresizingMaskIntoConstraints="NO" id="nMs-se-37j">
                                         <rect key="frame" x="0.0" y="270" width="320" height="40"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Datos de Siniestro" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nWA-G9-IaI">
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Datos de Siniestro" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nWA-G9-IaI">
                                         <rect key="frame" x="8" y="279" width="112" height="24"/>
                                         <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1659,8 +1678,8 @@
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="VN1-CZ-b0y">
                                         <rect key="frame" x="18" y="54" width="283" height="29"/>
                                         <segments>
-                                            <segment title="Cerca de tí"/>
-                                            <segment title="Busqueda por estado"/>
+                                            <segment title="Cerca de ti"/>
+                                            <segment title="Búsqueda por estado"/>
                                         </segments>
                                         <color key="tintColor" red="0.69803921570000005" green="0.1176470588" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
@@ -1915,7 +1934,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="y compruebalo." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Zq-Vl-rya">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="y compruébalo." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Zq-Vl-rya">
                                 <rect key="frame" x="204" y="112" width="104" height="42"/>
                                 <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="18"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1938,8 +1957,21 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Telefono" translatesAutoresizingMaskIntoConstraints="NO" id="L9V-lD-C6z">
-                                <rect key="frame" x="128" y="193" width="64" height="64"/>
+                                <rect key="frame" x="128" y="263" width="64" height="64"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0rg-qb-Yz0">
+                                <rect key="frame" x="16" y="190" width="288" height="35"/>
+                                <color key="backgroundColor" red="0.19215686269999999" green="0.66666666669999997" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="21"/>
+                                <state key="normal" title="LLAMAR">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="Llamar:" destination="DrJ-dQ-0HX" eventType="touchUpInside" id="WzK-4K-vfl"/>
+                                    <action selector="Llamar:" destination="mMC-zv-wnu" eventType="touchUpInside" id="ypm-rj-HGY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1957,6 +1989,9 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="btnLlamar" destination="0rg-qb-Yz0" id="Pqy-rw-goT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eth-EY-UzE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1995,11 +2030,11 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="95" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="rFv-8p-gYo">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="97" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="rFv-8p-gYo">
                                 <rect key="frame" x="0.0" y="39" width="320" height="465"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Celda" rowHeight="95" id="kxL-ll-3QP" customClass="VerificacionTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Celda" rowHeight="97" id="kxL-ll-3QP" customClass="VerificacionTableViewCell">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kxL-ll-3QP" id="XNB-Jc-hgs">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -2034,6 +2069,10 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JDb-gQ-zk4">
+                                                    <rect key="frame" x="0.0" y="95" width="320" height="1"/>
+                                                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </view>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -2448,9 +2487,9 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fzf-Bl-tdF">
-                                                    <rect key="frame" x="283" y="27" width="29" height="30"/>
-                                                    <state key="normal" title="E">
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fzf-Bl-tdF">
+                                                    <rect key="frame" x="283" y="27" width="30" height="30"/>
+                                                    <state key="normal" backgroundImage="iconoBasura">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
@@ -3029,7 +3068,7 @@
             </objects>
             <point key="canvasLocation" x="3850" y="-1076"/>
         </scene>
-        <!--Información Poliza-->
+        <!--Información Póliza-->
         <scene sceneID="n7y-Iz-1UL">
             <objects>
                 <viewController id="U1c-N8-0dU" customClass="DetallePolizaViewController" sceneMemberID="viewController">
@@ -3387,7 +3426,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Información Poliza" id="AEH-lJ-CmT">
+                    <navigationItem key="navigationItem" title="Información Póliza" id="AEH-lJ-CmT">
                         <barButtonItem key="rightBarButtonItem" title="Editar" id="ptM-3v-f4n">
                             <connections>
                                 <action selector="EditaPoliza:" destination="U1c-N8-0dU" id="0wP-45-25h"/>
@@ -3907,9 +3946,7 @@
         <image name="AcercaDe" width="52" height="52"/>
         <image name="Agencias" width="52" height="52"/>
         <image name="Boton Login" width="320" height="80"/>
-        <image name="BotonCompartir" width="131" height="35"/>
         <image name="BotonFotoPoliza" width="201" height="44"/>
-        <image name="BotonFotoSiniestro" width="131" height="35"/>
         <image name="BotonGuardaryContinuar" width="204" height="45"/>
         <image name="BotonLlamar" width="203" height="44"/>
         <image name="BotonMasInformacion" width="201" height="44"/>
@@ -3952,6 +3989,8 @@
         <image name="Telefono" width="81" height="73"/>
         <image name="Ubicacion" width="14" height="14"/>
         <image name="VerificacionAzul" width="16" height="16"/>
+        <image name="iconoBasura" width="30" height="30"/>
+        <image name="iconoCamaraNegra" width="23" height="23"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -3959,7 +3998,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="hW9-Ed-bdY"/>
+        <segue reference="Jvy-9q-8Iw"/>
         <segue reference="dpf-BB-oOH"/>
         <segue reference="oP5-eq-xgk"/>
         <segue reference="fGT-A1-CQr"/>

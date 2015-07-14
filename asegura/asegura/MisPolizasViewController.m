@@ -88,6 +88,7 @@
     [cell.alias setText:poliza.insuranceName];
     [cell.fecha setText:poliza.fechaHasta];
     [cell.nombreAseguradora setText:poliza.nombreAseguradora];
+    [cell.btnEliminar addTarget:self action:@selector(EliminaPoliza:) forControlEvents:UIControlEventTouchUpInside];
     
     switch (poliza.ramo) {
         case 1:
@@ -133,7 +134,7 @@
     [self performSegueWithIdentifier:@"detalle_segue" sender:self];
 }
 
--(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+/*-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
     return YES;
 }
 
@@ -156,7 +157,7 @@
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return UITableViewCellEditingStyleDelete;
-}
+}*/
 
 
 -(void)connectionDidFinish:(id)result numRequest:(NSInteger)numRequest{
@@ -231,6 +232,28 @@
     
 }
 
+-(void)EliminaPoliza:(id)sender{
+    
+    UIButton *btn=(UIButton *)sender;
+    CGPoint center= btn.center;
+    CGPoint rootViewPoint = [btn.superview convertPoint:center toView:_tabla];
+    NSIndexPath *indexPath = [_tabla indexPathForRowAtPoint:rootViewPoint];
+    NSLog(@"%ld",(long)indexPath.row);
+    
+    _indiceBorrarActual=indexPath.row;
+    Poliza *poliza=[_arrayPolizas objectAtIndex:indexPath.row];
+    _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/deleteInsuranceWS/" parameters:@{@"nickName":_usuarioActual.correo,@"insuranceNumber":poliza.insurenceNumber} idRequest:2 delegate:self];
+    [_conexion connectionPOSTExecute];
+    
+    _HUD=[[MBProgressHUD alloc] initWithView:self.view];
+    [_HUD setMode:MBProgressHUDModeIndeterminate];
+    [_HUD setLabelText:@"Eliminando Pólizas"];
+    [self.view addSubview:_HUD];
+    [_HUD show:YES];
+
+
+    
+}
 
 
 
