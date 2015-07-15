@@ -75,6 +75,9 @@
         [_recordatorioInicio setText:_polizaActual.recordatorioPagoInicio];
         [_recordatorioFin setText:_polizaActual.recordatorioPagoFin];
         [_recordarPago setOn:_polizaActual.recordatorioPago animated:YES];
+    }else{
+        [_recordatorioInicio setText:_polizaActual.startDate];
+        [_recordatorioFin setText:_polizaActual.endDate];
     }
     
     if (_esVistaDetalle) {
@@ -120,7 +123,9 @@
     
     _pickerDate = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - 220, 0, 0)];
     _pickerDate.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
-    [_pickerDate setDate:[NSDate date] animated:YES];
+    [_pickerDate setDate:[VerificacionFechas convierteNSStringToNSDate:button.text Formato:@"dd/MM/yyyy"] animated:YES];
+    [_pickerDate setMinimumDate:[VerificacionFechas convierteNSStringToNSDate:_polizaActual.startDate Formato:@"dd/MM/yyyy"]];
+    [_pickerDate setMaximumDate:[VerificacionFechas convierteNSStringToNSDate:_polizaActual.endDate Formato:@"dd/MM/yyyy"]];
     [_pickerDate setTag:(button.tag*10)];
     [_pickerDate setDatePickerMode:UIDatePickerModeDate];
     [self.view addSubview:_pickerDate];

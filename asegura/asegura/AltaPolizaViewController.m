@@ -65,6 +65,12 @@
         if (_polizaActual.ramo==1) {
             [_numeroSerie setText:_polizaActual.numeroSerie];
         }
+        NSDate *datefechaInicio=[NSDate date];
+        NSDate *datefechaFin=[datefechaInicio dateByAddingTimeInterval:31556926];
+        _polizaActual.startDate=[VerificacionFechas transformaNSDatetoString:datefechaInicio formato:@"dd/MM/yyyy"];
+        _polizaActual.endDate=[VerificacionFechas transformaNSDatetoString:datefechaFin formato:@"dd/MM/yyyy"];
+        [_fechaInicio setText:_polizaActual.startDate];
+        [_fechaFin setText:_polizaActual.endDate];
         
     }
     
@@ -1028,7 +1034,7 @@
     
     _pickerDate = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - 220, 0, 0)];
     _pickerDate.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
-    [_pickerDate setDate:[NSDate date] animated:YES];
+    [_pickerDate setDate:[VerificacionFechas convierteNSStringToNSDate:button.text Formato:@"dd/MM/yyyy"]  animated:YES];
     [_pickerDate setTag:(button.tag*10)];
     [_pickerDate setDatePickerMode:UIDatePickerModeDate];
     [self.view addSubview:_pickerDate];
