@@ -19,6 +19,11 @@
     // Do any additional setup after loading the view.
     
     [_imagen setImage:[UIImage imageWithData:_imagenData]];
+    CGRect rect =_imagen.frame;
+    UIGraphicsBeginImageContext(rect.size);
+    [_imagen.layer renderInContext:UIGraphicsGetCurrentContext()];
+    [_imagen.image drawInRect:rect];
+    UIGraphicsEndImageContext();
     _imagen.transform=CGAffineTransformMakeRotation(M_PI_2);
 }
 
