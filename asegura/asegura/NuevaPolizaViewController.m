@@ -233,6 +233,51 @@
     [_HUD show:YES];
 }
 
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    NSLog(@"Escribiendo");
+    BOOL retorno=YES;
+    switch (textField.tag) {
+        case 2:
+        {
+            // Alias
+            int limit=19;
+            retorno=!([textField.text length]>limit && [string length]>range.length);
+        }break;
+        case 4:
+        {
+            // numero de serie
+            int limit=16;
+            retorno=!([textField.text length]>limit && [string length]>range.length);
+        }break;
+        case 5:
+        {
+            //Descripcion
+            int limit=89;
+            retorno=!([textField.text length]>limit && [string length]>range.length);
+        }break;
+        case 6:
+        {
+            // placas
+            int limit=9;
+            retorno=!([textField.text length]>limit && [string length]>range.length);
+            
+        }break;
+        case 7:{
+            //Nombre asegurado
+            int limit=89;
+            retorno=!([textField.text length]>limit && [string length]>range.length);
+        }break;
+        case 8:{
+            int limit=9;
+            retorno=!([textField.text length]>limit && [string length]>range.length);
+        }break;
+    }
+    
+    return retorno;
+}
+
+
 
 
 @end

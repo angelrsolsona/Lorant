@@ -1340,7 +1340,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2RN-e2-oSg" customClass="TextFieldValidator">
-                                        <rect key="frame" x="118" y="45" width="194" height="30"/>
+                                        <rect key="frame" x="107" y="45" width="205" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -1357,7 +1357,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Selecciona una aseguradora" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SmD-rE-3y6">
-                                        <rect key="frame" x="85" y="124" width="227" height="30"/>
+                                        <rect key="frame" x="107" y="124" width="205" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -1374,7 +1374,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AzK-Oh-vxT" customClass="TextFieldValidator">
-                                        <rect key="frame" x="90" y="163" width="222" height="30"/>
+                                        <rect key="frame" x="107" y="163" width="205" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -1398,14 +1398,14 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CuadroLinea" translatesAutoresizingMaskIntoConstraints="NO" id="FIN-Ky-9Dv">
                                         <rect key="frame" x="0.0" y="239" width="320" height="40"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nombre del Asegurado:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nR0-JH-Brc">
-                                        <rect key="frame" x="6" y="248" width="109" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Asegurado:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nR0-JH-Brc">
+                                        <rect key="frame" x="6" y="248" width="66" height="21"/>
                                         <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="13"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Mn-RY-j9K" customClass="TextFieldValidator">
-                                        <rect key="frame" x="118" y="243" width="194" height="30"/>
+                                        <rect key="frame" x="107" y="243" width="205" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                         <connections>
@@ -1422,7 +1422,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" tag="8" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xnc-bs-s9J" customClass="TextFieldValidator">
-                                        <rect key="frame" x="71" y="283" width="241" height="30"/>
+                                        <rect key="frame" x="107" y="283" width="205" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         <connections>
@@ -1448,7 +1448,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1HU-Nu-ZLS" customClass="TextFieldValidator">
-                                        <rect key="frame" x="71" y="323" width="241" height="30"/>
+                                        <rect key="frame" x="107" y="323" width="205" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -1470,7 +1470,7 @@
                                         <rect key="frame" x="104" y="400" width="51" height="31"/>
                                     </switch>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="FlechaPicker" translatesAutoresizingMaskIntoConstraints="NO" id="4LK-9N-iBj">
-                                        <rect key="frame" x="284" y="134" width="10" height="10"/>
+                                        <rect key="frame" x="299" y="134" width="10" height="10"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Número de Serie:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMf-tw-x3X">
                                         <rect key="frame" x="6" y="86" width="81" height="21"/>
@@ -1479,7 +1479,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gMc-iF-E3X" customClass="TextFieldValidator">
-                                        <rect key="frame" x="90" y="204" width="222" height="30"/>
+                                        <rect key="frame" x="107" y="204" width="205" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                                         <connections>
@@ -1496,7 +1496,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZAe-M9-x2t" customClass="TextFieldValidator">
-                                        <rect key="frame" x="91" y="438" width="220" height="30"/>
+                                        <rect key="frame" x="107" y="438" width="204" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -1504,7 +1504,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YYq-kF-Glo" customClass="TextFieldValidator">
-                                        <rect key="frame" x="95" y="477" width="220" height="30"/>
+                                        <rect key="frame" x="107" y="477" width="208" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -1570,7 +1570,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M91-Kf-Won" customClass="TextFieldValidator">
-                                        <rect key="frame" x="92" y="518" width="220" height="30"/>
+                                        <rect key="frame" x="107" y="518" width="205" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -1956,11 +1956,8 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Telefono" translatesAutoresizingMaskIntoConstraints="NO" id="L9V-lD-C6z">
-                                <rect key="frame" x="128" y="263" width="64" height="64"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0rg-qb-Yz0">
-                                <rect key="frame" x="16" y="190" width="288" height="35"/>
+                                <rect key="frame" x="16" y="226" width="288" height="35"/>
                                 <color key="backgroundColor" red="0.19215686269999999" green="0.66666666669999997" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="21"/>
                                 <state key="normal" title="LLAMAR">
@@ -3124,7 +3121,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nOM-0N-PcN" customClass="TextFieldValidator">
-                                        <rect key="frame" x="99" y="84" width="205" height="30"/>
+                                        <rect key="frame" x="107" y="84" width="205" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -3134,14 +3131,14 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CuadroLinea" translatesAutoresizingMaskIntoConstraints="NO" id="0OQ-yE-5eb">
                                         <rect key="frame" x="0.0" y="120" width="320" height="40"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nombre del Asegurado:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q1q-R5-akV">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Asegurado:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q1q-R5-akV">
                                         <rect key="frame" x="6" y="129" width="109" height="21"/>
                                         <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="13"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lP9-gT-94r" customClass="TextFieldValidator">
-                                        <rect key="frame" x="123" y="124" width="182" height="30"/>
+                                        <rect key="frame" x="107" y="124" width="198" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -3167,7 +3164,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0ka-3n-n3U" customClass="TextFieldValidator">
-                                        <rect key="frame" x="99" y="204" width="213" height="30"/>
+                                        <rect key="frame" x="107" y="204" width="205" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -3256,7 +3253,7 @@
                                         <rect key="frame" x="0.0" y="394" width="320" height="40"/>
                                     </imageView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hn5-Ig-pyD" customClass="TextFieldValidator">
-                                        <rect key="frame" x="68" y="402" width="236" height="26"/>
+                                        <rect key="frame" x="107" y="402" width="197" height="26"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -3273,7 +3270,7 @@
                                         <rect key="frame" x="1" y="434" width="320" height="40"/>
                                     </imageView>
                                     <textField opaque="NO" clipsSubviews="YES" tag="13" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nZ9-7s-dYg" customClass="TextFieldValidator">
-                                        <rect key="frame" x="69" y="442" width="236" height="26"/>
+                                        <rect key="frame" x="107" y="442" width="198" height="26"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                                         <connections>
@@ -3320,7 +3317,7 @@
                                         </connections>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mml-hh-coN" customClass="TextFieldValidator">
-                                        <rect key="frame" x="99" y="319" width="205" height="30"/>
+                                        <rect key="frame" x="107" y="319" width="197" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -3395,7 +3392,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xd2-0l-Xf7" customClass="TextFieldValidator">
-                                        <rect key="frame" x="90" y="359" width="214" height="30"/>
+                                        <rect key="frame" x="107" y="359" width="197" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -3702,7 +3699,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OoS-Ab-dKC" customClass="TextFieldValidator">
-                                        <rect key="frame" x="118" y="45" width="194" height="30"/>
+                                        <rect key="frame" x="107" y="45" width="205" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -3719,7 +3716,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Selecciona una aseguradora" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KcP-GH-8Ok">
-                                        <rect key="frame" x="85" y="85" width="227" height="30"/>
+                                        <rect key="frame" x="107" y="85" width="205" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -3736,7 +3733,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b5D-6J-ql9" customClass="TextFieldValidator">
-                                        <rect key="frame" x="90" y="124" width="222" height="30"/>
+                                        <rect key="frame" x="107" y="124" width="205" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -3746,14 +3743,14 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CuadroLinea" translatesAutoresizingMaskIntoConstraints="NO" id="3qJ-5n-buH">
                                         <rect key="frame" x="0.0" y="160" width="320" height="40"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nombre del Asegurado:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dH6-uJ-b3O">
-                                        <rect key="frame" x="6" y="169" width="109" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Asegurado:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dH6-uJ-b3O">
+                                        <rect key="frame" x="6" y="169" width="88" height="21"/>
                                         <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="13"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tGb-dg-xI2" customClass="TextFieldValidator">
-                                        <rect key="frame" x="118" y="164" width="194" height="30"/>
+                                        <rect key="frame" x="107" y="164" width="205" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                         <connections>
@@ -3770,7 +3767,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" tag="8" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fSi-tO-IWL" customClass="TextFieldValidator">
-                                        <rect key="frame" x="71" y="204" width="241" height="30"/>
+                                        <rect key="frame" x="107" y="204" width="205" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         <connections>
@@ -3796,7 +3793,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5i0-MW-PEL" customClass="TextFieldValidator">
-                                        <rect key="frame" x="71" y="244" width="241" height="30"/>
+                                        <rect key="frame" x="107" y="244" width="205" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -3818,7 +3815,7 @@
                                         <rect key="frame" x="104" y="321" width="51" height="31"/>
                                     </switch>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="FlechaPicker" translatesAutoresizingMaskIntoConstraints="NO" id="hnu-Ly-SA5">
-                                        <rect key="frame" x="284" y="95" width="10" height="10"/>
+                                        <rect key="frame" x="299" y="95" width="10" height="10"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CuadroLinea" translatesAutoresizingMaskIntoConstraints="NO" id="4rz-cJ-rh2">
                                         <rect key="frame" x="0.0" y="353" width="320" height="40"/>
@@ -3830,7 +3827,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LjK-YC-nzf" customClass="TextFieldValidator">
-                                        <rect key="frame" x="91" y="359" width="220" height="30"/>
+                                        <rect key="frame" x="107" y="359" width="204" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -3838,7 +3835,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="14H-Yg-2Ph" customClass="TextFieldValidator">
-                                        <rect key="frame" x="95" y="398" width="220" height="30"/>
+                                        <rect key="frame" x="107" y="398" width="208" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -3896,7 +3893,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T6a-tT-PpR" customClass="TextFieldValidator">
-                                        <rect key="frame" x="92" y="439" width="220" height="30"/>
+                                        <rect key="frame" x="107" y="439" width="205" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
@@ -3986,7 +3983,6 @@
         <image name="Notificaciones" width="104" height="104"/>
         <image name="Polizas" width="105" height="105"/>
         <image name="Reporte" width="104" height="104"/>
-        <image name="Telefono" width="81" height="73"/>
         <image name="Ubicacion" width="14" height="14"/>
         <image name="VerificacionAzul" width="16" height="16"/>
         <image name="iconoBasura" width="30" height="30"/>
