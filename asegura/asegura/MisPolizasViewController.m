@@ -234,26 +234,40 @@
 
 -(void)EliminaPoliza:(id)sender{
     
+    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"¿Seguro que deseas borrar la póliza?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Si", nil];
+    [alert show];
+    
     UIButton *btn=(UIButton *)sender;
     CGPoint center= btn.center;
     CGPoint rootViewPoint = [btn.superview convertPoint:center toView:_tabla];
     NSIndexPath *indexPath = [_tabla indexPathForRowAtPoint:rootViewPoint];
     NSLog(@"%ld",(long)indexPath.row);
-    
     _indiceBorrarActual=indexPath.row;
-    Poliza *poliza=[_arrayPolizas objectAtIndex:indexPath.row];
-    _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/deleteInsuranceWS/" parameters:@{@"nickName":_usuarioActual.correo,@"insuranceNumber":poliza.insurenceNumber} idRequest:2 delegate:self];
-    [_conexion connectionPOSTExecute];
-    
-    _HUD=[[MBProgressHUD alloc] initWithView:self.view];
-    [_HUD setMode:MBProgressHUDModeIndeterminate];
-    [_HUD setLabelText:@"Eliminando Pólizas"];
-    [self.view addSubview:_HUD];
-    [_HUD show:YES];
+   
 
 
     
 }
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    if (buttonIndex) {
+                
+        
+        Poliza *poliza=[_arrayPolizas objectAtIndex:_indiceBorrarActual];
+        _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/deleteInsuranceWS/" parameters:@{@"nickName":_usuarioActual.correo,@"insuranceNumber":poliza.insurenceNumber} idRequest:2 delegate:self];
+        [_conexion connectionPOSTExecute];
+        
+        _HUD=[[MBProgressHUD alloc] initWithView:self.view];
+        [_HUD setMode:MBProgressHUDModeIndeterminate];
+        [_HUD setLabelText:@"Eliminando Pólizas"];
+        [self.view addSubview:_HUD];
+        [_HUD show:YES];
+    
+    }
+    
+}
+
 
 
 

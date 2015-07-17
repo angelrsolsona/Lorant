@@ -35,7 +35,11 @@
         [[alert textFieldAtIndex:0] setPlaceholder:@"Número de póliza"];
         [[alert textFieldAtIndex:1] setPlaceholder:@"Número de serie"];
         [[alert textFieldAtIndex:1] setSecureTextEntry:NO];
+        [[alert textFieldAtIndex:0] setAutocapitalizationType:UITextAutocapitalizationTypeAllCharacters];
         [[alert textFieldAtIndex:1] setAutocapitalizationType:UITextAutocapitalizationTypeAllCharacters];
+        [[alert textFieldAtIndex:0] setDelegate:self];
+        [[alert textFieldAtIndex:1] setDelegate:self];
+        [[alert textFieldAtIndex:1] setTag:2];
         [alert setTag:1];
         [alert show];
     }else{
@@ -175,18 +179,25 @@
                     noPoliza=[[alertView textFieldAtIndex:0] text];
                     noSerie=@"";
                 }
-                _polizaActual=[[Poliza alloc] init];
-                _polizaActual.insurenceNumber=noPoliza;
-                _polizaActual.ramo=_ramoActual;
-                _polizaActual.numeroSerie=noSerie;
-                _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/searchInsurance" parameters:@{@"insuranceNumber":_polizaActual.insurenceNumber,@"_iIdRamo":[NSString stringWithFormat:@"%ld",(long)_polizaActual.ramo],@"serialNumberSuffix":_polizaActual.numeroSerie} idRequest:1 delegate:self];
-                [_conexion connectionPOSTExecute];
                 
-                _HUD=[[MBProgressHUD alloc] initWithView:self.view];
-                [_HUD setMode:MBProgressHUDModeIndeterminate];
-                [_HUD setLabelText:@"Buscando Póliza ..."];
-                [self.view addSubview:_HUD];
-                [_HUD show:YES];
+                if ([noPoliza isEqualToString:@""]||[noPoliza isEqualToString:@""]) {
+                    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Debes llenar los datos de la póliza" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+                    [alert show];
+                }else{
+                
+                    _polizaActual=[[Poliza alloc] init];
+                    _polizaActual.insurenceNumber=noPoliza;
+                    _polizaActual.ramo=_ramoActual;
+                    _polizaActual.numeroSerie=noSerie;
+                    _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/searchInsurance" parameters:@{@"insuranceNumber":_polizaActual.insurenceNumber,@"_iIdRamo":[NSString stringWithFormat:@"%ld",(long)_polizaActual.ramo],@"serialNumberSuffix":_polizaActual.numeroSerie} idRequest:1 delegate:self];
+                    [_conexion connectionPOSTExecute];
+                    
+                    _HUD=[[MBProgressHUD alloc] initWithView:self.view];
+                    [_HUD setMode:MBProgressHUDModeIndeterminate];
+                    [_HUD setLabelText:@"Buscando Póliza ..."];
+                    [self.view addSubview:_HUD];
+                    [_HUD show:YES];
+                }
                 
             }
         }break;
@@ -240,36 +251,8 @@
     switch (textField.tag) {
         case 2:
         {
-            // Alias
-            int limit=19;
-            retorno=!([textField.text length]>limit && [string length]>range.length);
-        }break;
-        case 4:
-        {
             // numero de serie
             int limit=16;
-            retorno=!([textField.text length]>limit && [string length]>range.length);
-        }break;
-        case 5:
-        {
-            //Descripcion
-            int limit=89;
-            retorno=!([textField.text length]>limit && [string length]>range.length);
-        }break;
-        case 6:
-        {
-            // placas
-            int limit=9;
-            retorno=!([textField.text length]>limit && [string length]>range.length);
-            
-        }break;
-        case 7:{
-            //Nombre asegurado
-            int limit=89;
-            retorno=!([textField.text length]>limit && [string length]>range.length);
-        }break;
-        case 8:{
-            int limit=9;
             retorno=!([textField.text length]>limit && [string length]>range.length);
         }break;
     }

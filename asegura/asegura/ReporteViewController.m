@@ -696,6 +696,7 @@
     UIImage *imagen=[info objectForKey:UIImagePickerControllerOriginalImage];
     _imagenSiniestro=imagen;
     [self dismissViewControllerAnimated:YES completion:nil];
+    UIImageWriteToSavedPhotosAlbum(_imagenSiniestro, nil, nil, nil);
     
     
 }

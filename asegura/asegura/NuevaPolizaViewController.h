@@ -12,7 +12,7 @@
 #import "Poliza.h"
 #import "LectorQRViewController.h"
 #import "DetallePolizaViewController.h"
-@interface NuevaPolizaViewController : UIViewController <UIAlertViewDelegate,NSConnectionDelegate,LectorQRViewControllerDelegate>
+@interface NuevaPolizaViewController : UIViewController <UIAlertViewDelegate,NSConnectionDelegate,LectorQRViewControllerDelegate,UITextFieldDelegate>
 
 @property(weak,nonatomic) IBOutlet UIView *viewPreview;
 @property(assign,nonatomic) NSInteger ramoActual;

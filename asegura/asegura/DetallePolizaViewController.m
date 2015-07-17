@@ -44,19 +44,6 @@
         [_btnEditar setEnabled:YES];
         [_btnEditar setTitle:@"Editar"];
         
-        NSArray *arrayPolizas=[NSCoreDataManager getDataWithEntity:@"Polizas" predicate:[NSString stringWithFormat:@"noPoliza=\"%@\"",_polizaActual.insurenceNumber] andManagedObjContext:[NSCoreDataManager getManagedContext]];
-        if ([arrayPolizas count]>0) {
-            Polizas *polizasActual=[arrayPolizas objectAtIndex:0];
-            _polizaActual.foto=polizasActual.foto;
-            NSLog(@"Valor de vigencia %@",polizasActual.recordarVigencia);
-            if ([polizasActual.recordarVigencia boolValue]) {
-                [_recordadVigencia setOn:YES];
-            }else{
-                [_recordadVigencia setOn:NO];
-            }
-        }else{
-            [_recordadVigencia setOn:NO];
-        }
         
         [_lblVerFoto setHidden:NO];
         [_btnGuardar setHidden:YES];
@@ -95,6 +82,22 @@
             noPoliza=_polizaActual.insurenceNumber;
             noSerie=@"";
         }
+        
+        NSArray *arrayPolizas=[NSCoreDataManager getDataWithEntity:@"Polizas" predicate:[NSString stringWithFormat:@"noPoliza=\"%@\"",noPoliza] andManagedObjContext:[NSCoreDataManager getManagedContext]];
+        if ([arrayPolizas count]>0) {
+            Polizas *polizasActual=[arrayPolizas objectAtIndex:0];
+            _polizaActual.foto=polizasActual.foto;
+            NSLog(@"Valor de vigencia %@",polizasActual.recordarVigencia);
+            if ([polizasActual.recordarVigencia boolValue]) {
+                [_recordadVigencia setOn:YES];
+            }else{
+                [_recordadVigencia setOn:NO];
+            }
+        }else{
+            [_recordadVigencia setOn:NO];
+        }
+
+        
     _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/getInsuranceDetailWS" parameters:@{@"insuranceNumber":noPoliza,@"serialNumberSuffix":noSerie} idRequest:1 delegate:self];
     [_conexion connectionPOSTExecute];
     
@@ -483,6 +486,7 @@
             _polizaActual.noPlacas=_txtPlacas.text;
             _polizaActual.descripcion=[self BuscarElemento:@"Descripción" array:_polizaActual.productDetail];
             _polizaActual.insurenceAlias=_aliasPoliza.text;
+            _polizaActual.contratadoCon=_txtContratadoCon.text;
             NSDictionary *parametros=@{@"alias":_polizaActual.insurenceAlias,
                                        @"insuranceNumber":_polizaActual.insurenceNumber,
                                        @"serialNumberSuffix":_polizaActual.numeroSerie,
@@ -583,8 +587,13 @@
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     
     UIImage *imagen=[info objectForKey:UIImagePickerControllerOriginalImage];
+    CGSize destination=CGSizeMake(self.view.frame.size.width, self.view.frame.size.height-44);
+    UIGraphicsBeginImageContext(destination);
+    [imagen drawInRect:CGRectMake(0, 0, destination.width, destination.height)];
+    UIImage *imagenSave=UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
     [self dismissViewControllerAnimated:YES completion:nil];
-    _polizaActual.foto=UIImagePNGRepresentation(imagen);
+    _polizaActual.foto=UIImagePNGRepresentation(imagenSave);
     
     
 }

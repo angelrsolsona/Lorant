@@ -1121,8 +1121,13 @@
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     
     UIImage *imagen=[info objectForKey:UIImagePickerControllerOriginalImage];
+    CGSize destination=CGSizeMake(self.view.frame.size.width, self.view.frame.size.height-44);
+    UIGraphicsBeginImageContext(destination);
+    [imagen drawInRect:CGRectMake(0, 0, destination.width, destination.height)];
+    UIImage *imagenSave=UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
     [self dismissViewControllerAnimated:YES completion:nil];
-    _polizaActual.foto=UIImagePNGRepresentation(imagen);
+    _polizaActual.foto=UIImagePNGRepresentation(imagenSave);
     
     
 }

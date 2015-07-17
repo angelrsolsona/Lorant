@@ -1224,7 +1224,7 @@
                                             <action selector="SeleccionaRamo:" destination="Jsc-oT-3d6" eventType="touchUpInside" id="wEt-dh-cMu"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1t2-Sz-9s1">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1t2-Sz-9s1">
                                         <rect key="frame" x="71" y="323" width="178" height="37"/>
                                         <state key="normal" backgroundImage="BotonQR">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1245,7 +1245,7 @@
                                             <action selector="SeleccionaRamo:" destination="Jsc-oT-3d6" eventType="touchUpInside" id="IlA-Jo-3PY"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a44-49-4dB">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a44-49-4dB">
                                         <rect key="frame" x="71" y="371" width="178" height="37"/>
                                         <state key="normal" backgroundImage="BotonGuardaryContinuar">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -3994,9 +3994,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Jvy-9q-8Iw"/>
-        <segue reference="dpf-BB-oOH"/>
-        <segue reference="oP5-eq-xgk"/>
+        <segue reference="hW9-Ed-bdY"/>
+        <segue reference="Zaf-Bu-Q7Q"/>
+        <segue reference="U7a-BA-N8W"/>
         <segue reference="fGT-A1-CQr"/>
     </inferredMetricsTieBreakers>
 </document>

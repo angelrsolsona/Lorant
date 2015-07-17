@@ -15,7 +15,7 @@
 #import "MBProgressHUD.h"
 #import "Poliza.h"
 #import "DetallePolizaViewController.h"
-@interface MisPolizasViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,NSConnectionDelegate>
+@interface MisPolizasViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,NSConnectionDelegate,UIAlertViewDelegate>
 
 @property(strong,nonatomic)IBOutlet UITableView *tabla;
 @property(strong,nonatomic)NSConnection *conexion;
