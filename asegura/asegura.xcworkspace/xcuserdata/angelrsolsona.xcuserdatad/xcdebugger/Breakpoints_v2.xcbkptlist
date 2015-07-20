@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/NuevaPolizaViewController.m"
-            timestampString = "458776173.778924"
+            timestampString = "457916050.096249"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
             landmarkName = "-alertView:clickedButtonAtIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/DetallePolizaViewController.m"
-            timestampString = "458764865.615653"
+            timestampString = "458513419.24235"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/DetallePolizaViewController.m"
-            timestampString = "458764865.615653"
+            timestampString = "459066179.678502"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "436"
-            endingLineNumber = "436"
+            startingLineNumber = "443"
+            endingLineNumber = "443"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -538,11 +538,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/AltaPolizaViewController.m"
-            timestampString = "458611706.314187"
+            timestampString = "459063199.930096"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "687"
-            endingLineNumber = "687"
+            startingLineNumber = "688"
+            endingLineNumber = "688"
             landmarkName = "-connectionDidFinish:numRequest:"
             landmarkType = "5">
          </BreakpointContent>
@@ -566,7 +566,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/DetallePolizaViewController.m"
@@ -586,12 +586,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/DetallePolizaViewController.m"
-            timestampString = "458776510.713058"
+            timestampString = "459066179.678502"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "677"
-            endingLineNumber = "677"
-            landmarkName = "-EditaPoliza:"
+            startingLineNumber = "678"
+            endingLineNumber = "678"
+            landmarkName = "-textFieldDidEndEditing:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -602,11 +602,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/AltaPolizaViewController.m"
-            timestampString = "458611706.314187"
+            timestampString = "459064546.503233"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "914"
-            endingLineNumber = "914"
+            startingLineNumber = "923"
+            endingLineNumber = "923"
             landmarkName = "-MuestraDatos:"
             landmarkType = "5">
          </BreakpointContent>
@@ -634,11 +634,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/AltaPolizaViewController.m"
-            timestampString = "458611706.314187"
+            timestampString = "459063199.930096"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "675"
-            endingLineNumber = "675"
+            startingLineNumber = "676"
+            endingLineNumber = "676"
             landmarkName = "-connectionDidFinish:numRequest:"
             landmarkType = "5">
          </BreakpointContent>
@@ -666,11 +666,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/AltaPolizaViewController.m"
-            timestampString = "458611706.314187"
+            timestampString = "459064546.503233"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "906"
-            endingLineNumber = "906"
+            startingLineNumber = "915"
+            endingLineNumber = "915"
             landmarkName = "-MuestraDatos:"
             landmarkType = "5">
          </BreakpointContent>
@@ -694,7 +694,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/AltaPolizaViewController.m"
@@ -714,11 +714,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/DetallePolizaViewController.m"
-            timestampString = "458764865.615653"
+            timestampString = "458513419.24235"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
@@ -730,11 +730,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/DetallePolizaViewController.m"
-            timestampString = "458776510.713058"
+            timestampString = "459066179.678502"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "488"
-            endingLineNumber = "488"
+            startingLineNumber = "495"
+            endingLineNumber = "495"
             landmarkName = "-GuardarPoliza:"
             landmarkType = "5">
          </BreakpointContent>
@@ -746,11 +746,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/DetallePolizaViewController.m"
-            timestampString = "458764865.615653"
+            timestampString = "458513419.24235"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "254"
-            endingLineNumber = "254"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
             landmarkName = "-connectionDidFinish:numRequest:"
             landmarkType = "5">
          </BreakpointContent>
@@ -762,11 +762,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/DetallePolizaViewController.m"
-            timestampString = "458764865.615653"
+            timestampString = "459066179.678502"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "297"
-            endingLineNumber = "297"
+            startingLineNumber = "295"
+            endingLineNumber = "295"
             landmarkName = "-connectionDidFinish:numRequest:"
             landmarkType = "5">
          </BreakpointContent>
@@ -778,11 +778,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/AltaPolizaViewController.m"
-            timestampString = "458611706.314187"
+            timestampString = "459064546.503233"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "959"
-            endingLineNumber = "959"
+            startingLineNumber = "968"
+            endingLineNumber = "968"
             landmarkName = "-BuscarElemento:array:"
             landmarkType = "5">
          </BreakpointContent>
@@ -794,11 +794,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/NuevaPolizaViewController.m"
-            timestampString = "458776173.778924"
+            timestampString = "457980342.760141"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "237"
-            endingLineNumber = "237"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
             landmarkName = "-BuscaPoliza"
             landmarkType = "5">
          </BreakpointContent>
@@ -810,11 +810,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/NuevaPolizaViewController.m"
-            timestampString = "458775819.697631"
+            timestampString = "457980510.929927"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "-alertView:clickedButtonAtIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -826,11 +826,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/NuevaPolizaViewController.m"
-            timestampString = "458775819.697631"
+            timestampString = "457980547.921267"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
             landmarkName = "-alertView:clickedButtonAtIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -842,11 +842,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/DetallePolizaViewController.m"
-            timestampString = "458764865.615653"
+            timestampString = "459066179.678502"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "484"
-            endingLineNumber = "484"
+            startingLineNumber = "491"
+            endingLineNumber = "491"
             landmarkName = "-GuardarPoliza:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1126,15 +1126,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/AltaPolizaViewController.m"
-            timestampString = "458611706.314187"
+            timestampString = "459063199.930096"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "607"
-            endingLineNumber = "607"
+            startingLineNumber = "608"
+            endingLineNumber = "608"
             landmarkName = "-connectionDidFinish:numRequest:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1242,11 +1242,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/AltaPolizaViewController.m"
-            timestampString = "458611706.314187"
+            timestampString = "459063199.930096"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "641"
-            endingLineNumber = "641"
+            startingLineNumber = "642"
+            endingLineNumber = "642"
             landmarkName = "-connectionDidFinish:numRequest:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1289,61 +1289,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "asegura/GaleriaViewController.m"
-            timestampString = "458767424.070453"
+            filePath = "asegura/AltaPolizaViewController.m"
+            timestampString = "459063199.930096"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "-imageByRotatingImage:fromImageOrientation:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "asegura/GaleriaViewController.m"
-            timestampString = "458767424.070453"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "asegura/DetallePolizaViewController.m"
-            timestampString = "458776510.713058"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "538"
-            endingLineNumber = "538"
-            landmarkName = "-SeleccinaFoto"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "asegura/MisPolizasViewController.m"
-            timestampString = "458764624.257279"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "-prepareForSegue:sender:"
+            startingLineNumber = "657"
+            endingLineNumber = "657"
+            landmarkName = "-connectionDidFinish:numRequest:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1354,7 +1306,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/DetallePolizaViewController.m"
-            timestampString = "458764887.853762"
+            timestampString = "459063191.894297"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "86"
@@ -1366,16 +1318,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/AltaPolizaViewController.m"
-            timestampString = "458766281.147057"
+            timestampString = "459063734.113557"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1123"
-            endingLineNumber = "1123"
-            landmarkName = "-imagePickerController:didFinishPickingMediaWithInfo:"
+            startingLineNumber = "628"
+            endingLineNumber = "628"
+            landmarkName = "-connectionDidFinish:numRequest:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1385,13 +1337,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "asegura/MisPolizasViewController.m"
-            timestampString = "458786314.952274"
+            filePath = "asegura/ARSNManagerCalendar.m"
+            timestampString = "459066118.979521"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "259"
-            endingLineNumber = "259"
-            landmarkName = "-alertView:clickedButtonAtIndex:"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "-getCalendar"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

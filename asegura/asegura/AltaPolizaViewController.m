@@ -597,9 +597,10 @@
                     _polizaActualInterna.recordadDiaPago=[NSString stringWithFormat:@"%hhd",_polizaActual.recordatorioPago];
                     _polizaActualInterna.recordatorioFin=_polizaActual.recordatorioPagoFin;
                     _polizaActualInterna.recordatorioInicio=_polizaActual.recordatorioPagoInicio;
-                    _polizaActualInterna.recordarVigencia=[NSNumber numberWithBool:_polizaActual.recordarVigencia];
+                    _polizaActualInterna.recordarVigencia=[NSString stringWithFormat:@"%hhd",_polizaActual.recordarVigencia];
                     _polizaActualInterna.fechaInicioVigencia=_polizaActual.startDate;
                     _polizaActualInterna.fechaFinVigencia=_polizaActual.endDate;
+                    _polizaActualInterna.noPoliza=_polizaActual.insurenceNumber;
                     if ([NSCoreDataManager SaveData]) {
                         NSLog(@"informacion guardada");
                     }
@@ -688,15 +689,17 @@
                         }
                         if (_polizaActual.recordarVigencia) {
                             [self RecuerdaVigenciaPoliza:_polizaActual];
-                            polizaInformacion.recordarVigencia=[NSNumber numberWithBool:_polizaActual.recordarVigencia];
+                            _polizaActualInterna.recordarVigencia=[NSString stringWithFormat:@"%hhd",_polizaActual.recordarVigencia];
                         }
                         
                         if (![_polizaActual.foto isEqual:nil]) {
                             polizaInformacion.foto=_polizaActual.foto;
                         }
                         if ([NSCoreDataManager SaveData]) {
-                            [_HUD hide:YES];
-                            [self.navigationController popToRootViewControllerAnimated:YES];
+                            /*[_HUD hide:YES];
+                            [self.navigationController popToRootViewControllerAnimated:YES];*/
+                            
+                            [self performSelector:@selector(TerminaEdicion) withObject:nil afterDelay:5.0];
                         }else{
                             
                             UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Error al guardar póliza intente de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:nil];
@@ -720,12 +723,13 @@
                             [self RecuerdaVigenciaPoliza:_polizaActual];
                         }
                         Polizas *polizaInformacion=[NSEntityDescription insertNewObjectForEntityForName:@"Polizas" inManagedObjectContext:[NSCoreDataManager getManagedContext]];
-                        polizaInformacion.recordarVigencia=[NSNumber numberWithBool:_recordadVigencia.on];
+                        _polizaActualInterna.recordarVigencia=[NSString stringWithFormat:@"%hhd",_polizaActual.recordarVigencia];
                         //polizaInformacion.fechaInicioVigencia=_fechaInicio.text;
                         //polizaInformacion.fechaFinVigencia=_fechaFin.text;
                         if([NSCoreDataManager SaveData]){
-                            [_HUD hide:YES];
-                            [self.navigationController popToRootViewControllerAnimated:YES];
+                            /*[_HUD hide:YES];
+                            [self.navigationController popToRootViewControllerAnimated:YES];*/
+                            [self performSelector:@selector(TerminaEdicion) withObject:nil afterDelay:5.0];
                         }else{
                             UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Error al guardar póliza intente de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles:nil];
                             [alert show];
@@ -843,45 +847,50 @@
 
 -(void)RecuerdaDiaPago:(Poliza *)poliza{
     
-    ARSNManagerCalendar *calendar=[[ARSNManagerCalendar alloc] init];
-    [calendar requestAccess:^(BOOL granted, NSError *error) {
-       [calendar getCalendar];
+    if(poliza.recordatorioPagoFin==nil){
         
-        NSMutableDictionary *informacionEvento1=[[NSMutableDictionary alloc] initWithObjectsAndKeys:poliza.insurenceNumber,@"noPoliza",@"pago",@"tipo", nil];
-        
-        EKRecurrenceEnd *end=[EKRecurrenceEnd recurrenceEndWithEndDate:[VerificacionFechas convierteNSStringToNSDate:poliza.recordatorioPagoFin Formato:@"dd/MM/yyyy"]];
-        
-        EKRecurrenceRule *rule1=[[EKRecurrenceRule alloc] initRecurrenceWithFrequency:EKRecurrenceFrequencyMonthly interval:1 daysOfTheWeek:nil daysOfTheMonth:@[poliza.diaPago] monthsOfTheYear:nil weeksOfTheYear:nil daysOfTheYear:nil setPositions:nil end:end];
-        
-        
-        BOOL eventoGuardado=[calendar addEventAt:[VerificacionFechas convierteNSStringToNSDate:poliza.recordatorioPagoInicio Formato:@"dd/MM/yyyy"] endDate:[VerificacionFechas convierteNSStringToNSDate:poliza.recordatorioPagoFin Formato:@"dd/MM/yyyy"] withTitle:[NSString stringWithFormat:@"Día de pago de la póliza %@",poliza.insurenceAlias] allDay:YES recordatorio:rule1 informacionEvento:informacionEvento1 withIntervalAlarm:(60*60*24*-5)];
-        if (eventoGuardado) {
+    }else{
+    
+        ARSNManagerCalendar *calendar=[[ARSNManagerCalendar alloc] init];
+        [calendar requestAccess:^(BOOL granted, NSError *error) {
+            [calendar getCalendar];
             
-            for (NSMutableDictionary *dic in calendar.arrayEventos) {
+            NSMutableDictionary *informacionEvento1=[[NSMutableDictionary alloc] initWithObjectsAndKeys:poliza.insurenceNumber,@"noPoliza",@"pago",@"tipo", nil];
+            
+            EKRecurrenceEnd *end=[EKRecurrenceEnd recurrenceEndWithEndDate:[VerificacionFechas convierteNSStringToNSDate:poliza.recordatorioPagoFin Formato:@"dd/MM/yyyy"]];
+            
+            EKRecurrenceRule *rule1=[[EKRecurrenceRule alloc] initRecurrenceWithFrequency:EKRecurrenceFrequencyMonthly interval:1 daysOfTheWeek:nil daysOfTheMonth:@[poliza.diaPago] monthsOfTheYear:nil weeksOfTheYear:nil daysOfTheYear:nil setPositions:nil end:end];
+            
+            
+            BOOL eventoGuardado=[calendar addEventAt:[VerificacionFechas convierteNSStringToNSDate:poliza.recordatorioPagoInicio Formato:@"dd/MM/yyyy"] endDate:[VerificacionFechas convierteNSStringToNSDate:poliza.recordatorioPagoFin Formato:@"dd/MM/yyyy"] withTitle:[NSString stringWithFormat:@"Día de pago de la póliza %@",poliza.insurenceAlias] allDay:YES recordatorio:rule1 informacionEvento:informacionEvento1 withIntervalAlarm:(60*60*24*-5)];
+            if (eventoGuardado) {
                 
-                Eventos *evento=[NSEntityDescription insertNewObjectForEntityForName:@"Eventos" inManagedObjectContext:[NSCoreDataManager getManagedContext]];
-                
-                evento.noPoliza=[dic objectForKey:@"noPoliza"];
-                evento.tipo=[dic objectForKey:@"tipo"];
-                evento.idEvento=[dic objectForKey:@"idEvento"];
-                
-                if([NSCoreDataManager SaveData]){
-                }else{
+                for (NSMutableDictionary *dic in calendar.arrayEventos) {
+                    
+                    Eventos *evento=[NSEntityDescription insertNewObjectForEntityForName:@"Eventos" inManagedObjectContext:[NSCoreDataManager getManagedContext]];
+                    
+                    evento.noPoliza=[dic objectForKey:@"noPoliza"];
+                    evento.tipo=[dic objectForKey:@"tipo"];
+                    evento.idEvento=[dic objectForKey:@"idEvento"];
+                    
+                    if([NSCoreDataManager SaveData]){
+                    }else{
+                    }
                 }
+                Notificaciones *notificacion1=[NSEntityDescription insertNewObjectForEntityForName:@"Notificaciones" inManagedObjectContext:[NSCoreDataManager getManagedContext]];
+                notificacion1.noPoliza=poliza.insurenceNumber;
+                notificacion1.tipo=@"pago";
+                notificacion1.fechaInicio=poliza.recordatorioPagoInicio;
+                notificacion1.fechaFin=poliza.recordatorioPagoFin;
+                notificacion1.mensaje=@"día de pago";
+                
+                [NSCoreDataManager SaveData];
+                
             }
-            Notificaciones *notificacion1=[NSEntityDescription insertNewObjectForEntityForName:@"Notificaciones" inManagedObjectContext:[NSCoreDataManager getManagedContext]];
-            notificacion1.noPoliza=poliza.insurenceNumber;
-            notificacion1.tipo=@"pago";
-            notificacion1.fechaInicio=poliza.recordatorioPagoInicio;
-            notificacion1.fechaFin=poliza.recordatorioPagoFin;
-            notificacion1.mensaje=@"día de pago";
             
-            [NSCoreDataManager SaveData];
             
-        }
-
-        
-    }];
+        }];
+    }
 }
 
 -(void)MuestraDatos:(NSInteger)tipoEdicion{

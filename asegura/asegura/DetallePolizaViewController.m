@@ -267,8 +267,9 @@
                     }
                     if (_polizaActual.recordarVigencia) {
                         [self RecuerdaVigenciaPoliza:_polizaActual];
-                        polizaInformacion.recordarVigencia=[NSNumber numberWithBool:_polizaActual.recordarVigencia];
+                        polizaInformacion.recordarVigencia=[NSString stringWithFormat:@"%hhd",_polizaActual.recordarVigencia];
                     }
+                    
                     
                     if (![_polizaActual.foto isEqual:nil]) {
                         polizaInformacion.foto=_polizaActual.foto;
@@ -403,7 +404,12 @@
     switch (tableView.tag) {
         case 1:
         {
-            return [_polizaActual.productDetail count];
+            if([_polizaActual.productDetail count]>0){
+                return [_polizaActual.productDetail count];
+            }else{
+                return 1;
+            }
+            
         }break;
             
         case 2:
@@ -428,7 +434,11 @@
     switch (tableView.tag) {
         case 1:
         {
-             dic=[_polizaActual.productDetail objectAtIndex:indexPath.row];
+            if([_polizaActual.productDetail count]>0){
+                dic=[_polizaActual.productDetail objectAtIndex:indexPath.row];
+            }else{
+                dic=[[NSDictionary alloc] initWithObjectsAndKeys:@"Sin información",@"label",@"",@"valor", nil];
+            }
         }break;
             
         case 2:
@@ -695,6 +705,13 @@
     
     [_lblVerFoto setHidden:NO];
     [_btnGuardar setHidden:YES];
+    
+    if(_polizaActual.recordarVigencia){
+        [_recordadVigencia setOn:YES];
+    }else{
+        [_recordadVigencia setOn:NO];
+    }
+    
     NSString *noPoliza=@"";
     NSString *noSerie=@"";
     if (_polizaActual.ramo==1) {
@@ -704,6 +721,8 @@
         noPoliza=_polizaActual.insurenceNumber;
         noSerie=@"";
     }
+
+    
     _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/getInsuranceDetailWS" parameters:@{@"insuranceNumber":noPoliza,@"serialNumberSuffix":noSerie} idRequest:1 delegate:self];
     [_conexion connectionPOSTExecute];
     

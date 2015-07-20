@@ -58,6 +58,7 @@
             // http://stackoverflow.com/questions/1731530/whats-the-easiest-way-to-persist-data-in-an-iphone-app
             // saved successfuly, store it's identifier in NSUserDefaults
             [[NSUserDefaults standardUserDefaults] setObject:calendarIdentifier forKey:@"my_calendar_identifier"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
             exito= YES;
         } else {
             // unable to save calendar
