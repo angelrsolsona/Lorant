@@ -14,6 +14,7 @@
 #import "Polizas.h"
 #import "Fotos.h"
 #import "Usuario.h"
+#import "Notificaciones.h"
 #import "NSCoreDataManager.h"
 
 

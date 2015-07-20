@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/AltaPolizaViewController.m"
-            timestampString = "458611706.314187"
+            timestampString = "459104603.92442"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "441"
-            endingLineNumber = "441"
+            startingLineNumber = "442"
+            endingLineNumber = "442"
             landmarkName = "-GuardarContinuar:"
             landmarkType = "5">
          </BreakpointContent>
@@ -314,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/ARSNManagerCalendar.m"
-            timestampString = "457225449.508063"
+            timestampString = "459071547.042821"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
             landmarkName = "-addEventAt:endDate:withTitle:allDay:recordatorio:informacionEvento:"
             landmarkType = "5">
          </BreakpointContent>
@@ -346,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/ARSNManagerCalendar.m"
-            timestampString = "457225449.508063"
+            timestampString = "459071547.042821"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
             landmarkName = "-addEventAt:endDate:withTitle:allDay:recordatorio:informacionEvento:withIntervalAlarm:"
             landmarkType = "5">
          </BreakpointContent>
@@ -394,11 +394,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/ARSNManagerCalendar.m"
-            timestampString = "457225449.508063"
+            timestampString = "459071547.042821"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
             landmarkName = "-addEventAt:endDate:withTitle:allDay:recordatorio:informacionEvento:"
             landmarkType = "5">
          </BreakpointContent>
@@ -410,11 +410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/ARSNManagerCalendar.m"
-            timestampString = "457225449.508063"
+            timestampString = "459071547.042821"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
             landmarkName = "-addEventAt:endDate:withTitle:allDay:recordatorio:informacionEvento:"
             landmarkType = "5">
          </BreakpointContent>
@@ -426,11 +426,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/ARSNManagerCalendar.m"
-            timestampString = "457225449.508063"
+            timestampString = "459071547.042821"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
             landmarkName = "-addEventAt:endDate:withTitle:allDay:recordatorio:informacionEvento:"
             landmarkType = "5">
          </BreakpointContent>
@@ -442,11 +442,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/ARSNManagerCalendar.m"
-            timestampString = "457225449.508063"
+            timestampString = "459071547.042821"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "-addEventAt:endDate:withTitle:allDay:recordatorio:informacionEvento:withIntervalAlarm:"
             landmarkType = "5">
          </BreakpointContent>
@@ -538,11 +538,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/AltaPolizaViewController.m"
-            timestampString = "459063199.930096"
+            timestampString = "459104603.92442"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "688"
-            endingLineNumber = "688"
+            startingLineNumber = "689"
+            endingLineNumber = "689"
             landmarkName = "-connectionDidFinish:numRequest:"
             landmarkType = "5">
          </BreakpointContent>
@@ -602,11 +602,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/AltaPolizaViewController.m"
-            timestampString = "459064546.503233"
+            timestampString = "459104603.92442"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "923"
-            endingLineNumber = "923"
+            startingLineNumber = "924"
+            endingLineNumber = "924"
             landmarkName = "-MuestraDatos:"
             landmarkType = "5">
          </BreakpointContent>
@@ -634,27 +634,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/AltaPolizaViewController.m"
-            timestampString = "459063199.930096"
+            timestampString = "459104603.92442"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "676"
-            endingLineNumber = "676"
-            landmarkName = "-connectionDidFinish:numRequest:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "asegura/AltaPolizaViewController.m"
-            timestampString = "458611706.314187"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "592"
-            endingLineNumber = "592"
+            startingLineNumber = "677"
+            endingLineNumber = "677"
             landmarkName = "-connectionDidFinish:numRequest:"
             landmarkType = "5">
          </BreakpointContent>
@@ -666,11 +650,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/AltaPolizaViewController.m"
-            timestampString = "459064546.503233"
+            timestampString = "459104603.92442"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "915"
-            endingLineNumber = "915"
+            startingLineNumber = "593"
+            endingLineNumber = "593"
+            landmarkName = "-connectionDidFinish:numRequest:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "asegura/AltaPolizaViewController.m"
+            timestampString = "459104603.92442"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "916"
+            endingLineNumber = "916"
             landmarkName = "-MuestraDatos:"
             landmarkType = "5">
          </BreakpointContent>
@@ -778,11 +778,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/AltaPolizaViewController.m"
-            timestampString = "459064546.503233"
+            timestampString = "459104603.92442"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "968"
-            endingLineNumber = "968"
+            startingLineNumber = "969"
+            endingLineNumber = "969"
             landmarkName = "-BuscarElemento:array:"
             landmarkType = "5">
          </BreakpointContent>
@@ -854,7 +854,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/AltaPolizaViewController.m"
@@ -954,11 +954,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/ARSNManagerCalendar.m"
-            timestampString = "458437339.132786"
+            timestampString = "459071547.042821"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "212"
-            endingLineNumber = "212"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
             landmarkName = "-removeEventWithIdentifier:removeFutureEvents:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1130,11 +1130,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/AltaPolizaViewController.m"
-            timestampString = "459063199.930096"
+            timestampString = "459104603.92442"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "608"
-            endingLineNumber = "608"
+            startingLineNumber = "609"
+            endingLineNumber = "609"
             landmarkName = "-connectionDidFinish:numRequest:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1238,15 +1238,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/AltaPolizaViewController.m"
-            timestampString = "459063199.930096"
+            timestampString = "459104603.92442"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "642"
-            endingLineNumber = "642"
+            startingLineNumber = "643"
+            endingLineNumber = "643"
             landmarkName = "-connectionDidFinish:numRequest:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1290,11 +1290,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/AltaPolizaViewController.m"
-            timestampString = "459063199.930096"
+            timestampString = "459104603.92442"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "657"
-            endingLineNumber = "657"
+            startingLineNumber = "658"
+            endingLineNumber = "658"
             landmarkName = "-connectionDidFinish:numRequest:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1318,16 +1318,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/AltaPolizaViewController.m"
-            timestampString = "459063734.113557"
+            timestampString = "459104603.92442"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "628"
-            endingLineNumber = "628"
+            startingLineNumber = "629"
+            endingLineNumber = "629"
             landmarkName = "-connectionDidFinish:numRequest:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "asegura/ARSNManagerCalendar.m"
+            timestampString = "459066118.979521"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "-getCalendar"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1338,12 +1354,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "asegura/ARSNManagerCalendar.m"
-            timestampString = "459066118.979521"
+            timestampString = "459072314.496798"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
             landmarkName = "-getCalendar"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "asegura/MisPolizasViewController.m"
+            timestampString = "459104472.088861"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
+            landmarkName = "-connectionDidFinish:numRequest:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "asegura/MisPolizasViewController.m"
+            timestampString = "459104499.707642"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
+            landmarkName = "-connectionDidFinish:numRequest:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "asegura/MisPolizasViewController.m"
+            timestampString = "459104516.425408"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "265"
+            endingLineNumber = "265"
+            landmarkName = "-connectionDidFinish:numRequest:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

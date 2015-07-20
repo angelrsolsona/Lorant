@@ -167,6 +167,14 @@
         [NSCoreDataManager SaveData];
     }
     
+    NSArray *notificaciones=[NSCoreDataManager getDataWithEntity:@"Notificaciones" andManagedObjContext:[NSCoreDataManager getManagedContext]];
+    
+    for (Notificaciones *notif in notificaciones) {
+        
+        [[NSCoreDataManager getManagedContext] deleteObject:notif];
+        [NSCoreDataManager SaveData];
+    }
+    
     NSUserDefaults *datosAlm=[NSUserDefaults standardUserDefaults];
     [datosAlm setBool:NO forKey:@"login"];
     [datosAlm synchronize];

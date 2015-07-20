@@ -48,6 +48,29 @@
                 break;
             }
         }
+        /*EKSource *localSource=nil;
+        for (EKSource *source in self.eventStore.sources)
+        {
+            if (source.sourceType == EKSourceTypeCalDAV && [source.title isEqualToString:@"iCloud"])
+            {
+                localSource = source;
+                break;
+            }
+        }
+        
+        if (localSource == nil)
+        {
+            for (EKSource *source in self.eventStore.sources)
+            {
+                if (source.sourceType == EKSourceTypeLocal)
+                {
+                    localSource = source;
+                    break;
+                }
+            }
+        }
+        
+        _calendar.source=localSource;*/
         
         // save this in NSUserDefaults data for retrieval later
         NSString *calendarIdentifier = [_calendar calendarIdentifier];

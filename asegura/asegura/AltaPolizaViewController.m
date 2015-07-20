@@ -436,7 +436,8 @@
                                            @"Placas":_polizaActual.noPlacas,
                                            @"FormaPago":_polizaActual.formaPago,
                                            @"Paquete":_polizaActual.paquete,
-                                           @"Descripcion":_polizaActual.descripcion};
+                                           @"Descripcion":_polizaActual.descripcion,
+                                           @"Agente":_polizaActual.contratadoCon};
                 
                 _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/addInsurance" parameters:parametros idRequest:3 delegate:self];
                 [_conexion connectionPOSTExecute];

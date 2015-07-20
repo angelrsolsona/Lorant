@@ -211,6 +211,57 @@
                     [[NSCoreDataManager getManagedContext] deleteObject:polizas];
                     [NSCoreDataManager SaveData];
                 }
+                
+                
+                NSArray *arrayDiaPago=[NSCoreDataManager getDataWithEntity:@"Eventos" predicate:[NSString stringWithFormat:@"noPoliza=\"%@\" AND tipo=\"pago\"",poliza.insurenceNumber] andManagedObjContext:[NSCoreDataManager getManagedContext]];
+                
+                NSArray *arrayVigencia=[NSCoreDataManager getDataWithEntity:@"Eventos" predicate:[NSString stringWithFormat:@"noPoliza=\"%@\" AND tipo=\"vigencia\"",poliza.insurenceNumber] andManagedObjContext:[NSCoreDataManager getManagedContext]];
+                
+                NSArray *arrayNotifPago=[NSCoreDataManager getDataWithEntity:@"Notificaciones" predicate:[NSString stringWithFormat:@"noPoliza=\"%@\" AND tipo=\"pago\" ",poliza.insurenceNumber] andManagedObjContext:[NSCoreDataManager getManagedContext]];
+                
+                NSArray *arrayNotifVigencia=[NSCoreDataManager getDataWithEntity:@"Notificaciones" predicate:[NSString stringWithFormat:@"noPoliza=\"%@\" AND tipo=\"vigencia\" ",poliza.insurenceNumber] andManagedObjContext:[NSCoreDataManager getManagedContext]];
+                
+                for (Notificaciones *notifPago in arrayNotifPago) {
+                    
+                    [[NSCoreDataManager getManagedContext] deleteObject:notifPago];
+                    [NSCoreDataManager SaveData];
+                }
+                
+                for (Notificaciones *notifVig in arrayNotifVigencia) {
+                    
+                    [[NSCoreDataManager getManagedContext] deleteObject:notifVig];
+                    [NSCoreDataManager SaveData];
+                }
+                
+                if ([arrayDiaPago count]>0) {
+                    Eventos *eventoDiaPago=[arrayDiaPago objectAtIndex:0];
+                    
+                    ARSNManagerCalendar *calendar=[[ARSNManagerCalendar alloc] init];
+                    [calendar requestAccess:^(BOOL granted, NSError *error) {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [calendar getCalendar];
+                            [calendar removeEventWithIdentifier:eventoDiaPago.idEvento removeFutureEvents:YES];
+                        });
+                        
+                        
+                    }];
+                }
+                
+                if ([arrayVigencia count]>0) {
+                    Eventos *eventoVigencia=[arrayVigencia objectAtIndex:0];
+                    
+                    ARSNManagerCalendar *calendar=[[ARSNManagerCalendar alloc] init];
+                    [calendar requestAccess:^(BOOL granted, NSError *error) {
+                        
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [calendar getCalendar];
+                            [calendar removeEventWithIdentifier:eventoVigencia.idEvento removeFutureEvents:YES];
+                        });
+                        
+                    }];
+                }
+
+                
                 [_arrayPolizas removeObjectAtIndex:_indiceBorrarActual];
                 [_tabla reloadData];
                 [_HUD hide:YES];
