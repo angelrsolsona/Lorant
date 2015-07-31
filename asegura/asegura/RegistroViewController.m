@@ -12,7 +12,7 @@
 #define REGEX_USER_NAME @"[A-Za-z0-9]{3,10}"
 #define REGEX_EMAIL @"[A-Z0-9a-z._%+-]{3,}+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
 #define REGEX_PASSWORD_LIMIT @"^.{6,20}$"
-#define REGEX_PASSWORD @"[A-Za-z0-9]{6,20}"
+#define REGEX_PASSWORD @"[A-Za-z0-9]{8,20}"
 #define REGEX_PHONE_DEFAULT @"[0-9]{3}\\-[0-9]{3}\\-[0-9]{4}"
 @interface RegistroViewController ()
 
@@ -228,6 +228,7 @@
     //[_telefono addRegx:REGEX_EMAIL withMsg:@"Enter valid email."];
     [_telefono setPresentInView:self.view];
     ///[_pass addRegx:REGEX_EMAIL withMsg:@"Enter valid email."];
+    [_pass addRegx:REGEX_PASSWORD withMsg:@"Introduce una contraseña alfanumerica minimo de 8 caracteres"];
     [_pass setPresentInView:self.view];
     //[_verificarPass addRegx:REGEX_PASSWORD withMsg:@"Enter valid email."];
     [_verificarPass setPresentInView:self.view];
