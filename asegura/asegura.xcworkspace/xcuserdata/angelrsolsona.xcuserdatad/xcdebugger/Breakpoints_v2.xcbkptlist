@@ -799,8 +799,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "226"
             endingLineNumber = "226"
-            landmarkName = "-BuscaPoliza"
-            landmarkType = "5">
+            landmarkName = "@implementation NuevaPolizaViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -815,7 +815,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "164"
             endingLineNumber = "164"
-            landmarkName = "-alertView:clickedButtonAtIndex:"
+            landmarkName = "-connectionDidFail:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -130,7 +130,11 @@
                 
             }else if([[dic objectForKey:@"ErrorCode"] isEqualToString:@"ER0008"]){
                 
-                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"La póliza que deseas registrar no es administrada en lorantmms.\n ¿Deseas agregarla?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Si", nil];
+                /*UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"La póliza que deseas registrar no es administrada en lorantmms.\n ¿Deseas agregarla?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Si", nil];
+                [alert setTag:2];
+                [alert show];*/
+                
+                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:[NSString stringWithFormat:@"Los datos de la póliza son correctos?.\n Número de Póliza:%@ \n Número de Serie:%@",_polizaActual.insurenceNumber,_polizaActual.numeroSerie] delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Si", nil];
                 [alert setTag:2];
                 [alert show];
             
