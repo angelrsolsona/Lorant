@@ -835,12 +835,12 @@
         <scene sceneID="DBq-qV-jrc">
             <objects>
                 <tableViewController id="JWX-S5-H2M" customClass="HistorialSinisetroTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="293" sectionHeaderHeight="22" sectionFooterHeight="22" id="OCA-Ia-OLw">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="317" sectionHeaderHeight="22" sectionFooterHeight="22" id="OCA-Ia-OLw">
                         <rect key="frame" x="0.0" y="64" width="320" height="604"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="293" id="Npl-LD-WYP" customClass="HistorialSiniestroTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="317" id="Npl-LD-WYP" customClass="HistorialSiniestroTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Npl-LD-WYP" id="0rX-10-l52">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -885,6 +885,21 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T8y-TT-b50">
+                                            <rect key="frame" x="8" y="271" width="213" height="34"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="EstrellaInActiva" translatesAutoresizingMaskIntoConstraints="NO" id="VeZ-nc-X7B">
+                                                    <rect key="frame" x="10" y="3" width="27" height="27"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="EstrellaInActiva" translatesAutoresizingMaskIntoConstraints="NO" id="kMh-tz-eJV">
+                                                    <rect key="frame" x="45" y="3" width="27" height="27"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="EstrellaInActiva" translatesAutoresizingMaskIntoConstraints="NO" id="2hL-OH-VY0">
+                                                    <rect key="frame" x="80" y="3" width="27" height="27"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.68235294120000001" green="0.047058823530000002" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                        </view>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
@@ -1269,15 +1284,15 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="IconoPolizaBlancoOtros" translatesAutoresizingMaskIntoConstraints="NO" id="GJG-6o-tAk">
                                         <rect key="frame" x="44" y="239" width="30" height="30"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="IconoPolizaBlancoAutos" translatesAutoresizingMaskIntoConstraints="NO" id="bmE-sw-PWg">
-                                        <rect key="frame" x="44" y="48" width="30" height="30"/>
-                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gastos Médicos" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzD-Z5-OBB">
                                         <rect key="frame" x="29" y="172" width="61" height="33"/>
                                         <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="IconoPolizaBlancoAutos" translatesAutoresizingMaskIntoConstraints="NO" id="bmE-sw-PWg">
+                                        <rect key="frame" x="44" y="48" width="30" height="30"/>
+                                    </imageView>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -3952,6 +3967,7 @@
         <image name="CalaendarioVerificacion" width="52" height="52"/>
         <image name="Cuadro Login" width="618" height="247"/>
         <image name="CuadroLinea" width="321" height="40"/>
+        <image name="EstrellaInActiva" width="27" height="27"/>
         <image name="FlechaPicker" width="15" height="11"/>
         <image name="Fondo" width="640" height="960"/>
         <image name="Fondo Blanco" width="640" height="960"/>
@@ -3995,8 +4011,8 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="hW9-Ed-bdY"/>
-        <segue reference="dpf-BB-oOH"/>
-        <segue reference="oP5-eq-xgk"/>
+        <segue reference="Zaf-Bu-Q7Q"/>
+        <segue reference="U7a-BA-N8W"/>
         <segue reference="qeH-qL-Ekw"/>
     </inferredMetricsTieBreakers>
 </document>

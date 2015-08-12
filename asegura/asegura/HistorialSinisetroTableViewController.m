@@ -159,6 +159,8 @@
                 historial.fechaUsuario=[dic objectForKey:@"FECHA_USUARIO_INICIO"];
                 historial.fechaRegistro=[dic objectForKey:@"FECHA_REGISTRO"];
                 historial.fechaReporte=[dic objectForKey:@"FECHAREPORTE"];
+                historial.idSinisetro=[dic objectForKey:@"ID_SINIESTRO"];
+                historial.calificacion=[dic objectForKey:@"CALIFICACION"];
                 [_arraySiniestros addObject:historial];
                 
             }

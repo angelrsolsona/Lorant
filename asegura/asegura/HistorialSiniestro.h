@@ -20,6 +20,8 @@
 @property(strong,nonatomic) NSString *fechaUsuario;
 @property(strong,nonatomic) NSString *fechaRegistro;
 @property(strong,nonatomic) NSString *fechaReporte;
+@property(strong,nonatomic) NSString *idSinisetro;
+@property(strong,nonatomic) NSString *calificacion;
 
 
 @end
