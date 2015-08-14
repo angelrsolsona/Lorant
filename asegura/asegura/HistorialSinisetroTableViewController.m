@@ -114,34 +114,48 @@
     CGPoint rootViewPoint = [btn.superview convertPoint:center toView:_tabla];
     NSIndexPath *indexPath = [_tabla indexPathForRowAtPoint:rootViewPoint];*/
     NSLog(@"%ld",(long)indexPath.row);
+    [self CreaVistaCalificacion];
     
 }
 
 -(void)CreaVistaCalificacion{
     
-    _infoView=[[[NSBundle mainBundle] loadNibNamed:@"infoView" owner:self options:nil] objectAtIndex:0];
+    
+    
+    _alertaFondo=[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width)];
+    [_alertaFondo setBackgroundColor:[UIColor blackColor]];
+    _alertaFondo.layer.opacity=0.5f;
+    
+    _infoView=[[[NSBundle mainBundle] loadNibNamed:@"VistaCalificacion" owner:self options:nil] objectAtIndex:0];
     [_infoView setBackgroundColor:[UIColor colorWithRed:224/255 green:224/255 blue:224/255 alpha:0.7]];
-    [_infoView setFrame:CGRectMake(0,self.view.frame.size.height/2, _infoView.frame.size.width, _infoView.frame.size.height)];
+    [_infoView setFrame:CGRectMake(5,100, _infoView.frame.size.width, _infoView.frame.size.height)];
     
     [_infoView.estrella1 addTarget:self action:@selector(SeleccionaEstrella:) forControlEvents:UIControlEventTouchUpInside];
     [_infoView.estrella2 addTarget:self action:@selector(SeleccionaEstrella:) forControlEvents:UIControlEventTouchUpInside];
     [_infoView.estrella3 addTarget:self action:@selector(SeleccionaEstrella:) forControlEvents:UIControlEventTouchUpInside];
     [_infoView.estrella4 addTarget:self action:@selector(SeleccionaEstrella:) forControlEvents:UIControlEventTouchUpInside];
     [_infoView.estrella5 addTarget:self action:@selector(SeleccionaEstrella:) forControlEvents:UIControlEventTouchUpInside];
-    [_infoView.btnCancelar addTarget:self action:@selector(SeleccionaEstrella:) forControlEvents:UIControlEventTouchUpInside];
-    [_infoView.btnCancelar addTarget:self action:@selector(SeleccionaEstrella:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:_infoView];
+    [_infoView.btnCancelar addTarget:self action:@selector(CancelarCalificacion) forControlEvents:UIControlEventTouchUpInside];
+    [_infoView.btnCancelar addTarget:self action:@selector(EnviarCalificacion) forControlEvents:UIControlEventTouchUpInside];
+    
+    [_alertaFondo addSubview:_infoView];
+    [self.view addSubview:_alertaFondo];
     
 }
 
 -(void)EnviarCalificacion{
-    [_infoView removeFromSuperview];
+    [_alertaFondo removeFromSuperview];
 }
 
 -(void)CancelarCalificacion{
-    [_infoView removeFromSuperview];
+    [_alertaFondo removeFromSuperview];
 }
 -(void)SeleccionaEstrella:(id)sender{
+    NSLog(@"Seleccionando Estrella");
+    UIButton *btn=(UIButton *)sender;
+    for (int i=1; i<=btn.tag; i++) {
+        
+    }
     
 }
 
@@ -234,6 +248,81 @@
     
     UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Error" message:@"Error de conexión intenta de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
     [alert show];
+    
+}
+
+
+- (void)show:(UIView *)dialog;
+{
+    dialogView = [self createContainerView];
+    
+    dialogView.layer.shouldRasterize = YES;
+    dialogView.layer.rasterizationScale = [[UIScreen mainScreen] scale];
+    
+    self.layer.shouldRasterize = YES;
+    self.layer.rasterizationScale = [[UIScreen mainScreen] scale];
+    
+    
+    self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
+    
+    [self addSubview:dialogView];
+    
+    // Can be attached to a view or to the top most window
+    // Attached to a view:
+    if (parentView != NULL) {
+        [parentView addSubview:self];
+        
+        // Attached to the top most window
+    } else {
+        
+        // On iOS7, calculate with orientation
+        if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_7_1) {
+            
+            UIInterfaceOrientation interfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+            switch (interfaceOrientation) {
+                case UIInterfaceOrientationLandscapeLeft:
+                    self.transform = CGAffineTransformMakeRotation(M_PI * 270.0 / 180.0);
+                    break;
+                    
+                case UIInterfaceOrientationLandscapeRight:
+                    self.transform = CGAffineTransformMakeRotation(M_PI * 90.0 / 180.0);
+                    break;
+                    
+                case UIInterfaceOrientationPortraitUpsideDown:
+                    self.transform = CGAffineTransformMakeRotation(M_PI * 180.0 / 180.0);
+                    break;
+                    
+                default:
+                    break;
+            }
+            
+            [self setFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+            
+            // On iOS8, just place the dialog in the middle
+        } else {
+            
+            CGSize screenSize = [self countScreenSize];
+            CGSize dialogSize = [self countDialogSize];
+            CGSize keyboardSize = CGSizeMake(0, 0);
+            
+            dialogView.frame = CGRectMake((screenSize.width - dialogSize.width) / 2, (screenSize.height - keyboardSize.height - dialogSize.height) / 2, dialogSize.width, dialogSize.height);
+            
+        }
+        
+        [[[[UIApplication sharedApplication] windows] firstObject] addSubview:self];
+    }
+    
+    dialogView.layer.opacity = 0.5f;
+    dialogView.layer.transform = CATransform3DMakeScale(1.3f, 1.3f, 1.0);
+    
+    [UIView animateWithDuration:0.2f delay:0.0 options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4f];
+                         dialogView.layer.opacity = 1.0f;
+                         dialogView.layer.transform = CATransform3DMakeScale(1, 1, 1);
+                     }
+                     completion:NULL
+     ];
     
 }
 

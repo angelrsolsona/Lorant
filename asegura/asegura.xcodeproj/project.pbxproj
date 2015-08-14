@@ -88,6 +88,7 @@
 		2AA73F5D1B3599D2008F010C /* Aseguradoras.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AA73F5C1B3599D2008F010C /* Aseguradoras.m */; };
 		2AB255B01B7D44BA005DEC8B /* VistaCalificacion.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AB255AF1B7D44BA005DEC8B /* VistaCalificacion.xib */; };
 		2AB255B31B7D4A05005DEC8B /* VistaCalificacion.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB255B21B7D4A05005DEC8B /* VistaCalificacion.m */; };
+		2AB255B71B7E6151005DEC8B /* CustomIOSAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB255B61B7E6151005DEC8B /* CustomIOSAlertView.m */; };
 		2AB9802E1AC0687B00952D36 /* NuevaPolizaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB9802D1AC0687B00952D36 /* NuevaPolizaViewController.m */; };
 		2AB980311AC06B4200952D36 /* LectorQRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB980301AC06B4200952D36 /* LectorQRViewController.m */; };
 		2AB980331AC06D9B00952D36 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB980321AC06D9B00952D36 /* AVFoundation.framework */; };
@@ -285,6 +286,8 @@
 		2AB255AF1B7D44BA005DEC8B /* VistaCalificacion.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VistaCalificacion.xib; sourceTree = "<group>"; };
 		2AB255B11B7D4A05005DEC8B /* VistaCalificacion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VistaCalificacion.h; sourceTree = "<group>"; };
 		2AB255B21B7D4A05005DEC8B /* VistaCalificacion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VistaCalificacion.m; sourceTree = "<group>"; };
+		2AB255B51B7E6151005DEC8B /* CustomIOSAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomIOSAlertView.h; sourceTree = "<group>"; };
+		2AB255B61B7E6151005DEC8B /* CustomIOSAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomIOSAlertView.m; sourceTree = "<group>"; };
 		2AB9802C1AC0687B00952D36 /* NuevaPolizaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NuevaPolizaViewController.h; sourceTree = "<group>"; };
 		2AB9802D1AC0687B00952D36 /* NuevaPolizaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NuevaPolizaViewController.m; sourceTree = "<group>"; };
 		2AB9802F1AC06B4200952D36 /* LectorQRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LectorQRViewController.h; sourceTree = "<group>"; };
@@ -507,6 +510,7 @@
 		2A054B271A76F340001090C7 /* Externas */ = {
 			isa = PBXGroup;
 			children = (
+				2AB255B41B7E613B005DEC8B /* UIAlertCustom */,
 				2A054B461A76F398001090C7 /* AFNetworking */,
 				2A054B2C1A76F36C001090C7 /* UIKit+AFNetworking */,
 				2A054B281A76F358001090C7 /* MBProgress */,
@@ -748,6 +752,15 @@
 				A5034269FB6E613B49DA3118 /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2AB255B41B7E613B005DEC8B /* UIAlertCustom */ = {
+			isa = PBXGroup;
+			children = (
+				2AB255B51B7E6151005DEC8B /* CustomIOSAlertView.h */,
+				2AB255B61B7E6151005DEC8B /* CustomIOSAlertView.m */,
+			);
+			name = UIAlertCustom;
 			sourceTree = "<group>";
 		};
 		2AB9802B1AC0684F00952D36 /* NuevaPoliza */ = {
@@ -1099,6 +1112,7 @@
 				2A5960451B40808A0020C6B1 /* Eventos.m in Sources */,
 				2A00D97A1B3E1E3C003A8370 /* VerificacionFechas.m in Sources */,
 				2A40F2C41B2F539900474BDB /* CausaSiniestro.m in Sources */,
+				2AB255B71B7E6151005DEC8B /* CustomIOSAlertView.m in Sources */,
 				2ADCCDA21B20D850001739D7 /* Poliza.m in Sources */,
 				2A054B741A76F5C3001090C7 /* InicioViewController.m in Sources */,
 				2A054B191A76F2DC001090C7 /* REFrostedViewController.m in Sources */,

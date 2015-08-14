@@ -14,6 +14,7 @@
 #import "MBProgressHUD.h"
 #import "HistorialSiniestro.h"
 #import "VistaCalificacion.h"
+#import "CustomIOSAlertView.h"
 @interface HistorialSinisetroTableViewController : UITableViewController <NSConnectionDelegate>
 
 
@@ -22,6 +23,7 @@
 @property(strong,nonatomic)Usuario *usuarioActual;
 @property(strong,nonatomic)MBProgressHUD *HUD;
 @property(strong,nonatomic)VistaCalificacion *infoView;
+@property(strong,nonatomic)UIView *alertaFondo;
 
 
 @end
