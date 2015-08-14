@@ -13,6 +13,7 @@
 #import "NSCoreDataManager.h"
 #import "MBProgressHUD.h"
 #import "HistorialSiniestro.h"
+#import "VistaCalificacion.h"
 @interface HistorialSinisetroTableViewController : UITableViewController <NSConnectionDelegate>
 
 
@@ -20,6 +21,7 @@
 @property(strong,nonatomic)NSConnection *conexion;
 @property(strong,nonatomic)Usuario *usuarioActual;
 @property(strong,nonatomic)MBProgressHUD *HUD;
+@property(strong,nonatomic)VistaCalificacion *infoView;
 
 
 @end

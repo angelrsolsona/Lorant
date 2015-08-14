@@ -20,4 +20,13 @@
     // Configure the view for the selected state
 }
 
+- (void)prepareForReuse {
+    
+    NSArray *viewsToRemove = [_vistaCalificacion subviews];
+    for (UIImageView *v in viewsToRemove) {
+        [v removeFromSuperview];
+    }
+    
+}
+
 @end

@@ -17,5 +17,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *causaSiniestro;
 @property (weak, nonatomic) IBOutlet GMSMapView *vistaMapa;
 @property (weak, nonatomic) IBOutlet UILabel *informacion;
+@property (weak, nonatomic) IBOutlet UIView *vistaCalificacion;
 
 @end

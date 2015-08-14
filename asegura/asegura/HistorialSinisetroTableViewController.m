@@ -81,12 +81,69 @@
     marker.title = [NSString stringWithFormat:@"Mi Ubicación:(%.3f,%.3f)",[historial.latitud floatValue],[historial.longitud floatValue]];
     //marker.snippet = @"Australia";
     marker.map = cell.vistaMapa;
+    NSLog(@"Calificacion %@",historial.calificacion);
+    NSInteger calificacion= [historial.calificacion integerValue];
+    for(int i=0;i<5;i++){
+        UIImageView *estrella=[[UIImageView alloc] initWithFrame:CGRectMake(i*35, 3, 27, 27)];
+        if(i<calificacion){
+            [estrella setImage:[UIImage imageNamed:@"EstrellaActiva"]];
+        }else{
+            [estrella setImage:[UIImage imageNamed:@"EstrellaInActiva"]];
+        }
+        
+        [cell.vistaCalificacion addSubview:estrella];
+    }
+    UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(Calificar:)];
+    [tap setNumberOfTapsRequired:1];
+    [tap setNumberOfTouchesRequired:1];
+    [cell.vistaCalificacion addGestureRecognizer:tap];
     
     
     
     return cell;
 }
 
+#pragma mark - Vista Calificaciones
+-(void)Calificar:(id)sender{
+    
+    UITapGestureRecognizer *tap=(UITapGestureRecognizer *)sender;
+    CGPoint location = [tap locationInView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
+    /*UIButton *btn=(UIButton *)sender;
+    CGPoint center= btn.center;
+    CGPoint rootViewPoint = [btn.superview convertPoint:center toView:_tabla];
+    NSIndexPath *indexPath = [_tabla indexPathForRowAtPoint:rootViewPoint];*/
+    NSLog(@"%ld",(long)indexPath.row);
+    
+}
+
+-(void)CreaVistaCalificacion{
+    
+    _infoView=[[[NSBundle mainBundle] loadNibNamed:@"infoView" owner:self options:nil] objectAtIndex:0];
+    [_infoView setBackgroundColor:[UIColor colorWithRed:224/255 green:224/255 blue:224/255 alpha:0.7]];
+    [_infoView setFrame:CGRectMake(0,self.view.frame.size.height/2, _infoView.frame.size.width, _infoView.frame.size.height)];
+    
+    [_infoView.estrella1 addTarget:self action:@selector(SeleccionaEstrella:) forControlEvents:UIControlEventTouchUpInside];
+    [_infoView.estrella2 addTarget:self action:@selector(SeleccionaEstrella:) forControlEvents:UIControlEventTouchUpInside];
+    [_infoView.estrella3 addTarget:self action:@selector(SeleccionaEstrella:) forControlEvents:UIControlEventTouchUpInside];
+    [_infoView.estrella4 addTarget:self action:@selector(SeleccionaEstrella:) forControlEvents:UIControlEventTouchUpInside];
+    [_infoView.estrella5 addTarget:self action:@selector(SeleccionaEstrella:) forControlEvents:UIControlEventTouchUpInside];
+    [_infoView.btnCancelar addTarget:self action:@selector(SeleccionaEstrella:) forControlEvents:UIControlEventTouchUpInside];
+    [_infoView.btnCancelar addTarget:self action:@selector(SeleccionaEstrella:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:_infoView];
+    
+}
+
+-(void)EnviarCalificacion{
+    [_infoView removeFromSuperview];
+}
+
+-(void)CancelarCalificacion{
+    [_infoView removeFromSuperview];
+}
+-(void)SeleccionaEstrella:(id)sender{
+    
+}
 
 /*
 // Override to support conditional editing of the table view.

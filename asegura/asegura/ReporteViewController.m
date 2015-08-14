@@ -207,8 +207,7 @@
         NSString *latitud=[NSString stringWithFormat:@"%f",ubicacionActual.coordinate.latitude];
         NSString *longitud=[NSString stringWithFormat:@"%f",ubicacionActual.coordinate.longitude];
         
-        GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:ubicacionActual.coordinate.latitude longitude:ubicacionActual.coordinate.longitude
-                                                                     zoom:14];
+        GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:ubicacionActual.coordinate.latitude longitude:ubicacionActual.coordinate.longitude zoom:14];
         _vistaMapa.myLocationEnabled = YES;
         [_vistaMapa setCamera:camera];
         GMSMarker *marker = [[GMSMarker alloc] init];
