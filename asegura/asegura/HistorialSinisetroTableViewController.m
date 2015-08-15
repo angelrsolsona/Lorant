@@ -114,6 +114,7 @@
     CGPoint rootViewPoint = [btn.superview convertPoint:center toView:_tabla];
     NSIndexPath *indexPath = [_tabla indexPathForRowAtPoint:rootViewPoint];*/
     NSLog(@"%ld",(long)indexPath.row);
+    _siniestroActual=[_arraySiniestros objectAtIndex:indexPath.row];
     [self CreaVistaCalificacion];
     
 }
@@ -122,9 +123,9 @@
     
     
     
-    _alertaFondo=[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width)];
+    /*_alertaFondo=[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width)];
     [_alertaFondo setBackgroundColor:[UIColor blackColor]];
-    _alertaFondo.layer.opacity=0.5f;
+    ///_alertaFondo.layer.opacity=0.5f;*/
     
     _infoView=[[[NSBundle mainBundle] loadNibNamed:@"VistaCalificacion" owner:self options:nil] objectAtIndex:0];
     [_infoView setBackgroundColor:[UIColor colorWithRed:224/255 green:224/255 blue:224/255 alpha:0.7]];
@@ -136,26 +137,50 @@
     [_infoView.estrella4 addTarget:self action:@selector(SeleccionaEstrella:) forControlEvents:UIControlEventTouchUpInside];
     [_infoView.estrella5 addTarget:self action:@selector(SeleccionaEstrella:) forControlEvents:UIControlEventTouchUpInside];
     [_infoView.btnCancelar addTarget:self action:@selector(CancelarCalificacion) forControlEvents:UIControlEventTouchUpInside];
-    [_infoView.btnCancelar addTarget:self action:@selector(EnviarCalificacion) forControlEvents:UIControlEventTouchUpInside];
+    [_infoView.btnEnviar addTarget:self action:@selector(EnviarCalificacion) forControlEvents:UIControlEventTouchUpInside];
     
-    [_alertaFondo addSubview:_infoView];
-    [self.view addSubview:_alertaFondo];
+    [self RedondeaBoton:_infoView.btnCancelar conBorde:NO];
+    [self RedondeaBoton:_infoView.btnEnviar conBorde:NO];
+    
+    /*[_alertaFondo addSubview:_infoView];
+    [self.view addSubview:_alertaFondo];*/
+    
+    _popup=[KLCPopup popupWithContentView:_infoView];
+    [_popup show];
     
 }
 
 -(void)EnviarCalificacion{
-    [_alertaFondo removeFromSuperview];
+    
+    [_popup dismiss:YES];
+    
+    _conexion=[[NSConnection alloc] initWithRequestURL:@"http://grupo.lmsmexico.com.mx/wsmovil/api/poliza/sendScore" parameters:@{@"nickName":_usuarioActual.correo,@"sinisterId":_siniestroActual.idSinisetro,@"calificacion":[NSString stringWithFormat:@"%d",_calificacionActual]} idRequest:2 delegate:self];
+    [_conexion connectionPOSTExecute];
+    _HUD=[[MBProgressHUD alloc] initWithView:self.view];
+    [_HUD setMode:MBProgressHUDModeIndeterminate];
+    [_HUD setLabelText:@"Enviando Calificación"];
+    [self.view addSubview:_HUD];
+    [_HUD show:YES];
+
 }
 
 -(void)CancelarCalificacion{
-    [_alertaFondo removeFromSuperview];
+    [_popup dismiss:YES];
 }
 -(void)SeleccionaEstrella:(id)sender{
     NSLog(@"Seleccionando Estrella");
     UIButton *btn=(UIButton *)sender;
-    for (int i=1; i<=btn.tag; i++) {
+    for (int i=1; i<=5; i++) {
+        UIButton *estrella=(UIButton *)[_infoView viewWithTag:i];
+        if(i<=btn.tag){
+            [estrella setBackgroundImage:[UIImage imageNamed:@"EstrellaActiva"] forState:UIControlStateNormal];
+        }else{
+            [estrella setBackgroundImage:[UIImage imageNamed:@"EstrellaInActiva"] forState:UIControlStateNormal];
+        }
         
     }
+    
+    _calificacionActual=btn.tag;
     
 }
 
@@ -239,6 +264,29 @@
             [self.tableView reloadData];
            
         }break;
+        case 2:
+        {
+         
+            NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:result options:NSJSONReadingAllowFragments error:&error];
+            if ([[dic objectForKey:@"ErrorCode"] isEqualToString:@"ER0001"]) {
+                [_HUD hide:YES];
+                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Calificación exitosa" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+                [alert show];
+                _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/getRecuperaSiniestro/" parameters:@{@"nickName":_usuarioActual.correo} idRequest:1 delegate:self];
+                [_conexion connectionPOSTExecute];
+                _HUD=[[MBProgressHUD alloc] initWithView:self.view];
+                [_HUD setMode:MBProgressHUDModeIndeterminate];
+                [_HUD setLabelText:@"Obteniendo Siniestros"];
+                [self.view addSubview:_HUD];
+                [_HUD show:YES];
+                
+            }else{
+                [_HUD hide:YES];
+                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Siniestro ya calificado anteriormente" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+                [alert show];
+            }
+            
+        }break;
         default:
             break;
     }
@@ -251,6 +299,19 @@
     
 }
 
+
+-(void)RedondeaBoton:(UIButton *)boton conBorde:(BOOL)conBorde{
+    
+    //[boton setBackgroundColor:[UIColor whiteColor]];
+    [boton.layer setCornerRadius:6.0f];
+    [boton.layer setMasksToBounds:YES];
+    if (conBorde) {
+        UIColor *borderColor = [UIColor colorWithRed:204.0/255.0 green:204.0/255.0 blue:204.0/255.0 alpha:1.0];
+        boton.layer.borderColor=borderColor.CGColor;
+        boton.layer.borderWidth=1.0;
+    }
+    
+}
 
 
 

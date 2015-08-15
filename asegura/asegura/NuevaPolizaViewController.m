@@ -134,9 +134,17 @@
                 [alert setTag:2];
                 [alert show];*/
                 
-                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:[NSString stringWithFormat:@"Los datos de la póliza son correctos?.\n Número de Póliza:%@ \n Número de Serie:%@",_polizaActual.insurenceNumber,_polizaActual.numeroSerie] delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Si", nil];
-                [alert setTag:2];
-                [alert show];
+                if (_polizaActual.ramo==1) {
+                    
+                    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:[NSString stringWithFormat:@"¿Los datos de la póliza son correctos? \n Número de Póliza:\n%@\n Número de Serie:\n%@",_polizaActual.insurenceNumber,_polizaActual.numeroSerie] delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Si", nil];
+                    [alert setTag:2];
+                    [alert show];
+                    
+                }else{
+                    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:[NSString stringWithFormat:@"¿Los datos de la póliza son correctos? \n Número de Póliza:\n%@",_polizaActual.insurenceNumber] delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Si", nil];
+                    [alert setTag:2];
+                    [alert show];
+                }
             
             
             }else if([[dic objectForKey:@"ErrorCode"] isEqualToString:@"ER0007"]){

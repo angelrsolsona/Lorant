@@ -266,6 +266,7 @@
                 
                 
             }else{
+                [_vistaMapa clear];
                 UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Error" message:@"No se encontraron agencias" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
                 [alert show];
             }
@@ -351,7 +352,7 @@
 }
 
 -(void)BuscaAgencias{
-    if (_segmentalControl.selectedSegmentIndex==0) {
+    /*if (_segmentalControl.selectedSegmentIndex==0) {
         NSString *cordenadas=[NSString stringWithFormat:@"%f,%f",_cordenadaActual.latitude,_cordenadaActual.longitude];
         _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/getAgencias" parameters:@{@"Coordenada":cordenadas,@"IDMarca":[NSString stringWithFormat:@"%ld",(long)_idMarcaActual],@"IdTipoBusqueda":@"0"} idRequest:2 delegate:self];
         [_conexion connectionGETExecute];
@@ -363,7 +364,15 @@
     }else{
         UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Debes elegir tu modo de búsqueda" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
         [alert show];
-    }
+    }*/
+    
+    _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/getAgencias" parameters:@{@"IDMarca":[NSString stringWithFormat:@"%d",_idMarcaActual]} idRequest:2 delegate:self];
+    [_conexion connectionGETExecute];
+    _HUD=[[MBProgressHUD alloc] initWithView:self.view];
+    [_HUD setMode:MBProgressHUDModeIndeterminate];
+    [_HUD setLabelText:@"Obteniendo Agencias"];
+    [self.view addSubview:_HUD];
+    [_HUD show:YES];
 }
 
 #pragma mark - Delegate Google Maps

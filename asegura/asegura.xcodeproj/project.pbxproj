@@ -88,7 +88,6 @@
 		2AA73F5D1B3599D2008F010C /* Aseguradoras.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AA73F5C1B3599D2008F010C /* Aseguradoras.m */; };
 		2AB255B01B7D44BA005DEC8B /* VistaCalificacion.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AB255AF1B7D44BA005DEC8B /* VistaCalificacion.xib */; };
 		2AB255B31B7D4A05005DEC8B /* VistaCalificacion.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB255B21B7D4A05005DEC8B /* VistaCalificacion.m */; };
-		2AB255B71B7E6151005DEC8B /* CustomIOSAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB255B61B7E6151005DEC8B /* CustomIOSAlertView.m */; };
 		2AB9802E1AC0687B00952D36 /* NuevaPolizaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB9802D1AC0687B00952D36 /* NuevaPolizaViewController.m */; };
 		2AB980311AC06B4200952D36 /* LectorQRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB980301AC06B4200952D36 /* LectorQRViewController.m */; };
 		2AB980331AC06D9B00952D36 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB980321AC06D9B00952D36 /* AVFoundation.framework */; };
@@ -116,6 +115,7 @@
 		2ADCCDA21B20D850001739D7 /* Poliza.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ADCCDA11B20D850001739D7 /* Poliza.m */; };
 		2AE75BBC1A780E4B0045B7AD /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE75BBB1A780E4B0045B7AD /* LoginViewController.m */; };
 		2AE75BC01A78170E0045B7AD /* ReporteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE75BBF1A78170E0045B7AD /* ReporteViewController.m */; };
+		2AE7EC231B7FA3A7002DB282 /* KLCPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE7EC221B7FA3A7002DB282 /* KLCPopup.m */; };
 		2AFA8E371B39F52A0084E231 /* TextFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AFA8E361B39F52A0084E231 /* TextFieldValidator.m */; };
 		7A05432A79033C7535E3C821 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5034269FB6E613B49DA3118 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -286,8 +286,6 @@
 		2AB255AF1B7D44BA005DEC8B /* VistaCalificacion.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VistaCalificacion.xib; sourceTree = "<group>"; };
 		2AB255B11B7D4A05005DEC8B /* VistaCalificacion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VistaCalificacion.h; sourceTree = "<group>"; };
 		2AB255B21B7D4A05005DEC8B /* VistaCalificacion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VistaCalificacion.m; sourceTree = "<group>"; };
-		2AB255B51B7E6151005DEC8B /* CustomIOSAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomIOSAlertView.h; sourceTree = "<group>"; };
-		2AB255B61B7E6151005DEC8B /* CustomIOSAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomIOSAlertView.m; sourceTree = "<group>"; };
 		2AB9802C1AC0687B00952D36 /* NuevaPolizaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NuevaPolizaViewController.h; sourceTree = "<group>"; };
 		2AB9802D1AC0687B00952D36 /* NuevaPolizaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NuevaPolizaViewController.m; sourceTree = "<group>"; };
 		2AB9802F1AC06B4200952D36 /* LectorQRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LectorQRViewController.h; sourceTree = "<group>"; };
@@ -334,6 +332,8 @@
 		2AE75BBB1A780E4B0045B7AD /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		2AE75BBE1A78170E0045B7AD /* ReporteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReporteViewController.h; sourceTree = "<group>"; };
 		2AE75BBF1A78170E0045B7AD /* ReporteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReporteViewController.m; sourceTree = "<group>"; };
+		2AE7EC211B7FA3A7002DB282 /* KLCPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLCPopup.h; sourceTree = "<group>"; };
+		2AE7EC221B7FA3A7002DB282 /* KLCPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLCPopup.m; sourceTree = "<group>"; };
 		2AFA8E351B39F52A0084E231 /* TextFieldValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldValidator.h; sourceTree = "<group>"; };
 		2AFA8E361B39F52A0084E231 /* TextFieldValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldValidator.m; sourceTree = "<group>"; };
 		3A93DE5C2DAC115A70DCAF75 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -757,8 +757,8 @@
 		2AB255B41B7E613B005DEC8B /* UIAlertCustom */ = {
 			isa = PBXGroup;
 			children = (
-				2AB255B51B7E6151005DEC8B /* CustomIOSAlertView.h */,
-				2AB255B61B7E6151005DEC8B /* CustomIOSAlertView.m */,
+				2AE7EC211B7FA3A7002DB282 /* KLCPopup.h */,
+				2AE7EC221B7FA3A7002DB282 /* KLCPopup.m */,
 			);
 			name = UIAlertCustom;
 			sourceTree = "<group>";
@@ -1101,6 +1101,7 @@
 				2AC4B6471AAE607100E727D8 /* MasInformacionPolizaViewController.m in Sources */,
 				2A054B251A76F31C001090C7 /* NSConnection.m in Sources */,
 				2A054B451A76F389001090C7 /* UIWebView+AFNetworking.m in Sources */,
+				2AE7EC231B7FA3A7002DB282 /* KLCPopup.m in Sources */,
 				2A5325EC1B2EA5D6003673B6 /* NotasReporteViewController.m in Sources */,
 				2AA73F5A1B353323008F010C /* GaleriaViewController.m in Sources */,
 				2A8C2FC31AB0D93F002900D9 /* MisPolizasTableViewCell.m in Sources */,
@@ -1112,7 +1113,6 @@
 				2A5960451B40808A0020C6B1 /* Eventos.m in Sources */,
 				2A00D97A1B3E1E3C003A8370 /* VerificacionFechas.m in Sources */,
 				2A40F2C41B2F539900474BDB /* CausaSiniestro.m in Sources */,
-				2AB255B71B7E6151005DEC8B /* CustomIOSAlertView.m in Sources */,
 				2ADCCDA21B20D850001739D7 /* Poliza.m in Sources */,
 				2A054B741A76F5C3001090C7 /* InicioViewController.m in Sources */,
 				2A054B191A76F2DC001090C7 /* REFrostedViewController.m in Sources */,

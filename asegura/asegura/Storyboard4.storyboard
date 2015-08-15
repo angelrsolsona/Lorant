@@ -887,7 +887,6 @@
                                         </label>
                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T8y-TT-b50">
                                             <rect key="frame" x="8" y="271" width="213" height="34"/>
-                                            <color key="backgroundColor" red="0.68235294120000001" green="0.047058823530000002" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
                                         </view>
                                     </subviews>
                                 </tableViewCellContentView>
@@ -1652,7 +1651,7 @@
                                         <rect key="frame" x="0.0" y="46" width="320" height="44"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9QA-vv-e4F" customClass="GMSMapView">
-                                        <rect key="frame" x="0.0" y="91" width="320" height="268"/>
+                                        <rect key="frame" x="0.0" y="54" width="320" height="305"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ngX-XB-Q34">
@@ -1680,7 +1679,7 @@
                                         <rect key="frame" x="-1" y="2" width="320" height="43"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="VN1-CZ-b0y">
+                                    <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="VN1-CZ-b0y">
                                         <rect key="frame" x="18" y="54" width="283" height="29"/>
                                         <segments>
                                             <segment title="Cerca de ti"/>
@@ -2073,7 +2072,7 @@
                                                 </label>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JDb-gQ-zk4">
                                                     <rect key="frame" x="0.0" y="95" width="320" height="1"/>
-                                                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
                                             </subviews>
                                         </tableViewCellContentView>

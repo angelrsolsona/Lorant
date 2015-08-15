@@ -14,7 +14,7 @@
 #import "MBProgressHUD.h"
 #import "HistorialSiniestro.h"
 #import "VistaCalificacion.h"
-#import "CustomIOSAlertView.h"
+#import "KLCPopup.h"
 @interface HistorialSinisetroTableViewController : UITableViewController <NSConnectionDelegate>
 
 
@@ -24,6 +24,9 @@
 @property(strong,nonatomic)MBProgressHUD *HUD;
 @property(strong,nonatomic)VistaCalificacion *infoView;
 @property(strong,nonatomic)UIView *alertaFondo;
+@property(strong,nonatomic)KLCPopup *popup;
+@property(assign,nonatomic)NSInteger calificacionActual;
+@property(strong,nonatomic)HistorialSiniestro *siniestroActual;
 
 
 @end

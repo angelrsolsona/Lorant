@@ -140,7 +140,7 @@
             _polizaActual=[_arrayPolizas objectAtIndex:[_providerPickerView selectedRowInComponent:0]];
             [button setTitle:_polizaActual.insuranceName forState:UIControlStateNormal];
             [self DetallePoliza];
-            [self ObtenTipoSiniestro:[NSString stringWithFormat:@"%d",_polizaActual.idAseguradora]];
+            [self ObtenTipoSiniestro:[NSString stringWithFormat:@"%d",_polizaActual.idAseguradora] Ramo:[NSString stringWithFormat:@"%d",_polizaActual.ramo]];
         }break;
         case 30:
         {
@@ -515,9 +515,9 @@
 
 #pragma mark Metodos
 
--(void)ObtenTipoSiniestro:(NSString *)idAseguradora{
+-(void)ObtenTipoSiniestro:(NSString *)idAseguradora Ramo:(NSString *)idRamo{
     
-    _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/geTtipoSiniestro/" parameters:@{@"idAseguradora":idAseguradora} idRequest:2 delegate:self];
+    _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/geTtipoSiniestro/" parameters:@{@"idAseguradora":idAseguradora,@"_iIdRamo":idRamo} idRequest:2 delegate:self];
     [_conexion connectionPOSTExecute];
     /*_HUD=[[MBProgressHUD alloc] initWithView:self.view];
     [_HUD setMode:MBProgressHUDModeIndeterminate];
