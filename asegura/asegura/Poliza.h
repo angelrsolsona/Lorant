@@ -36,6 +36,8 @@
 @property(strong,nonatomic) NSString *telefonoCabina;
 @property(assign,nonatomic) NSInteger idPolizaSistema;
 @property(assign,nonatomic) BOOL reportarSiniestro;
+@property(assign,nonatomic) BOOL esFinanciera;
+@property(strong,nonatomic) NSString *numContrato;
 
 @property(strong,nonatomic)NSString *instrumentoPago;
 @property(strong,nonatomic)NSString *banco;

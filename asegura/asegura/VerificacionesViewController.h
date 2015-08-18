@@ -18,6 +18,7 @@
 #import "ARSNManagerCalendar.h"
 #import "Eventos.h"
 #import "Notificaciones.h"
+#import "DetallePolizaViewController.h"
 
 @interface VerificacionesViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,NSConnectionDelegate>
 
@@ -29,4 +30,5 @@
 @property(strong,nonatomic) NSMutableArray *arrayNotificaciones;
 @property(strong,nonatomic)Usuario *usuarioActual;
 @property(strong,nonatomic)NSCoreDataManager *coreDataManager;
+@property(strong,nonatomic)Poliza *polizaActual;
 @end

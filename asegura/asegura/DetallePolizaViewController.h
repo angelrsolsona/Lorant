@@ -44,6 +44,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnGuardar;
 
 @property (weak,nonatomic) IBOutlet UIBarButtonItem *btnEditar;
+@property (weak, nonatomic) IBOutlet UIButton *btnMasInfo;
 
 @property (strong,nonatomic) Poliza *polizaActual;
 @property (strong,nonatomic) Usuario *usuarioActual;

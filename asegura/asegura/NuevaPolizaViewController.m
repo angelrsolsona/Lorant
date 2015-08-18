@@ -101,7 +101,7 @@
 
             NSLog(@"Dic %@",[dic description]);
             
-            if ([[dic objectForKey:@"ErrorCode"] isEqualToString:@"ER0001"]) {
+            if ([[dic objectForKey:@"ErrorCode"] isEqualToString:@"ER0001"]||[[dic objectForKey:@"ErrorCode"] isEqualToString:@"ER0007"]) {
                 _polizaActual=[[Poliza alloc] init];
                 _polizaActual.insurenceNumber=[dic objectForKey:@"insuranceNumber"];
                 _polizaActual.ownerName=[NSString stringWithFormat:@"%@",[dic objectForKey:@"ownerName"]];
@@ -124,6 +124,8 @@
                 _polizaActual.reportarSiniestro=[[dic objectForKey:@"ReportaSiniestro"] boolValue];
                 _polizaActual.insurenceAlias=[dic objectForKey:@"insuranceAlias"];
                 _polizaActual.ramo=_ramoActual;
+                _polizaActual.esFinanciera=[[dic objectForKey:@"Es_Financiera"] boolValue];
+                _polizaActual.numContrato=[dic objectForKey:@"No_Contrato"];
                 
                 [self performSegueWithIdentifier:@"detalle_segue" sender:self];
                 
@@ -147,11 +149,11 @@
                 }
             
             
-            }else if([[dic objectForKey:@"ErrorCode"] isEqualToString:@"ER0007"]){
+            }else /*if([[dic objectForKey:@"ErrorCode"] isEqualToString:@"ER0007"]){
                 UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"La póliza ya esta registrada" delegate:nil cancelButtonTitle:@"No" otherButtonTitles: nil];
                 [alert show];
                 
-            }else if([[dic objectForKey:@"ErrorCode"] isEqualToString:@"ER0010"]){
+            }else*/ if([[dic objectForKey:@"ErrorCode"] isEqualToString:@"ER0010"]){
                 UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Favor de Validar el No. de Serie" delegate:nil cancelButtonTitle:@"No" otherButtonTitles: nil];
                 [alert show];
                 

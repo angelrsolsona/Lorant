@@ -30,6 +30,24 @@
         [NSCoreDataManager SaveData];
     }*/
     
+    /*_conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/getInsuranceListWS" parameters:@{@"nickName":_usuarioActual.correo} idRequest:1 delegate:self];
+    [_conexion connectionGETExecute];
+    
+    _HUD=[[MBProgressHUD alloc] initWithView:self.view];
+    [_HUD setMode:MBProgressHUDModeIndeterminate];
+    [_HUD setLabelText:@"Obteniendo Pólizas"];
+    [self.view addSubview:_HUD];
+    [_HUD show:YES];
+    NSUserDefaults *datosAlm=[NSUserDefaults standardUserDefaults];
+    
+    _recordarVerificacion.on=[datosAlm boolForKey:@"recordarVerificacion"];
+    
+    _coreDataManager=[[NSCoreDataManager alloc] init];*/
+    
+    
+    
+}
+-(void)viewWillAppear:(BOOL)animated{
     _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/getInsuranceListWS" parameters:@{@"nickName":_usuarioActual.correo} idRequest:1 delegate:self];
     [_conexion connectionGETExecute];
     
@@ -43,9 +61,7 @@
     _recordarVerificacion.on=[datosAlm boolForKey:@"recordarVerificacion"];
     
     _coreDataManager=[[NSCoreDataManager alloc] init];
-    
-    
-    
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,15 +69,21 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if ([segue.identifier isEqualToString:@"detalle_segue"]) {
+        DetallePolizaViewController *DVC=[segue destinationViewController];
+        [DVC setPolizaActual:_polizaActual];
+        [DVC setEsVistaDetalle:YES];
+    }
 }
-*/
+
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
@@ -78,9 +100,21 @@
     
     Poliza *poliza=[_arrayVerificacion objectAtIndex:indexPath.row];
     [cell.alias setText:poliza.insuranceName];
-    [cell.periodo1 setText:poliza.perido1];
-    [cell.periodo2 setText:poliza.perido2];
-    [cell.calcomania setImage:[UIImage imageNamed:poliza.calcomania]];
+    if(poliza.perido1!=nil){
+        [cell.periodo1 setText:poliza.perido1];
+        [cell.periodo2 setText:poliza.perido2];
+        [cell.calcomania setImage:[UIImage imageNamed:poliza.calcomania]];
+    }else{
+        [cell.periodo1 setText:@"Sin Placas"];
+        [cell.periodo2 setText:@"Editar Poliza"];
+        [cell.periodo2 setTextColor:[UIColor blueColor]];
+        UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(AgregaPlaca:)];
+        [tap setNumberOfTapsRequired:1];
+        [tap setNumberOfTouchesRequired:1];
+        [cell.periodo2 setUserInteractionEnabled:YES];
+        [cell.periodo2 addGestureRecognizer:tap];
+    }
+    
     
     
     return cell;
@@ -118,11 +152,13 @@
                 poliza.ramo=[[dic objectForKey:@"idRamo"] integerValue];
                 poliza.noPlacas=[dic objectForKey:@"NoPlacas"];
                 NSArray *fecha=[[dic objectForKey:@"FechaHasta"] componentsSeparatedByString:@"T"];
+                poliza.numeroSerie=[dic objectForKey:@"NoSerie"];
                 poliza.fechaHasta=[fecha objectAtIndex:0];
                 NSLog(@"no Placas %hhd",[poliza.noPlacas isEqualToString:@"S/P"]);
                 if (poliza.ramo==1) {
                     if ([poliza.noPlacas isEqual:@"S/P"]||[poliza.noPlacas isEqualToString:@"PERMISO"]||[poliza.noPlacas isEqualToString:@"N/A"]) {
                         NSLog(@"Enconte una");
+                        [_arrayVerificacion addObject:poliza];
                     }else{
                         poliza=[self CalculaPeriodo:poliza];
                         [_arrayVerificacion addObject:poliza];
@@ -427,5 +463,19 @@
     
     return exito;
 }
+
+-(void)AgregaPlaca:(id)sender{
+    UITapGestureRecognizer *tap=(UITapGestureRecognizer *)sender;
+    CGPoint location = [tap locationInView:self.tabla];
+    NSIndexPath *indexPath = [self.tabla indexPathForRowAtPoint:location];
+    /*UIButton *btn=(UIButton *)sender;
+     CGPoint center= btn.center;
+     CGPoint rootViewPoint = [btn.superview convertPoint:center toView:_tabla];
+     NSIndexPath *indexPath = [_tabla indexPathForRowAtPoint:rootViewPoint];*/
+    NSLog(@"%ld",(long)indexPath.row);
+    _polizaActual=[_arrayVerificacion objectAtIndex:indexPath.row];
+    [self performSegueWithIdentifier:@"detalle_segue" sender:self];
+}
+
 
 @end

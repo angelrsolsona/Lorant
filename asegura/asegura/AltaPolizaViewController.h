@@ -66,6 +66,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *fechaInicio;
 @property (weak, nonatomic) IBOutlet UITextField *fechaFin;
 @property (weak, nonatomic) IBOutlet TextFieldValidator *aliasPoliza;
+@property (weak, nonatomic) IBOutlet UIButton *btnMasInfo;
 
 @property(weak,nonatomic) id <AltaPolizaViewControllerDelegate> delegate;
 

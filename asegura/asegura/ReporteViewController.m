@@ -31,6 +31,7 @@
     _tienesNotas=NO;
     _tienePoliza=NO;
     _tieneCausas=NO;
+    _seEnvioReporte=NO;
     NSArray *array=[NSCoreDataManager getDataWithEntity:@"Usuario" andManagedObjContext:[NSCoreDataManager getManagedContext]];
     _usuarioActual=[array objectAtIndex:0];
     
@@ -84,6 +85,13 @@
             [NVC setTienesNotas:_tienesNotas];
         }
     }
+    if ([segue.identifier isEqualToString:@"recomendacion_segue"]) {
+        
+        RecomendacionViewController *RVC=[segue destinationViewController];
+        [RVC setPolizaActual:_polizaActual];
+        [RVC setCausaActual:_causaActual];
+        
+    }
 }
 
 
@@ -130,6 +138,7 @@
 
 - (void)dismissActionSheet:(id)sender{
     _pickerActivo=NO;
+    _seEnvioReporte=NO;
     [_maskView removeFromSuperview];
     [_providerPickerView removeFromSuperview];
     [_providerToolbar removeFromSuperview];
@@ -140,7 +149,7 @@
             _polizaActual=[_arrayPolizas objectAtIndex:[_providerPickerView selectedRowInComponent:0]];
             [button setTitle:_polizaActual.insuranceName forState:UIControlStateNormal];
             [self DetallePoliza];
-            [self ObtenTipoSiniestro:[NSString stringWithFormat:@"%d",_polizaActual.idAseguradora] Ramo:[NSString stringWithFormat:@"%d",_polizaActual.ramo]];
+            [self ObtenTipoSiniestro:[NSString stringWithFormat:@"%ld",(long)_polizaActual.idAseguradora] Ramo:[NSString stringWithFormat:@"%ld",(long)_polizaActual.ramo]];
         }break;
         case 30:
         {
@@ -419,7 +428,7 @@
             for (NSDictionary *dic in array) {
                 
                 CausaSiniestro *causa=[[CausaSiniestro alloc] init];
-                causa.idRamo=[NSString stringWithFormat:@"%d",_polizaActual.ramo];
+                causa.idRamo=[NSString stringWithFormat:@"%ld",(long)_polizaActual.ramo];
                 causa.idTipo=[dic objectForKey:@"ID_TIPO_SINIESTRO"];
                 causa.nombre=[dic objectForKey:@"SINIESTRO"];
                 
@@ -482,9 +491,12 @@
             NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:result options:NSJSONReadingAllowFragments error:&error];
             if ([[dic objectForKey:@"ErrorCode"] isEqualToString:@"ER0001"]) {
                 [_HUD hide:YES];
-                NSString *telefono=[NSString stringWithFormat:@"tel://%@",_polizaActual.telefonoCabina];
+                /*NSString *telefono=[NSString stringWithFormat:@"tel://%@",_polizaActual.telefonoCabina];
                 NSURL *url=[NSURL URLWithString:telefono];
-                [[UIApplication sharedApplication] openURL:url];
+                [[UIApplication sharedApplication] openURL:url];*/
+                _seEnvioReporte=YES;
+                [self performSegueWithIdentifier:@"recomendacion_segue" sender:self];
+                
                 
             }else{
                 UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"No se puede eliminar la póliza inténtalo de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
@@ -587,30 +599,35 @@
 }
 
 - (IBAction)EnviarUbicacion:(id)sender {
-    
-    if (_tieneCausas&&_tienePoliza) {
+    //_seEnvioReporte=YES;
+    if (!_seEnvioReporte) {
         
-        NSDictionary *parametros=@{@"IdPolizaM":[NSString stringWithFormat:@"%d",_polizaActual.idPolizaM],
-                                   @"idSiniestro":_causaActual.idTipo,
-                                   @"latitude":_latitudActual,
-                                   @"longitud":_longitudActual,
-                                   @"nickName":_usuarioActual.correo,
-                                   @"numeroTel":_usuarioActual.telefono,
-                                   @"informacion":[NSString stringWithFormat:@"%@",_notas.text]};
-        
-        _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/ms_RegistroSiniestro" parameters:parametros idRequest:4 delegate:self];
-        [_conexion connectionPOSTExecute];
-        
-        _HUD=[[MBProgressHUD alloc] initWithView:self.view];
-        [_HUD setMode:MBProgressHUDModeIndeterminate];
-        [_HUD setLabelText:@"Enviando ubicación"];
-        [self.view addSubview:_HUD];
-        [_HUD show:YES];
+        if (_tieneCausas&&_tienePoliza) {
+            
+            NSDictionary *parametros=@{@"IdPolizaM":[NSString stringWithFormat:@"%ld",(long)_polizaActual.idPolizaM],
+                                       @"idSiniestro":_causaActual.idTipo,
+                                       @"latitude":_latitudActual,
+                                       @"longitud":_longitudActual,
+                                       @"nickName":_usuarioActual.correo,
+                                       @"numeroTel":_usuarioActual.telefono,
+                                       @"informacion":[NSString stringWithFormat:@"%@",_notas.text]};
+            
+            _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/ms_RegistroSiniestro" parameters:parametros idRequest:4 delegate:self];
+            [_conexion connectionPOSTExecute];
+            
+            _HUD=[[MBProgressHUD alloc] initWithView:self.view];
+            [_HUD setMode:MBProgressHUDModeIndeterminate];
+            [_HUD setLabelText:@"Enviando ubicación"];
+            [self.view addSubview:_HUD];
+            [_HUD show:YES];
+        }else{
+            
+            UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Debes elegir una póliza y una causa" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+            [alert show];
+            
+        }
     }else{
-        
-        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Debes elegir una póliza y una causa" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
-        [alert show];
-
+        [self performSegueWithIdentifier:@"recomendacion_segue" sender:self];
     }
 }
 

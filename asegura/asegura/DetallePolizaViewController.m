@@ -184,6 +184,8 @@
                     _polizaActual.reportarSiniestro=[[dic objectForKey:@"ReportaSiniestro"] boolValue];
                     _polizaActual.insurenceAlias=[dic objectForKey:@"insuranceAlias"];
                     _polizaActual.noPlacas=[dic objectForKey:@"placas"];
+                    _polizaActual.esFinanciera=[[dic objectForKey:@"Es_Financiera"] boolValue];
+                    _polizaActual.numContrato=[dic objectForKey:@"No_Contrato"];
                 
                 NSArray *array=[NSCoreDataManager getDataWithEntity:@"Polizas" predicate:[NSString stringWithFormat:@"noPoliza==\"%@\"",_polizaActual.insurenceNumber] andManagedObjContext:[NSCoreDataManager getManagedContext]];
                 if ([array count]>0) {
@@ -363,6 +365,11 @@
         [_lblPlacas setHidden:YES];
     }
     
+    if (_polizaActual.esFinanciera) {
+        
+        [_btnMasInfo setHidden:YES];
+    }
+
 }
 
 -(void)BloquearCampos:(NSInteger)tipoBloqueo{
@@ -472,7 +479,7 @@
     BOOL camposIncorrectos;
     
     if (_polizaActual.ramo==1) {
-        camposIncorrectos=(![_correoTitular validate]||![_telefonoTitular validate]||![_txtPlacas validate]);
+        camposIncorrectos=(![_correoTitular validate]||![_telefonoTitular validate]/*||![_txtPlacas validate]*/);
     }else{
         camposIncorrectos=(![_correoTitular validate]||![_telefonoTitular validate]);
     }

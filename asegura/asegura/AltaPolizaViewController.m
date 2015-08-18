@@ -74,6 +74,11 @@
         
     }
     
+    if (_polizaActual.esFinanciera) {
+        
+        [_btnMasInfo setHidden:YES];
+    }
+    
     
 }
 
@@ -328,7 +333,7 @@
     if (fechasCorrectas) {
 
         if (_polizaActual.ramo==1) {
-            camposIncorrectos=(![_numeroPoliza validate]||![_aliasPoliza validate]||![_numeroSerie validate]||![_descripcion validate]||![_placas validate]||![_nombreAsegurado validate]||![_telefono validate]||![_correo validate]||![_formaPago validate]||![_txtContratadoCon validate]||![_paquete validate]);
+            camposIncorrectos=(![_numeroPoliza validate]||![_aliasPoliza validate]||![_numeroSerie validate]||![_descripcion validate]||/*![_placas validate]||*/![_nombreAsegurado validate]||![_telefono validate]||![_correo validate]||![_formaPago validate]||![_txtContratadoCon validate]||![_paquete validate]);
         }else{
             camposIncorrectos=(![_numeroPoliza validate]||![_aliasPoliza validate]||![_descripcion validate]||![_nombreAsegurado validate]||![_telefono validate]||![_correo validate]||![_formaPago validate]||![_txtContratadoCon validate]);
         }
@@ -1296,6 +1301,7 @@
     CGImageRelease(imgRef2);
     return image;
 }
+
 
 
 @end

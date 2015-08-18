@@ -171,6 +171,7 @@
             <string>Oswald-Regular</string>
             <string>Oswald-Regular</string>
             <string>Oswald-Regular</string>
+            <string>Oswald-Regular</string>
         </mutableArray>
         <mutableArray key="rockwell.ttf">
             <string>Rockwell</string>
@@ -773,7 +774,7 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="FlechaPicker" translatesAutoresizingMaskIntoConstraints="NO" id="6Hz-Yh-LdC">
                                         <rect key="frame" x="291" y="157" width="10" height="10"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LLAMAR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwU-Mt-wlH">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CONTUNUAR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwU-Mt-wlH">
                                         <rect key="frame" x="58" y="487" width="209" height="24"/>
                                         <color key="backgroundColor" red="0.16862745100000001" green="0.61568627450000002" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="20"/>
@@ -825,11 +826,58 @@
                         <outlet property="vistaMapa" destination="dcy-mk-0vx" id="aYn-x1-Dys"/>
                         <outlet property="vistaScroll" destination="80Z-Av-YwT" id="G5n-Fe-pui"/>
                         <segue destination="3cs-he-YAZ" kind="push" identifier="notas_segue" id="Vpy-oK-Axk"/>
+                        <segue destination="vyU-Pi-oa8" kind="push" identifier="recomendacion_segue" id="9xe-8x-FS2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NMM-2H-83a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1504" y="-450"/>
+        </scene>
+        <!--Recomendación-->
+        <scene sceneID="VC5-XG-BKr">
+            <objects>
+                <viewController id="vyU-Pi-oa8" customClass="RecomendacionViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mF4-T0-V97"/>
+                        <viewControllerLayoutGuide type="bottom" id="j8m-6F-ojC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Cfq-Db-ezM">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="67I-MI-lWX">
+                                <rect key="frame" x="-20" y="-20" width="360" height="624"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Recomendacion_Accidente" translatesAutoresizingMaskIntoConstraints="NO" id="HLW-OT-ENb">
+                                        <rect key="frame" x="20" y="20" width="320" height="340"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p9X-f7-cuw">
+                                        <rect key="frame" x="42" y="419" width="276" height="36"/>
+                                        <color key="backgroundColor" red="0.14901960784313725" green="0.56470588235294117" blue="0.12941176470588237" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="20"/>
+                                        <state key="normal" title="LLAMAR">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="Llamar:" destination="vyU-Pi-oa8" eventType="touchUpInside" id="kTO-wM-N5b"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Recomendación" id="zM1-f5-HmT"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="imagenRecomendacion" destination="HLW-OT-ENb" id="EQ5-gA-X0V"/>
+                        <outlet property="vistaScroll" destination="67I-MI-lWX" id="FaF-LW-jOm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5ie-C9-x89" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1984" y="-450"/>
         </scene>
         <!--Historial-->
         <scene sceneID="DBq-qV-jrc">
@@ -911,7 +959,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W4v-pr-qRM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1978" y="-309"/>
+            <point key="canvasLocation" x="1984" y="270"/>
         </scene>
         <!--Mis Pólizas-->
         <scene sceneID="Y9a-v0-EnI">
@@ -1109,7 +1157,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ol5-CU-49J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1978" y="-994"/>
+            <point key="canvasLocation" x="1984" y="-1200"/>
         </scene>
         <!--Lector QR-->
         <scene sceneID="thb-dM-DRN">
@@ -1597,6 +1645,7 @@
                     <size key="freeformSize" width="320" height="968"/>
                     <connections>
                         <outlet property="aliasPoliza" destination="2RN-e2-oSg" id="gEn-YR-xGt"/>
+                        <outlet property="btnMasInfo" destination="fM9-sa-39w" id="aPV-dd-7jT"/>
                         <outlet property="contratadoCon" destination="WfI-lr-8r9" id="6iH-aJ-zwz"/>
                         <outlet property="correo" destination="1HU-Nu-ZLS" id="QOt-Bt-m6Q"/>
                         <outlet property="descripcion" destination="AzK-Oh-vxT" id="T8Z-IX-HDp"/>
@@ -2110,11 +2159,12 @@
                     <connections>
                         <outlet property="recordarVerificacion" destination="MVJ-v5-oZX" id="edw-DW-gz2"/>
                         <outlet property="tabla" destination="rFv-8p-gYo" id="wYb-zD-MQD"/>
+                        <segue destination="U1c-N8-0dU" kind="push" identifier="detalle_segue" id="MC2-Un-mob"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aCq-9O-TR0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1504" y="2721"/>
+            <point key="canvasLocation" x="1504" y="2726"/>
         </scene>
         <!--Tips-->
         <scene sceneID="9ya-IX-e4l">
@@ -2456,7 +2506,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gbt-T6-Gxb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1905" y="2721"/>
+            <point key="canvasLocation" x="2521" y="2973"/>
         </scene>
         <!--Notificaciones-->
         <scene sceneID="T0n-ds-apv">
@@ -3441,6 +3491,7 @@
                         <outlet property="aseguradora" destination="nOM-0N-PcN" id="DUn-6t-cfg"/>
                         <outlet property="btnEditar" destination="ptM-3v-f4n" id="vus-mf-bRb"/>
                         <outlet property="btnGuardar" destination="O9i-5W-Npd" id="61B-X3-L1c"/>
+                        <outlet property="btnMasInfo" destination="zNq-65-Vgf" id="3ag-Px-XC0"/>
                         <outlet property="contratadoCon" destination="Lw2-cc-v2U" id="VFm-RV-3ZQ"/>
                         <outlet property="correoTitular" destination="0ka-3n-n3U" id="mdi-CB-cbu"/>
                         <outlet property="fechaInicio" destination="1Md-AJ-wFI" id="X0t-qQ-qWs"/>
@@ -3922,6 +3973,7 @@
                     <size key="freeformSize" width="320" height="968"/>
                     <connections>
                         <outlet property="aliasPoliza" destination="OoS-Ab-dKC" id="bDd-gc-nrM"/>
+                        <outlet property="btnMasInfo" destination="rIC-fn-Qnb" id="3YN-id-Ipd"/>
                         <outlet property="contratadoCon" destination="quj-Fo-Sab" id="XGA-YC-eXR"/>
                         <outlet property="correo" destination="5i0-MW-PEL" id="Cgk-XB-ISd"/>
                         <outlet property="descripcion" destination="b5D-6J-ql9" id="tTr-Ie-1MD"/>
@@ -3986,6 +4038,7 @@
         <image name="LogoAsegura" width="400" height="141"/>
         <image name="Notificaciones" width="104" height="104"/>
         <image name="Polizas" width="105" height="105"/>
+        <image name="Recomendacion_Accidente" width="320" height="288"/>
         <image name="Reporte" width="104" height="104"/>
         <image name="Ubicacion" width="14" height="14"/>
         <image name="VerificacionAzul" width="16" height="16"/>
@@ -3999,8 +4052,8 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="hW9-Ed-bdY"/>
-        <segue reference="Zaf-Bu-Q7Q"/>
-        <segue reference="U7a-BA-N8W"/>
+        <segue reference="oP5-eq-xgk"/>
+        <segue reference="dpf-BB-oOH"/>
         <segue reference="qeH-qL-Ekw"/>
     </inferredMetricsTieBreakers>
 </document>

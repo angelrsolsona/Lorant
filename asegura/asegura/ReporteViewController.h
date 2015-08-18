@@ -17,6 +17,7 @@
 #import "Polizas.h"
 #import "CausaSiniestro.h"
 #import "NotasReporteViewController.h"
+#import "RecomendacionViewController.h"
 @interface ReporteViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate,CLLocationManagerDelegate,UITextFieldDelegate,NSConnectionDelegate,NotasReporteViewControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property(strong,nonatomic)UIView *maskView;
@@ -55,6 +56,8 @@
 @property(strong,nonatomic) NSString *longitudActual;
 
 @property(strong,nonatomic) UIImagePickerController *picker;
+
+@property(assign,nonatomic) BOOL seEnvioReporte;
 
 
 - (IBAction)Foto:(id)sender;

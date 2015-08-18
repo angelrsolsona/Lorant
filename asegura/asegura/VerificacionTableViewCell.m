@@ -20,4 +20,10 @@
     // Configure the view for the selected state
 }
 
+- (void)prepareForReuse {
+    
+    [_periodo2 setTextColor:[UIColor blackColor]];
+    
+}
+
 @end

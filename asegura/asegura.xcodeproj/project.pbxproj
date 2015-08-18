@@ -88,6 +88,7 @@
 		2AA73F5D1B3599D2008F010C /* Aseguradoras.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AA73F5C1B3599D2008F010C /* Aseguradoras.m */; };
 		2AB255B01B7D44BA005DEC8B /* VistaCalificacion.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AB255AF1B7D44BA005DEC8B /* VistaCalificacion.xib */; };
 		2AB255B31B7D4A05005DEC8B /* VistaCalificacion.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB255B21B7D4A05005DEC8B /* VistaCalificacion.m */; };
+		2AB255BA1B824F32005DEC8B /* RecomendacionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB255B91B824F32005DEC8B /* RecomendacionViewController.m */; };
 		2AB9802E1AC0687B00952D36 /* NuevaPolizaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB9802D1AC0687B00952D36 /* NuevaPolizaViewController.m */; };
 		2AB980311AC06B4200952D36 /* LectorQRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB980301AC06B4200952D36 /* LectorQRViewController.m */; };
 		2AB980331AC06D9B00952D36 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB980321AC06D9B00952D36 /* AVFoundation.framework */; };
@@ -286,6 +287,8 @@
 		2AB255AF1B7D44BA005DEC8B /* VistaCalificacion.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VistaCalificacion.xib; sourceTree = "<group>"; };
 		2AB255B11B7D4A05005DEC8B /* VistaCalificacion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VistaCalificacion.h; sourceTree = "<group>"; };
 		2AB255B21B7D4A05005DEC8B /* VistaCalificacion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VistaCalificacion.m; sourceTree = "<group>"; };
+		2AB255B81B824F32005DEC8B /* RecomendacionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecomendacionViewController.h; sourceTree = "<group>"; };
+		2AB255B91B824F32005DEC8B /* RecomendacionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecomendacionViewController.m; sourceTree = "<group>"; };
 		2AB9802C1AC0687B00952D36 /* NuevaPolizaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NuevaPolizaViewController.h; sourceTree = "<group>"; };
 		2AB9802D1AC0687B00952D36 /* NuevaPolizaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NuevaPolizaViewController.m; sourceTree = "<group>"; };
 		2AB9802F1AC06B4200952D36 /* LectorQRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LectorQRViewController.h; sourceTree = "<group>"; };
@@ -868,6 +871,8 @@
 				2A5325EB1B2EA5D6003673B6 /* NotasReporteViewController.m */,
 				2A40F2C21B2F539900474BDB /* CausaSiniestro.h */,
 				2A40F2C31B2F539900474BDB /* CausaSiniestro.m */,
+				2AB255B81B824F32005DEC8B /* RecomendacionViewController.h */,
+				2AB255B91B824F32005DEC8B /* RecomendacionViewController.m */,
 			);
 			name = Reporte;
 			sourceTree = "<group>";
@@ -1067,6 +1072,7 @@
 				2A59603F1B406EFE0020C6B1 /* ARSNManagerCalendar.m in Sources */,
 				2A054B241A76F31C001090C7 /* Reachability.m in Sources */,
 				2A054B421A76F389001090C7 /* UIImageView+AFNetworking.m in Sources */,
+				2AB255BA1B824F32005DEC8B /* RecomendacionViewController.m in Sources */,
 				2A054B5A1A76F3A7001090C7 /* AFHTTPRequestOperation.m in Sources */,
 				2A4FB1571B50465A00132F75 /* Notificaciones.m in Sources */,
 				2AC4B64E1AAEB0E800E727D8 /* MisPolizasViewController.m in Sources */,
@@ -1239,8 +1245,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Fernando Diaz";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Fernando Diaz";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/asegura",
@@ -1252,7 +1258,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "5eefa3e0-ab6f-4361-ba68-caa23b78267a";
 			};
 			name = Debug;
 		};
@@ -1262,8 +1268,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Fernando Diaz";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Fernando Diaz";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/asegura",
@@ -1275,7 +1281,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "5eefa3e0-ab6f-4361-ba68-caa23b78267a";
 			};
 			name = Release;
 		};
