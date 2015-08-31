@@ -27,6 +27,9 @@
         [v removeFromSuperview];
     }
     
+    [_vistaMapa clear];
+    
+    
 }
 
 @end

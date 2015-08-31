@@ -21,26 +21,29 @@
     UIImage *imagen=[UIImage imageNamed:[NSString stringWithFormat:@"Recomendacion_%@",_causaActual.nombre]];
     if (imagen==nil) {
         
-        if ([_causaActual.nombre isEqualToString:@"Colisión"]) {
+        if ([_causaActual.nombre isEqualToString:@"Carambola"]) {
             imagen=[UIImage imageNamed:[NSString stringWithFormat:@"Recomendacion_Accidente"]];
-        }
-        if ([_causaActual.nombre isEqualToString:@"Asistencia Vial"]) {
+        }else if ([_causaActual.nombre isEqualToString:@"Colisión"]) {
+            imagen=[UIImage imageNamed:[NSString stringWithFormat:@"Recomendacion_Accidente"]];
+        }else if ([_causaActual.nombre isEqualToString:@"Asistencia Vial"]) {
             imagen=[UIImage imageNamed:[NSString stringWithFormat:@"Recomendacion_Asistencia"]];
-        }
-        if ([_causaActual.nombre isEqualToString:@"Colisión-Choque"]) {
+        }else if ([_causaActual.nombre isEqualToString:@"Colisión-Choque"]) {
             imagen=[UIImage imageNamed:[NSString stringWithFormat:@"Recomendacion_Accidente"]];
-        }
-        if ([_causaActual.nombre isEqualToString:@"Rotura De Cristales"]) {
+        }else if ([_causaActual.nombre isEqualToString:@"Rotura De Cristales"]) {
             imagen=[UIImage imageNamed:[NSString stringWithFormat:@"Recomendacion_Rotura"]];
-        }
-        if ([_causaActual.nombre isEqualToString:@"Asistencia En Viajes"]) {
+        }else if ([_causaActual.nombre isEqualToString:@"Asistencia En Viajes"]) {
             imagen=[UIImage imageNamed:[NSString stringWithFormat:@"Recomendacion_Asistencia"]];
-        }
-        if ([_causaActual.nombre isEqualToString:@"Inundación"]) {
+        }else if ([_causaActual.nombre isEqualToString:@"Inundación"]) {
             imagen=[UIImage imageNamed:[NSString stringWithFormat:@"Recomendacion_Inundacion"]];
+        }else{
+            imagen=[UIImage imageNamed:[NSString stringWithFormat:@"Recomendacion_Default"]];
         }
         
     
+    }
+    
+    if (_polizaActual.ramo!=1) {
+        imagen=[UIImage imageNamed:[NSString stringWithFormat:@"Recomendacion_Default"]];
     }
     
     _imagenRecomendacion.image=imagen;

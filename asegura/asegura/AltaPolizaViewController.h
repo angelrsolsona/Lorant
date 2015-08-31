@@ -21,13 +21,14 @@
 #import "ARSNManagerCalendar.h"
 #import "Eventos.h"
 #import "Notificaciones.h"
+#import "UIViewController+BackButtonHandler.h"
 
 @protocol AltaPolizaViewControllerDelegate <NSObject>
 
 -(void)PolizaEditada:(Poliza *)poliza;
 
 @end
-@interface AltaPolizaViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate,NSConnectionDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,MasInformacionPolizaViewControllerDelegate,UITextFieldDelegate>
+@interface AltaPolizaViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate,NSConnectionDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,MasInformacionPolizaViewControllerDelegate,UITextFieldDelegate,UIAlertViewDelegate>
 
 @property(weak,nonatomic)IBOutlet UIScrollView *vistaScroll;
 

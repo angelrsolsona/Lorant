@@ -68,7 +68,7 @@
 }
 
 - (IBAction)RecuperarPassword:(id)sender {
-    
+    [self.view endEditing:YES];
     UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Recuperar Contraseña" message:@"Introduce tu correo electrónico" delegate:self cancelButtonTitle:@"Cancelar" otherButtonTitles:@"Aceptar", nil];
     [alert setTag:100];
     [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];

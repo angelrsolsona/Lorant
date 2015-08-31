@@ -23,6 +23,7 @@
 - (void)prepareForReuse {
     
     [_periodo2 setTextColor:[UIColor blackColor]];
+    [_calcomania setHidden:NO];
     
 }
 

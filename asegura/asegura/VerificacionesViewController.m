@@ -108,6 +108,7 @@
         [cell.periodo1 setText:@"Sin Placas"];
         [cell.periodo2 setText:@"Editar Poliza"];
         [cell.periodo2 setTextColor:[UIColor blueColor]];
+        [cell.calcomania setHidden:YES];
         UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(AgregaPlaca:)];
         [tap setNumberOfTapsRequired:1];
         [tap setNumberOfTouchesRequired:1];
@@ -143,6 +144,7 @@
         {
             NSArray *array=[NSJSONSerialization JSONObjectWithData:result options:NSJSONReadingAllowFragments error:&error];
             _arrayVerificacion=[[NSMutableArray alloc] init];
+            NSLog(@"repuesta %@",[array description]);
             for (NSDictionary *dic in array) {
                 //[_arrayMarcas addObject:[dic objectForKey:@"MARCA"]];
                 Poliza *poliza=[[Poliza alloc] init];

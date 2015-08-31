@@ -237,6 +237,7 @@
         {
             NSArray *array=[NSJSONSerialization JSONObjectWithData:result options:NSJSONReadingAllowFragments error:&error];
             _arraySiniestros=[[NSMutableArray alloc] init];
+
             for (NSDictionary *dic in array) {
                 
                 HistorialSiniestro *historial=[[HistorialSiniestro alloc] init];
@@ -260,6 +261,10 @@
                 [_arraySiniestros addObject:historial];
                 
             }
+            
+            
+            _arraySiniestros=[[NSMutableArray alloc] initWithArray:[[_arraySiniestros reverseObjectEnumerator] allObjects]];
+            
             
             [self.tableView reloadData];
            

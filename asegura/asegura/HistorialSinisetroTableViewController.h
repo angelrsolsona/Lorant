@@ -15,6 +15,7 @@
 #import "HistorialSiniestro.h"
 #import "VistaCalificacion.h"
 #import "KLCPopup.h"
+#import "VerificacionFechas.h"
 @interface HistorialSinisetroTableViewController : UITableViewController <NSConnectionDelegate>
 
 

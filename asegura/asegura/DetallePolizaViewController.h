@@ -18,6 +18,7 @@
 #import "GaleriaViewController.h"
 #import "TextFieldValidator.h"
 #import "AltaPolizaViewController.h"
+#import "UIViewController+BackButtonHandler.h"
 @interface DetallePolizaViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,NSConnectionDelegate,MasInformacionPolizaViewControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,AltaPolizaViewControllerDelegate,UITextFieldDelegate>
 
 @property(weak,nonatomic) IBOutlet UIScrollView *vistaScroll;

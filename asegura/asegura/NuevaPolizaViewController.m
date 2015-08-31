@@ -16,8 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -226,7 +225,26 @@
                  [self performSegueWithIdentifier:@"altaPolizaNormal_segue" sender:self];
                  }
                 
+            }else{
+                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Búsqueda de Póliza" message:@"Introduce el número de póliza y el número de serie" delegate:self cancelButtonTitle:@"Cancelar" otherButtonTitles:@"Enviar", nil];
+                [alert setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
+                [[alert textFieldAtIndex:0] setPlaceholder:@"Número de póliza"];
+                [[alert textFieldAtIndex:1] setPlaceholder:@"Número de serie"];
+                [[alert textFieldAtIndex:0] setText:_polizaActual.insurenceNumber];
+                [[alert textFieldAtIndex:1] setText:_polizaActual.numeroSerie];
+                [[alert textFieldAtIndex:1] setSecureTextEntry:NO];
+                [[alert textFieldAtIndex:0] setAutocapitalizationType:UITextAutocapitalizationTypeAllCharacters];
+                [[alert textFieldAtIndex:1] setAutocapitalizationType:UITextAutocapitalizationTypeAllCharacters];
+                [[alert textFieldAtIndex:0] setDelegate:self];
+                [[alert textFieldAtIndex:1] setDelegate:self];
+                [[alert textFieldAtIndex:1] setTag:2];
+                [alert setTag:1];
+                [alert show];
             }
+        }
+        case 3:
+        {
+            
         }
             
         default:
@@ -274,7 +292,11 @@
     return retorno;
 }
 
-
-
+-(BOOL)navigationBar:(UINavigationBar *)navigationBar shouldPopItem:(UINavigationItem *)item
+{
+    NSLog(@"Back button got pressed!");
+    //if you return NO, the back button press is cancelled
+    return YES;
+}
 
 @end

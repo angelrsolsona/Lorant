@@ -86,7 +86,19 @@
     MisPolizasTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"Celda" forIndexPath:indexPath];
     Poliza *poliza=[_arrayPolizas objectAtIndex:indexPath.row];
     [cell.alias setText:poliza.insuranceName];
-    [cell.fecha setText:poliza.fechaHasta];
+    
+    NSString *dateString = poliza.fechaHasta;
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSDate *date = [dateFormatter dateFromString:dateString];
+    
+    // Convert date object into desired format
+    [dateFormatter setDateFormat:@"dd/MM/yyyy"];
+    NSString *newDateString = [dateFormatter stringFromDate:date];
+    
+    
+    
+    [cell.fecha setText:newDateString];
     [cell.nombreAseguradora setText:poliza.nombreAseguradora];
     [cell.btnEliminar addTarget:self action:@selector(EliminaPoliza:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -277,7 +289,7 @@
     
 }
 -(void)connectionDidFail:(NSString *)error{
-    
+    [_HUD setHidden:YES];
     UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Error" message:@"Error de conexión intenta de nuevo" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
     [alert show];
     

@@ -73,6 +73,7 @@
 		2A6236531B220136006F8AB1 /* CoberturasTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A6236521B220136006F8AB1 /* CoberturasTableViewCell.m */; };
 		2A7218EA1B1C43A70036211A /* Estados.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A7218E91B1C43A70036211A /* Estados.plist */; };
 		2A7218ED1B1C48CA0036211A /* AgenciasMarkerAnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A7218EC1B1C48CA0036211A /* AgenciasMarkerAnotation.m */; };
+		2A7684871B94094B005EE35B /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A7684861B94094B005EE35B /* UIViewController+BackButtonHandler.m */; };
 		2A79792A1AC9E0CC00E673E1 /* NuevaVerificacionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A7979291AC9E0CC00E673E1 /* NuevaVerificacionViewController.m */; };
 		2A79792D1ACA102300E673E1 /* VerificacionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A79792C1ACA102300E673E1 /* VerificacionTableViewCell.m */; };
 		2A7979311ACB48FF00E673E1 /* DetalleTipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A7979301ACB48FF00E673E1 /* DetalleTipViewController.m */; };
@@ -259,6 +260,8 @@
 		2A7218E91B1C43A70036211A /* Estados.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Estados.plist; sourceTree = "<group>"; };
 		2A7218EB1B1C48CA0036211A /* AgenciasMarkerAnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgenciasMarkerAnotation.h; sourceTree = "<group>"; };
 		2A7218EC1B1C48CA0036211A /* AgenciasMarkerAnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgenciasMarkerAnotation.m; sourceTree = "<group>"; };
+		2A7684851B94094B005EE35B /* UIViewController+BackButtonHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BackButtonHandler.h"; sourceTree = "<group>"; };
+		2A7684861B94094B005EE35B /* UIViewController+BackButtonHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BackButtonHandler.m"; sourceTree = "<group>"; };
 		2A7979281AC9E0CC00E673E1 /* NuevaVerificacionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NuevaVerificacionViewController.h; sourceTree = "<group>"; };
 		2A7979291AC9E0CC00E673E1 /* NuevaVerificacionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NuevaVerificacionViewController.m; sourceTree = "<group>"; };
 		2A79792B1ACA102300E673E1 /* VerificacionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerificacionTableViewCell.h; sourceTree = "<group>"; };
@@ -498,6 +501,8 @@
 		2A054B1D1A76F310001090C7 /* ARSN */ = {
 			isa = PBXGroup;
 			children = (
+				2A7684851B94094B005EE35B /* UIViewController+BackButtonHandler.h */,
+				2A7684861B94094B005EE35B /* UIViewController+BackButtonHandler.m */,
 				2AFA8E351B39F52A0084E231 /* TextFieldValidator.h */,
 				2AFA8E361B39F52A0084E231 /* TextFieldValidator.m */,
 				2A054B1E1A76F31C001090C7 /* Reachability.h */,
@@ -1093,6 +1098,7 @@
 				2AE75BC01A78170E0045B7AD /* ReporteViewController.m in Sources */,
 				2A7979341ACB4DD800E673E1 /* TipsTableViewController.m in Sources */,
 				2A054B5C1A76F3A7001090C7 /* AFHTTPSessionManager.m in Sources */,
+				2A7684871B94094B005EE35B /* UIViewController+BackButtonHandler.m in Sources */,
 				2A5115D11A9663FE0048F15E /* RegistroViewController.m in Sources */,
 				2A054AE61A76F224001090C7 /* AppDelegate.m in Sources */,
 				2A054B701A76F3FC001090C7 /* MenuSencilloViewController.m in Sources */,
@@ -1245,8 +1251,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Fernando Diaz";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Fernando Diaz";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Fernando Diaz (LM728UTRYE)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Fernando Diaz (LM728UTRYE)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/asegura",
@@ -1258,7 +1264,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5eefa3e0-ab6f-4361-ba68-caa23b78267a";
+				PROVISIONING_PROFILE = "7d4263e9-fe0b-4a37-b0e9-c84fe517a4f4";
 			};
 			name = Debug;
 		};
@@ -1268,8 +1274,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Fernando Diaz";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Fernando Diaz";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Fernando Diaz (LM728UTRYE)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Fernando Diaz (LM728UTRYE)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/asegura",
@@ -1281,7 +1287,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5eefa3e0-ab6f-4361-ba68-caa23b78267a";
+				PROVISIONING_PROFILE = "7d4263e9-fe0b-4a37-b0e9-c84fe517a4f4";
 			};
 			name = Release;
 		};

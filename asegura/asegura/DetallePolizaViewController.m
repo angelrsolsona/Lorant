@@ -160,7 +160,7 @@
         {
             NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:result options:NSJSONReadingAllowFragments error:&error];
             BOOL hayError=NO;
-            
+            NSLog(@"respuesta %@",[dic description]);
             if ([[dic objectForKey:@"ErrorCode"] isEqualToString:@"ER0001"]) {
     
                     _polizaActual.insurenceNumber=[dic objectForKey:@"insuranceNumber"];
@@ -183,7 +183,7 @@
                     _polizaActual.telefonoCabina=[dic objectForKey:@"TelefonoCabina"];
                     _polizaActual.reportarSiniestro=[[dic objectForKey:@"ReportaSiniestro"] boolValue];
                     _polizaActual.insurenceAlias=[dic objectForKey:@"insuranceAlias"];
-                    _polizaActual.noPlacas=[dic objectForKey:@"placas"];
+                    _polizaActual.noPlacas=[dic objectForKey:@"Placas"];
                     _polizaActual.esFinanciera=[[dic objectForKey:@"Es_Financiera"] boolValue];
                     _polizaActual.numContrato=[dic objectForKey:@"No_Contrato"];
                 
@@ -301,7 +301,8 @@
                         [self RecuerdaVigenciaPoliza:_polizaActual];
                     }
                     Polizas *polizaInformacion=[NSEntityDescription insertNewObjectForEntityForName:@"Polizas" inManagedObjectContext:[NSCoreDataManager getManagedContext]];
-                    polizaInformacion.recordarVigencia=[NSNumber numberWithBool:_recordadVigencia.on];
+                    //polizaInformacion.recordarVigencia=[NSNumber numberWithBool:_recordadVigencia.on];
+                    polizaInformacion.recordarVigencia=[NSString stringWithFormat:@"%@",[NSNumber numberWithBool:_recordadVigencia.on]];
                     //polizaInformacion.fechaInicioVigencia=_fechaInicio.text;
                     //polizaInformacion.fechaFinVigencia=_fechaFin.text;
                     if([NSCoreDataManager SaveData]){
@@ -638,6 +639,10 @@
                 break;
         }
         
+    }else if(alertView.tag==501){
+        if (buttonIndex==1) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
     }
 }
 
@@ -820,6 +825,26 @@
     [_correoTitular setPresentInView:self.view];
     [_correoTitular addRegx:REGEX_EMAIL withMsg:@"Introduce un correo valido"];
     [_txtPlacas setPresentInView:self.view];
+}
+
+#pragma mark - BarButtonHandler
+
+-(BOOL) navigationShouldPopOnBackButton
+{
+    
+    if (_estaEditando || _esBusquedaNueva) {
+        
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"¿Estas seguro que deseas salir? \n Los cambios se perderán."
+                                   delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Si", nil];
+        [alert setTag:501];
+        [alert show];
+        return NO;
+    }else{
+        return YES;
+    }
+    
+    
+    
 }
 
 

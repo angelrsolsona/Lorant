@@ -540,13 +540,13 @@
                                             <segue destination="mMC-zv-wnu" kind="push" id="roR-Z6-CNI"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tips" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lWV-fS-txq">
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tips" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lWV-fS-txq">
                                         <rect key="frame" x="164" y="478" width="92" height="21"/>
                                         <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qhq-XQ-roP">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qhq-XQ-roP">
                                         <rect key="frame" x="186" y="430" width="50" height="50"/>
                                         <state key="normal" backgroundImage="IconoMenuTips">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -774,7 +774,7 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="FlechaPicker" translatesAutoresizingMaskIntoConstraints="NO" id="6Hz-Yh-LdC">
                                         <rect key="frame" x="291" y="157" width="10" height="10"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CONTUNUAR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwU-Mt-wlH">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CONTINUAR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwU-Mt-wlH">
                                         <rect key="frame" x="58" y="487" width="209" height="24"/>
                                         <color key="backgroundColor" red="0.16862745100000001" green="0.61568627450000002" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="20"/>
@@ -848,7 +848,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="67I-MI-lWX">
                                 <rect key="frame" x="-20" y="-20" width="360" height="624"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Recomendacion_Accidente" translatesAutoresizingMaskIntoConstraints="NO" id="HLW-OT-ENb">
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Recomendacion_Default" translatesAutoresizingMaskIntoConstraints="NO" id="HLW-OT-ENb">
                                         <rect key="frame" x="20" y="20" width="320" height="340"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p9X-f7-cuw">
@@ -1916,7 +1916,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CalaendarioVerificacion" translatesAutoresizingMaskIntoConstraints="NO" id="byL-Zv-b9G">
                                 <rect key="frame" x="15" y="238" width="20" height="20"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JSW-7j-SfY">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JSW-7j-SfY">
                                 <rect key="frame" x="48" y="342" width="30" height="33"/>
                                 <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="15"/>
                                 <state key="normal" title="Tips">
@@ -1938,7 +1938,7 @@
                                     <action selector="Cotiza:" destination="e0V-Lh-zZD" eventType="touchUpInside" id="yZT-by-EgW"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="IconoMenuTips" translatesAutoresizingMaskIntoConstraints="NO" id="zaI-nj-ZYr">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="IconoMenuTips" translatesAutoresizingMaskIntoConstraints="NO" id="zaI-nj-ZYr">
                                 <rect key="frame" x="13" y="346" width="25" height="25"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="IconoMenuCotiza" translatesAutoresizingMaskIntoConstraints="NO" id="4Pv-0b-0rh">
@@ -2717,7 +2717,7 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="29/12/2015" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TYY-zH-jgl">
+                                    <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TYY-zH-jgl">
                                         <rect key="frame" x="221" y="163" width="91" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -2738,7 +2738,7 @@
                                             <action selector="GuardarContinuar:" destination="z4I-cK-iuY" eventType="touchUpInside" id="FGl-1L-Xap"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="28/12/2015" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mF7-2p-OPU">
+                                    <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mF7-2p-OPU">
                                         <rect key="frame" x="95" y="163" width="91" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -3412,7 +3412,7 @@
                                             <outlet property="delegate" destination="U1c-N8-0dU" id="hbp-Qk-1BP"/>
                                         </connections>
                                     </tableView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ver Foto Poliza" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axK-a0-3ou">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ver Foto Póliza" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axK-a0-3ou">
                                         <rect key="frame" x="123" y="899" width="76" height="21"/>
                                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Oswald-Regular" family="Oswald Regular" pointSize="14"/>
@@ -4038,7 +4038,7 @@
         <image name="LogoAsegura" width="400" height="141"/>
         <image name="Notificaciones" width="104" height="104"/>
         <image name="Polizas" width="105" height="105"/>
-        <image name="Recomendacion_Accidente" width="320" height="288"/>
+        <image name="Recomendacion_Default" width="320" height="238"/>
         <image name="Reporte" width="104" height="104"/>
         <image name="Ubicacion" width="14" height="14"/>
         <image name="VerificacionAzul" width="16" height="16"/>
@@ -4051,9 +4051,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="hW9-Ed-bdY"/>
+        <segue reference="Jvy-9q-8Iw"/>
         <segue reference="oP5-eq-xgk"/>
         <segue reference="dpf-BB-oOH"/>
-        <segue reference="qeH-qL-Ekw"/>
+        <segue reference="fGT-A1-CQr"/>
     </inferredMetricsTieBreakers>
 </document>

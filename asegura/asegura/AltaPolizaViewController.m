@@ -1302,6 +1302,33 @@
     return image;
 }
 
+#pragma mark - BarButtonHandler
+
+-(BOOL) navigationShouldPopOnBackButton
+{
+    
+    
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"¿Estas seguro que deseas salir? \n Los cambios se perderán."
+                                                     delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Si", nil];
+        [alert setTag:501];
+        [alert show];
+        return NO;
+       
+    
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag==501) {
+        
+        if(buttonIndex==1) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    }
+    
+}
+
 
 
 @end
