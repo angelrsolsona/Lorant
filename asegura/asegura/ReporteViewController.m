@@ -563,7 +563,7 @@
         noPoliza=_polizaActual.insurenceNumber;
         noSerie=@"";
     }
-    _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/getInsuranceDetailWS" parameters:@{@"insuranceNumber":noPoliza,@"serialNumberSuffix":noSerie} idRequest:3 delegate:self];
+    _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/getInsuranceDetailWS" parameters:@{@"insuranceNumber":noPoliza,@"serialNumberSuffix":noSerie,@"nickName":_usuarioActual.correo} idRequest:3 delegate:self];
     [_conexion connectionPOSTExecute];
 
     

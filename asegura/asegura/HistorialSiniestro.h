@@ -22,6 +22,7 @@
 @property(strong,nonatomic) NSString *fechaReporte;
 @property(strong,nonatomic) NSString *idSinisetro;
 @property(strong,nonatomic) NSString *calificacion;
+@property(strong,nonatomic) NSString *alias;
 
 
 @end

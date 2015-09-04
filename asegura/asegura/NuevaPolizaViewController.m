@@ -148,12 +148,13 @@
                 }
             
             
-            }else /*if([[dic objectForKey:@"ErrorCode"] isEqualToString:@"ER0007"]){
-                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"La póliza ya esta registrada" delegate:nil cancelButtonTitle:@"No" otherButtonTitles: nil];
+            }else if([[dic objectForKey:@"ErrorCode"] isEqualToString:@"ER0007"]){
+                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Ya se encuentra registrada la póliza" delegate:nil cancelButtonTitle:@"No" otherButtonTitles: nil];
                 [alert show];
                 
-            }else*/ if([[dic objectForKey:@"ErrorCode"] isEqualToString:@"ER0010"]){
-                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Favor de Validar el No. de Serie" delegate:nil cancelButtonTitle:@"No" otherButtonTitles: nil];
+            }else if([[dic objectForKey:@"ErrorCode"] isEqualToString:@"ER0010"]){
+                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Favor de validar el no. de serie" delegate:self cancelButtonTitle:@"No" otherButtonTitles: nil];
+                [alert setTag:2];
                 [alert show];
                 
             }
@@ -226,6 +227,7 @@
                  }
                 
             }else{
+                if(_polizaActual.ramo==1){
                 UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Búsqueda de Póliza" message:@"Introduce el número de póliza y el número de serie" delegate:self cancelButtonTitle:@"Cancelar" otherButtonTitles:@"Enviar", nil];
                 [alert setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
                 [[alert textFieldAtIndex:0] setPlaceholder:@"Número de póliza"];
@@ -240,11 +242,43 @@
                 [[alert textFieldAtIndex:1] setTag:2];
                 [alert setTag:1];
                 [alert show];
+                }else{
+                    UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Búsqueda de Póliza" message:@"Introduce el número de póliza" delegate:self cancelButtonTitle:@"Cancelar" otherButtonTitles:@"Enviar", nil];
+                    [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
+                    [[alert textFieldAtIndex:0] setPlaceholder:@"Número de póliza"];
+                    [[alert textFieldAtIndex:0] setAutocapitalizationType:UITextAutocapitalizationTypeAllCharacters];
+                    [[alert textFieldAtIndex:0] setText:_polizaActual.insuranceName];
+                    [alert setTag:1];
+                    [alert show];
+                }
             }
-        }
+        }break;
         case 3:
         {
-            
+            if(_polizaActual.ramo==1){
+                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Búsqueda de Póliza" message:@"Introduce el número de póliza y el número de serie" delegate:self cancelButtonTitle:@"Cancelar" otherButtonTitles:@"Enviar", nil];
+                [alert setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
+                [[alert textFieldAtIndex:0] setPlaceholder:@"Número de póliza"];
+                [[alert textFieldAtIndex:1] setPlaceholder:@"Número de serie"];
+                [[alert textFieldAtIndex:0] setText:_polizaActual.insurenceNumber];
+                [[alert textFieldAtIndex:1] setText:_polizaActual.numeroSerie];
+                [[alert textFieldAtIndex:1] setSecureTextEntry:NO];
+                [[alert textFieldAtIndex:0] setAutocapitalizationType:UITextAutocapitalizationTypeAllCharacters];
+                [[alert textFieldAtIndex:1] setAutocapitalizationType:UITextAutocapitalizationTypeAllCharacters];
+                [[alert textFieldAtIndex:0] setDelegate:self];
+                [[alert textFieldAtIndex:1] setDelegate:self];
+                [[alert textFieldAtIndex:1] setTag:2];
+                [alert setTag:1];
+                [alert show];
+            }else{
+                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Búsqueda de Póliza" message:@"Introduce el número de póliza" delegate:self cancelButtonTitle:@"Cancelar" otherButtonTitles:@"Enviar", nil];
+                [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
+                [[alert textFieldAtIndex:0] setPlaceholder:@"Número de póliza"];
+                [[alert textFieldAtIndex:0] setAutocapitalizationType:UITextAutocapitalizationTypeAllCharacters];
+                [[alert textFieldAtIndex:0] setText:_polizaActual.insurenceNumber];
+                [alert setTag:1];
+                [alert show];
+            }
         }
             
         default:

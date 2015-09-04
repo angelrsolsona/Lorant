@@ -98,7 +98,7 @@
         }
 
         
-    _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/getInsuranceDetailWS" parameters:@{@"insuranceNumber":noPoliza,@"serialNumberSuffix":noSerie} idRequest:1 delegate:self];
+    _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/getInsuranceDetailWS" parameters:@{@"insuranceNumber":noPoliza,@"serialNumberSuffix":noSerie,@"nickName":_usuarioActual.correo} idRequest:1 delegate:self];
     [_conexion connectionPOSTExecute];
     
     _HUD=[[MBProgressHUD alloc] initWithView:self.view];
@@ -834,7 +834,7 @@
     
     if (_estaEditando || _esBusquedaNueva) {
         
-        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"¿Estas seguro que deseas salir? \n Los cambios se perderán."
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"¿Estás seguro que deseas salir? \n Los cambios se perderán."
                                    delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Si", nil];
         [alert setTag:501];
         [alert show];

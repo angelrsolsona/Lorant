@@ -68,7 +68,7 @@
     
     [cell.fechaReporte setText:[fecha objectAtIndex:0]];
     [cell.horaReporte setText:[fecha objectAtIndex:1]];
-    [cell.noPoliza setText:historial.noPoliza];
+    [cell.noPoliza setText:historial.alias];
     [cell.causaSiniestro setText:historial.siniestro];
     [cell.informacion setText:historial.informacion];
 
@@ -247,6 +247,7 @@
                 historial.noTelefono=[dic objectForKey:@"NO_TEL"];
                 historial.latitud=[dic objectForKey:@"LATITUD"];
                 historial.longitud=[dic objectForKey:@"LONGITUD"];
+                historial.alias=[dic objectForKey:@"ALIAS"];
                 if ([[dic objectForKey:@"INFORMACION"] isEqual:[NSNull null]]) {
                      historial.informacion=@"NA";
                 }else{
@@ -275,7 +276,7 @@
             NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:result options:NSJSONReadingAllowFragments error:&error];
             if ([[dic objectForKey:@"ErrorCode"] isEqualToString:@"ER0001"]) {
                 [_HUD hide:YES];
-                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Calificación exitosa" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
+                UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"Gracias tu opinión es muy importante para nosotros" delegate:nil cancelButtonTitle:@"Aceptar" otherButtonTitles: nil];
                 [alert show];
                 _conexion=[[NSConnection alloc] initWithRequestURL:@"https://grupo.lmsmexico.com.mx/wsmovil/api/poliza/getRecuperaSiniestro/" parameters:@{@"nickName":_usuarioActual.correo} idRequest:1 delegate:self];
                 [_conexion connectionPOSTExecute];

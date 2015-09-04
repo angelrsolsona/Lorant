@@ -701,6 +701,9 @@
                         if (![_polizaActual.foto isEqual:nil]) {
                             polizaInformacion.foto=_polizaActual.foto;
                         }
+                        if (_recordadVigencia.on) {
+                            [self RecuerdaVigenciaPoliza:_polizaActual];
+                        }
                         if ([NSCoreDataManager SaveData]) {
                             /*[_HUD hide:YES];
                             [self.navigationController popToRootViewControllerAnimated:YES];*/
@@ -1308,7 +1311,7 @@
 {
     
     
-        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"¿Estas seguro que deseas salir? \n Los cambios se perderán."
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Aviso" message:@"¿Estás seguro que deseas salir? \n Los cambios se perderán."
                                                      delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Si", nil];
         [alert setTag:501];
         [alert show];
